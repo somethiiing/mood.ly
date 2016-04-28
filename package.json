@@ -4,7 +4,7 @@
   "description": "your mood",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./tests/SearchPicturesResultsEntryTest.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,9 @@
   "devDependencies": {
     "eslint-config-airbnb": "^8.0.0",
     "eslint-plugin-react": "^5.0.1"
+  },
+  "dependencies": {
+    "chai": "^3.5.0",
+    "chai-things": "^0.2.0"
   }
 }
