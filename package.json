@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MysteriousBagel/mood.ly.git"
+    "url": "git+https://github.com/mysteriousbagel/mood.ly.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MysteriousBagel/mood.ly/issues"
+    "url": "https://github.com/mysteriousbagel/mood.ly/issues"
   },
-  "homepage": "https://github.com/MysteriousBagel/mood.ly#readme",
+  "homepage": "https://github.com/mysteriousbagel/mood.ly#readme",
   "devDependencies": {
     "eslint-config-airbnb": "^8.0.0",
     "eslint-plugin-react": "^5.0.1"
