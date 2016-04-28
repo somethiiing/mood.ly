@@ -4,7 +4,7 @@
   "description": "your mood",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./tests/SearchPicturesResultsEntryTest.js"
+    "test": "mocha ./tests/ApiTest.js"
   },
   "repository": {
     "type": "git",
