@@ -1,0 +1,18 @@
+{
+  "name": "mood.ly",
+  "homepage": "https://github.com/MysteriousBagel/mood.ly",
+  "authors": [
+    "Arun Vasudevan <arunv83@gmail.com>"
+  ],
+  "description": "A place for you to explore your mood.",
+  "main": "",
+  "license": "All rights reserved.",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
