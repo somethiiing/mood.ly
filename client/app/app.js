@@ -37,4 +37,32 @@ class App extends React.Component {
     }
 }
 
+window.menuData = [
+  {
+    title: 'Unicorn',
+    image: 'http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/best-wallpapers-3.jpg',
+    choice: 0
+  },
+  {
+    title: 'Ship',
+    image: 'http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/best-wallpapers-2-610x343.jpg',
+    choice: 0
+  },
+  {
+    title: 'Sunset',
+    image: 'http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/best-wallpapers-7.jpg',
+    choice: 0
+  },
+  {
+    title: 'Kitten',
+    image: 'http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/best-wallpapers-13.jpg',
+    choice: 0
+  },
+  {
+    title: 'Darkness',
+    image: 'http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/Best-Wallpapers-29.jpg',
+    choice: 0
+  }
+];
+
 ReactDOM.render(<App />, document.getElementById('app'));
