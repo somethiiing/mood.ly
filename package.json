@@ -13,7 +13,11 @@
   "author": "",
   "license": "ISC",
   "bugs": {
+<<<<<<< 01723476f1f5fc8b0698d620dd557cde92f38bb1
     "url": "https://github.com/mysteriousbagel/mood.ly/issues"
+=======
+    "url": "https://github.com/MysteriousBagel/mood.ly/issues"
+>>>>>>> added wikiquotes
   },
   "homepage": "https://github.com/mysteriousbagel/mood.ly#readme",
   "devDependencies": {
@@ -26,14 +30,13 @@
     "chai-things": "^0.2.0",
     "express": "^4.13.4",
     "jquery": "^2.2.3",
+    "nodemon": "^1.9.1",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.0",
     "passport-google": "^0.3.0",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.4",
-    "sass": "^0.5.0",
-    "bootstrap": "^3.3.6",
-    "sass": "^0.5.0",
-    "nodemon": "^1.9.1",
+    "request": "^2.72.0",
+    "sass": "^0.5.0"
   }
 }

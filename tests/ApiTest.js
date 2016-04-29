@@ -2,7 +2,21 @@ var expect = require('chai').expect;
 var request = require('request');
 
 describe('Quotes API', function() {
-  it('should get quotes', function(done) {
+ it('should get quotes', function(done) {
+   request.get('https://en.wikiquote.org/w/api.php?action=query&titles=happiness&prop=revisions&rvprop=content&format=json')
+   .on('response', function(response) {
+     // console.log(response);
+     var body = [];
+     response.on('data', function(chunk) {
+       body.push(chunk);
+     }).on('end', function() {
+       body = JSON.parse(Buffer.concat(body).toString());
+       console.log(body.query.pages['126432'].revisions[0]['*']);
+       expect(response.statusCode).to.equal(200);
+       done();
+     });
+   });
+ });
 
     request.get('https://en.wikiquote.org/w/api.php?action=query&titles=happiness&prop=revisions&rvprop=content&format=json')
     .on('response', function(response) {
