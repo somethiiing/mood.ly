@@ -8,14 +8,21 @@ class App extends React.Component {
 
     //set default state
     this.state = {
+      currMood: menuData[0].mood,
       currChoice: menuData[0].choice,
+      currQuote: menuData[0].quote,
+      quotes: props.menuData,
     };
   }
 
-    onChoiceClick (choice) {
-      this.state.currChoice.choice = choice;
+    onChoiceClick (mood, choice, quote) {
+      this.state.currMood = mood;
+      this.state.currChoice = choice;
+      this.state.currQuote = quote;
       this.setState({
-        currChoice: choice
+        currMood: mood.target.value,
+        currChoice: choice.target.value,
+        currQuote: quote.target.value
       });
     }
 
@@ -23,7 +30,7 @@ class App extends React.Component {
       return (
         <div>
           <div className="dropdown-menu">
-            <select onChange={(e) => onChoiceClick(e.target.value)}>
+            <select value={this.state.currChoice} onChange={this.onChoiceClick.bind(this)}>
               <option value="1">Happy</option>
               <option value="2">Sentimental</option>
               <option value="3">Romantic</option>
@@ -31,6 +38,8 @@ class App extends React.Component {
           </div>
           <div className="moodly-content">
             <h1>Hello World!</h1>
+            <span className="quote-title"><h2>Quotes</h2></span>
+            <QuoteTable quoteList={this.state.quotes} onChoiceClick={this.onChoiceClick.bind(this)} />
           </div>
         </div>
       );
@@ -38,31 +47,24 @@ class App extends React.Component {
 }
 
 window.menuData = [
-  {
-    title: 'Unicorn',
+  { 
+    mood: 'Happy',
+    quote: 'Unicorn',
     image: 'http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/best-wallpapers-3.jpg',
-    choice: 0
+    choice: 1
   },
   {
-    title: 'Ship',
+    mood: 'Sentimental',
+    quote: 'Ship',
     image: 'http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/best-wallpapers-2-610x343.jpg',
-    choice: 0
+    choice: 2
   },
   {
-    title: 'Sunset',
+    mood: 'Romantic',
+    quote: 'Sunset',
     image: 'http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/best-wallpapers-7.jpg',
-    choice: 0
+    choice: 3
   },
-  {
-    title: 'Kitten',
-    image: 'http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/best-wallpapers-13.jpg',
-    choice: 0
-  },
-  {
-    title: 'Darkness',
-    image: 'http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/Best-Wallpapers-29.jpg',
-    choice: 0
-  }
 ];
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App menuData={menuData} />, document.getElementById('app'));
