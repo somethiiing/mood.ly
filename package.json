@@ -13,11 +13,7 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-<<<<<<< 01723476f1f5fc8b0698d620dd557cde92f38bb1
     "url": "https://github.com/mysteriousbagel/mood.ly/issues"
-=======
-    "url": "https://github.com/MysteriousBagel/mood.ly/issues"
->>>>>>> added wikiquotes
   },
   "homepage": "https://github.com/mysteriousbagel/mood.ly#readme",
   "devDependencies": {
