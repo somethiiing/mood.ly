@@ -90,6 +90,10 @@ describe('Quotes API', function() {
     });
   });
 
+  it('should find the author of the quote', function(done) {
+    done();
+  });
+
   it('should redirect to another page if redirect exists', function(done) {
     done();
   });
