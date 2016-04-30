@@ -3,7 +3,7 @@ var db = require('../db/db.js');
 
 var Mood = db.define('Mood',
   {
-    state: Sequelize.STRING,
+    name: Sequelize.STRING,
     timedate: Sequelize.STRING
   },
   {
