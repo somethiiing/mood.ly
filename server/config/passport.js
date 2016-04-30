@@ -28,8 +28,10 @@ module.exports = function(passport) {
   //FLASH MESSAGES  
   app.use(flash());
 
-  //LOCAL STRATEGY
-  passport.user('local-signup', new LocalStrategy({
+//LOCAL STRATEGY
+//============================================
+  //SIGNUP
+  passport.use('local-signup', new LocalStrategy({
     username: 'email',
     password: 'password',
     passReqToCallback: true,
@@ -64,6 +66,21 @@ module.exports = function(passport) {
       .catch(function(err) {
         console.log('Cannot find user! ', err);
       });
+  }));
+
+  //LOGIN
+  passport.use('local-login', new LocalStrategy({
+    username: 'email',
+    password: 'password',
+    passReqToCallback: true
+  },
+  function(req, email, password, done) {
+    User.findOne({ where: { 'local.email': email } })
+    .then(function(user) {
+      if (user) {
+        done(null, user);
+      }
+    });
   }));
 };
 
