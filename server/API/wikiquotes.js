@@ -1,6 +1,5 @@
 var request = require('request');
 
-////////// HELPER FUNCTIONS //////////
 var getPageID = function (body) {
   var pageID;
   for(var key in body.query.pages) {
@@ -37,7 +36,7 @@ var parseData = function (body, pageID) {
   }
   for(var j = 0; j<filteredData.length; j++){
     for(var k = 0; k<filteredData[j].length; k++){
-      if(filteredData[j].slice(k, k+4) === 'http' || filteredData[j].charAt(k) === '\'' || filteredData[j].slice(k, k+4) === '<br>' || filteredData[j].charAt(k) === '|') {
+      if(filteredData[j].slice(k, k+4) === 'http' || filteredData[j].charAt(k) === '\'' || filteredData[j].slice(k, k+4) === '<br>'|| filteredData[j].slice(k, k+6) === '<br />' || filteredData[j].charAt(k) === '|') {
         filteredData[j] = "";
       }
       filteredData[j] = filteredData[j].replace('[[', '');
@@ -65,8 +64,6 @@ var functionChain = function (body) {
   }
 }
 
-////////// END HELPER FUNCTIONS  ///////////
-
 var wikiQuoteCall = function (keyword) {
   var url = 'https://en.wikiquote.org/w/api.php?action=query&titles=' + keyword + '&prop=revisions&rvprop=content&format=json';
   request.get(url)
@@ -81,5 +78,5 @@ var wikiQuoteCall = function (keyword) {
   });
 };
 
-wikiQuoteCall('abandon');
+wikiQuoteCall('happy');
 
