@@ -1,7 +1,19 @@
-//passport.js
+//PASSPORT STRATEGIES
+//============================================
 var LocalStrategy = require('passport-local').Strategy;
-var User = require('../models/user'); //CHANGE AS NEEDED
+var FacebookStrategy = require('passport-facebook').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
+//IMPORT MODELS
+//============================================
+var User = require('../models/userModel').User;
+
+//IMPORT AUTH CONFIG
+//============================================
+var authConfig = require('./authConfig');
+
+//MODULE EXPORT
+//============================================
 module.exports = function(app, session, passport) {
   //SERIALIZE USER
   passport.serializeUser(function(user, done) {
@@ -85,5 +97,53 @@ module.exports = function(app, session, passport) {
       console.log('User not found ', err);
     });
   }));
+
+  //FACEBOOK STRATEGY
+  //============================================
+  passport.use(new FacebookStrategy({
+    //GET INFO FROM AUTHCONFIG
+    clientID: authConfig.facebookAuth.appID,
+    clientSecret: authConfig.facebookAuth.appSecret,
+    callbackURL: authConfig.facebookAuth.callbackUrl,
+    profileFields: ['id', 'displayName', 'first_name', 'last_name', 'email', 'gender', 'birthday', 'picture.type(large)'],
+  },
+
+    function(accesstoken, refreshToken, profile, done) {
+      console.log('PROFILE:=============');
+      console.log(profile);
+
+      console.log('TOKEN:=============');
+      console.log(accesstoken);
+
+      //FIND USER IN DATABASE BASED ON FACEBOOK ID
+      User.findOne( { where: { 'userName' : profile._json.email.toLowerCase() } } )
+      .then(function(user) {
+        console.log('Found User', user);
+        if (user) {
+          done(null, user);
+        } else {
+          User.create({
+            firstName: profile.name.givenName,
+            lastName: profile.name.familyName,
+            userName: profile.emails[0].value.toLowerCase(),
+            password: '1234',
+            email: profile._json.email.toLowerCase(),
+            facebookId: profile.id,
+            picture: profile.photos ? profile.photos[0].value : '/img/faces/unknown-user-pic.jpg'
+          })
+          .then(function(newUser) {
+            console.log('user created ', newUser);
+            done(null, newUser);
+          })
+          .catch(function(err) {
+            console.log('Error saving Facebook user! ', err);
+          });
+        }
+      })
+      .catch(function(err) {
+        console.log('Error Searching For Existing FB User: ', err);
+      });
+    }
+  ));
 };
 
