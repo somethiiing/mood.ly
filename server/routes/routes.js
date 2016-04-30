@@ -16,9 +16,21 @@ module.exports = function(app, express, passport) {
     res.render('login', { message: req.flash('loginMessage') });
   });
 
+  app.post('/login', passport.authenticate('local-signup', {
+    successRedirect: '/profile',
+    failureRedirect: '/login',
+    failureFlash: true //OPTIONAL
+  }));
+
   app.get('/signup', function(req, res) {
     res.render('signup', { message: req.flash('loginMessage') });
   });
+
+  app.post('/signup', passport.authenticate('local-signup', {
+    successRedirect: '/profile',
+    failureRedirect: '/signup',
+    failureFlash: true //OPTIONAL
+  }));
 
   app.get('/profile', function(req, res) {
     res.render('profile', { user: req.user });
@@ -31,4 +43,12 @@ module.exports = function(app, express, passport) {
     res.redirect('/');
   });
 
+  //CHECK IF LOGGED IN
+  var isLoggedIn = function(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+    //REDIRECT
+    res.redirect('/');
+  };
 };
