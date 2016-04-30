@@ -5,7 +5,7 @@ var flash = require('connect-flash');
 
 var app = express();
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 8080;
 
 //MIDDLEWARE
 //==============================================
@@ -16,7 +16,7 @@ require('./config/middleware.js')(app, express);
 //==============================================
 // Passport Configuration
 require('./config/passport.js')(app, session, passport);
-require('./routers/routes.js')(app, express, passport);
+require('./routes/routes.js')(app, express, passport);
 
 //LISTEN
 //==============================================
