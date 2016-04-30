@@ -25,7 +25,6 @@ var getPageID = function (body) {
       }
     }
   }
-  console.log(pageID);
   return pageID;
 };
 
@@ -38,7 +37,6 @@ var redirectCheck = function (body, pageID) {
     if(lowercaseRedirectCheck === '#redirect'){
       redirectKey = redirectKey.slice(12);
       redirectKey = redirectKey.replace(']]', '');
-      console.log(redirectKey);
       return redirectKey;
     } else {
       return false;
@@ -72,24 +70,24 @@ var parseData = function (body, pageID) {
       cleanData.push(filteredData[i]);
     } 
   }
-  console.log(cleanData);
-  return cleanData;
+  return {status: "success", body: cleanData};
 };
 
-var functionChain = function (body) {
+var functionChain = function (body, callback) {
   var pageID = getPageID(body);
   var redirect = redirectCheck(body, pageID);
   if(redirect === false) {
-    parseData(body, pageID);
-  } else if (redirect === null) {
-    console.log("Page not found. Please try a different term.");
-    return "Page not found. Please try a different term.";
-  } else {
-    wikiQuoteCall(redirect);
+    callback(parseData(body, pageID));
+  } 
+  else if (redirect === null) {
+    callback("Page not found, please try again.")
+  } 
+  else {
+    wikiQuoteCall(redirect, callback);
   }
-};
+}
 
-var wikiQuoteCall = function (keyword) {
+var wikiQuoteCall = function (keyword, callback) {
   var url = 'https://en.wikiquote.org/w/api.php?action=query&titles=' + keyword + '&prop=revisions&rvprop=content&format=json';
   request.get(url)
   .on('response', function(response) {
@@ -98,21 +96,13 @@ var wikiQuoteCall = function (keyword) {
       body.push(chunk);
   }).on('end', function() {
       body = JSON.parse(Buffer.concat(body).toString());
-      functionChain(body);
+      functionChain(body, callback);
     });
   });
-};
-
-var async = function (fn, callback) {
-  setTimeout(function () {
-    fn();
-    callback();
-  }, 0);
 };
 
 module.exports = {
   getPageID: getPageID,
   redirectCheck: redirectCheck,
-  wikiQuoteCall: wikiQuoteCall,
-  async: async
+  wikiQuoteCall: wikiQuoteCall
 };
