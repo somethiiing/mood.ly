@@ -1,10 +1,28 @@
 var request = require('request');
 
+
+//////////////////// HELPER FUNCTIONS ////////////////////
+// Modularized Functions to improve clarity on what is happening
+// getPageID is called through the wikiQuoteAPI to retrive the page ID.
+  // Because of how the structure of how the returned data body, retriving pageID is needed
+  // also checks whether or not the page exists
+// redirectCheck is used when wikiQuoteCall is used
+  // if the keyword typed would redirect (e.g. from "happy" to "Happiness")
+  // would check whether to return the redirectKey or "false"
+  // also parses the data retrived from the API
+// parseData parses the retrived wikiquote data.
+  // data retrived is within a number of nested objects/arrays and is retrived in one long string
+// functionChain is the logic/order used to call the above functions
+
 var getPageID = function (body) {
   var pageID;
   for(var key in body.query.pages) {
     if(typeof Number(key) === 'number'){
-      pageID = body.query.pages[key].pageid;
+      if(Number(key) === -1 ) {
+        pageID = -1;
+      } else {
+        pageID = body.query.pages[key].pageid;
+      }
     }
   }
   console.log(pageID);
@@ -12,17 +30,21 @@ var getPageID = function (body) {
 };
 
 var redirectCheck = function (body, pageID) {
-  var redirectKey = body.query.pages[pageID].revisions[0]['*'];
-  var lowercaseRedirectCheck = (redirectKey.slice(0,9)).toLowerCase();
-  if(lowercaseRedirectCheck === '#redirect'){
-    redirectKey = redirectKey.slice(12);
-    redirectKey = redirectKey.replace(']]', '');
-    console.log(redirectKey);
-    return redirectKey;
+  if(pageID === -1) {
+    return null;
   } else {
-    return false;
+    var redirectKey = body.query.pages[pageID].revisions[0]['*'];
+    var lowercaseRedirectCheck = (redirectKey.slice(0,9)).toLowerCase();
+    if(lowercaseRedirectCheck === '#redirect'){
+      redirectKey = redirectKey.slice(12);
+      redirectKey = redirectKey.replace(']]', '');
+      console.log(redirectKey);
+      return redirectKey;
+    } else {
+      return false;
+    }
   }
-}
+};
 
 var parseData = function (body, pageID) {
   var rawData = body.query.pages[pageID].revisions[0]['*'];
@@ -52,17 +74,20 @@ var parseData = function (body, pageID) {
   }
   console.log(cleanData);
   return cleanData;
-}
+};
 
 var functionChain = function (body) {
   var pageID = getPageID(body);
   var redirect = redirectCheck(body, pageID);
   if(redirect === false) {
     parseData(body, pageID);
+  } else if (redirect === null) {
+    console.log("Page not found. Please try a different term.");
+    return "Page not found. Please try a different term.";
   } else {
     wikiQuoteCall(redirect);
   }
-}
+};
 
 var wikiQuoteCall = function (keyword) {
   var url = 'https://en.wikiquote.org/w/api.php?action=query&titles=' + keyword + '&prop=revisions&rvprop=content&format=json';
@@ -78,8 +103,16 @@ var wikiQuoteCall = function (keyword) {
   });
 };
 
+var async = function (fn, callback) {
+  setTimeout(function () {
+    fn();
+    callback();
+  }, 0);
+};
 
-
-module.export = {
-  wikiQuoteCall: wikiQuoteCall
+module.exports = {
+  getPageID: getPageID,
+  redirectCheck: redirectCheck,
+  wikiQuoteCall: wikiQuoteCall,
+  async: async
 };
