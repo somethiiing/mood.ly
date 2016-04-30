@@ -43,7 +43,6 @@ describe('Quotes API', function() {
       });
     });
 
-  
   });
 
   it('should get one quote', function(done) {
@@ -89,7 +88,14 @@ describe('Quotes API', function() {
     });
   });
 
+  it('should find the author of the quote', function(done) {
+    var author;
+    expect(author).to.equal('someAuthor');
+    done();
+  });
+
   it('should redirect to another page if redirect exists', function(done) {
+    expect(response.statusCode).to.equal(200);
     done();
   });
 
