@@ -80,6 +80,9 @@ module.exports = function(passport) {
       if (user) {
         done(null, user);
       }
+    })
+    .catch(function(err) {
+      console.log('User not found ', err);
     });
   }));
 };
