@@ -21,10 +21,13 @@
     "eslint-plugin-react": "^5.0.1"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "bootstrap": "^3.3.6",
     "chai": "^3.5.0",
     "chai-things": "^0.2.0",
+    "connect-flash": "^0.1.1",
     "express": "^4.13.4",
+    "express-session": "^1.13.0",
     "jquery": "^2.2.3",
     "nodemon": "^1.9.1",
     "passport": "^0.3.2",
