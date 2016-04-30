@@ -9,9 +9,11 @@ var User = db.define('User',
     facebookId: Sequelize.STRING,
     avatar: Sequelize.STRING
   },
-  instanceMethods: {
-    comparePasswords: function(inputPassword, callback) {
-      callback(bcrypt.compareSync(inputPassword, this.password));
+  {
+    instanceMethods: {
+      comparePasswords: function(inputPassword, callback) {
+        callback(bcrypt.compareSync(inputPassword, this.password));
+      }
     }
   }
 );

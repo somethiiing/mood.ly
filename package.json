@@ -4,7 +4,7 @@
   "description": "your mood",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./tests/ApiTest.js"
+    "test": "mocha ./tests/ApiTest.js ./tests/userModelTest.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
     "chai-things": "^0.2.0",
     "express": "^4.13.4",
     "jquery": "^2.2.3",
+    "mysql": "^2.10.2",
     "nodemon": "^1.9.1",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.0",
@@ -33,6 +34,7 @@
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.4",
     "request": "^2.72.0",
-    "sass": "^0.5.0"
+    "sass": "^0.5.0",
+    "sequelize": "^3.22.0"
   }
 }

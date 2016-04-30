@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize');
-var password = require('../config.mysqlsetup.js');
+var password = require('../config/mysqlsetup.js');
 
 var db = new Sequelize('moodb', 'root', password, {
   define: {
