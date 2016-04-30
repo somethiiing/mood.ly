@@ -1,6 +1,7 @@
 var express = require('express');
 var session = require('express-session');
 var passport = require('passport');
+var flash = require('connect-flash');
 
 var app = express();
 
@@ -14,8 +15,8 @@ require('./config/middleware.js')(app, express);
 //PASSPORT & ROUTES
 //==============================================
 // Passport Configuration
-require('./config/passportConfig.js')(app, session, passport);
-require('./config/routes.js')(app, express, passport);
+require('./config/passport.js')(app, session, passport);
+require('./routers/routes.js')(app, express, passport);
 
 //LISTEN
 //==============================================
