@@ -1,0 +1,54 @@
+//REQUIRE CONTROLLERS
+//=================================
+var userController = require('../controllers/userController');
+
+//MODULE EXPORT
+//=================================
+module.exports = function(app, express, passport) {
+
+  //LOCAL ROUTES
+  //=================================
+  app.get('/', function(req, res) {
+    res.render('index', { title: 'Express' });
+  });
+
+  app.get('/login', function(req, res) {
+    res.render('login', { message: req.flash('loginMessage') });
+  });
+
+  app.post('/login', passport.authenticate('local-signup', {
+    successRedirect: '/profile',
+    failureRedirect: '/login',
+    failureFlash: true //OPTIONAL
+  }));
+
+  app.get('/signup', function(req, res) {
+    res.render('signup', { message: req.flash('loginMessage') });
+  });
+
+  app.post('/signup', passport.authenticate('local-signup', {
+    successRedirect: '/profile',
+    failureRedirect: '/signup',
+    failureFlash: true //OPTIONAL
+  }));
+
+  app.get('/profile', function(req, res) {
+    res.render('profile', { user: req.user });
+  });
+
+  app.get('/logout', function(req, res) {
+    //LOG USER OUT
+    req.logout();
+    //REDIRECT USER TO HOME PAGE
+    res.redirect('/');
+  });
+
+  //CHECK IF LOGGED IN
+  var isLoggedIn = function(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+    //REDIRECT
+    res.redirect('/');
+  };
+};

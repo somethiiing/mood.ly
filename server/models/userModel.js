@@ -15,6 +15,9 @@ var User = db.define('User',
         callback(bcrypt.compareSync(inputPassword, this.password));
       }
     }
+  },
+  {
+    freezeTableName: true
   }
 );
 

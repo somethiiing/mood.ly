@@ -5,6 +5,9 @@ var Mood = db.define('Mood',
   {
     state: Sequelize.STRING,
     timedate: Sequelize.STRING
+  },
+  {
+    freezeTableName: true
   }
 );
 
