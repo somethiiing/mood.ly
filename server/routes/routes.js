@@ -37,10 +37,11 @@ module.exports = function(app, express, passport) {
   });
 
   app.get('/logout', function(req, res) {
-    //LOG USER OUT
-    req.logout();
-    //REDIRECT USER TO HOME PAGE
-    res.redirect('/');
+    //LOG USER OUT AND DESTROY SESSION
+    req.session.destroy(function(err) {
+      //REDIRECT USER TO HOME PAGE
+      res.redirect('/');
+    });
   });
 
   //CHECK IF LOGGED IN
@@ -51,4 +52,13 @@ module.exports = function(app, express, passport) {
     //REDIRECT
     res.redirect('/');
   };
+
+  //FACEBOOK ROUTES
+  //=================================
+  app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
+
+  app.get('/auth/facebook/callback', passport.authenticate('facebook', { 
+      successRedirect: '/profile',
+      failureRedirect: '/'
+  }));
 };
