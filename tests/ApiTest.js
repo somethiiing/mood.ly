@@ -2,8 +2,7 @@ var expect = require('chai').expect;
 var request = require('request');
 
 describe('Quotes API', function() {
-  it('should get quotes', function(done) {
-
+ it('should get quotes', function(done) {
     request.get('https://en.wikiquote.org/w/api.php?action=query&titles=happiness&prop=revisions&rvprop=content&format=json')
     .on('response', function(response) {
       var body = [];
@@ -44,7 +43,6 @@ describe('Quotes API', function() {
       });
     });
 
-  
   });
 
   it('should get one quote', function(done) {

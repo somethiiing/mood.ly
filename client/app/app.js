@@ -15,14 +15,13 @@ class App extends React.Component {
     };
   }
 
-    onChoiceClick (mood, choice, quote) {
-      this.state.currMood = mood;
-      this.state.currChoice = choice;
-      this.state.currQuote = quote;
+    onChoiceClick (choice) {
+      console.log('choice.target.value ', choice.target.value);
       this.setState({
-        currMood: mood.target.value,
-        currChoice: choice.target.value,
-        currQuote: quote.target.value
+        currMood: menuData[choice.target.value].mood,
+        currChoice: menuData[choice.target.value],
+        currQuote: menuData[choice.target.value].quote,
+        currImg: menuData[choice.target.value].image
       });
     }
 
@@ -30,16 +29,16 @@ class App extends React.Component {
       return (
         <div>
           <div className="dropdown-menu">
-            <select value={this.state.currChoice} onChange={this.onChoiceClick.bind(this)}>
-              <option value="1">Happy</option>
-              <option value="2">Sentimental</option>
-              <option value="3">Romantic</option>
+            <select value={this.state.value} onChange={this.onChoiceClick.bind(this)}>
+              <option value="0">Happy</option>
+              <option value="1">Sentimental</option>
+              <option value="2">Romantic</option>
             </select>
           </div>
           <div className="moodly-content">
             <h1>Hello World!</h1>
-            <span className="quote-title"><h2>Quotes</h2></span>
-            <QuoteTable quoteList={this.state.quotes} onChoiceClick={this.onChoiceClick.bind(this)} />
+            <span className="quote-title"><h2>{this.state.currQuote}</h2></span>
+            <Quote quoteList={this.state.quotes} onChange={this.onChoiceClick.bind(this)} />
           </div>
         </div>
       );
@@ -49,21 +48,21 @@ class App extends React.Component {
 window.menuData = [
   { 
     mood: 'Happy',
-    quote: 'Unicorn',
+    choice: 0,
+    quote: 'The best way to find yourself is to lose yourself in the service of others.',
     image: 'http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/best-wallpapers-3.jpg',
-    choice: 1
   },
   {
     mood: 'Sentimental',
-    quote: 'Ship',
+    choice: 1,
+    quote: 'Do the best you can, and don\'t take life too serious.',
     image: 'http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/best-wallpapers-2-610x343.jpg',
-    choice: 2
   },
   {
     mood: 'Romantic',
-    quote: 'Sunset',
+    choice: 2,
+    quote: 'It\'s a funny thing about life; if you refuse to accept anything but the best, you very often get it.',
     image: 'http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/best-wallpapers-7.jpg',
-    choice: 3
   },
 ];
 
