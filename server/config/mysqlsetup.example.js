@@ -1,1 +1,1 @@
-module.exports = 'YOUR_MYSQL_ROOT_PASSWORD';
+module.exports = 'your local root password';
