@@ -78,5 +78,8 @@ var wikiQuoteCall = function (keyword) {
   });
 };
 
-wikiQuoteCall('happy');
 
+
+module.export = {
+  wikiQuoteCall: wikiQuoteCall
+};
