@@ -6,6 +6,9 @@ var Quote = db.define('Quote',
     text: Sequelize.STRING,
     author: Sequelize.STRING,
     mood: Sequelize.STRING
+  },
+  {
+    freezeTableName: true
   }
 );
 
