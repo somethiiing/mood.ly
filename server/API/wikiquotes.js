@@ -101,8 +101,20 @@ var wikiQuoteCall = function (keyword, callback) {
   });
 };
 
+var frontEndCall = function (req, res) {
+  var keyword = req.query.keyword;
+  wikiQuoteCall(keyword, function (err, response) {
+    if(err){
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(response.body);
+    }
+  })
+};
+
 module.exports = {
   getPageID: getPageID,
   redirectCheck: redirectCheck,
-  wikiQuoteCall: wikiQuoteCall
+  wikiQuoteCall: wikiQuoteCall,
+  frontEndCall: frontEndCall
 };
