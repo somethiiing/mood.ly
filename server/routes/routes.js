@@ -1,6 +1,6 @@
 //REQUIRE CONTROLLERS
 //=================================
-var userController = require('../controllers/userController');
+// var userController = require('../controllers/userController');
 
 //MODULE EXPORT
 //=================================

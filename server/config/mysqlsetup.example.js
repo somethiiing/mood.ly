@@ -1,1 +1,0 @@
-module.exports = 'your local root password';
