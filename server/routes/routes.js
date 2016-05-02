@@ -33,7 +33,7 @@ export default function(app, express, passport) {
     failureFlash: true //OPTIONAL
   }));
 
-  app.get('/profile', function(req, res) {
+  app.get('/profile', isLoggedIn, function(req, res) {
     res.render('profile', { user: req.user });
   });
 
@@ -59,6 +59,15 @@ export default function(app, express, passport) {
   app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
 
   app.get('/auth/facebook/callback', passport.authenticate('facebook', { 
+      successRedirect: '/profile',
+      failureRedirect: '/'
+  }));
+
+  //GOOGLE ROUTES
+  //=================================
+  app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email' ] }));
+
+  app.get('/auth/google/callback', passport.authenticate('google', { 
       successRedirect: '/profile',
       failureRedirect: '/'
   }));

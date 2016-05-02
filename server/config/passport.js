@@ -109,10 +109,10 @@ module.exports = function(app, session, passport) {
   // },
 
   //   function(accesstoken, refreshToken, profile, done) {
-  //     console.log('PROFILE:=============');
+  //     console.log('FACEBOOK PROFILE:=============');
   //     console.log(profile);
 
-  //     console.log('TOKEN:=============');
+  //     console.log('FACEBOOK TOKEN:=============');
   //     console.log(accesstoken);
 
   //     //FIND USER IN DATABASE BASED ON FACEBOOK ID
@@ -144,6 +144,45 @@ module.exports = function(app, session, passport) {
   //       console.log('Error Searching For Existing FB User: ', err);
   //     });
   //   }
+  // ));
+
+  //GOOGLE STRATEGY
+  //============================================
+  // passport.use(new GoogleStrategy({
+  //   clientID: authConfig.googleAuth.clientID,
+  //   clientSecret: authConfig.googleAuth.clientSecret,
+  //   callbackURL: authConfig.googleAuth.callbackURL
+  // },
+  // function(token, refreshToken, profile, done) {
+  //       console.log('GOOGLE PROFILE:=============');
+  //       console.log(profile);
+
+  //       console.log('GOOGLE TOKEN:=============');
+  //       console.log(token);
+
+  //       //FIND USER IN DATABASE
+  //       User.findOne( { where: { 'google.id' : profile.id } } )
+  //       .then(function(user) {
+  //         console.log('Found User', user);
+  //         if (user) {
+  //           done(null, user);
+  //         } else {
+  //           User.create({
+  //             //CREATE NEW USER IN DATABASE
+  //           })
+  //           .then(function(newUser) {
+  //             console.log('user created ', newUser);
+  //             done(null, newUser);
+  //           })
+  //           .catch(function(err) {
+  //             console.log('Error saving Google user! ', err);
+  //           });
+  //         }
+  //       })
+  //       .catch(function(err) {
+  //         console.log('Error Searching For Existing Google User: ', err);
+  //       });
+  //     }
   // ));
 };
 
