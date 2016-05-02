@@ -3,6 +3,7 @@ import renderIndex from './requestHandler';
 //REQUIRE CONTROLLERS
 //=================================
 // var userController = require('../controllers/userController');
+var wiki = require('../API/wikiquotes.js');
 
 //MODULE EXPORT
 //=================================
@@ -61,4 +62,12 @@ export default function(app, express, passport) {
       successRedirect: '/profile',
       failureRedirect: '/'
   }));
+
+  //WIKI ROUTES
+  //=================================
+    
+  app.get('/wikiInfo', wiki.frontEndCall);
+
 };
+
+
