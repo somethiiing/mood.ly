@@ -7,13 +7,13 @@ var wiki = require('../API/wikiquotes.js');
 
 //MODULE EXPORT
 //=================================
-export default function(app, express, passport) {
+export default (app, express, passport) => {
 
   //LOCAL ROUTES
   //=================================
   app.get('/', renderIndex);
 
-  app.get('/login', function(req, res) {
+  app.get('/login', (req, res) => {
     res.render('login', { message: req.flash('loginMessage') });
   });
 
@@ -23,7 +23,7 @@ export default function(app, express, passport) {
     failureFlash: true //OPTIONAL
   }));
 
-  app.get('/signup', function(req, res) {
+  app.get('/signup', (req, res) => {
     res.render('signup', { message: req.flash('loginMessage') });
   });
 
@@ -33,20 +33,20 @@ export default function(app, express, passport) {
     failureFlash: true //OPTIONAL
   }));
 
-  app.get('/profile', isLoggedIn, function(req, res) {
-    res.render('profile', { user: req.user });
-  });
+  // app.get('/profile', isLoggedIn, (req, res) => {
+  //   res.render('profile', { user: req.user });
+  // });
 
-  app.get('/logout', function(req, res) {
+  app.get('/logout', (req, res) => {
     //LOG USER OUT AND DESTROY SESSION
-    req.session.destroy(function(err) {
+    req.session.destroy((err) => {
       //REDIRECT USER TO HOME PAGE
       res.redirect('/');
     });
   });
 
   //CHECK IF LOGGED IN
-  var isLoggedIn = function(req, res, next) {
+  var isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) {
       return next();
     }
