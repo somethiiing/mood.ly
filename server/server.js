@@ -1,26 +1,32 @@
-var express = require('express');
-var session = require('express-session');
-var passport = require('passport');
-var flash = require('connect-flash');
+import express from 'express';
+import session from 'express-session';
+import passport from 'passport';
 
-var app = express();
+const app = express();
 
-var port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
+
+require('babel-core/register')({
+  presets: ['es2015', 'react']
+});
 
 //MIDDLEWARE
 //==============================================
 //configure our server with all the middleware and routing
-require('./config/middleware.js')(app, express);
+import middleware from './config/middleware';
+middleware(app, express);
 
 //PASSPORT & ROUTES
 //==============================================
 // Passport Configuration
 require('./config/passport.js')(app, session, passport);
-require('./routes/routes.js')(app, express, passport);
+
+import routes from './routes/routes';
+routes(app, express, passport);
 
 //LISTEN
 //==============================================
-app.listen(port, function(err) {
+app.listen(port, err => {
   if (err) {
     return console.log(err);
   }

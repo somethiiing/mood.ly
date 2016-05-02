@@ -1,7 +1,7 @@
-var bodyParser = require('body-parser');
+import bodyParser from 'body-parser'
 
-module.exports = function(app, express) {
+export default function(app, express) {
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
-  app.use(express.static('client'));
+  // app.use(express.static(__dirname + '/../../client'));
 };

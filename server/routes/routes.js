@@ -1,16 +1,16 @@
+import renderIndex from './requestHandler';
+
 //REQUIRE CONTROLLERS
 //=================================
 // var userController = require('../controllers/userController');
 
 //MODULE EXPORT
 //=================================
-module.exports = function(app, express, passport) {
+export default function(app, express, passport) {
 
   //LOCAL ROUTES
   //=================================
-  app.get('/', function(req, res) {
-    res.render('index', { title: 'Express' });
-  });
+  app.get('/', renderIndex);
 
   app.get('/login', function(req, res) {
     res.render('login', { message: req.flash('loginMessage') });
