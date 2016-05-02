@@ -28,15 +28,15 @@ class App extends React.Component {
     render() {
       return (
         <div>
-          <div className="dropdown-menu">
-            <select value={this.state.value} onChange={this.onChoiceClick.bind(this)}>
+          <h1>mood.ly</h1>
+          <div className="form-group">
+            <select className="form-control" value={this.state.value} onChange={this.onChoiceClick.bind(this)}>
               <option value="0">Happy</option>
               <option value="1">Sentimental</option>
               <option value="2">Romantic</option>
             </select>
           </div>
           <div className="moodly-content">
-            <h1>Hello World!</h1>
             <span className="quote-title"><h2>{this.state.currQuote}</h2></span>
             <Quote quoteList={this.state.quotes} onChange={this.onChoiceClick.bind(this)} />
           </div>
