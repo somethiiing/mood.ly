@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 const wiki function (keyword, callback) {
-  $.get('wiki?=' + keyword, function(data) {
+  $.get('/wiki?=' + keyword, function(data) {
     callback(data);
   });
 }
