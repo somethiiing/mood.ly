@@ -116,5 +116,5 @@ module.exports = {
   getPageID: getPageID,
   redirectCheck: redirectCheck,
   wikiQuoteCall: wikiQuoteCall,
-  frontEndCall: frontEndCall
+  frontEndCall: frontEndCall  
 };
