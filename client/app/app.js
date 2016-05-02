@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+// import ReactDOM from 'react-dom';
 
 const menuData = [
   { 
@@ -68,6 +69,4 @@ class App extends Component {
 }
             // <Quote quoteList={this.state.quotes} onChange={this.onChoiceClick.bind(this)} />
 
-
 export default App;
-// ReactDOM.render(<App menuData={menuData} />, document.getElementById('app'));

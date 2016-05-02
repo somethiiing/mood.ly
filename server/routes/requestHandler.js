@@ -10,19 +10,32 @@ export default function(req, res) {
   var user = {};
   var savedQuotes = [];
 
-  const store = createStore(rootReducer, {
-    user: user,
-    quotes: [],
-    savedQuotes: savedQuotes
-  });
+  console.log('RENDER PAGE');
 
+  // const store = createStore(rootReducer, {
+  //   user: user,
+  //   quotes: [],
+  //   savedQuotes: savedQuotes
+  // });
+
+  // RENDER SIMPLE CLIENT PAGE WITHOUT REDUX
+  const html = ReactDOMServer.renderToString(
+    <div>
+      <App />
+    </div>
+  );
+
+  // TODO: CREATE STORE
+  /*
   const html = ReactDOMServer.renderToString(
     <Provider store={store}>
       <App />
     </Provider>
   );
+  */
+  
+  // const initialState = store.getState();
 
-  const initialState = store.getState();
-
-  res.send(renderFullPage(html, initialState));
+  // res.send(renderFullPage(html, initialState));
+  res.send(renderFullPage(html));
 }
