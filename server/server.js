@@ -1,15 +1,20 @@
 import express from 'express';
 import session from 'express-session';
 import passport from 'passport';
+import flash from 'connect-flash';
+import bodyParser from 'body-parser';
 
 const app = express();
 
 const port = process.env.PORT || 8080;
 
+<<<<<<< 5f628796afa7163c53c25203bd62597095c46bf0
 require('babel-core/register')({
   presets: ['es2015', 'react']
 });
 
+=======
+>>>>>>> routes
 //MIDDLEWARE
 //==============================================
 //configure our server with all the middleware and routing
