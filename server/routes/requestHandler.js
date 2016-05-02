@@ -9,7 +9,6 @@ import rootReducer from '../../client/app/reducers/index';
 export default function(req, res) {
   var user = {};
   var savedQuotes = [];
-
   console.log('RENDER PAGE');
 
   // const store = createStore(rootReducer, {
@@ -28,14 +27,18 @@ export default function(req, res) {
   // TODO: CREATE STORE
   /*
   const html = ReactDOMServer.renderToString(
-    <Provider store={store}>
+    <div>
       <App />
-    </Provider>
+    </div>
   );
   */
   
   // const initialState = store.getState();
 
+
+  // const initialState = store.getState();
+
   // res.send(renderFullPage(html, initialState));
+  
   res.send(renderFullPage(html));
 }

@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-// import ReactDOM from 'react-dom';
+import wiki from './services/wiki.js';
 
 const menuData = [
   { 
@@ -36,11 +36,13 @@ class App extends Component {
       currChoice: menuData[0].choice,
       currQuote: menuData[0].quote,
       quotes: props.menuData,
+      value: 0
     };
   }
 
     onChoiceClick (choice) {
       console.log('choice.target.value ', choice.target.value);
+      wiki.wikiQuoteCall(menuData[choice.target.value].mood, function (res) {console.log(res)});
       this.setState({
         currMood: menuData[choice.target.value].mood,
         currChoice: menuData[choice.target.value],
@@ -59,6 +61,7 @@ class App extends Component {
               <option value="1">Sentimental</option>
               <option value="2">Romantic</option>
             </select>
+            <button value={this.state.value} onClick={console.log('hi')}>BUTTON PLEASE WORK</button>
           </div>
           <div className="moodly-content">
             <span className="quote-title"><h2>{this.state.currQuote}</h2></span>
