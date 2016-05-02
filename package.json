@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha ./tests/ApiTest.js ./tests/userModelTest.js ./tests/moodModelTest.js ./tests/quoteModelTest.js",
-    "start": "nodemon ./server/server.js --exec babel-node --presets es2015 react"
+    "start": "nodemon ./server/server.js --exec babel-node --presets es2015 react",
+    "build": "webpack --watch"
   },
   "repository": {
     "type": "git",
