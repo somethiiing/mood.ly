@@ -21944,11 +21944,16 @@
 	        'div',
 	        null,
 	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'mood.ly'
+	        ),
+	        _react2.default.createElement(
 	          'div',
-	          { className: 'dropdown-menu' },
+	          { className: 'form-group' },
 	          _react2.default.createElement(
 	            'select',
-	            { value: this.state.value, onChange: this.onChoiceClick.bind(this) },
+	            { className: 'form-control', value: this.state.value, onChange: this.onChoiceClick.bind(this) },
 	            _react2.default.createElement(
 	              'option',
 	              { value: '0' },
@@ -21969,11 +21974,6 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'moodly-content' },
-	          _react2.default.createElement(
-	            'h1',
-	            null,
-	            'Hello World!'
-	          ),
 	          _react2.default.createElement(
 	            'span',
 	            { className: 'quote-title' },
