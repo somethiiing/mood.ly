@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
-var Quote = require('../server/models/quoteModel.js');
+var Quote = require('../../server/models/quoteModel.js');
 
-require(__dirname + '/../server/index.js');
+require(__dirname + '/../../server/index.js');
 
 describe('Quote model', function() {
 

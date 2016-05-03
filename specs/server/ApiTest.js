@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 var request = require('request');
-var wikiAPI = require('../server/API/wikiquotes.js');
+var wikiAPI = require('../../server/API/wikiquotes.js');
 
 describe('Quotes API', function() {
   it('should get quotes for keywords that exist', function(done) {

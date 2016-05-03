@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
-var User = require('../server/models/userModel.js');
+var User = require('../../server/models/userModel.js');
 
-require(__dirname + '/../server/index.js');
+require(__dirname + '/../../server/index.js');
 
 describe('User model', function() {
 

@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
-var Mood = require('../server/models/moodModel.js');
+var Mood = require('../../server/models/moodModel.js');
 
-require(__dirname + '/../server/index.js');
+require(__dirname + '/../../server/index.js');
 
 describe('Mood model', function() {
 
