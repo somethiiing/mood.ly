@@ -2,7 +2,7 @@
 //============================================
 var LocalStrategy = require('passport-local').Strategy;
 // var FacebookStrategy = require('passport-facebook').Strategy;
-// var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+// var GoogleStrategy = require('passport-google-oauth2').Strategy;
 
 //IMPORT MODELS
 //============================================
@@ -151,38 +151,22 @@ module.exports = function(app, session, passport) {
   // passport.use(new GoogleStrategy({
   //   clientID: authConfig.googleAuth.clientID,
   //   clientSecret: authConfig.googleAuth.clientSecret,
-  //   callbackURL: authConfig.googleAuth.callbackURL
+  //   callbackURL: authConfig.googleAuth.callbackURL,
+  //   passReqToCallback: true,
   // },
-  // function(token, refreshToken, profile, done) {
-  //       console.log('GOOGLE PROFILE:=============');
-  //       console.log(profile);
+  // function(request, accessToken, refreshToken, profile, done) {
+  //   console.log('GOOGLE PROFILE:=============');
+  //   console.log(profile);
 
-  //       console.log('GOOGLE TOKEN:=============');
-  //       console.log(token);
+  //   console.log('GOOGLE TOKEN:=============');
+  //   console.log(accessToken);
 
-  //       //FIND USER IN DATABASE
-  //       User.findOne( { where: { 'google.id' : profile.id } } )
-  //       .then(function(user) {
-  //         console.log('Found User', user);
-  //         if (user) {
-  //           done(null, user);
-  //         } else {
-  //           User.create({
-  //             //CREATE NEW USER IN DATABASE
-  //           })
-  //           .then(function(newUser) {
-  //             console.log('user created ', newUser);
-  //             done(null, newUser);
-  //           })
-  //           .catch(function(err) {
-  //             console.log('Error saving Google user! ', err);
-  //           });
-  //         }
-  //       })
-  //       .catch(function(err) {
-  //         console.log('Error Searching For Existing Google User: ', err);
-  //       });
-  //     }
-  // ));
+  //   //FIND OR CREATE USER
+  //   User.findOrCreate({ 'googleId': profile.id }, function(err, user) {
+  //     console.log('user:==============');
+  //     console.log(user);
+  //     return done(err, user);
+  //   });
+  // }));
 };
 
