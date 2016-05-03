@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var Mood = require('../server/models/moodModel.js');
+var Mood = require('../../server/models/moodModel.js');
 var moodController = require('../controllers')
 
 describe('Mood Controller', function() {
