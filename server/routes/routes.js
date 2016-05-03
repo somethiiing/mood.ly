@@ -33,9 +33,9 @@ export default function(app, express, passport) {
     failureFlash: true //OPTIONAL
   }));
 
-  app.get('/profile', function(req, res) {
-    res.render('profile', { user: req.user });
-  });
+  // app.get('/profile', function(req, res) {
+  //   res.render('profile', { user: req.user });
+  // });
 
   app.get('/logout', function(req, res) {
     //LOG USER OUT AND DESTROY SESSION
