@@ -2,8 +2,8 @@ import renderIndex from './requestHandler';
 
 //REQUIRE CONTROLLERS
 //=================================
-// var userController = require('../controllers/userController');
-var wiki = require('../API/wikiquotes.js');
+import userController from '../controllers/userController';
+import wiki from '../API/wikiquotes';
 
 //MODULE EXPORT
 //=================================
@@ -27,11 +27,12 @@ export default (app, express, passport) => {
     res.render('signup', { message: req.flash('loginMessage') });
   });
 
-  app.post('/signup', passport.authenticate('local-signup', {
-    successRedirect: '/profile',
-    failureRedirect: '/signup',
-    failureFlash: true //OPTIONAL
-  }));
+  app.post('/signup', userController.saveOne);
+  // app.post('/signup', passport.authenticate('local-signup', {
+  //   successRedirect: '/profile',
+  //   failureRedirect: '/signup',
+  //   failureFlash: true //OPTIONAL
+  // }));
 
   // app.get('/profile', isLoggedIn, (req, res) => {
   //   res.render('profile', { user: req.user });
