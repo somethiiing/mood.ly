@@ -4,7 +4,7 @@
   "description": "your mood",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./tests/ApiTest.js ./tests/userModelTest.js ./tests/moodModelTest.js ./tests/quoteModelTest.js",
+    "test": "mocha --compilers js:babel-core/register ./specs/server/ApiTest.js ./specs/server/userModelTest.js ./specs/server/moodModelTest.js ./specs/server/quoteModelTest.js ./specs/server/serverTest.js",
     "start": "nodemon ./server/server.js --exec babel-node --presets es2015 react",
     "build": "webpack --watch"
   },
