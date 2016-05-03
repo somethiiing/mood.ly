@@ -13,6 +13,13 @@ export default (app, express, passport) => {
   //=================================
   app.get('/', renderIndex);
 
+  app.get('/signup', (req, res) => {
+    res.render('signup', { message: req.flash('loginMessage') });
+  });
+  
+  app.post('/signup', userController.saveOne);
+  
+
   app.get('/login', (req, res) => {
     res.render('login', { message: req.flash('loginMessage') });
   });
@@ -23,11 +30,7 @@ export default (app, express, passport) => {
     failureFlash: true //OPTIONAL
   }));
 
-  app.get('/signup', (req, res) => {
-    res.render('signup', { message: req.flash('loginMessage') });
-  });
 
-  app.post('/signup', userController.saveOne);
   // app.post('/signup', passport.authenticate('local-signup', {
   //   successRedirect: '/profile',
   //   failureRedirect: '/signup',

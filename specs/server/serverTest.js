@@ -49,8 +49,7 @@ describe('Server', () => {
           //CHECK STATUS CODE
           expect(res.statusCode).to.equal(201);
           //CHECK USER DETAILS
-          let user = body[0];
-          User.findOne({where: user})
+          User.findOne({where: {name: 'Chris'}})
           .then(foundUser => {
             foundUser = foundUser.dataValues.name;
             expect(foundUser).to.equal('Chris');
@@ -59,7 +58,7 @@ describe('Server', () => {
         });
       });
 
-      xit('signup logs in a new user', (done) => {
+      it('signup logs in a new user', (done) => {
         let options = {
           'method': 'POST',
           'uri': 'http://127.0.0.1:8080/signup',
