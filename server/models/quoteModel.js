@@ -1,7 +1,7 @@
-var Sequelize = require('sequelize');
-var db = require('../db/db.js');
+import Sequelize from 'sequelize';
+import db from '../db/db';
 
-var Quote = db.define('Quote',
+export default db.define('Quote',
   {
     text: Sequelize.STRING,
     author: Sequelize.STRING,
@@ -11,7 +11,3 @@ var Quote = db.define('Quote',
     freezeTableName: true
   }
 );
-
-// Quote.belongsTo(User, {foreignKey: 'User'});
-
-module.exports = Quote;

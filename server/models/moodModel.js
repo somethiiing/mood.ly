@@ -1,7 +1,7 @@
-var Sequelize = require('sequelize');
-var db = require('../db/db.js');
+import Sequelize from 'sequelize';
+import db from '../db/db';
 
-var Mood = db.define('Mood',
+export default db.define('Mood',
   {
     name: Sequelize.STRING,
     timedate: Sequelize.STRING
@@ -10,7 +10,3 @@ var Mood = db.define('Mood',
     freezeTableName: true
   }
 );
-
-// Mood.belongsTo(User, {foreignKey: 'User'});
-
-module.exports = Mood;
