@@ -15,8 +15,7 @@ class App extends Component {
     this.state = {
       currMood: '',
       currQuote: '',
-      currentSearch: '',
-      requestMadeAfterInterval: false
+      currentSearch: ''
     };
   }
 
@@ -25,13 +24,11 @@ class App extends Component {
       let query = this.state.currentSearch;
       console.log(query);
       wiki(query, function (res) {
-        console.log(res.body[0]);
         self.setState({
           currMood: query,
-          currQuote: res.body[0]
+          currQuote: res.body[0] // TODO: CHANGE IN LOGIC TO RANDOMIZE
         });
       });
-      this.setState({requestMadeAfterInterval: true});
     }
 
     handleSearchChange(event) {
