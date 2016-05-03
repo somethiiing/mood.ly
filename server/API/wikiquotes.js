@@ -103,12 +103,14 @@ var wikiQuoteCall = function (keyword, callback) {
 
 var frontEndCall = function (req, res) {
   var keyword = req.query.keyword;
-  wikiQuoteCall(keyword, function (err, response) {
-    if(err){
-      res.status(500).send(err);
-    } else {
-      res.status(200).send(response.body);
-    }
+  wikiQuoteCall(keyword, function (response) {
+    // if(err){
+    //   console.log(err);
+    //   res.status(500).send(err);
+    // } else {
+    //   res.status(200).send(response.body);
+    // }
+    res.json(response);
   })
 };
 

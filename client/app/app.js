@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
-// import ReactDOM from 'react-dom';
+import wiki from './services/wiki.js';
+import $ from 'jquery';
 
 const menuData = [
   { 
@@ -9,13 +10,13 @@ const menuData = [
     image: 'http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/best-wallpapers-3.jpg',
   },
   {
-    mood: 'Sentimental',
+    mood: 'sad',
     choice: 1,
     quote: 'Do the best you can, and don\'t take life too serious.',
     image: 'http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/best-wallpapers-2-610x343.jpg',
   },
   {
-    mood: 'Romantic',
+    mood: 'funny',
     choice: 2,
     quote: 'It\'s a funny thing about life; if you refuse to accept anything but the best, you very often get it.',
     image: 'http://cdn.wonderfulengineering.com/wp-content/uploads/2014/09/best-wallpapers-7.jpg',
@@ -33,33 +34,63 @@ class App extends Component {
     //set default state
     this.state = {
       currMood: menuData[0].mood,
-      currChoice: menuData[0].choice,
       currQuote: menuData[0].quote,
-      quotes: props.menuData,
     };
   }
 
-    onChoiceClick (choice) {
-      console.log('choice.target.value ', choice.target.value);
-      this.setState({
-        currMood: menuData[choice.target.value].mood,
-        currChoice: menuData[choice.target.value],
-        currQuote: menuData[choice.target.value].quote,
-        currImg: menuData[choice.target.value].image
+    onChoiceClick (event) {   
+      event.preventDefault();
+      console.log(event);
+      var that = this;
+      var data;
+      console.log('event.target.value ', event.target.value);
+      wiki("happy", function (res) {
+        data = res.body;
+        // console.log(data);
+        console.log('this ', this);
+        console.log('that', that);
+        // console.log(that.state.currQuote);
+        // this.state.currQuote = data[0];
+        that.setState({
+          currMood: "hello",
+          currQuote: data[0],
+
+        });
+
+        return false;
       });
     }
+    
+    // onChoiceClick (choice) {
+    //   wiki(menuData[choice.target.value].mood, (res) => {
+    //     this.setState({
+    //       currMood: choice,
+    //       currChoice: menuData[choice.target.value],
+    //       currQuote: res[0],
+    //       currImg: menuData[choice.target.value].image
+    //     });
+    //   })
+    // }
+
+    onType (e) {
+      const self = this;
+      this.setState({
+        currMood: e,
+      });
+      // console.log("eeeee", e)
+      // console.log(this.state);
+    }
+
 
     render() {
       return (
         <div>
           <h1>mood.ly</h1>
-          <div className="form-group">
-            <select className="form-control" value={this.state.value} onChange={this.onChoiceClick.bind(this)}>
-              <option value="0">Happy</option>
-              <option value="1">Sentimental</option>
-              <option value="2">Romantic</option>
-            </select>
-          </div>
+          <form>
+            <input type="text" placeholder="How are you feeling?" defaultValue="Happy" onChange={this.onType.bind(this)}/> 
+            <br />
+            <input className="moodsubmit" type="submit" value="Submit!" onClick={this.onChoiceClick.bind(this)}/>
+          </form>
           <div className="moodly-content">
             <span className="quote-title"><h2>{this.state.currQuote}</h2></span>
           </div>
