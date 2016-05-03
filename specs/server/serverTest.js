@@ -1,7 +1,8 @@
-const expect = require('chai').expect;
-
+import chai from 'chai';
 import request from 'request';
 import User from '../../server/models/userModel';
+
+const expect = chai.expect;
 
 describe('Server', () => {
   // beforeEach(() => {

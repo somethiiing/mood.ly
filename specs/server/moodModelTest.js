@@ -1,12 +1,13 @@
-var expect = require('chai').expect;
-var Mood = require('../../server/models/moodModel.js');
+import chai from 'chai';
+import Mood from '../../server/models/moodModel';
+import '../../server/index';
 
-require(__dirname + '/../../server/index.js');
+const expect = chai.expect;
 
-describe('Mood model', function() {
+describe('Mood model', () => {
 
-  it('should create a new Mood', function() {
-    var newMood = Mood.create();
+  it('should create a new Mood', () => {
+    let newMood = Mood.create();
     expect(newMood).to.be.instanceOf(Object);
   });
 

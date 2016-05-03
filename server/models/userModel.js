@@ -1,7 +1,7 @@
-var Sequelize = require('sequelize');
-var db = require('../db/db.js');
+import Sequelize from 'sequelize';
+import db from '../db/db';
 
-var User = db.define('User',
+export default db.define('User',
   {
     name: { type: Sequelize.STRING, required: true, unique: true},
     email: Sequelize.STRING,
@@ -11,7 +11,7 @@ var User = db.define('User',
   },
   {
     instanceMethods: {
-      comparePasswords: function(inputPassword, callback) {
+      comparePasswords: (inputPassword, callback) => {
         callback(bcrypt.compareSync(inputPassword, this.password));
       }
     }
@@ -20,8 +20,3 @@ var User = db.define('User',
     freezeTableName: true
   }
 );
-
-// User.hasMany(Mood, {as: 'moodHistory', foreignKey: 'User'});
-// User.hasMany(Quote, {as: 'savedQuotes', foreignKey: 'User'});
-
-module.exports = User;
