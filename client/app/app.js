@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import wiki from './services/wiki.js';
 import $ from 'jquery';
 import Nav from './components/Nav';
+import Header from './components/Header';
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class App extends Component {
     render() {
       return (
         <div>
+          <Header />
           <h1>mood.ly</h1>
           <Nav handleSearchChange={this.handleSearchChange.bind(this)} handleSearchButtonClick={this.handleSearchButtonClick.bind(this)}/>
           <div className="moodly-content">
