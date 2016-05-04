@@ -6,17 +6,17 @@ const expect = chai.expect;
 
 describe('Database', () => {
 
-  it('should return all users who have the given mood', (done) => {
+  xit('should return all users who have the given mood', (done) => {
     expect().to.equal(); //TODO: FILL OUT EXPECT AND EQUAL
     done();
   });
 
-  it('should return all quotes for each user', (done) => {
+  xit('should return all quotes for each user', (done) => {
     expect().to.equal(); //TODO: FILL OUT EXPECT AND EQUAL
     done();
   });
 
-  it('should retrieve all users in the database', (done) => {
+  xit('should retrieve all users in the database', (done) => {
     expect().to.equal(); //TODO: FILL OUT EXPECT AND EQUAL
     done();
   });
