@@ -37,6 +37,7 @@ export default (app, express, passport) => {
   //   failureFlash: true //OPTIONAL
   // }));
 
+
   // app.get('/profile', isLoggedIn, (req, res) => {
   //   res.render('profile', { user: req.user });
   // });
