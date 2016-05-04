@@ -25,9 +25,11 @@ class App extends Component {
       let query = this.state.currentSearch;
       console.log(query);
       wiki(query, function (res) {
+       var randomIndex = Math.floor((Math.random()*res.length) + 1) ;
+       console.log(randomIndex); 
         self.setState({
           currMood: query,
-          currQuote: res.body[0] // TODO: CHANGE IN LOGIC TO RANDOMIZE
+          currQuote: res[randomIndex]
         });
       });
     }

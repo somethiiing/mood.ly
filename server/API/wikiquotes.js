@@ -110,7 +110,7 @@ var frontEndCall = function (req, res) {
     // } else {
     //   res.status(200).send(response.body);
     // }
-    res.json(response);
+    res.json(response.body);
   })
 };
 
