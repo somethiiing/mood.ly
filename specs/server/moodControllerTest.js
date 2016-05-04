@@ -11,8 +11,16 @@ describe('Mood Controller', function() {
     email: 'toby@toby.com',
     password: '1234'
   };
-  var mood = {
+  var mood1 = {
     name: 'happy',
+    timedate: new Date()
+  };
+  var mood2 = {
+    name: 'sad',
+    timedate: new Date()
+  };
+  var mood3 = {
+    name: 'ecstatic',
     timedate: new Date()
   };
 
@@ -29,13 +37,12 @@ describe('Mood Controller', function() {
       uri: 'http://127.0.0.1:8080/api/moods',
       json: {
         user: user,
-        mood: mood
+        mood: mood1
       }
     }
 
     request(options, (err, res, body) => {
       expect(res.statusCode).to.equal(201);
-      done();
       let options = {
         method: 'GET',
         uri: 'http://127.0.0.1:8080/api/moods',
@@ -45,15 +52,51 @@ describe('Mood Controller', function() {
       }
 
       request(options, (err, res, body) => {
-        console.log(res.body);
         expect(res.statusCode).to.equal(200);
-        expect(res.body.mood.name).to.equal('happy');
         done();
       });
     });
   });
 
-  xit('users should have many moods', done => {
-
+  it('users should be able to have many moods', done => {
+    let options2 = {
+      method: 'POST',
+      uri: 'http://127.0.0.1:8080/api/moods',
+      json: {
+        user: user,
+        mood: mood2
+      }
+    }
+    let options3 = {
+      method: 'POST',
+      uri: 'http://127.0.0.1:8080/api/moods',
+      json: {
+        user: user,
+        mood: mood3
+      }
+    }
+    request(options2, (err, res, body) => {
+      expect(res.statusCode).to.equal(201);
+      request(options3, (err, res, body) => {
+        expect(res.statusCode).to.equal(201);
+        done();
+      });
+    });
   });
+
+  it('should get all user moods', done => {
+    let options = {
+      method: 'GET',
+      uri: 'http://127.0.0.1:8080/api/moods',
+      json: {
+        user: user
+      }
+    }
+    request(options, (err, res, body) => {
+      expect(res.statusCode).to.equal(200);
+      expect(body.length).to.equal(3);
+      done();
+    });
+  });
+
 });
