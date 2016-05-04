@@ -19,9 +19,20 @@ export default {
       .spread(foundOrCreatedMood => {
         foundUser.addMood(foundOrCreatedMood)
         .then(() => {
-          res.json(foundOrCreatedMood);
+          res.status(201).json(foundOrCreatedMood);
         });
       });
+    });
+  },
+  getAll: (req, res) => {
+    var user = req.body.user;
+
+    User.findOne({
+      where: user
+    })
+    .then(foundUser => foundUser.getMoods())
+    .then(foundMoods => {
+      res.json(foundMoods);
     });
   }
 };
