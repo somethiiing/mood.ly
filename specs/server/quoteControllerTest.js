@@ -1,27 +1,28 @@
 import chai from 'chai';
 import request from 'request';
-import Mood from '../../server/models/moodModel';
+import Quote from '../../server/models/quoteModel';
 import User from '../../server/models/userModel';
-import moodController from '../../server/controllers/moodController';
+import quoteController from '../../server/controllers/quoteController';
 const expect = chai.expect;
 
-describe('Mood Controller', function() {
+describe('Quote Controller', function() {
+
   var user = {
-    name: 'Toby',
-    email: 'toby@toby.com',
+    name: 'Watson',
+    email: 'watson@watson.com',
     password: '1234'
   };
-  var mood1 = {
-    name: 'happy',
-    timedate: new Date()
+  var quote1 = {
+    text: 'The best way to find yourself is to lose yourself in the service of others.',
+    mood: 'Happy'
   };
-  var mood2 = {
-    name: 'sad',
-    timedate: new Date()
+  var quote2 = {
+    text: 'Do the best you can, and don\'t take life too serious.',
+    mood: 'Sentimental'
   };
-  var mood3 = {
-    name: 'ecstatic',
-    timedate: new Date()
+  var quote3 = {
+    text: 'It\'s a funny thing about life; if you refuse to accept anything but the best, you very often get it.',
+    mood: 'Romantic'
   };
 
   beforeEach(done => {
@@ -31,13 +32,13 @@ describe('Mood Controller', function() {
     });
   });
 
-  it('should add users mood to the database', done => {
+  it('should add users quote to the database', done => {
     let options = {
       method: 'POST',
-      uri: 'http://127.0.0.1:8080/api/moods',
+      uri: 'http://127.0.0.1:8080/api/quotes',
       json: {
         user: user,
-        mood: mood1
+        quote: quote1
       }
     }
 
@@ -45,7 +46,7 @@ describe('Mood Controller', function() {
       expect(res.statusCode).to.equal(201);
       let options = {
         method: 'GET',
-        uri: 'http://127.0.0.1:8080/api/moods',
+        uri: 'http://127.0.0.1:8080/api/quotes',
         json: {
           user: user
         }
@@ -58,21 +59,21 @@ describe('Mood Controller', function() {
     });
   });
 
-  it('users should be able to have many moods', done => {
+  it('users should be able to have many quotes', done => {
     let options2 = {
       method: 'POST',
-      uri: 'http://127.0.0.1:8080/api/moods',
+      uri: 'http://127.0.0.1:8080/api/quotes',
       json: {
         user: user,
-        mood: mood2
+        quote: quote2
       }
     }
     let options3 = {
       method: 'POST',
-      uri: 'http://127.0.0.1:8080/api/moods',
+      uri: 'http://127.0.0.1:8080/api/quotes',
       json: {
         user: user,
-        mood: mood3
+        quote: quote3
       }
     }
     request(options2, (err, res, body) => {
@@ -84,10 +85,10 @@ describe('Mood Controller', function() {
     });
   });
 
-  it('should get all user moods', done => {
+  it('should get all user quotes', done => {
     let options = {
       method: 'GET',
-      uri: 'http://127.0.0.1:8080/api/moods',
+      uri: 'http://127.0.0.1:8080/api/quotes',
       json: {
         user: user
       }

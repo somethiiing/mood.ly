@@ -19,9 +19,20 @@ export default {
       .spread(foundOrCreatedQuote => {
         foundUser.addQuote(foundOrCreatedQuote)
         .then(() => {
-          res.json(foundOrCreatedQuote);
+          res.status(201).json(foundOrCreatedQuote);
         });
       });
+    });
+  },
+  getAll: (req, res) => {
+    var user = req.body.user;
+
+    User.findOne({
+      where: user
+    })
+    .then(foundUser => foundUser.getQuotes())
+    .then(foundQuotes => {
+      res.json(foundQuotes);
     });
   }
 };
