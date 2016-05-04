@@ -21,9 +21,12 @@ middleware(app, express);
 //PASSPORT & ROUTES
 //==============================================
 // Passport Configuration
-require('./config/passport.js')(app, session, passport);
+import config from './config/passport';
+config(app, session, passport);
 
+// initialize mySQL associations
 import './index';
+
 import routes from './routes/routes';
 routes(app, express, passport);
 
