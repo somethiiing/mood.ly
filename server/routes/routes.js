@@ -3,6 +3,7 @@ import renderIndex from './requestHandler';
 //REQUIRE CONTROLLERS
 //=================================
 import userController from '../controllers/userController';
+import moodController from '../controllers/moodController';
 import wiki from '../API/wikiquotes';
 
 //MODULE EXPORT
@@ -18,6 +19,9 @@ export default (app, express, passport) => {
   });
   
   app.post('/signup', userController.saveOne);
+
+  app.post('/api/moods', moodController.saveUserMood);
+  app.get('/api/moods', moodController.getAll);
   
 
   app.get('/login', (req, res) => {
