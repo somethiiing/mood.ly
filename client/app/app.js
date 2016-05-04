@@ -3,6 +3,7 @@ import wiki from './services/wiki.js';
 import $ from 'jquery';
 import Nav from './components/Nav';
 import Header from './components/Header';
+import Login from './components/Login';
 
 class App extends Component {
   constructor(props) {
@@ -16,9 +17,16 @@ class App extends Component {
     this.state = {
       currMood: '',
       currQuote: '',
-      currentSearch: ''
+      currentSearch: '',
+      showLogin: false
     };
   }
+
+    onLoginClick() {
+      this.setState({
+        showLogin: true,
+      });
+    }
 
     handleSearchButtonClick() {
       var self = this;
@@ -40,6 +48,7 @@ class App extends Component {
       return (
         <div>
           <Header />
+          <Login onLoginClick={this.onLoginClick.bind(this)} />
           <h1>mood.ly</h1>
           <Nav handleSearchChange={this.handleSearchChange.bind(this)} handleSearchButtonClick={this.handleSearchButtonClick.bind(this)}/>
           <div className="moodly-content">
