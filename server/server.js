@@ -23,6 +23,7 @@ middleware(app, express);
 // Passport Configuration
 require('./config/passport.js')(app, session, passport);
 
+import './index';
 import routes from './routes/routes';
 routes(app, express, passport);
 
