@@ -6,7 +6,7 @@ export default (props) => (
     <ul className="nav-list">
       <li>Home</li>
       <button onClick={props.onLoginClick}>Login</button>
-      <li>Sign Up</li>
+      <button onClick={props.onSignUpClick}>Sign Up</button>
     </ul>
     </div>
   </div>

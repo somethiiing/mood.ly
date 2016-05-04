@@ -4,6 +4,7 @@ import $ from 'jquery';
 import Nav from './components/Nav';
 import Header from './components/Header';
 import Login from './components/Login';
+import Signup from './components/Signup';
 
 class App extends Component {
   constructor(props) {
@@ -18,9 +19,16 @@ class App extends Component {
       currMood: '',
       currQuote: '',
       currentSearch: '',
-      showLogin: false
+      showLogin: false,
+      showSignUp: false,
     };
   }
+    onSignUpClick() {
+      console.log('signup function fired');
+      this.setState({
+        showSignUp: !this.state.showSignUp,
+      });
+    }
 
     onLoginClick() {
       console.log('login function fired');
@@ -53,10 +61,13 @@ class App extends Component {
       return (
         <div>
           <div>
-            <Header onLoginClick={this.onLoginClick.bind(this)} />
+            <Header onSignUpClick={this.onSignUpClick.bind(this)} onLoginClick={this.onLoginClick.bind(this)} />
           </div>
           <div>
-            // {this.state.showLogin ? <Login /> : null}
+            {this.state.showLogin ? <Login /> : null}
+          </div>
+          <div>
+            {this.state.showSignUp ? <Signup /> : null}
           </div>
           <h1>mood.ly</h1>
           <Nav handleSearchChange={this.handleSearchChange.bind(this)} handleSearchButtonClick={this.handleSearchButtonClick.bind(this)}/>
