@@ -23,8 +23,9 @@ class App extends Component {
   }
 
     onLoginClick() {
+      console.log('login function fired');
       this.setState({
-        showLogin: true,
+        showLogin: !this.state.showLogin,
       });
     }
 
@@ -41,14 +42,20 @@ class App extends Component {
     }
 
     handleSearchChange(event) {
-      this.setState({currentSearch: event.target.value});
+      this.setState({
+        currentSearch: event.target.value
+      });
     }
 
     render() {
       return (
         <div>
-          <Header />
-          <Login onLoginClick={this.onLoginClick.bind(this)} />
+          <div>
+            <Header onLoginClick={this.onLoginClick.bind(this)} />
+          </div>
+          <div>
+            // {this.state.showLogin ? <Login /> : null}
+          </div>
           <h1>mood.ly</h1>
           <Nav handleSearchChange={this.handleSearchChange.bind(this)} handleSearchButtonClick={this.handleSearchButtonClick.bind(this)}/>
           <div className="moodly-content">
@@ -60,3 +67,5 @@ class App extends Component {
 }
 
 export default App;
+
+// <Login onLoginClick={this.onLoginClick.bind(this)} />
