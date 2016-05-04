@@ -2,10 +2,12 @@ import React, { PropTypes, Component } from 'react';
 
 export default (props) => (
   <div className="header">
+  	<div>
     <ul className="nav-list">
-      <li><a href="/">Home</a></li>
-      <li><a href="/login">Login</a></li>
-      <li><a href="/signup">Sign Up</a></li>
+      <li>Home</li>
+      <button onClick={props.onLoginClick}>Login</button>
+      <li>Sign Up</li>
     </ul>
+    </div>
   </div>
 );
