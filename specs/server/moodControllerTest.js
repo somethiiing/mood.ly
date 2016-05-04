@@ -1,15 +1,21 @@
-var expect = require('chai').expect;
-var Mood = require('../../server/models/moodModel.js');
-var moodController = require('../controllers')
+import chai from 'chai';
+import request from 'request';
+import Mood from '../../server/models/moodModel';
+import moodController '../../server/controllers/moodController'
+const expect = chai.expect;
 
 describe('Mood Controller', function() {
-  it('should have a method that adds a new mood to the database', function(done) {
-    var newMood = {
+  it('should add users mood to the database', function(done) {
+    var user = {
+      name: 'Toby',
+      email: 'toby@toby.com',
+      password: '1234'
+    };
+    var mood = {
       name: 'happy',
-      timeDate: new Date()
-    }
-    moodController.createMood(newMood, function(err, result) {
-      done();
-    });
+      timedate: new Date()
+    };
+    
+
   });
 });

@@ -1,10 +1,28 @@
 import chai from 'chai';
 import request from 'request';
 import User from '../../server/models/userModel';
+import Mood from '../../server/models/moodModel';
 
 const expect = chai.expect;
 
 describe('Database', () => {
+  
+  var user = {
+    name: 'Toby',
+    email: 'toby@toby.com',
+    password: '1234'
+  };
+  var mood = {
+    name: 'happy',
+    timedate: new Date()
+  };
+
+  beforeEach(done => {
+    User.findOrCreate({where: user})
+    .then(() => {
+      done();
+    });
+  });
 
   xit('should return all users who have the given mood', (done) => {
     expect().to.equal(); //TODO: FILL OUT EXPECT AND EQUAL
