@@ -22,7 +22,9 @@ export default (app, express, passport) => {
 
   app.post('/api/moods', moodController.saveUserMood);
   app.get('/api/moods', moodController.getAll);
-  
+
+  app.post('/api/quotes', moodController.saveUserMood);
+  app.get('/api/quotes', moodController.getAll);
 
   app.get('/login', (req, res) => {
     res.render('login', { message: req.flash('loginMessage') });
