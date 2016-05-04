@@ -25,7 +25,7 @@ export default (app, express, passport) => {
   app.get('/api/moods', moodController.getAll);
 
   app.post('/api/quotes', quoteController.saveUserQuote);
-  // app.get('/api/quotes', quoteController.getAll);
+  app.get('/api/quotes', quoteController.getAll);
 
   app.get('/login', (req, res) => {
     res.render('login', { message: req.flash('loginMessage') });

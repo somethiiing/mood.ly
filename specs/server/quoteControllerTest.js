@@ -59,7 +59,7 @@ describe('Quote Controller', function() {
     });
   });
 
-  xit('users should be able to have many quotes', done => {
+  it('users should be able to have many quotes', done => {
     let options2 = {
       method: 'POST',
       uri: 'http://127.0.0.1:8080/api/quotes',
@@ -85,7 +85,7 @@ describe('Quote Controller', function() {
     });
   });
 
-  xit('should get all user quotes', done => {
+  it('should get all user quotes', done => {
     let options = {
       method: 'GET',
       uri: 'http://127.0.0.1:8080/api/quotes',
