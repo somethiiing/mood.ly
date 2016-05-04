@@ -10,6 +10,8 @@ const renderFullPage = function(html, initialState) {
         <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
         <title>Welcome to Mood.ly</title>
         <meta name="description" content="A place to explore your mood" />
       </head>
