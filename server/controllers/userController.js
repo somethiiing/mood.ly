@@ -7,9 +7,6 @@ export default {
     .then(() => {
       res.redirect(201, '/');
     });
-    // .then(createdUser => {
-    //   res.status(201).json(createdUser);
-    // });
   },
 
   //SEND ERROR (403)
