@@ -25,12 +25,12 @@ describe('Quote Controller', () => {
     mood: 'Romantic'
   };
 
-  beforeEach(done => {
-    User.findOrCreate({where: user})
-    .then(() => {
-      done();
-    });
-  });
+  // beforeEach(done => {
+  //   User.findOrCreate({where: user})
+  //   .then(() => {
+  //     done();
+  //   });
+  // });
 
   it('should add users quote to the database', done => {
     let options = {
@@ -42,19 +42,22 @@ describe('Quote Controller', () => {
       }
     }
 
-    request(options, (err, res, body) => {
-      expect(res.statusCode).to.equal(201);
-      let options = {
-        method: 'GET',
-        uri: 'http://127.0.0.1:8080/api/quotes',
-        json: {
-          user: user
-        }
-      }
-
+    User.findOrCreate({where: user})
+    .then(() => {
       request(options, (err, res, body) => {
-        expect(res.statusCode).to.equal(200);
-        done();
+        expect(res.statusCode).to.equal(201);
+        let options = {
+          method: 'GET',
+          uri: 'http://127.0.0.1:8080/api/quotes',
+          json: {
+            user: user
+          }
+        }
+
+        request(options, (err, res, body) => {
+          expect(res.statusCode).to.equal(200);
+          done();
+        });
       });
     });
   });
