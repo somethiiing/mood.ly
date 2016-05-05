@@ -26,7 +26,7 @@ export default {
 
   //VERIFY LOGIN
   verifyLogin: (req, res) => {
-    let userName = req.body.userName;
+    let userName = req.body.name;
     let password = req.body.password;
 
     User.findOne({where: { userName: userName }})
