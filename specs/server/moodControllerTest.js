@@ -24,12 +24,12 @@ describe('Mood Controller', () => {
     timedate: new Date()
   };
 
-  beforeEach(done => {
-    User.findOrCreate({where: user})
-    .then(() => {
-      done();
-    });
-  });
+  // beforeEach(done => {
+  //   User.findOrCreate({where: user})
+  //   .then(() => {
+  //     done();
+  //   });
+  // });
 
   it('should add users mood to the database', done => {
     let options = {
@@ -40,22 +40,25 @@ describe('Mood Controller', () => {
         mood: mood1
       }
     }
-
-    request(options, (err, res, body) => {
-      expect(res.statusCode).to.equal(201);
-      let options = {
-        method: 'GET',
-        uri: 'http://127.0.0.1:8080/api/moods',
-        json: {
-          user: user
-        }
-      }
-
+    User.findOrCreate({where: user})
+    .then(() => {
       request(options, (err, res, body) => {
-        expect(res.statusCode).to.equal(200);
-        done();
+        expect(res.statusCode).to.equal(201);
+        let options = {
+          method: 'GET',
+          uri: 'http://127.0.0.1:8080/api/moods',
+          json: {
+            user: user
+          }
+        }
+
+        request(options, (err, res, body) => {
+          expect(res.statusCode).to.equal(200);
+          done();
+        });
       });
     });
+
   });
 
   it('users should be able to have many moods', done => {

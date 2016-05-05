@@ -13,7 +13,7 @@ export default {
     var user = req.body.user;
     var mood = req.body.mood;
 
-    User.findOne({where: user})
+    User.findOne({where: {name: user.name}})
     .then(foundUser => {
       Mood.findOrCreate({where: mood})
       .spread(foundOrCreatedMood => {
@@ -28,7 +28,7 @@ export default {
     var user = req.body.user;
 
     User.findOne({
-      where: user
+      where: {name: user.name}
     })
     .then(foundUser => foundUser.getMoods())
     .then(foundMoods => {

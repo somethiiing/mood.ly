@@ -13,7 +13,7 @@ export default {
     var user = req.body.user;
     var quote = req.body.quote;
 
-    User.findOne({where: user})
+    User.findOne({where: {name: user.name}})
     .then(foundUser => {
       Quote.findOrCreate({where: quote})
       .spread(foundOrCreatedQuote => {
@@ -28,7 +28,7 @@ export default {
     var user = req.body.user;
 
     User.findOne({
-      where: user
+      where: {name: user.name}
     })
     .then(foundUser => foundUser.getQuotes())
     .then(foundQuotes => {
