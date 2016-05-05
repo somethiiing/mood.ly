@@ -4,9 +4,9 @@ export default (props) => (
   <div className="header">
   	<div>
     <ul className="nav-list">
-      <li>Home</li>
-      <button onClick={props.onLoginClick}>Login</button>
-      <button onClick={props.onSignUpClick}>Sign Up</button>
+      <button>home</button>
+      <button onClick={props.onLoginClick}>login</button>
+      <button onClick={props.onSignUpClick}>sign up</button>
     </ul>
     </div>
   </div>
