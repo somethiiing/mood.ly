@@ -31,15 +31,13 @@ A place for you to explore your mood.
 - [React](https://facebook.github.io/react/) and [Redux](http://redux.js.org/)
 - [Node](https://nodejs.org/en/) and [Express](http://expressjs.com/)
 - [Sequelize ORM](http://docs.sequelizejs.com/en/latest/) and [MySQL](https://www.mysql.com/)
+- [Webpack](https://www.npmjs.com/package/webpack)
 
 ### Webpack
 
-[Webpack](https://www.npmjs.com/package/webpack) bundles all files set by the webpack.config.js input folder together so it will load in one <script> tag. The purpose is to create big chunks that can be loaded asynchronously to reduce initial loading time.
+Webpack bundles all files set by the webpack.config.js input folder together so it will load in one script tag. The purpose is to create big chunks that can be loaded asynchronously to reduce initial loading time.
 
 ### React and Redux
-
-
-
 
 ## Usage
 
@@ -91,7 +89,7 @@ npm test
 
 
 ### Current Build Health [![Build Status](https://travis-ci.org/MysteriousBagel/mood.ly/.svg?branch=master)](https://travis-ci.org/MysteriousBagel/mood.ly/)
-View the build [history]](https://travis-ci.org/MysteriousBagel/mood.ly/builds)
+View the build [history](https://travis-ci.org/MysteriousBagel/mood.ly/builds)
 
 ### Roadmap
 
