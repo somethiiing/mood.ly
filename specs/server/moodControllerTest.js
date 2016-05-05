@@ -5,7 +5,7 @@ import User from '../../server/models/userModel';
 import moodController from '../../server/controllers/moodController';
 const expect = chai.expect;
 
-describe('Mood Controller', function() {
+describe('Mood Controller', () => {
   var user = {
     name: 'Toby',
     email: 'toby@toby.com',
@@ -34,7 +34,7 @@ describe('Mood Controller', function() {
   it('should add users mood to the database', done => {
     let options = {
       method: 'POST',
-      uri: 'http://127.0.0.1:8080/api/moods',
+      uri: 'http://127.0.0.1:8080/api/moods/saved',
       json: {
         user: user,
         mood: mood1
@@ -45,7 +45,7 @@ describe('Mood Controller', function() {
       expect(res.statusCode).to.equal(201);
       let options = {
         method: 'GET',
-        uri: 'http://127.0.0.1:8080/api/moods',
+        uri: 'http://127.0.0.1:8080/api/moods/saved',
         json: {
           user: user
         }
@@ -61,7 +61,7 @@ describe('Mood Controller', function() {
   it('users should be able to have many moods', done => {
     let options2 = {
       method: 'POST',
-      uri: 'http://127.0.0.1:8080/api/moods',
+      uri: 'http://127.0.0.1:8080/api/moods/saved',
       json: {
         user: user,
         mood: mood2
@@ -69,7 +69,7 @@ describe('Mood Controller', function() {
     }
     let options3 = {
       method: 'POST',
-      uri: 'http://127.0.0.1:8080/api/moods',
+      uri: 'http://127.0.0.1:8080/api/moods/saved',
       json: {
         user: user,
         mood: mood3
@@ -87,7 +87,7 @@ describe('Mood Controller', function() {
   it('should get all user moods', done => {
     let options = {
       method: 'GET',
-      uri: 'http://127.0.0.1:8080/api/moods',
+      uri: 'http://127.0.0.1:8080/api/moods/saved',
       json: {
         user: user
       }

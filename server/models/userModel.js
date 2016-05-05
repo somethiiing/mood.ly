@@ -1,13 +1,23 @@
 import Sequelize from 'sequelize';
 import db from '../db/db';
+import bcrypt from 'bcrypt-nodejs';
 
 export default db.define('User',
   {
     name: { type: Sequelize.STRING, required: true, unique: true},
     email: Sequelize.STRING,
     password: { type: Sequelize.STRING, required: true },
+    salt: Sequelize.STRING,
     facebookId: Sequelize.STRING,
     avatar: Sequelize.STRING
+  },
+  {
+    hooks: {
+      beforeCreate: (user) => {
+        user.salt = bcrypt.genSaltSync(10);
+        user.password = bcrypt.hashSync(user.password, user.salt);
+      }
+    }
   },
   {
     instanceMethods: {
