@@ -34,7 +34,7 @@ describe('Mood Controller', () => {
   it('should add users mood to the database', done => {
     let options = {
       method: 'POST',
-      uri: 'http://127.0.0.1:8080/api/moods/saved',
+      uri: 'http://127.0.0.1:8080/api/moods',
       json: {
         user: user,
         mood: mood1
@@ -45,7 +45,7 @@ describe('Mood Controller', () => {
       expect(res.statusCode).to.equal(201);
       let options = {
         method: 'GET',
-        uri: 'http://127.0.0.1:8080/api/moods/saved',
+        uri: 'http://127.0.0.1:8080/api/moods',
         json: {
           user: user
         }
@@ -61,7 +61,7 @@ describe('Mood Controller', () => {
   it('users should be able to have many moods', done => {
     let options2 = {
       method: 'POST',
-      uri: 'http://127.0.0.1:8080/api/moods/saved',
+      uri: 'http://127.0.0.1:8080/api/moods',
       json: {
         user: user,
         mood: mood2
@@ -69,7 +69,7 @@ describe('Mood Controller', () => {
     }
     let options3 = {
       method: 'POST',
-      uri: 'http://127.0.0.1:8080/api/moods/saved',
+      uri: 'http://127.0.0.1:8080/api/moods',
       json: {
         user: user,
         mood: mood3
@@ -87,7 +87,7 @@ describe('Mood Controller', () => {
   it('should get all user moods', done => {
     let options = {
       method: 'GET',
-      uri: 'http://127.0.0.1:8080/api/moods/saved',
+      uri: 'http://127.0.0.1:8080/api/moods',
       json: {
         user: user
       }
