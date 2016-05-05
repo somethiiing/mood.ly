@@ -29,7 +29,7 @@ export default {
     let userName = req.body.name;
     let password = req.body.password;
 
-    User.findOne({where: { userName: userName }})
+    User.findOne({where: { userName: name }})
     .then((user) => {
       if (!user) {
         sendError(res, 'Invalid username or password');
