@@ -6,7 +6,7 @@
 
   - __Product Owner__: Kim Curran
   - __Scrum Master__: Arun Vasudevan
-  - __Development Team Members__: Chris Lardizabal, Wilson Yu
+  - __Development Team Members__: Chris Lardizabal, Wilson Yu, Kim Curran, Arun Vasudevan
 
 ## Table of Contents
 
@@ -17,18 +17,25 @@
     1. [Tasks](#tasks)
 1. [Team](#team)
 1. [Contributing](#contributing)
+1. [Architecture](#architecture)
+	1. [High Level Architecture](#high-level-architecture)
+	1. [Database Schema](#database-schema)
+	1. [API](#api)
+1. [Deployment](#deployment)
 
 ## Usage
 
-> Some usage instructions
+> Input your mood and receive a quote!
 
 ## Requirements
 
 - Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Express -
+- MySQL 2.10.x
+- Sequelize 3.22.x
+- React -
+- Redux -
+- Webpack 1.13.x
 
 ## Development
 
@@ -50,3 +57,13 @@ View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+
+## Architecture
+
+### High Level Architecture
+
+### Database Schema
+
+### API
+
+## Deployment
