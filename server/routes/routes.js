@@ -89,6 +89,13 @@ export default (app, express, passport) => {
     
   app.get('/wikiInfo', wiki.frontEndCall);
 
+
+  //DATABASE ROUTES
+  //=================================
+  
+  // app.get('/api/moods/saved', databaseSaveTEMP);
+  // app.post('/api/quotes/saved', databaseSaveTEMP);
+
 };
 
 
