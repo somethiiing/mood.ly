@@ -48,6 +48,21 @@ sudo npm install -g bower
 npm install
 bower install
 ```
+### Getting Started
+
+After everything installed, 'npm install' and 'bower install'
+
+```sh
+webpack --watch
+npm start
+```
+Navigate to localhost:8080 to view the app.
+
+Can run tests with
+
+```sh
+npm test
+```
 
 ### Roadmap
 
@@ -59,6 +74,7 @@ View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 
 ## Architecture
+![Architecture Diagram](/readmefiles/archdiagram.png)
 
 ### High Level Architecture
 
