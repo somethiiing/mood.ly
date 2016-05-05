@@ -1,7 +1,7 @@
-var Sequelize = require('sequelize');
-var password = require('../config/mysqlsetup.js');
+let Sequelize = require('sequelize');
+let password = require('../config/mysqlsetup.js');
 
-var db = new Sequelize('moodb', 'root', password, {
+let db = new Sequelize('moodb', 'root', password, {
   define: {
     timestamps: false // true by default
   },

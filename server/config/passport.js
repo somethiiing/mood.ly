@@ -53,11 +53,6 @@ module.exports = function(app, session, passport) {
       User.findOne({ where: { 'local.email': email } })
       .then(function(user) {
         console.log('Found user ', user);
-        // if (err) {
-        //   return done(err);
-        // }
-        // if (user) {
-        //   return done(null, false, req.flash('signupMessage', 'That email is already in use.'));
         if (user) {
           done(null, user);
         } else {
