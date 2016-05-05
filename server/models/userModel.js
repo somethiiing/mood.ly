@@ -18,13 +18,13 @@ export default db.define('User',
     facebookId: Sequelize.STRING,
     avatar: Sequelize.STRING
   },
-  {
+  { //BEGIN OPTIONS
     hooks: {
       beforeCreate: function(user) {
         user.salt = bcrypt.genSaltSync(10);
         user.password = bcrypt.hashSync(user.password, user.salt);
       }
-    },
+    }, //END HOOKS
     instanceMethods: {
       comparePasswords: (inputPassword, callback) => {
         callback(bcrypt.compareSync(inputPassword, this.password));
