@@ -21,15 +21,21 @@ export default (app, express, passport) => {
   
   app.post('/signup', userController.saveOne);
 
+  //USERS
+  //=================================
+  app.get('/api/users', userController.retrieveAll);
+  app.put('/api/users', userController.updateOne);
+  app.delete('/api/users', userController.deleteOne);
+
   //MOODS
   //=================================
-  app.post('/api/moods/saved', moodController.saveUserMood);
-  app.get('/api/moods/saved', moodController.getAll);
+  app.post('/api/moods', moodController.saveUserMood);
+  app.get('/api/moods', moodController.getAll);
 
   //QUOTES
   //=================================
-  app.post('/api/quotes/saved', quoteController.saveUserQuote);
-  app.get('/api/quotes/saved', quoteController.getAll);
+  app.post('/api/quotes', quoteController.saveUserQuote);
+  app.get('/api/quotes', quoteController.getAll);
 
   app.get('/login', (req, res) => {
     res.render('login', { message: req.flash('loginMessage') });
