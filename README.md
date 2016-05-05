@@ -66,20 +66,28 @@ npm test
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+View the project roadmap [here](https://waffle.io/MysteriousBagel/mood.ly)
+[![Stories in 'Backlog'](https://badge.waffle.io/MysteriousBagel/mood.ly.svg?label=Backlog&title=Backlog)](https://waffle.io/MysteriousBagel/mood.ly)
+[![Stories in 'Ready'](https://badge.waffle.io/MysteriousBagel/mood.ly.svg?label=Ready&title=Ready)](https://waffle.io/MysteriousBagel/mood.ly)
+[![Stories in 'In Progress'](https://badge.waffle.io/MysteriousBagel/mood.ly.svg?label=In%20Progress&title=In%20Progress)](https://waffle.io/MysteriousBagel/mood.ly)
+
+
+## Architecture
+
+### High Level Architecture
+
+![Architecture Diagram](/readmefiles/archdiagram.png)
+
+### Database Schema
+Database in mySQL, using sequelize.
+
+![Database Schema](/readmefiles/databaseSchema.png)
+
+### API
 
 
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
-
-## Architecture
-![Architecture Diagram](/readmefiles/archdiagram.png)
-
-### High Level Architecture
-
-### Database Schema
-
-### API
 
 ## Deployment
