@@ -1,11 +1,11 @@
-let Sequelize = require('sequelize');
-let password = require('../config/mysqlsetup.js');
+import Sequelize from 'sequelize';
+import password from '../config/mysqlsetup.js';
 
-let db = new Sequelize('moodb', 'root', password, {
+const db = new Sequelize('moodb', 'root', password, {
   define: {
     timestamps: false // true by default
   },
   logging: false
 });
 
-module.exports = db;
+ export default db;
