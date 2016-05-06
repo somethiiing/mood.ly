@@ -11,10 +11,12 @@ export default db.define('User',
     avatar: Sequelize.STRING,
   },
   { // BEGIN OPTIONS
-    beforeCreate: user => {
-      const salt = bcrypt.genSaltSync(10);
-      // ENCRYPT AND ADD SALT TO USER PASSWORD BEFORE CREATE
-      user.password = bcrypt.hashSync(user.password, salt);
+    hooks: {
+      beforeCreate: user => {
+        const salt = bcrypt.genSaltSync(10);
+        // ENCRYPT AND ADD SALT TO USER PASSWORD BEFORE CREATE
+        user.password = bcrypt.hashSync(user.password, salt);
+      },
     },
     instanceMethods: {
       comparePasswords: (inputPassword, callback) => {
