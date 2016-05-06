@@ -1,8 +1,8 @@
 import express from 'express';
 import session from 'express-session';
 import passport from 'passport';
-import flash from 'connect-flash';
-import bodyParser from 'body-parser';
+// import flash from 'connect-flash';
+// import bodyParser from 'body-parser';
 
 const app = express();
 
@@ -32,9 +32,6 @@ routes(app, express, passport);
 
 // LISTEN
 // ==============================================
-app.listen(port, err => {
-  if (err) {
-    throw new Error(err);
-  }
-  return console.log(`Mood.ly is listening on ${port}`);
-});
+console.log(`Mood.ly is listening on ${port}`);
+
+app.listen(port);
