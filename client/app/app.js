@@ -10,11 +10,11 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    //searchData -- are we going to have search or dropdown?
+    // searchData -- are we going to have search or dropdown?
       // this.debouncedSearch = _.debouce(searchData, 500, { leading: true }
       // );
 
-    //set default state
+    // set default state
     this.state = {
       currMood: '',
       currQuote: '',
