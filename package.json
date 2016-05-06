@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/mysteriousbagel/mood.ly#readme",
   "devDependencies": {
+    "eslint": "^2.9.0",
     "eslint-config-airbnb": "^8.0.0",
     "eslint-plugin-react": "^5.0.1"
   },
@@ -57,5 +58,6 @@
     "sass": "^0.5.0",
     "sequelize": "^3.22.0",
     "webpack": "^1.13.0"
-  }
+  },
+  "keywords": []
 }

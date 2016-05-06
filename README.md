@@ -37,7 +37,6 @@ A place for you to explore your mood.
 
 Webpack bundles all files set by the webpack.config.js input folder together so it will load in one script tag. The purpose is to create big chunks that can be loaded asynchronously to reduce initial loading time.
 
-### React and Redux
 
 ## Usage
 
