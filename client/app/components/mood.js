@@ -1,8 +1,12 @@
-//insert this in app.js for Mood
-//{<span className="mood-title"><h2>Mood</h2></span>
-//<MoodTable moodList={this.state.quotes} onMoodClock={this.onMoodClick.bind(this)} />}
+import React, { PropTypes, Component } from 'react';
 
-const Mood = (props) => {
+React.createClass({
+  propTypes: {
+    moodList: React.PropTypes.array.isRequired,
+  };
+})
+
+export default Mood = (props) => {
   return (
     <div className="container-data">
       {props.moodList.map((mood, i) => 
@@ -11,6 +15,3 @@ const Mood = (props) => {
     </div>
   ) 
 };
-
-//export
-window.Mood = Mood;
