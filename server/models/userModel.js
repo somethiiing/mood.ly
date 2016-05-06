@@ -4,34 +4,25 @@ import bcrypt from 'bcrypt-nodejs';
 
 export default db.define('User',
   {
-    name: { type: Sequelize.STRING, required: true, unique: true},
+    name: { type: Sequelize.STRING, required: true, unique: true },
     email: Sequelize.STRING,
-    password: {
-      type: Sequelize.STRING,
-      set:  function(v) {
-        let salt = bcrypt.genSaltSync(10);
-        let hash = bcrypt.hashSync(v, salt);
-        this.setDataValue('password', hash);
-      }
-    },
-    salt: Sequelize.STRING,
+    password: { type: Sequelize.STRING },
     facebookId: Sequelize.STRING,
-    avatar: Sequelize.STRING
+    avatar: Sequelize.STRING,
   },
-  { //BEGIN OPTIONS
-    hooks: {
-      beforeCreate: function(user) {
-        user.salt = bcrypt.genSaltSync(10);
-        user.password = bcrypt.hashSync(user.password, user.salt);
-      }
-    }, //END HOOKS
+  { // BEGIN OPTIONS
+    beforeCreate: user => {
+      const salt = bcrypt.genSaltSync(10);
+      // ENCRYPT AND ADD SALT TO USER PASSWORD BEFORE CREATE
+      user.password = bcrypt.hashSync(user.password, salt);
+    },
     instanceMethods: {
       comparePasswords: (inputPassword, callback) => {
         callback(bcrypt.compareSync(inputPassword, this.password));
-      }
-    }
+      },
+    },
   },
   {
-    freezeTableName: true
+    freezeTableName: true,
   }
 );
