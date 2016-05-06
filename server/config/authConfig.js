@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   facebookAuth: {
     clientID: 'YOUR-FB-CLIENT-ID',
     clientSecret: 'YOUR-FB-CLIENT-SECRET',

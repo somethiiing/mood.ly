@@ -1,39 +1,38 @@
 import renderIndex from './requestHandler';
 
-//REQUIRE CONTROLLERS
-//=================================
+// REQUIRE CONTROLLERS
+// =================================
 import userController from '../controllers/userController';
 import moodController from '../controllers/moodController';
 import quoteController from '../controllers/quoteController';
 import wiki from '../API/wikiquotes';
 
-//MODULE EXPORT
-//=================================
+// MODULE EXPORT
+// =================================
 export default (app, express, passport) => {
-
-  //LOCAL ROUTES
-  //=================================
+  // LOCAL ROUTES
+  // =================================
   app.get('/', renderIndex);
 
   app.get('/signup', (req, res) => {
     res.render('signup', { message: req.flash('loginMessage') });
   });
-  
+
   app.post('/signup', userController.saveOne);
 
-  //USERS
-  //=================================
+  // USERS
+  // =================================
   app.get('/api/users', userController.retrieveAll);
   app.put('/api/users', userController.updateOne);
   app.delete('/api/users', userController.deleteOne);
 
-  //MOODS
-  //=================================
+  // MOODS
+  // =================================
   app.post('/api/moods', moodController.saveUserMood);
   app.get('/api/moods', moodController.getAll);
 
-  //QUOTES
-  //=================================
+  // QUOTES
+  // =================================
   app.post('/api/quotes', quoteController.saveUserQuote);
   app.get('/api/quotes', quoteController.getAll);
 
@@ -44,7 +43,7 @@ export default (app, express, passport) => {
   app.post('/login', passport.authenticate('local-signup', {
     successRedirect: '/profile',
     failureRedirect: '/login',
-    failureFlash: true //OPTIONAL
+    failureFlash: true, // OPTIONAL
   }));
 
 
@@ -60,52 +59,47 @@ export default (app, express, passport) => {
   // });
 
   app.get('/logout', (req, res) => {
-    //LOG USER OUT AND DESTROY SESSION
-    req.session.destroy((err) => {
-      //REDIRECT USER TO HOME PAGE
+    // LOG USER OUT AND DESTROY SESSION
+    req.session.destroy(err => {
+      // REDIRECT USER TO HOME PAGE
       res.redirect('/');
     });
   });
 
-  //CHECK IF LOGGED IN
-  var isLoggedIn = (req, res, next) => {
+  // CHECK IF LOGGED IN
+  const isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) {
       return next();
     }
-    //REDIRECT
+    // REDIRECT
     res.redirect('/');
   };
 
-  //FACEBOOK ROUTES
-  //=================================
+  // FACEBOOK ROUTES
+  // =================================
   app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
 
-  app.get('/auth/facebook/callback', passport.authenticate('facebook', { 
-      successRedirect: '/profile',
-      failureRedirect: '/'
+  app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+    successRedirect: '/profile',
+    failureRedirect: '/',
   }));
 
-  //GOOGLE ROUTES
-  //=================================
-  app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email' ] }));
+  // GOOGLE ROUTES
+  // =================================
+  app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
-  app.get('/auth/google/callback', passport.authenticate('google', { 
-      successRedirect: '/profile',
-      failureRedirect: '/'
+  app.get('/auth/google/callback', passport.authenticate('google', {
+    successRedirect: '/profile',
+    failureRedirect: '/',
   }));
 
-  //WIKI ROUTES
-  //=================================
-    
+  // WIKI ROUTES
+  // =================================
   app.get('/wikiInfo', wiki.frontEndCall);
 
 
-  //DATABASE ROUTES
-  //=================================
-  
+  // DATABASE ROUTES
+  // =================================
   // app.get('/api/moods/saved', databaseSaveTEMP);
   // app.post('/api/quotes/saved', databaseSaveTEMP);
-
 };
-
-

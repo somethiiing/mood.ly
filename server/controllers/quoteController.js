@@ -3,19 +3,19 @@ import User from '../models/userModel';
 
 export default {
   saveOne: (req, res) => {
-    let quote = req.body;
-    Quote.findOrCreate({where: quote})
+    const quote = req.body;
+    Quote.findOrCreate({ where: quote })
     .then(createdQuote => {
       res.status(201).json(createdQuote);
     });
   },
   saveUserQuote: (req, res) => {
-    var user = req.body.user;
-    var quote = req.body.quote;
+    const user = req.body.user;
+    const quote = req.body.quote;
 
-    User.findOne({where: {name: user.name}})
+    User.findOne({ where: { name: user.name } })
     .then(foundUser => {
-      Quote.findOrCreate({where: quote})
+      Quote.findOrCreate({ where: quote })
       .spread(foundOrCreatedQuote => {
         foundUser.addQuote(foundOrCreatedQuote)
         .then(() => {
@@ -25,14 +25,14 @@ export default {
     });
   },
   getAll: (req, res) => {
-    var user = req.body.user;
+    const user = req.body.user;
 
     User.findOne({
-      where: {name: user.name}
+      where: { name: user.name },
     })
     .then(foundUser => foundUser.getQuotes())
     .then(foundQuotes => {
       res.json(foundQuotes);
     });
-  }
+  },
 };

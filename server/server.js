@@ -9,17 +9,17 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 require('babel-core/register')({
-  presets: ['es2015', 'react']
+  presets: ['es2015', 'react'],
 });
 
-//MIDDLEWARE
-//==============================================
-//configure our server with all the middleware and routing
+// MIDDLEWARE
+// ==============================================
+// configure our server with all the middleware and routing
 import middleware from './config/middleware';
 middleware(app, express);
 
-//PASSPORT & ROUTES
-//==============================================
+// PASSPORT & ROUTES
+// ==============================================
 // Passport Configuration
 import config from './config/passport';
 config(app, session, passport);
@@ -30,11 +30,11 @@ import './index';
 import routes from './routes/routes';
 routes(app, express, passport);
 
-//LISTEN
-//==============================================
+// LISTEN
+// ==============================================
 app.listen(port, err => {
   if (err) {
-    return console.log(err);
+    throw new Error(err);
   }
-  console.log('Mood.ly is listening on ' + port);
+  return console.log(`Mood.ly is listening on ${port}`);
 });

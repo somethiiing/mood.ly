@@ -1,106 +1,105 @@
-//PASSPORT STRATEGIES
-//============================================
-var LocalStrategy = require('passport-local').Strategy;
+// PASSPORT STRATEGIES
+// ============================================
+import LocalStrategy from 'passport-local';
 // var FacebookStrategy = require('passport-facebook').Strategy;
 // var GoogleStrategy = require('passport-google-oauth2').Strategy;
 
-//IMPORT MODELS
-//============================================
-var User = require('../models/userModel').User;
+// IMPORT MODELS
+// ============================================
+import User from '../models/userModel';
 
-//IMPORT AUTH CONFIG
-//============================================
-var authConfig = require('./authConfig');
+// IMPORT AUTH CONFIG
+// ============================================
+// import authConfig from './authConfig';
 
-//MODULE EXPORT
-//============================================
-module.exports = function(app, session, passport) {
-  //SERIALIZE USER
-  passport.serializeUser(function(user, done) {
+// MODULE EXPORT
+// ============================================
+export default (app, session, passport) => {
+  // SERIALIZE USER
+  passport.serializeUser((user, done) => {
     done(null, user.id);
   });
 
-  //DESERIALIZE USER
-  passport.deserializeUser(function(user, done) {
+  // DESERIALIZE USER
+  passport.deserializeUser((user, done) => {
     done(null, user);
   });
 
-  //PASSPORT SESSION
+  // PASSPORT SESSION
   app.use(session({
     secret: 'shhsecret',
     resave: true,
     saveUninitialized: true,
-    cookie: { path: '/', httpOnly: true, secure: false, maxAge: null }
-    }));
+    cookie: { path: '/', httpOnly: true, secure: false, maxAge: null },
+  }));
 
-  //PASSPORT INITIALIZE & SESSION
-  app.use(passport.initialize());  
+  // PASSPORT INITIALIZE & SESSION
+  app.use(passport.initialize());
   app.use(passport.session());
 
-  //FLASH MESSAGES  
+  // FLASH MESSAGES
   // app.use(flash());
 
-//LOCAL STRATEGY
-//============================================
-  //SIGNUP
+// LOCAL STRATEGY
+// ============================================
+  // SIGNUP
   passport.use('local-signup', new LocalStrategy({
     username: 'email',
     password: 'password',
     passReqToCallback: true,
   },
-  function(req, email, password, done) {
-      //SEARCH DATABASE FOR USER
-      User.findOne({ where: { 'local.email': email } })
-      .then(function(user) {
-        console.log('Found user ', user);
+  (req, email, password, done) => {
+      // SEARCH DATABASE FOR USER
+    User.findOne({ where: { 'local.email': email } })
+      .then(user => {
         if (user) {
           done(null, user);
         } else {
-          //CREATE NEW USER
+          // CREATE NEW USER
           User.create({
             username: email,
             password: generateHash(password), //NEED TO WRITE METHOD FOR GENERATEHASH
           })
-          .then(function(newUser) {
-            console.log('user created ', newUser);
+          .then(newUser => {
             done(null, newUser);
-          }
-          .catch(function(err) {
-            console.log('Error creating a new user! ', err);
-          }));
+          })
+          .catch(err => {
+            throw new Error('error line 67', err);
+          });
         }
       })
-      .catch(function(err) {
-        console.log('Cannot find user! ', err);
+      .catch(err => {
+        throw new Error('error line 72', err);
       });
   }));
 
-  //LOGIN
+  // LOGIN
   passport.use('local-login', new LocalStrategy({
     username: 'email',
     password: 'password',
-    passReqToCallback: true
+    passReqToCallback: true,
   },
-  function(req, email, password, done) {
+  (req, email, password, done) => {
     User.findOne({ where: { 'local.email': email } })
-    .then(function(user) {
+    .then(user => {
       if (user) {
         done(null, user);
       }
     })
-    .catch(function(err) {
-      console.log('User not found ', err);
+    .catch(err => {
+      throw new Error('user not found', err);
     });
   }));
 
-  //FACEBOOK STRATEGY
-  //============================================
+  // FACEBOOK STRATEGY
+  // ============================================
   // passport.use(new FacebookStrategy({
   //   //GET INFO FROM AUTHCONFIG
   //   clientID: authConfig.facebookAuth.appID,
   //   clientSecret: authConfig.facebookAuth.appSecret,
   //   callbackURL: authConfig.facebookAuth.callbackUrl,
-  //   profileFields: ['id', 'displayName', 'first_name', 'last_name', 'email', 'gender', 'birthday', 'picture.type(large)'],
+  //   profileFields: ['id', 'displayName', 'first_name', 'last_name',
+  //    'email', 'gender', 'birthday', 'picture.type(large)'],
   // },
 
   //   function(accesstoken, refreshToken, profile, done) {
@@ -141,8 +140,8 @@ module.exports = function(app, session, passport) {
   //   }
   // ));
 
-  //GOOGLE STRATEGY
-  //============================================
+  // GOOGLE STRATEGY
+  // ============================================
   // passport.use(new GoogleStrategy({
   //   clientID: authConfig.googleAuth.clientID,
   //   clientSecret: authConfig.googleAuth.clientSecret,
