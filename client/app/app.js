@@ -8,11 +8,6 @@ import Signup from './components/Signup';
 class App extends Component {
   constructor(props) {
     super(props);
-
-    // searchData -- are we going to have search or dropdown?
-      // this.debouncedSearch = _.debouce(searchData, 500, { leading: true }
-      // );
-
     // set default state
     this.state = {
       currMood: '',
@@ -21,20 +16,23 @@ class App extends Component {
       showLogin: false,
       showSignUp: false,
     };
+
+    this.onLoginClick = this.onLoginClick.bind(this);
+    this.onSignUpClick = this.onSignUpClick.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
   }
 
   onSignUpClick() {
     this.setState({
       showSignUp: !this.state.showSignUp,
     });
-    this.onSignUpClick = this.onSignUpClick.bind(this);
   }
 
   onLoginClick() {
     this.setState({
       showLogin: !this.state.showLogin,
     });
-    this.onLoginClick = this.onLoginClick.bind(this);
   }
 
   handleSearchButtonClick() {
@@ -47,22 +45,13 @@ class App extends Component {
         currQuote: res[randomIndex],
       });
     });
-    this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
   }
 
   handleSearchChange(event) {
     this.setState({
       currentSearch: event.target.value,
     });
-    this.handleSearchChange = this.handleSearchChange.bind(this);
   }
-
-  static propTypes = {
-    onSignUpClick: React.propTypes.func.isRequired,
-    onLoginClick: React.propTypes.func.isRequired,
-    handleSearchButtonClick: React.propTypes.func.isRequired,
-    handleSearchChange: React.propTypes.func.isRequired,
-  },
 
   render() {
     return (
@@ -91,6 +80,13 @@ class App extends Component {
     );
   }
 }
+
+// App.propTypes = {
+//   onSignUpClick: React.propTypes.func.isRequired,
+//   onLoginClick: React.propTypes.func.isRequired,
+//   handleSearchButtonClick: React.propTypes.func.isRequired,
+//   handleSearchChange: React.propTypes.func.isRequired,
+// };
 
 export default App;
 

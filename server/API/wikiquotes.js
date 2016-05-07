@@ -1,6 +1,5 @@
 import request from 'request';
 
-
 // ////////////////// HELPER FUNCTIONS ////////////////////
 // Modularized Functions to improve clarity on what is happening
 // getPageID is called through the wikiQuoteAPI to retrive the page ID.
@@ -12,11 +11,22 @@ import request from 'request';
   // also parses the data retrived from the API
 // parseData parses the retrived wikiquote data.
   // data retrived is within a number of nested objects/arrays and is retrived in one long string
-// functionChain is the logic/order used to call the above functions
+// getData is the logic/order used to call the above functions
+
+
+const redirectFailMessages = [
+  'Page not found, please try again.1',
+  'Page not found, please try again.2',
+  'Page not found, please try again.3',
+  'Page not found, please try again.4',
+  'Page not found, please try again.5',
+  'Page not found, please try again.6',
+];
+
 
 const getPageID = body => {
   let pageID;
-  for (const key of body.query.pages) {
+  for (const key of Object.keys(body.query.pages)) {
     if (typeof Number(key) === 'number') {
       if (Number(key) === -1) {
         pageID = -1;
@@ -83,23 +93,22 @@ const wikiQuoteCall = (keyword, callback) => {
     })
   .on('end', () => {
     body = JSON.parse(Buffer.concat(body).toString());
-    functionChain(body, callback);
+    getData(body, callback);
   });
   });
 };
 
-function functionChain(body, callback) {
+function getData(body, callback) {
   const pageID = getPageID(body);
   const redirect = redirectCheck(body, pageID);
   if (redirect === false) {
-    callback(parseData(body, pageID));
+    return callback(parseData(body, pageID));
   }
   if (redirect === null) {
-    callback('Page not found, please try again.');
+    return callback({ status: 'not found', body: redirectFailMessages });
   }
-  wikiQuoteCall(redirect, callback);
+  return wikiQuoteCall(redirect, callback);
 }
-
 
 const frontEndCall = (req, res) => {
   const keyword = req.query.keyword;
@@ -115,3 +124,10 @@ const frontEndCall = (req, res) => {
 };
 
 export default { getPageID, redirectCheck, wikiQuoteCall, frontEndCall };
+
+// // TEST
+
+// wikiQuoteCall('happy', (data) => {
+//   console.log(data);
+// });
+

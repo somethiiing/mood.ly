@@ -72,7 +72,7 @@ export default (app, express, passport) => {
       return next();
     }
     // REDIRECT
-    res.redirect('/');
+    return res.redirect('/');
   };
 
   // FACEBOOK ROUTES

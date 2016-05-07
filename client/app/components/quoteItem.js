@@ -3,7 +3,7 @@ import React from 'react';
 React.createClass({
   propTypes: {
     quote: React.PropTypes.element.isRequired,
-  };
+  },
 })
 
 export default (props) => <div>{props.quote}</div>;

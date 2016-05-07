@@ -1,10 +1,9 @@
 import $ from 'jquery';
 
-let wikiQuoteCall = function (keyword, callback) {
-  $.get('/wikiInfo?keyword=' + keyword, function(data) {
+const wikiQuoteCall = (keyword, callback) => {
+  $.get(`/wikiInfo?keyword=${keyword}`, data => {
     callback(data);
   });
-}
+};
 
-
-export default wikiQuoteCall
+export default wikiQuoteCall;
