@@ -3,9 +3,9 @@ import User from './models/userModel';
 import Quote from './models/quoteModel';
 import Mood from './models/moodModel';
 
-Mood.belongsToMany(User, {through: 'UserMood'});
-User.belongsToMany(Mood, {through: 'UserMood'});
-Quote.belongsToMany(User, {through: 'UserQuote'});
-User.belongsToMany(Quote, {through: 'UserQuote'});
+Mood.belongsToMany(User, { through: 'UserMood' });
+User.belongsToMany(Mood, { through: 'UserMood' });
+Quote.belongsToMany(User, { through: 'UserQuote' });
+User.belongsToMany(Quote, { through: 'UserQuote' });
 
-db.sync({force: true});
+db.sync({ force: true });

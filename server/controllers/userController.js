@@ -2,47 +2,47 @@ import User from '../models/userModel';
 
 export default {
   saveOne: (req, res) => {
-    let user = req.body;
-    User.findOrCreate({where: user})
+    const user = req.body;
+    User.findOrCreate({ where: user })
     .then(() => {
       res.redirect(201, '/');
     });
   },
 
-  //SEND ERROR (403)
+  // SEND ERROR (403)
   sendError: (res, errorString) => {
-    error = {
+    const error = {
       success: false,
     };
 
     if (errorString) {
-      error['error'] = errorString;
+      error.error = errorString;
     }
     res.status(403).json(error);
   },
 
-  //VERIFY LOGIN
+  // VERIFY LOGIN
   verifyLogin: (req, res) => {
-    let userName = req.body.name;
-    let password = req.body.password;
+    const userName = req.body.name;
+    const password = req.body.password;
 
-    User.findOne({where: { userName: name }})
+    User.findOne({ where: { userName: name } })
     .then((user) => {
       if (!user) {
-        sendError(res, 'Invalid username or password');
+        this.sendError(res, 'Invalid username or password');
       } else {
         user.comparePasswords(password, (compareResult) => {
           if (compareResult) {
             res.status(200);
           } else {
-            sendError(res, 'Invalid username or password');
+            this.sendError(res, 'Invalid username or password');
           }
         });
       }
     });
   },
 
-  //GET A USER
+  // GET A USER
   retrieveOne: (req, res) => {
     let userId = req.params.id;
 
@@ -50,7 +50,7 @@ export default {
       userId = req.currentUser.id;
     }
 
-    let isMe = (userId.toString() === req.currentUser.id.toString());
+    const isMe = (userId.toString() === req.currentUser.id.toString());
 
     if (!userId) {
       res.status(500).send('userId undefined');
@@ -59,9 +59,9 @@ export default {
 
     User.findOne({
       attributes: {
-        exclude: ['password', 'salt']
+        exclude: ['password', 'salt'],
       },
-      where: {id: userId}
+      where: { id: userId },
     })
     .then((foundUser) => {
       if (foundUser) {
@@ -69,53 +69,50 @@ export default {
       }
     })
     .catch((err) => {
-      console.log('Error finding user', err);
+      throw new Error('Error finding user', err);
     });
   },
 
-  //GET ALL USERS
+  // GET ALL USERS
   retrieveAll: (req, res) => {
     User.findAll({
       attributes: {
-        exclude: ['password', 'salt']
-      }
+        exclude: ['password', 'salt'],
+      },
     })
-    .then((results) => {
+    .then(results => {
       if (!results || results.length < 1) {
-        return sendError(res, 'No users');
+        return this.sendError(res, 'No users');
       }
-      res.json(results);
+      return res.json(results);
     })
     .catch((err) => {
-      console.log('An error occurred retrieving all users.', err);
-      res.status(500).send(err);
+      throw new Error('An error occurred retrieving all users.', err);
     });
   },
 
-  //UPDATE USER
+  // UPDATE USER
   updateOne: (req, res) => {
-    let query = {id: req.params.userid};
+    const query = { id: req.params.userid };
 
-    var updatedProps = req.body;
+    const updatedProps = req.body;
 
     User.update(updatedProps, { where: query })
     .then((matchingUser) => {
       res.json(matchingUser);
     })
     .catch((err) => {
-      console.log('An error occurred updating the user.', err);
-      res.status(500).send(err);
+      throw new Error('An error occurred updating the user.', err);
     });
   },
 
-  //DELETE USER
-  deleteOne: (req, res) => {
-    let query = {id: req.params.userid};
+  // DELETE USER
+  deleteOne: (req) => {
+    const query = { id: req.params.userid };
 
     User.destroy({ where: query })
     .catch((err) => {
-      console.log('An error occurred deleting the user.', err);
-      res.status(500).send(err);
+      throw new Error('An error occurred deleting the user.', err);
     });
-  }
+  },
 };

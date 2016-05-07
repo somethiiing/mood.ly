@@ -3,19 +3,19 @@ import User from '../models/userModel';
 
 export default {
   saveOne: (req, res) => {
-    let mood = req.body;
-    Mood.findOrCreate({where: mood})
+    const mood = req.body;
+    Mood.findOrCreate({ where: mood })
     .then(createdMood => {
       res.status(201).json(createdMood);
     });
   },
   saveUserMood: (req, res) => {
-    var user = req.body.user;
-    var mood = req.body.mood;
+    const user = req.body.user;
+    const mood = req.body.mood;
 
-    User.findOne({where: {name: user.name}})
+    User.findOne({ where: { name: user.name } })
     .then(foundUser => {
-      Mood.findOrCreate({where: mood})
+      Mood.findOrCreate({ where: mood })
       .spread(foundOrCreatedMood => {
         foundUser.addMood(foundOrCreatedMood)
         .then(() => {
@@ -25,14 +25,14 @@ export default {
     });
   },
   getAll: (req, res) => {
-    var user = req.body.user;
+    const user = req.body.user;
 
     User.findOne({
-      where: {name: user.name}
+      where: { name: user.name },
     })
     .then(foundUser => foundUser.getMoods())
     .then(foundMoods => {
       res.json(foundMoods);
     });
-  }
+  },
 };

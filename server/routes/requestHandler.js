@@ -6,10 +6,9 @@ import App from '../../client/app/app';
 import renderFullPage from '../views/index';
 import rootReducer from '../../client/app/reducers/index';
 
-export default function(req, res) {
-  var user = {};
-  var savedQuotes = [];
-  console.log('RENDER PAGE');
+export default (req, res) => {
+  const user = {};
+  const savedQuotes = [];
 
   // const store = createStore(rootReducer, {
   //   user: user,
@@ -32,13 +31,13 @@ export default function(req, res) {
     </div>
   );
   */
-  
+ 
   // const initialState = store.getState();
 
 
   // const initialState = store.getState();
 
   // res.send(renderFullPage(html, initialState));
-  
+ 
   res.send(renderFullPage(html));
-}
+};
