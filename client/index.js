@@ -16,25 +16,24 @@ const initialState = window.__INITIAL_STATE__;
 // Create Redux store with initial state
 // the store manages the state of our app
 // createStore accepts a single reducer or a collection of reducers
-// const store = createStore(rootReducer, initialState);
+const store = createStore(rootReducer, initialState);
 
-var render = function() {
-  ReactDOM.render(
-    <div>
-      <App/>
-    </div>,
-    document.getElementById('app')
-  );
-};
-
-// TODO: IMPLEMENT REDUX
 // var render = function() {
 //   ReactDOM.render(
-//     <Provider store={store}>
-//     <App />
-//     </Provider>,
+//     <div>
+//       <App/>
+//     </div>,
 //     document.getElementById('app')
 //   );
 // };
+
+var render = function() {
+  ReactDOM.render(
+    <Provider store={store}>
+    <App />
+    </Provider>,
+    document.getElementById('app')
+  );
+};
 
 render();
