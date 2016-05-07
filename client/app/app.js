@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import wiki from './services/wiki.js';
-import Nav from './components/Nav';
+import Search from './components/Search';
 import Header from './components/Header';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -64,7 +64,7 @@ class App extends Component {
           {this.state.showSignUp ? <Signup /> : null}
         </div>
         <h1>mood.ly</h1>
-        <Nav
+        <Search
           handleSearchChange={this.handleSearchChange}
           handleSearchButtonClick={this.handleSearchButtonClick}
         />
