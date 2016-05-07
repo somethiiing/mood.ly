@@ -13,7 +13,7 @@ import request from 'request';
   // data retrived is within a number of nested objects/arrays and is retrived in one long string
 // getData is the logic/order used to call the above functions
 
-
+// redirect messages, would like to change these to different error messages based off of your mood
 const redirectFailMessages = [
   'Page not found, please try again.1',
   'Page not found, please try again.2',
@@ -23,20 +23,48 @@ const redirectFailMessages = [
   'Page not found, please try again.6',
 ];
 
+// wikiAPI returns an object, theres a key that is the pageID
+// inside that key, there is a property called the pageID
+// -1 means the page doesnt exist and redirect can't happen.
+// another number means that the page exists, and has a possibility of redirect
+
+// const getPageID = body => {
+//   for (const key of Object.keys(body.query.pages)) {
+//     const index = Number(key);
+//     if (typeof index === 'number') {
+//       if (index === -1) {
+//         return -1;
+//       }
+//       return body.query.pages[index].pageid;
+//     }
+//   }
+//   return '';
+// };
 
 const getPageID = body => {
-  let pageID;
+  let index;
   for (const key of Object.keys(body.query.pages)) {
     if (typeof Number(key) === 'number') {
-      if (Number(key) === -1) {
-        pageID = -1;
-      } else {
-        pageID = body.query.pages[key].pageid;
-      }
+      index = Number(key);
+      break;
     }
   }
-  return pageID;
+  if (index === -1) {
+    return -1;
+  }
+  return body.query.pages[index].pageid;
 };
+
+// const getPageID = body => {
+//   const keys = Object.keys(body.query.pages);
+//   console.log(keys);
+//   const pageid = Number(keys[0]);
+//   console.log(pageid);
+//   if (pageid === -1) {
+//     return -1;
+//   }
+//   return body.query.pages[pageid].pageID;
+// };
 
 const redirectCheck = (body, pageID) => {
   if (pageID === -1) {
