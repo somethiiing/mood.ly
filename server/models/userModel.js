@@ -8,6 +8,7 @@ export default db.define('User',
     email: Sequelize.STRING,
     password: { type: Sequelize.STRING },
     facebookId: Sequelize.STRING,
+    googleId: Sequelize.STRING,
     avatar: Sequelize.STRING,
   },
   { // BEGIN OPTIONS

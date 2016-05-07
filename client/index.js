@@ -27,10 +27,10 @@ const store = createStore(rootReducer, initialState);
 //   );
 // };
 
-var render = function() {
+const render = () => {
   ReactDOM.render(
     <Provider store={store}>
-    <App />
+      <App />
     </Provider>,
     document.getElementById('app')
   );
