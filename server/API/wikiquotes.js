@@ -15,6 +15,7 @@ import request from 'request';
 
 const getPageID = body => {
   let pageID;
+  console.log(body.query.pages);
   for (const key in body.query.pages) {
     if (typeof Number(key) === 'number') {
       if (Number(key) === -1) {
@@ -120,4 +121,4 @@ export default { getPageID, redirectCheck, wikiQuoteCall, frontEndCall };
 // wikiQuoteCall('happy', (data) => {
 //   console.log(data);
 // });
-// 
+

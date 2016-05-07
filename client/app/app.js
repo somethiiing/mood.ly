@@ -19,6 +19,7 @@ class App extends Component {
   }
 
   onSignUpClick() {
+    console.log(App);
     this.setState({
       showSignUp: !this.state.showSignUp,
     });
