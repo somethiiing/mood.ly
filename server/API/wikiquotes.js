@@ -1,6 +1,5 @@
 import request from 'request';
 
-
 // ////////////////// HELPER FUNCTIONS ////////////////////
 // Modularized Functions to improve clarity on what is happening
 // getPageID is called through the wikiQuoteAPI to retrive the page ID.
@@ -16,7 +15,7 @@ import request from 'request';
 
 const getPageID = body => {
   let pageID;
-  for (const key of body.query.pages) {
+  for (const key in body.query.pages) {
     if (typeof Number(key) === 'number') {
       if (Number(key) === -1) {
         pageID = -1;
@@ -115,3 +114,10 @@ const frontEndCall = (req, res) => {
 };
 
 export default { getPageID, redirectCheck, wikiQuoteCall, frontEndCall };
+
+// // TEST
+
+// wikiQuoteCall('happy', (data) => {
+//   console.log(data);
+// });
+// 

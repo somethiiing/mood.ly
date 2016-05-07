@@ -8,11 +8,6 @@ import Signup from './components/Signup';
 class App extends Component {
   constructor(props) {
     super(props);
-
-    // searchData -- are we going to have search or dropdown?
-      // this.debouncedSearch = _.debouce(searchData, 500, { leading: true }
-      // );
-
     // set default state
     this.state = {
       currMood: '',
@@ -57,20 +52,13 @@ class App extends Component {
     this.handleSearchChange = this.handleSearchChange.bind(this);
   }
 
-  static propTypes = {
-    onSignUpClick: React.propTypes.func.isRequired,
-    onLoginClick: React.propTypes.func.isRequired,
-    handleSearchButtonClick: React.propTypes.func.isRequired,
-    handleSearchChange: React.propTypes.func.isRequired,
-  },
-
   render() {
     return (
       <div>
         <div>
           <Header
-            onSignUpClick={this.onSignUpClick}
-            onLoginClick={this.onLoginClick}
+            onSignUpClick={this.onSignUpClick.bind(this)}
+            onLoginClick={this.onLoginClick.bind(this)}
           />
         </div>
         <div>
@@ -81,8 +69,8 @@ class App extends Component {
         </div>
         <h1>mood.ly</h1>
         <Nav
-          handleSearchChange={this.handleSearchChange}
-          handleSearchButtonClick={this.handleSearchButtonClick}
+          handleSearchChange={this.handleSearchChange.bind(this)}
+          handleSearchButtonClick={this.handleSearchButtonClick.bind(this)}
         />
         <div className="moodly-content">
           <span className="quote-title"><h2>{this.state.currQuote}</h2></span>
@@ -91,6 +79,13 @@ class App extends Component {
     );
   }
 }
+
+// App.propTypes = {
+//   onSignUpClick: React.propTypes.func.isRequired,
+//   onLoginClick: React.propTypes.func.isRequired,
+//   handleSearchButtonClick: React.propTypes.func.isRequired,
+//   handleSearchChange: React.propTypes.func.isRequired,
+// };
 
 export default App;
 
