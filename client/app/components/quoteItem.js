@@ -1,8 +1,14 @@
 import React from 'react';
-
-export default (props) => <div>{props.quote}</div>;
+import { connect } from 'react-redux';
 
 class QuoteItem extends React.Component {
+  constructor(props) {
+    super(props);
+
+    // ANY QUOTE FUNCTIONS NEED TO BE BOUND
+  }
+
+  // ADD ANY QUOTE FUNCTIONS HERE
   render() {
     if (!this.props.quote) {
       throw new Error('Oops! No quote available. Try again after some time.');
@@ -19,3 +25,13 @@ QuoteItem.propTypes = {
   quote: React.PropTypes.element.isRequired,
   onQuoteClick: React.PropTypes.func.isRequired,
 };
+
+const mapStateToProps = (state) => (
+  {
+    user: state.user,
+  }
+);
+
+export default connect(
+  mapStateToProps
+)(QuoteItem);

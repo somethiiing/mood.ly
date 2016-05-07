@@ -37,20 +37,22 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = (state) => 
-  return {
+const mapStateToProps = (state) => (
+  {
     user: state.user,
-  };
-};
+  }
+);
 
-const mapDispatchToProps = (dispatch) =>
-  return {
+const mapDispatchToProps = (dispatch) => (
+  {
     // WILL BE DETERMINED BY APP FUNCTIONALITY
-  };
-};
+  }
+);
 
 Header.propTypes = {
   user: React.PropTypes.object,
+  onSignUpClick: React.PropTypes.func.isRequired,
+  onLoginClick: React.PropTypes.func.isRequired,
 };
 
 // EXPORT
