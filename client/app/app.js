@@ -16,21 +16,23 @@ class App extends Component {
       showLogin: false,
       showSignUp: false,
     };
+
+    this.onLoginClick = this.onLoginClick.bind(this);
+    this.onSignUpClick = this.onSignUpClick.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
   }
 
   onSignUpClick() {
-    console.log(App);
     this.setState({
       showSignUp: !this.state.showSignUp,
     });
-    this.onSignUpClick = this.onSignUpClick.bind(this);
   }
 
   onLoginClick() {
     this.setState({
       showLogin: !this.state.showLogin,
     });
-    this.onLoginClick = this.onLoginClick.bind(this);
   }
 
   handleSearchButtonClick() {
@@ -43,14 +45,12 @@ class App extends Component {
         currQuote: res[randomIndex],
       });
     });
-    this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
   }
 
   handleSearchChange(event) {
     this.setState({
       currentSearch: event.target.value,
     });
-    this.handleSearchChange = this.handleSearchChange.bind(this);
   }
 
   render() {
@@ -58,8 +58,8 @@ class App extends Component {
       <div>
         <div>
           <Header
-            onSignUpClick={this.onSignUpClick.bind(this)}
-            onLoginClick={this.onLoginClick.bind(this)}
+            onSignUpClick={this.onSignUpClick}
+            onLoginClick={this.onLoginClick}
           />
         </div>
         <div>
@@ -70,8 +70,8 @@ class App extends Component {
         </div>
         <h1>mood.ly</h1>
         <Nav
-          handleSearchChange={this.handleSearchChange.bind(this)}
-          handleSearchButtonClick={this.handleSearchButtonClick.bind(this)}
+          handleSearchChange={this.handleSearchChange}
+          handleSearchButtonClick={this.handleSearchButtonClick}
         />
         <div className="moodly-content">
           <span className="quote-title"><h2>{this.state.currQuote}</h2></span>
