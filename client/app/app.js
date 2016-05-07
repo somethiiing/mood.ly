@@ -23,17 +23,17 @@ class App extends Component {
     this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
   }
 
-  onSignUpClick() {
-    this.setState({
-      showSignUp: !this.state.showSignUp,
-    });
-  }
+  // onSignUpClick() {
+  //   this.setState({
+  //     showSignUp: !this.state.showSignUp,
+  //   });
+  // }
 
-  onLoginClick() {
-    this.setState({
-      showLogin: !this.state.showLogin,
-    });
-  }
+  // onLoginClick() {
+  //   this.setState({
+  //     showLogin: !this.state.showLogin,
+  //   });
+  // }
 
   handleSearchButtonClick() {
     const self = this;
@@ -56,12 +56,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div>
-          <Header
-            onSignUpClick={this.onSignUpClick}
-            onLoginClick={this.onLoginClick}
-          />
-        </div>
+        <Header />
         <div>
           {this.state.showLogin ? <Login /> : null}
         </div>
@@ -81,13 +76,4 @@ class App extends Component {
   }
 }
 
-// App.propTypes = {
-//   onSignUpClick: React.propTypes.func.isRequired,
-//   onLoginClick: React.propTypes.func.isRequired,
-//   handleSearchButtonClick: React.propTypes.func.isRequired,
-//   handleSearchChange: React.propTypes.func.isRequired,
-// };
-
 export default App;
-
-// <Login onLoginClick={this.onLoginClick.bind(this)} />

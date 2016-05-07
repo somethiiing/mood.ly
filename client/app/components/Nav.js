@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import React, { React, PropTypes, Component } from 'react';
 import Search from './Search';
 
 // React.createClass({
