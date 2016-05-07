@@ -35,23 +35,23 @@ class App extends Component {
   //   });
   // }
 
-  handleSearchButtonClick() {
-    const self = this;
-    const query = this.state.currentSearch;
-    wiki(query, (res) => {
-      const randomIndex = Math.floor((Math.random() * res.length) + 1);
-      self.setState({
-        currMood: query,
-        currQuote: res[randomIndex],
-      });
-    });
-  }
+  // handleSearchButtonClick() {
+  //   const self = this;
+  //   const query = this.state.currentSearch;
+  //   wiki(query, (res) => {
+  //     const randomIndex = Math.floor((Math.random() * res.length) + 1);
+  //     self.setState({
+  //       currMood: query,
+  //       currQuote: res[randomIndex],
+  //     });
+  //   });
+  // }
 
-  handleSearchChange(event) {
-    this.setState({
-      currentSearch: event.target.value,
-    });
-  }
+  // handleSearchChange(event) {
+  //   this.setState({
+  //     currentSearch: event.target.value,
+  //   });
+  // }
 
   render() {
     return (

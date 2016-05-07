@@ -38,14 +38,16 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => 
-  {
+  return {
     user: state.user,
   };
+};
 
 const mapDispatchToProps = (dispatch) =>
-  {
+  return {
     // WILL BE DETERMINED BY APP FUNCTIONALITY
   };
+};
 
 Header.propTypes = {
   user: React.PropTypes.object,
