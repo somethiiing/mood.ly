@@ -62,7 +62,7 @@ class App extends Component {
     onLoginClick: React.propTypes.func.isRequired,
     handleSearchButtonClick: React.propTypes.func.isRequired,
     handleSearchChange: React.propTypes.func.isRequired,
-  }
+  },
 
   render() {
     return (

@@ -2,9 +2,9 @@ import React, { PropTypes, Component } from 'react';
 
 React.createClass({
   propTypes: {
-    handleSearchButtonClick: React.PropTypes.func.isRequired,
     handleSearchChange: React.PropTypes.func.isRequired,
-  };
+    handleSearchButtonClick: React.PropTypes.func.isRequired,
+  },
 });
 
 export default (props) => (

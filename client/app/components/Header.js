@@ -1,11 +1,4 @@
-import React, { PropTypes, Component } from 'react';
-
-React.createClass({
-  propTypes: {
-    onSignUpClick: React.PropTypes.func.isRequired,
-    onLoginClick: React.PropTypes.func.isRequired,
-  };
-});
+import React from 'react';
 
 export default (props) => (
   <div className="header">
