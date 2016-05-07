@@ -1,16 +1,8 @@
-//insert this in app.js for Mood
-//{<span className="mood-title"><h2>Mood</h2></span>
-//<MoodTable moodList={this.state.quotes} onMoodClock={this.onMoodClick.bind(this)} />}
+import React from 'react';
 
-const Mood = (props) => {
-  return (
-    <div className="container-data">
-      {props.moodList.map((mood, i) => 
-        <MoodItem mood={mood} key={i} onMoodClick={props.onMoodClick} />
-      )}
-    </div>
-  ) 
-};
-
-//export
-window.Mood = Mood;
+export default (props) =>
+  <div className="container-data">
+    {props.moodList.map((mood, i) => 
+      <MoodItem mood={mood} key={i} onMoodClick={props.onMoodClick} />
+    )}
+  </div>;

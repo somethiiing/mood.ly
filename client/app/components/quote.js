@@ -1,12 +1,8 @@
-const Quote = (props) => {
-  return (
-    <div className="container-data">
-      {props.quoteList.map((quote, i) => 
-        <QuoteItem quote={quote} key={i} onChoiceClick={props.onChoiceClick} />
-      )}
-    </div>
-  ) 
-};
+import React from 'react';
 
-//export
-window.Quote = Quote;
+export default (props) =>
+  <div className="container-data">
+    {props.quoteList.map((quote, i) => 
+      <QuoteItem quote={quote} key={i} onQuoteClick={props.onQuoteClick} />
+    )}
+  </div>;

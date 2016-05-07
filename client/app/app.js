@@ -57,6 +57,13 @@ class App extends Component {
     this.handleSearchChange = this.handleSearchChange.bind(this);
   }
 
+  static propTypes = {
+    onSignUpClick: React.propTypes.func.isRequired,
+    onLoginClick: React.propTypes.func.isRequired,
+    handleSearchButtonClick: React.propTypes.func.isRequired,
+    handleSearchChange: React.propTypes.func.isRequired,
+  },
+
   render() {
     return (
       <div>

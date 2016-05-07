@@ -1,16 +1,21 @@
-class MoodItem extends React.Component {
-  constructor (props) {
-    super(props);
-  }
+import React from 'react';
 
+React.createClass({
+  propTypes: {
+    mood: React.PropTypes.element.isRequired,
+  };
+})
+
+export default (props) => <div>{props.mood}</div>;
+
+class MoodItem extends React.Component {
   render() {
-    return (
+    if (!this.props.mood.mood) {
+      throw new Error('Oops! There is no such mood. Try again.');
+    }
+    return
       <div>
-        <span className="mood"><h3>The Mood is: </h3>{this.props.mood.mood}</span>
+        <span className="mood">{this.props.mood.mood}</span>
       </div>
-    )
   }
 };
-
-//export
-window.MoodItem = MoodItem;
