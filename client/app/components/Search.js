@@ -43,17 +43,17 @@ class Search extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => 
-  return {
+const mapStateToProps = (state) => (
+  {
     search: state.search,
-  };
-};
+  }
+);
 
-const mapDispatchToProps = (dispatch) =>
-  return {
+const mapDispatchToProps = (dispatch) => (
+  {
     // WILL BE DETERMINED BY APP FUNCTIONALITY
-  };
-};
+  }
+);
 
 Search.propTypes = {
   handleSearchChange: React.PropTypes.func.isRequired,
@@ -62,5 +62,5 @@ Search.propTypes = {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Search);
