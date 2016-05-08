@@ -4,7 +4,7 @@ import App from '../../client/app/app';
 import renderFullPage from '../views/index';
 
 export default (req, res) => {
-  const user = {};
+  let user = {};
   const savedQuotes = [];
 
   // const store = createStore(rootReducer, {
