@@ -1,5 +1,4 @@
 import chai from 'chai';
-import { describe, it } from 'mocha';
 import wikiAPI from '../../server/API/wikiquotes.js';
 
 const expect = chai.expect;
