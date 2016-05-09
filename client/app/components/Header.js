@@ -10,8 +10,8 @@ class Header extends Component {
         <div>
           <ul className="navlist">
             <button>home</button>
-            <button onClick={this.onLoginClick}>login</button>
-            <button onClick={this.onSignUpClick}>sign up</button>
+            <button onClick={this.props.onLoginClick}>login</button>
+            <button onClick={this.props.onSignUpClick}>sign up</button>
           </ul>
         </div>
       </div>

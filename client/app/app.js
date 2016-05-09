@@ -38,6 +38,7 @@ class App extends Component {
   handleSearchButtonClick() {
     const self = this;
     const query = this.state.currentSearch;
+    console.log('The button was clicked!');
     wiki(query, (res) => {
       const randomIndex = Math.floor((Math.random() * res.length) + 1);
       self.setState({
@@ -79,11 +80,11 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  onSignUpClick: React.propTypes.func.isRequired,
-  onLoginClick: React.propTypes.func.isRequired,
-  handleSearchButtonClick: React.propTypes.func.isRequired,
-  handleSearchChange: React.propTypes.func.isRequired,
-};
+// App.propTypes = {
+//   onSignUpClick: PropTypes.func.isRequired,
+//   onLoginClick: PropTypes.func.isRequired,
+//   handleSearchButtonClick: PropTypes.func.isRequired,
+//   handleSearchChange: PropTypes.func.isRequired,
+// };
 
 export default App;

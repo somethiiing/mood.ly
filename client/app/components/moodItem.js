@@ -1,14 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { PropTypes, Component } from 'react';
 
-class MoodItem extends React.Component {
+class MoodItem extends Component {
   constructor(props) {
     super(props);
-
-    // ANY MOOD FUNCTIONS NEED TO BE BOUND HERE
   }
-
-  // ADD ANY MOOD FUNCTIONS HERE
 
   render() {
     if (!this.props.mood.mood) {
@@ -16,22 +11,14 @@ class MoodItem extends React.Component {
     }
     return (
       <div>
-        <span className="mood">{this.props.mood.mood}</span>
+        <span className="mood">{this.mood.mood}</span>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => (
-  {
-    user: state.user,
-  }
-);
-
 MoodItem.propTypes = {
-  mood: React.PropTypes.element.isRequired,
+  mood: PropTypes.element.isRequired,
 };
 
-export default connect(
-  mapStateToProps
-)(MoodItem);
+export default MoodItem;
