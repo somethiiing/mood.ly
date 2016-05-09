@@ -1,32 +1,15 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { PropTypes, Component } from 'react';
 
 class Header extends Component {
   constructor(props) {
     super(props);
-
-    this.onLoginClick = this.onLoginClick.bind(this);
-    this.onSignUpClick = this.onSignUpClick.bind(this);
   }
-
-  onSignUpClick() {
-    this.setState({
-      showSignUp: !this.state.showSignUp,
-    });
-  }
-
-  onLoginClick() {
-    this.setState({
-      showLogin: !this.state.showLogin,
-    });
-  }
-
   render() {
-    // Add handler for logout
     return (
       <div className="header">
         <div>
-          <ul className="nav-list">
+          <ul className="navlist">
+            <button>home</button>
             <button onClick={this.onLoginClick}>login</button>
             <button onClick={this.onSignUpClick}>sign up</button>
           </ul>
@@ -36,26 +19,9 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = (state) => (
-  {
-    user: state.user,
-  }
-);
-
-const mapDispatchToProps = (dispatch) => (
-  {
-    // WILL BE DETERMINED BY APP FUNCTIONALITY
-  }
-);
-
 Header.propTypes = {
-  user: React.PropTypes.object,
-  onSignUpClick: React.PropTypes.func.isRequired,
-  onLoginClick: React.PropTypes.func.isRequired,
+  onLoginClick: PropTypes.func.isRequired,
+  onSignUpClick: PropTypes.func.isRequired,
 };
 
-// EXPORT
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header);
+export default Header;
