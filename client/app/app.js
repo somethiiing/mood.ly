@@ -23,40 +23,44 @@ class App extends Component {
     this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
   }
 
-  // onSignUpClick() {
-  //   this.setState({
-  //     showSignUp: !this.state.showSignUp,
-  //   });
-  // }
+  onSignUpClick() {
+    this.setState({
+      showSignUp: !this.state.showSignUp,
+    });
+  }
 
-  // onLoginClick() {
-  //   this.setState({
-  //     showLogin: !this.state.showLogin,
-  //   });
-  // }
+  onLoginClick() {
+    this.setState({
+      showLogin: !this.state.showLogin,
+    });
+  }
 
-  // handleSearchButtonClick() {
-  //   const self = this;
-  //   const query = this.state.currentSearch;
-  //   wiki(query, (res) => {
-  //     const randomIndex = Math.floor((Math.random() * res.length) + 1);
-  //     self.setState({
-  //       currMood: query,
-  //       currQuote: res[randomIndex],
-  //     });
-  //   });
-  // }
+  handleSearchButtonClick() {
+    const self = this;
+    const query = this.state.currentSearch;
+    console.log('The button was clicked!');
+    wiki(query, (res) => {
+      const randomIndex = Math.floor((Math.random() * res.length) + 1);
+      self.setState({
+        currMood: query,
+        currQuote: res[randomIndex],
+      });
+    });
+  }
 
-  // handleSearchChange(event) {
-  //   this.setState({
-  //     currentSearch: event.target.value,
-  //   });
-  // }
+  handleSearchChange(event) {
+    this.setState({
+      currentSearch: event.target.value,
+    });
+  }
 
   render() {
     return (
       <div>
-        <Header />
+        <Header
+          onSignUpClick={this.onSignUpClick}
+          onLoginClick={this.onLoginClick}
+        />
         <div>
           {this.state.showLogin ? <Login /> : null}
         </div>
@@ -75,5 +79,12 @@ class App extends Component {
     );
   }
 }
+
+// App.propTypes = {
+//   onSignUpClick: PropTypes.func.isRequired,
+//   onLoginClick: PropTypes.func.isRequired,
+//   handleSearchButtonClick: PropTypes.func.isRequired,
+//   handleSearchChange: PropTypes.func.isRequired,
+// };
 
 export default App;

@@ -4,36 +4,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import rootReducer from './app/reducers';
-
 import App from './app/app.js';
 
 // Grab the state from a global injected into server-generated HTML
-const initialState = window.__INITIAL_STATE__;
+// const initialState = window.__INITIAL_STATE__;
 
 // Create Redux store with initial state
 // the store manages the state of our app
 // createStore accepts a single reducer or a collection of reducers
-const store = createStore(rootReducer, initialState);
-
-// var render = function() {
-//   ReactDOM.render(
-//     <div>
-//       <App/>
-//     </div>,
-//     document.getElementById('app')
-//   );
-// };
+// const store = createStore(rootReducer, initialState);
 
 const render = () => {
   ReactDOM.render(
-    <Provider store={store}>
+    <div>
       <App />
-    </Provider>,
+    </div>,
     document.getElementById('app')
   );
 };
+
+// const render = () => {
+//   ReactDOM.render(
+//     <Provider store={store}>
+//       <App />
+//     </Provider>,
+//     document.getElementById('app')
+//   );
+// };
 
 render();
