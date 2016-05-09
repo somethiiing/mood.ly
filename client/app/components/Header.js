@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ReactDOM from 'react-dom';
 
 class Header extends Component {
   constructor(props) {
@@ -23,7 +22,7 @@ class Header extends Component {
   }
 
   render() {
-    // Add handler for logout  
+    // Add handler for logout
     return (
       <div className="header">
         <div>

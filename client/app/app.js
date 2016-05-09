@@ -17,10 +17,10 @@ class App extends Component {
       showSignUp: false,
     };
 
-    this.onLoginClick = this.onLoginClick.bind(this);
-    this.onSignUpClick = this.onSignUpClick.bind(this);
-    this.handleSearchChange = this.handleSearchChange.bind(this);
-    this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
+    // this.onLoginClick = this.onLoginClick.bind(this);
+    // this.onSignUpClick = this.onSignUpClick.bind(this);
+    // this.handleSearchChange = this.handleSearchChange.bind(this);
+    // this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
   }
 
   // onSignUpClick() {

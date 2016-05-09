@@ -9,7 +9,7 @@ import rootReducer from '../../client/app/reducers/index';
 import User from '../models/userModel';
 
 export default (req, res) => {
-  const user = {};
+  let user = {};
   const savedQuotes = [];
 
   const sendInitialState = () => {
