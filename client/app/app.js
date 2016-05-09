@@ -17,46 +17,49 @@ class App extends Component {
       showSignUp: false,
     };
 
-    // this.onLoginClick = this.onLoginClick.bind(this);
-    // this.onSignUpClick = this.onSignUpClick.bind(this);
-    // this.handleSearchChange = this.handleSearchChange.bind(this);
-    // this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
+    this.onLoginClick = this.onLoginClick.bind(this);
+    this.onSignUpClick = this.onSignUpClick.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
   }
 
-  // onSignUpClick() {
-  //   this.setState({
-  //     showSignUp: !this.state.showSignUp,
-  //   });
-  // }
+  onSignUpClick() {
+    this.setState({
+      showSignUp: !this.state.showSignUp,
+    });
+  }
 
-  // onLoginClick() {
-  //   this.setState({
-  //     showLogin: !this.state.showLogin,
-  //   });
-  // }
+  onLoginClick() {
+    this.setState({
+      showLogin: !this.state.showLogin,
+    });
+  }
 
-  // handleSearchButtonClick() {
-  //   const self = this;
-  //   const query = this.state.currentSearch;
-  //   wiki(query, (res) => {
-  //     const randomIndex = Math.floor((Math.random() * res.length) + 1);
-  //     self.setState({
-  //       currMood: query,
-  //       currQuote: res[randomIndex],
-  //     });
-  //   });
-  // }
+  handleSearchButtonClick() {
+    const self = this;
+    const query = this.state.currentSearch;
+    wiki(query, (res) => {
+      const randomIndex = Math.floor((Math.random() * res.length) + 1);
+      self.setState({
+        currMood: query,
+        currQuote: res[randomIndex],
+      });
+    });
+  }
 
-  // handleSearchChange(event) {
-  //   this.setState({
-  //     currentSearch: event.target.value,
-  //   });
-  // }
+  handleSearchChange(event) {
+    this.setState({
+      currentSearch: event.target.value,
+    });
+  }
 
   render() {
     return (
       <div>
-        <Header />
+        <Header
+          onSignUpClick={this.onSignUpClick}
+          onLoginClick={this.onLoginClick}
+        />
         <div>
           {this.state.showLogin ? <Login /> : null}
         </div>
@@ -75,5 +78,12 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  onSignUpClick: React.propTypes.func.isRequired,
+  onLoginClick: React.propTypes.func.isRequired,
+  handleSearchButtonClick: React.propTypes.func.isRequired,
+  handleSearchChange: React.propTypes.func.isRequired,
+};
 
 export default App;
