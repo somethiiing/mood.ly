@@ -3,11 +3,12 @@ import User from '../models/userModel';
 export default {
   saveOne: (req, res) => {
     const user = req.body;
-    console.log('user================== ', user);
     User.findOrCreate({ where: user })
     .then(() => {
       res.redirect(201, '/');
+      // res.send({ data: user });
     });
+    console.log(user);
   },
 
   // SEND ERROR (403)
