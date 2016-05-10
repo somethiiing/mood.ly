@@ -11,15 +11,21 @@ export default () => (
       <br />
       <label htmlFor="password"></label>
       <input
-        className="form-control" id="password" type="text" placeholder="enter your password..."
+        className="form-control" id="password" type="password" placeholder="enter your password..."
       />
       <br />
       <br />
-      <button type="submit" value="submit">submit</button>
+      <a href="/">
+        <button type="submit" value="submit">submit</button>
+      </a>
     </div>
     <div className="auth-buttons">
-      <i className="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
-      <i className="fa fa-google fa-2x" aria-hidden="true"></i>
+      <a href="/auth/facebook">
+        <i className="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
+      </a>
+      <a href="/auth/google">
+        <i className="fa fa-google fa-2x" aria-hidden="true"></i>
+      </a>
     </div>
   </div>
 );

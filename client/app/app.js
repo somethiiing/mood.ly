@@ -4,7 +4,7 @@ import Search from './components/Search';
 import Header from './components/Header';
 import Login from './components/Login';
 import Signup from './components/Signup';
-import gif from './services/giphy.js';
+import gif from './services/giphy';
 
 class App extends Component {
   constructor(props) {
@@ -87,12 +87,5 @@ class App extends Component {
     );
   }
 }
-
-// App.propTypes = {
-//   onSignUpClick: PropTypes.func.isRequired,
-//   onLoginClick: PropTypes.func.isRequired,
-//   handleSearchButtonClick: PropTypes.func.isRequired,
-//   handleSearchChange: PropTypes.func.isRequired,
-// };
 
 export default App;

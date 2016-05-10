@@ -15,11 +15,11 @@ export default (app, express, passport) => {
   // =================================
   app.get('/', renderIndex);
 
-  app.get('/signup', (req, res) => {
-    res.render('signup', { message: req.flash('loginMessage') });
-  });
+  // app.get('/api/users/signup', (req, res) => {
+  //   res.render('signup', { message: req.flash('loginMessage') });
+  // });
 
-  app.post('/signup', userController.saveOne);
+  app.post('/api/users/signup', userController.saveOne);
 
   // USERS
   // =================================
@@ -37,11 +37,11 @@ export default (app, express, passport) => {
   app.post('/api/quotes', quoteController.saveUserQuote);
   app.get('/api/quotes', quoteController.getAll);
 
-  app.get('/login', (req, res) => {
-    res.render('login', { message: req.flash('loginMessage') });
-  });
+  // app.get('/api/users/login', (req, res) => {
+  //   res.render('login', { message: req.flash('loginMessage') });
+  // });
 
-  app.post('/login', passport.authenticate('local-signup', {
+  app.post('/api/users/login', passport.authenticate('local-signup', {
     successRedirect: '/profile',
     failureRedirect: '/login',
     failureFlash: true, // OPTIONAL
@@ -60,11 +60,10 @@ export default (app, express, passport) => {
   // });
 
   app.get('/logout', (req, res) => {
-    // LOG USER OUT AND DESTROY SESSION
-    req.session.destroy(err => {
-      // REDIRECT USER TO HOME PAGE
-      res.redirect('/');
-    });
+    // LOG USER OUT
+    req.logout();
+    // REDIRECT USER TO HOME PAGE
+    res.redirect('/');
   });
 
   // CHECK IF LOGGED IN
