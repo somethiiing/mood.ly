@@ -1,6 +1,7 @@
 import $ from 'jquery';
 
 const signup = (user, callback) => {
+  console.log('A user tried to sign up.');
   $.post('/api/users/signup', user, resp => {
     callback(resp);
   });
