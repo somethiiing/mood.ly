@@ -9,9 +9,11 @@ class Header extends Component {
       <div className="header">
         <div>
           <ul className="navlist">
-            <button>home</button>
-            <button onClick={this.props.onLoginClick}>login</button>
-            <button onClick={this.props.onSignUpClick}>sign up</button>
+            <a>mood.ly</a>
+            <br />
+            <a>profile</a>
+            <br />
+            <a>log out</a>
           </ul>
         </div>
       </div>
@@ -20,8 +22,11 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  onLoginClick: PropTypes.func.isRequired,
-  onSignUpClick: PropTypes.func.isRequired,
+  // onLoginClick: PropTypes.func.isRequired,
+  // onSignUpClick: PropTypes.func.isRequired,
 };
 
 export default Header;
+
+
+//onClick={this.props.onSignUpClick}
