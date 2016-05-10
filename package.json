@@ -10,7 +10,10 @@
   ],
   "main": "server.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register ./specs/server/ApiTest.js ./specs/server/userModelTest.js ./specs/server/moodModelTest.js ./specs/server/quoteModelTest.js ./specs/server/serverTest.js ./specs/server/databaseTest.js ./specs/server/moodControllerTest.js ./specs/server/quoteControllerTest.js",
+    "//": "mocha --compilers js:babel-core/register ./specs/server/ApiTest.js ./specs/server/userModelTest.js ./specs/server/moodModelTest.js ./specs/server/quoteModelTest.js ./specs/server/serverTest.js ./specs/server/databaseTest.js ./specs/server/moodControllerTest.js ./specs/server/quoteControllerTest.js",
+    "model-test": "mocha --compilers js:babel-core/register ./specs/server/userModelTest.js ./specs/server/moodModelTest.js ./specs/server/quoteModelTest.js",
+    "test": "mocha --compilers js:babel-core/register ./specs/server/serverTest.js ./specs/server/databaseTest.js",
+    "//test": "mocha --compilers js:babel-core/register ./specs/server/moodControllerTest.js ./specs/server/quoteControllerTest.js",
     "start": "nodemon ./server/server.js --exec babel-node --presets es2015 react",
     "build": "webpack --watch"
   },
