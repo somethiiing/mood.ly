@@ -1,8 +1,10 @@
-import React, { PropTypes, Component } from 'react';
+import React from 'react';
 
-class Search extends Component {
+class Search extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {};
   }
 
   render() {
@@ -23,8 +25,8 @@ class Search extends Component {
 }
 
 Search.propTypes = {
-  handleSearchChange: PropTypes.func.isRequired,
-  handleSearchButtonClick: PropTypes.func.isRequired,
+  handleSearchChange: React.PropTypes.func.isRequired,
+  handleSearchButtonClick: React.PropTypes.func.isRequired,
 };
 
 export default Search;

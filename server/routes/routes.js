@@ -6,6 +6,7 @@ import userController from '../controllers/userController';
 import moodController from '../controllers/moodController';
 import quoteController from '../controllers/quoteController';
 import wiki from '../API/wikiquotes';
+import gif from '../API/giphy';
 
 // MODULE EXPORT
 // =================================
@@ -97,6 +98,9 @@ export default (app, express, passport) => {
   // =================================
   app.get('/wikiInfo', wiki.frontEndCall);
 
+  // GIPHY ROUTES
+  // =================================
+  app.get('/giphyInfo', gif.frontEndCall);
 
   // DATABASE ROUTES
   // =================================
