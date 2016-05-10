@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import wiki from './services/wiki.js';
 import Search from './components/Search';
 import Header from './components/Header';
 import Login from './components/Login';
 import Signup from './components/Signup';
-import gif from './services/giphy';
+import services from './services/services.js';
+// import wiki from './services/wiki.js';
+// import gif from './services/giphy.js';
 
 class App extends Component {
   constructor(props) {
@@ -40,14 +41,14 @@ class App extends Component {
   handleSearchButtonClick() {
     const self = this;
     const query = this.state.currentSearch;
-    wiki(query, (res) => {
+    services.wikiCall(query, (res) => {
       const randomIndex = Math.floor((Math.random() * res.length) + 1);
       self.setState({
         currMood: query,
         currQuote: res[randomIndex],
       });
     });
-    gif(query, (res) => {
+    services.giphyCall(query, (res) => {
       const randomIndex = Math.floor((Math.random() * res.length) + 1);
       self.setState({
         currentGif: res[randomIndex],

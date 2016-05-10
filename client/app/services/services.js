@@ -1,24 +1,15 @@
-// import $ from 'jquery';
+import $ from 'jquery';
 
-// let databaseSave = {};
+const wikiCall = (keyword, callback) => {
+  $.get(`/wikiInfo?keyword=${keyword}`, data => {
+    callback(data);
+  });
+};
 
-// databaseSave.singleMoodSave = function (mood, callback) {
-//   $.get('api/moods/saved?mood=' + mood, function(data) {
-//     callback(data);
-//   });
-// };
+const giphyCall = (keyword, callback) => {
+  $.get(`/giphyInfo?keyword=${keyword}`, data => {
+    callback(data);
+  });
+};
 
-// databaseSave.quoteSave = function (quote, callback) {
-//   $.post('api/quotes/saved', quote , function(data) {
-//     callback(data);
-//   });
-// };
-
-
-
-// export default databaseSave
-
-
-
-// // http://127.0.0.1:8080/api/moods/saved
-// // http://127.0.0.1:8080/api/quotes/saved
+export default { wikiCall, giphyCall };
