@@ -150,12 +150,6 @@ function getData(body, callback) {
 const frontEndCall = (req, res) => {
   const keyword = req.query.keyword;
   wikiQuoteCall(keyword, (response) => {
-    // if(err){
-    //   console.log(err);
-    //   res.status(500).send(err);
-    // } else {
-    //   res.status(200).send(response.body);
-    // }
     res.json(response.body);
   });
 };
