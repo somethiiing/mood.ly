@@ -4,6 +4,7 @@ import Search from './components/Search';
 import Header from './components/Header';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import gif from './services/giphy.js';
 
 class App extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class App extends Component {
       currMood: '',
       currQuote: '',
       currentSearch: '',
+      currentGif: '',
       showLogin: false,
       showSignUp: false,
     };
@@ -38,12 +40,17 @@ class App extends Component {
   handleSearchButtonClick() {
     const self = this;
     const query = this.state.currentSearch;
-    console.log('The button was clicked!');
     wiki(query, (res) => {
       const randomIndex = Math.floor((Math.random() * res.length) + 1);
       self.setState({
         currMood: query,
         currQuote: res[randomIndex],
+      });
+    });
+    gif(query, (res) => {
+      const randomIndex = Math.floor((Math.random() * res.length) + 1);
+      self.setState({
+        currentGif: res[randomIndex],
       });
     });
   }
@@ -75,6 +82,7 @@ class App extends Component {
         <div className="moodly-content">
           <span className="quote-title"><h2>{this.state.currQuote}</h2></span>
         </div>
+        <img src={this.state.currentGif} alt="gif" />
       </div>
     );
   }
