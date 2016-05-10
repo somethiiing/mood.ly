@@ -16,9 +16,11 @@ class SignUp extends Component {
     this.handleInputEmail = this.handleInputEmail.bind(this);
     this.handleInputUsername = this.handleInputUsername.bind(this);
     this.handleInputPassword = this.handleInputPassword.bind(this);
+    this.handleSignUpData = this.handleSignUpData.bind(this);
   }
 
-  handleSignUpData() {
+  handleSignUpData(event) {
+    event.preventDefault();
     this.setState({
       signUpData: {
         name: this.state.name,
@@ -62,7 +64,7 @@ class SignUp extends Component {
           <form
             id="signup" className="signup-form"
             method="POST"
-            onSubmit={this.props.handleSignUp}
+            onSubmit={this.props.handleSignUpData}
           >
             <label htmlFor="name"></label>
             <input
@@ -93,7 +95,7 @@ class SignUp extends Component {
             />
             <br />
             <br />
-            <button type="submit" value="submit">submit</button>
+            <button href="#" type="submit" value="submit">submit</button>
           </form>
         </div>
       </div>
@@ -102,11 +104,11 @@ class SignUp extends Component {
 }
 
 SignUp.propTypes = {
-  handleSignUp: PropTypes.func.isRequired,
-  handleInputName: PropTypes.func.isRequired,
-  handleInputEmail: PropTypes.func.isRequired,
-  handleInputUsername: PropTypes.func.isRequired,
-  handleInputPassword: PropTypes.func.isRequired,
+  handleInputName: PropTypes.func,
+  handleInputEmail: PropTypes.func,
+  handleInputUsername: PropTypes.func,
+  handleInputPassword: PropTypes.func,
+  handleSignUpData: PropTypes.func,
 };
 
 export default SignUp;
