@@ -6,6 +6,7 @@ export default db.define('User',
   {
     name: { type: Sequelize.STRING, required: true, unique: true },
     email: Sequelize.STRING,
+    username: Sequelize.STRING,
     password: { type: Sequelize.STRING },
     facebookId: Sequelize.STRING,
     googleId: Sequelize.STRING,

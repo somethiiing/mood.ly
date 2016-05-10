@@ -58,7 +58,7 @@ export default (app, session, passport) => {
           // CREATE NEW USER
           User.create({
             username: email,
-            password: generateHash(password), //NEED TO WRITE METHOD FOR GENERATEHASH
+            password, //NEED TO WRITE METHOD FOR GENERATEHASH
           })
           .then(newUser => {
             done(null, newUser);

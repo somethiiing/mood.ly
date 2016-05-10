@@ -1,6 +1,7 @@
-import React, { PropTypes, Component } from 'react';
+import React from 'react';
+import auth from '../auth/auth.js';
 
-class SignUp extends Component {
+class SignUp extends React.Component {
   constructor(props) {
     super(props);
 
@@ -21,6 +22,12 @@ class SignUp extends Component {
 
   handleSignUpData(event) {
     event.preventDefault();
+    const user = {
+      name: this.state.name,
+      email: this.state.email,
+      username: this.state.username,
+      password: this.state.password,
+    };
     this.setState({
       signUpData: {
         name: this.state.name,
@@ -29,7 +36,10 @@ class SignUp extends Component {
         password: this.state.password,
       },
     });
-    console.log('signUpData ', this.signUpData);
+    console.log(user);
+    auth.signup(user, (res) => {
+      console.log('success!!', res);
+    });
   }
 
   handleInputName(event) {
@@ -63,39 +73,37 @@ class SignUp extends Component {
         <div className="form-group">
           <form
             id="signup" className="signup-form"
-            method="POST"
-            onSubmit={this.props.handleSignUpData}
           >
             <label htmlFor="name"></label>
             <input
               className="form-control" id="name"
-              type="text" onChange={this.props.handleInputName}
+              type="text" onChange={this.handleInputName}
               placeholder="enter your name..."
             />
             <br />
             <label htmlFor="email"></label>
             <input
               className="form-control" id="email"
-              type="text" onChange={this.props.handleInputEmail}
+              type="text" onChange={this.handleInputEmail}
               placeholder="enter your email..."
             />
             <br />
             <label htmlFor="username"></label>
             <input
               className="form-control" id="username"
-              type="text" onChange={this.props.handleInputUsername}
+              type="text" onChange={this.handleInputUsername}
               placeholder="choose a username..."
             />
             <br />
             <label htmlFor="password"></label>
             <input
               className="form-control" id="password"
-              type="password" onChange={this.props.handleInputName}
+              type="password" onChange={this.handleInputPassword}
               placeholder="create a password..."
             />
             <br />
             <br />
-            <button href="#" type="submit" value="submit">submit</button>
+            <button type="button" onClick={this.handleSignUpData}>Submit!</button>
           </form>
         </div>
       </div>
@@ -103,12 +111,12 @@ class SignUp extends Component {
   }
 }
 
-SignUp.propTypes = {
-  handleInputName: PropTypes.func,
-  handleInputEmail: PropTypes.func,
-  handleInputUsername: PropTypes.func,
-  handleInputPassword: PropTypes.func,
-  handleSignUpData: PropTypes.func,
-};
+// SignUp.propTypes = {
+//   handleInputName: React.PropTypes.func,
+//   handleInputEmail: React.PropTypes.func,
+//   handleInputUsername: React.PropTypes.func,
+//   handleInputPassword: React.PropTypes.func,
+//   handleSignUpData: React.PropTypes.func,
+// };
 
 export default SignUp;
