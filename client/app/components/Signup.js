@@ -17,11 +17,13 @@ export default () => (
       <br />
       <label htmlFor="password"></label>
       <input
-        className="form-control" id="password" type="text" placeholder="create a password..."
+        className="form-control" id="password" type="password" placeholder="create a password..."
       />
       <br />
       <br />
-      <button type="submit" value="submit">submit</button>
+      <a href="/api/users/signup">
+        <button type="submit" value="submit">submit</button>
+      </a>
     </div>
   </div>
 );
