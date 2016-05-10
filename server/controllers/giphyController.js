@@ -4,14 +4,14 @@ import User from '../models/userModel';
 export default {
   saveOne: (req, res) => {
     const giphy = req.body;
-    Giphy.findOrCreate({ where: Giphy })
+    Giphy.findOrCreate({ where: giphy })
     .then(createdGiphy => {
       res.status(201).json(createdGiphy);
     });
   },
   saveUserGiphy: (req, res) => {
     const user = req.body.user;
-    const Giphy = req.body.Giphy;
+    const giphy = req.body.giphy;
 
     User.findOne({ where: { name: user.name } })
     .then(foundUser => {
