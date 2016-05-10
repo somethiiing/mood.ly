@@ -5,6 +5,7 @@ import renderIndex from './requestHandler';
 import userController from '../controllers/userController';
 import moodController from '../controllers/moodController';
 import quoteController from '../controllers/quoteController';
+import giphyController from '../controllers/giphyController';
 import wiki from '../API/wikiquotes';
 import gif from '../API/giphy';
 
@@ -48,8 +49,7 @@ export default (app, express, passport) => {
     failureFlash: true, // OPTIONAL
   }));
 
-
-  // app.post('/signup', passport.authenticate('local-signup', {
+    // app.post('/signup', passport.authenticate('local-signup', {
   //   successRedirect: '/profile',
   //   failureRedirect: '/signup',
   //   failureFlash: true //OPTIONAL
@@ -101,6 +101,8 @@ export default (app, express, passport) => {
   // GIPHY ROUTES
   // =================================
   app.get('/giphyInfo', gif.frontEndCall);
+  app.post('/api/giphys', giphyController.saveUserGiphy);
+  app.get('/api/giphys', giphyController.getAll);
 
   // DATABASE ROUTES
   // =================================
