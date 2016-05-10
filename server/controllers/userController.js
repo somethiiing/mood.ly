@@ -3,6 +3,7 @@ import User from '../models/userModel';
 export default {
   saveOne: (req, res) => {
     const user = req.body;
+    console.log('user================== ', user);
     User.findOrCreate({ where: user })
     .then(() => {
       res.redirect(201, '/');

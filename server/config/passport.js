@@ -1,8 +1,8 @@
 // PASSPORT STRATEGIES
 // ============================================
 import LocalStrategy from 'passport-local';
-// var FacebookStrategy = require('passport-facebook').Strategy;
-// var GoogleStrategy = require('passport-google-oauth2').Strategy;
+// const FacebookStrategy = require('passport-facebook').Strategy;
+// const GoogleStrategy = require('passport-google-oauth2').Strategy;
 
 // IMPORT MODELS
 // ============================================
@@ -94,7 +94,7 @@ export default (app, session, passport) => {
   // FACEBOOK STRATEGY
   // ============================================
   // passport.use(new FacebookStrategy({
-  //   //GET INFO FROM AUTHCONFIG
+  //   // GET INFO FROM AUTHCONFIG
   //   clientID: authConfig.facebookAuth.appID,
   //   clientSecret: authConfig.facebookAuth.appSecret,
   //   callbackURL: authConfig.facebookAuth.callbackUrl,
@@ -109,7 +109,7 @@ export default (app, session, passport) => {
   //     console.log('FACEBOOK TOKEN:=============');
   //     console.log(accesstoken);
 
-  //     //FIND USER IN DATABASE BASED ON FACEBOOK ID
+  //     // FIND USER IN DATABASE BASED ON FACEBOOK ID
   //     User.findOne( { where: { 'userName' : profile._json.email.toLowerCase() } } )
   //     .then(function(user) {
   //       console.log('Found User', user);
@@ -155,7 +155,7 @@ export default (app, session, passport) => {
   //   console.log('GOOGLE TOKEN:=============');
   //   console.log(accessToken);
 
-  //   //FIND OR CREATE USER
+  //   // FIND OR CREATE USER
   //   User.findOrCreate({ 'googleId': profile.id }, function(err, user) {
   //     console.log('user:==============');
   //     console.log(user);
