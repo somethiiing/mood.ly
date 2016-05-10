@@ -11,7 +11,7 @@ class QuoteItem extends Component {
     }
     return (
       <div onChange={() => this.props.onQuoteClick}>
-        <span className="quote"><h3>{console.log(this.quote)}<br /></h3></span>
+        <span className="quote"><h3>{this.quote}<br /></h3></span>
       </div>
     );
   }
@@ -19,7 +19,7 @@ class QuoteItem extends Component {
 
 QuoteItem.propTypes = {
   quote: PropTypes.element.isRequired,
-  onQuoteClick: PropTypes.func.isRequired,
+  //onQuoteClick: PropTypes.func.isRequired,
 };
 
 export default QuoteItem;
