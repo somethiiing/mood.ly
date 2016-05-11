@@ -19,10 +19,7 @@ class Gif extends Component {
 
 Gif.propTypes = {
   gif: PropTypes.object,
-  //onMoodClick: PropTypes.func.isRequired,
 };
 
 // EXPORT
 export default Gif;
-
-//onGifClick={this.props.onGifClick}

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import LandingPage from './components/landingPage';
-import Dashboard from './components/Dashboard';
+import Header from './components/header';
+import Footer from './components/footer';
+import LandingPage from './components/landing/landingPage';
+import Dashboard from './components/dashboard/dashboard';
 
 
 class App extends Component {

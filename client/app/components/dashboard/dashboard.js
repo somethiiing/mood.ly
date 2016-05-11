@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
-import Search from './Search';
-import services from './services/services.js';
+import Search from './search';
+import services from '../../services/services.js';
 
 class Dashboard extends Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
-import Login from './Login';
-import Signup from './Signup';
+import Login from './login';
+import SignUp from './signup';
 
 class LandingPage extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class LandingPage extends Component {
     return (
       <div className="landing-content">
         <Login />
-        <Signup />
+        <SignUp />
       </div>
     );
   }
