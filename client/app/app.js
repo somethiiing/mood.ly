@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-<<<<<<< 8fae78e2ad6fc646e61ba53f5ca90216e1088203
 import Header from './components/header';
 import Footer from './components/footer';
 import LandingPage from './components/landing/landingPage';
