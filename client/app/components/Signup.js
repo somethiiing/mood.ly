@@ -1,5 +1,5 @@
 import React from 'react';
-import auth from '../auth/auth.js';
+import auth from '../services/auth.js';
 
 class SignUp extends React.Component {
   constructor(props) {
