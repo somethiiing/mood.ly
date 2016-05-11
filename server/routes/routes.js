@@ -20,24 +20,17 @@ export default (app, express, passport) => {
   //   res.render('signup', { message: req.flash('loginMessage') });
   // });
 
+  app.post('/signup', passport.authenticate('local-signup', {
+    successRedirect: '/profile',
+    failureRedirect: '/signup',
+    failureFlash: true, // OPTIONAL
+  }));
+
   app.post('/api/users/signup', userController.saveOne);
-  app.post('/api/users/login', userController.verifyLogin);
 
-  // USERS
-  // =================================
-  app.get('/api/users', userController.retrieveAll);
-  app.put('/api/users', userController.updateOne);
-  app.delete('/api/users', userController.deleteOne);
-
-  // MOODS
-  // =================================
-  app.post('/api/moods', moodController.saveUserMood);
-  app.get('/api/moods', moodController.getAll);
-
-  // QUOTES
-  // =================================
-  app.post('/api/quotes', quoteController.saveUserQuote);
-  app.get('/api/quotes', quoteController.getAll);
+  // app.get('/profile', isLoggedIn, (req, res) => {
+  //   res.render('profile', { user: req.user });
+  // });
 
   // app.get('/api/users/login', (req, res) => {
   //   res.render('login', { message: req.flash('loginMessage') });
@@ -49,16 +42,7 @@ export default (app, express, passport) => {
     failureFlash: true, // OPTIONAL
   }));
 
-    // app.post('/signup', passport.authenticate('local-signup', {
-  //   successRedirect: '/profile',
-  //   failureRedirect: '/signup',
-  //   failureFlash: true //OPTIONAL
-  // }));
-
-
-  // app.get('/profile', isLoggedIn, (req, res) => {
-  //   res.render('profile', { user: req.user });
-  // });
+  app.post('/api/users/login', userController.verifyLogin);
 
   app.get('/logout', (req, res) => {
     // LOG USER OUT
@@ -75,6 +59,22 @@ export default (app, express, passport) => {
     // REDIRECT
     return res.redirect('/');
   };
+
+  // USERS
+  // =================================
+  app.get('/api/users', userController.retrieveAll);
+  app.put('/api/users', userController.updateOne);
+  app.delete('/api/users', userController.deleteOne);
+
+  // MOODS
+  // =================================
+  app.post('/api/moods', moodController.saveUserMood);
+  app.get('/api/moods', moodController.getAll);
+
+  // QUOTES
+  // =================================
+  app.post('/api/quotes', quoteController.saveUserQuote);
+  app.get('/api/quotes', quoteController.getAll);
 
   // FACEBOOK ROUTES
   // =================================
