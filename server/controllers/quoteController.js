@@ -24,7 +24,7 @@ export default {
       });
     });
   },
-  getAll: (req, res) => {
+  getUserQuotes: (req, res) => {
     const user = req.body.user;
 
     User.findOne({
@@ -34,5 +34,12 @@ export default {
     .then(foundQuotes => {
       res.json(foundQuotes);
     });
+  },
+
+  retrieveAll: (req, res) => {
+    Quote.findAll({})
+      .then(quotes => {
+        res.json(quotes);
+      });
   },
 };
