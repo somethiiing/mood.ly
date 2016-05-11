@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import auth from '../../services/auth.js';
 
 class SignUp extends React.Component {
@@ -29,6 +29,7 @@ class SignUp extends React.Component {
     console.log(user);
     auth.signup(user, (res) => {
       console.log('success!!', res);
+      this.props.login(user);
     });
   }
 
@@ -100,5 +101,10 @@ class SignUp extends React.Component {
     );
   }
 }
+
+SignUp.propTypes = {
+  login: PropTypes.func.isRequired,
+};
+
 
 export default SignUp;

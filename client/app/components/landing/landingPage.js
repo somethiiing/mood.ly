@@ -9,8 +9,8 @@ class LandingPage extends Component {
   render() {
     return (
       <div className="landing-content">
-        <Login />
-        <SignUp />
+        <Login login={this.props.login} />
+        <SignUp login={this.props.login} />
       </div>
     );
   }
@@ -19,6 +19,7 @@ class LandingPage extends Component {
 LandingPage.propTypes = {
   // onLoginClick: PropTypes.func.isRequired,
   // onSignUpClick: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
 };
 
 export default LandingPage;

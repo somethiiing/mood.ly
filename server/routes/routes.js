@@ -36,11 +36,11 @@ export default (app, express, passport) => {
   //   res.render('login', { message: req.flash('loginMessage') });
   // });
 
-  app.post('/api/users/login', passport.authenticate('local-signup', {
-    successRedirect: '/profile',
-    failureRedirect: '/login',
-    failureFlash: true, // OPTIONAL
-  }));
+  // app.post('/api/users/login', passport.authenticate('local-signup', {
+  //   successRedirect: '/profile',
+  //   failureRedirect: '/login',
+  //   failureFlash: true, // OPTIONAL
+  // }));
 
   app.post('/api/users/login', userController.verifyLogin);
 
@@ -74,7 +74,9 @@ export default (app, express, passport) => {
   // QUOTES
   // =================================
   app.post('/api/quotes', quoteController.saveUserQuote);
-  app.get('/api/quotes', quoteController.getAll);
+  app.get('/api/user/quotes', quoteController.getUserQuotes);
+  app.get('/api/quotes', quoteController.retrieveAll);
+  app.get('/api/quotes/:id', quoteController.getOne);
 
   // FACEBOOK ROUTES
   // =================================
@@ -102,7 +104,9 @@ export default (app, express, passport) => {
   // =================================
   app.get('/giphyInfo', gif.frontEndCall);
   app.post('/api/giphys', giphyController.saveUserGiphy);
-  app.get('/api/giphys', giphyController.getAll);
+  app.get('/api/user/giphys', giphyController.getUserGiphys);
+  app.get('/api/giphys', giphyController.retrieveAll);
+  app.get('/api/giphys/:id', giphyController.getOne);
 
   // DATABASE ROUTES
   // =================================

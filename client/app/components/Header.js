@@ -13,7 +13,7 @@ class Header extends Component {
             <br />
             <a>profile</a>
             <br />
-            <a href="/logout">log out</a>
+            <a href="#">log out</a>
           </ul>
         </div>
       </div>

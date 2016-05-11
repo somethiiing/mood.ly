@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import auth from '../../services/auth';
 
 class Login extends React.Component {
@@ -22,6 +22,7 @@ class Login extends React.Component {
     };
     auth.login(user, (res) => {
       console.log('success! ', res);
+      this.props.login(user);
     });
   }
 
@@ -60,7 +61,7 @@ class Login extends React.Component {
             />
             <br />
             <br />
-            <button type="submit" value="submit" onClick={this.handleLoginData}>Submit</button>
+            <button type="button" onClick={this.handleLoginData}>Submit</button>
           </form>
         </div>
         <div className="auth-buttons">
@@ -75,5 +76,9 @@ class Login extends React.Component {
     );
   }
 }
+
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+};
 
 export default Login;
