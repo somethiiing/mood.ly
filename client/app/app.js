@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import Header from './components/header';
+import Header from './components/Header';
 import Footer from './components/footer';
 import LandingPage from './components/landing/landingPage';
 import Dashboard from './components/dashboard/dashboard';
 import Search from './components/Search';
-import Header from './components/Header';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import services from './services/services';
