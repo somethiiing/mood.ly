@@ -104,7 +104,9 @@ export default (app, express, passport) => {
   // =================================
   app.get('/giphyInfo', gif.frontEndCall);
   app.post('/api/giphys', giphyController.saveUserGiphy);
-  app.get('/api/giphys', giphyController.getAll);
+  app.get('/api/user/giphys', giphyController.getUserGiphys);
+  app.get('/api/giphys', giphyController.retrieveAll);
+  app.get('/api/giphys/:id', giphyController.getOne);
 
   // DATABASE ROUTES
   // =================================
