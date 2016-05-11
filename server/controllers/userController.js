@@ -25,19 +25,22 @@ export default {
 
   // VERIFY LOGIN
   verifyLogin: (req, res) => {
-    const userName = req.body.name;
+    console.log('req.body ', req.body);
+    const userName = req.body.username;
     const password = req.body.password;
 
-    User.findOne({ where: { userName: name } })
+    User.findOne({ where: { userName } })
     .then((user) => {
       if (!user) {
-        this.sendError(res, 'Invalid username or password');
+        self.sendError(res, 'Invalid username or password');
       } else {
-        user.comparePasswords(password, (compareResult) => {
+        user.comparePasswords(user, password, (compareResult) => {
           if (compareResult) {
+            console.log('SUCCESS!');
             res.status(200);
           } else {
-            this.sendError(res, 'Invalid username or password');
+            console.log('FAIL');
+            res.send({ response: 'Incorrect Password. Try again.' });
           }
         });
       }

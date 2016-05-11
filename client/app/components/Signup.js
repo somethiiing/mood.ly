@@ -10,7 +10,6 @@ class SignUp extends React.Component {
       email: null,
       username: null,
       password: null,
-      signUpData: {},
     };
 
     this.handleInputName = this.handleInputName.bind(this);
@@ -20,22 +19,13 @@ class SignUp extends React.Component {
     this.handleSignUpData = this.handleSignUpData.bind(this);
   }
 
-  handleSignUpData(event) {
-    event.preventDefault();
+  handleSignUpData() {
     const user = {
       name: this.state.name,
       email: this.state.email,
       username: this.state.username,
       password: this.state.password,
     };
-    this.setState({
-      signUpData: {
-        name: this.state.name,
-        email: this.state.email,
-        username: this.state.username,
-        password: this.state.password,
-      },
-    });
     console.log(user);
     auth.signup(user, (res) => {
       console.log('success!!', res);
@@ -110,13 +100,5 @@ class SignUp extends React.Component {
     );
   }
 }
-
-// SignUp.propTypes = {
-//   handleInputName: React.PropTypes.func,
-//   handleInputEmail: React.PropTypes.func,
-//   handleInputUsername: React.PropTypes.func,
-//   handleInputPassword: React.PropTypes.func,
-//   handleSignUpData: React.PropTypes.func,
-// };
 
 export default SignUp;

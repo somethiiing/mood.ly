@@ -21,8 +21,8 @@ export default db.define('User',
       },
     },
     instanceMethods: {
-      comparePasswords: (inputPassword, callback) => {
-        callback(bcrypt.compareSync(inputPassword, this.password));
+      comparePasswords: (user, inputPassword, callback) => {
+        callback(bcrypt.compareSync(inputPassword, user.dataValues.password));
       },
     },
   },
