@@ -83,7 +83,7 @@ class App extends Component {
         <div className="moodly-content">
           <span className="quote-title"><h2>{this.state.currQuote}</h2></span>
         </div>
-        <img src={this.state.currentGif} alt="gif" />
+        <img src={this.state.currentGif} alt="" />
       </div>
     );
   }
