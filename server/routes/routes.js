@@ -36,11 +36,11 @@ export default (app, express, passport) => {
   //   res.render('login', { message: req.flash('loginMessage') });
   // });
 
-  app.post('/api/users/login', passport.authenticate('local-signup', {
-    successRedirect: '/profile',
-    failureRedirect: '/login',
-    failureFlash: true, // OPTIONAL
-  }));
+  // app.post('/api/users/login', passport.authenticate('local-signup', {
+  //   successRedirect: '/profile',
+  //   failureRedirect: '/login',
+  //   failureFlash: true, // OPTIONAL
+  // }));
 
   app.post('/api/users/login', userController.verifyLogin);
 

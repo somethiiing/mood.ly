@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes } from 'react';
 import auth from '../../services/auth.js';
 
 class SignUp extends React.Component {
