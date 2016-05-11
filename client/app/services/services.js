@@ -12,4 +12,10 @@ const giphyCall = (keyword, callback) => {
   });
 };
 
-export default { wikiCall, giphyCall };
+const musicCall = (keyword, callback) => {
+  $.get(`/musicInfo?keyword=${keyword}`, data => {
+    callback(data);
+  });
+};
+
+export default { wikiCall, giphyCall, musicCall };
