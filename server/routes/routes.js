@@ -8,6 +8,7 @@ import quoteController from '../controllers/quoteController';
 import giphyController from '../controllers/giphyController';
 import wiki from '../API/wikiquotes';
 import gif from '../API/giphy';
+import music from '../API/music';
 
 // MODULE EXPORT
 // =================================
@@ -107,6 +108,10 @@ export default (app, express, passport) => {
   app.get('/api/user/giphys', giphyController.getUserGiphys);
   app.get('/api/giphys', giphyController.retrieveAll);
   app.get('/api/giphys/:id', giphyController.getOne);
+
+  // MUSIC ROUTES
+  // =================================
+  app.get('/musicInfo', music.frontEndCall);
 
   // DATABASE ROUTES
   // =================================

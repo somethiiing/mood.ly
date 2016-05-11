@@ -68,7 +68,7 @@ const musicoveryCall = (keyword, callback) => {
     })
     .on('end', () => {
       body = JSON.parse(Buffer.concat(body).toString());
-      // console.log('body ', body.root.tracks.track[0].artist[0].name);
+      console.log('body ', body.root.tracks.track[0].artist[0].name);
       getYouTubeLink(body.root.tracks.track, callback);
     });
   });
@@ -77,7 +77,7 @@ const musicoveryCall = (keyword, callback) => {
 const frontEndCall = (req, res) => {
   const keyword = req.query.keyword;
   musicoveryCall(keyword, (resp) => {
-    res.json(resp.body);
+    res.json(resp);
   });
 };
 
@@ -86,4 +86,4 @@ const frontEndCall = (req, res) => {
 //   console.log(data);
 // });
 
-export default frontEndCall;
+export default { frontEndCall };
