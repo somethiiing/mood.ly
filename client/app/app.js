@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
+<<<<<<< 8fae78e2ad6fc646e61ba53f5ca90216e1088203
 import Header from './components/header';
 import Footer from './components/footer';
 import LandingPage from './components/landing/landingPage';
 import Dashboard from './components/dashboard/dashboard';
-
+import Search from './components/Search';
+import Header from './components/Header';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import services from './services/services';
+// import wiki from './services/wiki.js';
+// import gif from './services/giphy.js';
 
 class App extends Component {
   constructor(props) {

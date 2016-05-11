@@ -1,6 +1,10 @@
 language: node_js
 node_js:
   - "node"
-before_install:
+before_script:
+  -npm install -g webpack
+  -npm install -g mocha
+  -npm install -g chai
+  -npm run build-server
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
