@@ -20,6 +20,7 @@ export default (app, express, passport) => {
   // });
 
   app.post('/api/users/signup', userController.saveOne);
+  app.post('/api/users/login', userController.verifyLogin);
 
   // USERS
   // =================================
