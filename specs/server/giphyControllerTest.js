@@ -33,7 +33,7 @@ describe('Giphy Controller', () => {
   // });
 
   it('should add users giphy to the database', done => {
-    let options = {
+    let options1 = {
       method: 'POST',
       uri: 'http://127.0.0.1:8080/api/giphys',
       json: {
@@ -42,22 +42,31 @@ describe('Giphy Controller', () => {
       },
     };
 
+    let options2 = {
+      method: 'GET',
+      uri: 'http://127.0.0.1:8080/api/giphys',
+      json: {
+        user: user,
+      },
+    };
+
     User.findOrCreate({ where: user })
     .then(() => {
-      request(options, (err, res, body) => {
+      request(options1, (err, res, body) => {
         expect(res.statusCode).to.equal(201);
-        let options = {
-          method: 'GET',
-          uri: 'http://127.0.0.1:8080/api/giphys',
-          json: {
-            user: user,
-          },
-        };
 
-        request(options, (err, res, body) => {
+
+        request(options2, (err, res, body) => {
           expect(res.statusCode).to.equal(200);
           done();
         });
+      });
+    })
+    .catch(err => {
+      // User data already exists
+      request(options2, (err, res, body) => {
+        expect(res.statusCode).to.equal(200);
+        done();
       });
     });
   });

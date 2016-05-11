@@ -10,19 +10,19 @@ describe('Quote Controller', () => {
   var user = {
     name: 'Watson',
     email: 'watson@watson.com',
-    password: '1234'
+    password: '1234',
   };
   var quote1 = {
     text: 'The best way to find yourself is to lose yourself in the service of others.',
-    mood: 'Happy'
+    mood: 'Happy',
   };
   var quote2 = {
     text: 'Do the best you can, and don\'t take life too serious.',
-    mood: 'Sentimental'
+    mood: 'Sentimental',
   };
   var quote3 = {
     text: 'It\'s a funny thing about life; if you refuse to accept anything but the best, you very often get it.',
-    mood: 'Romantic'
+    mood: 'Romantic',
   };
 
   // beforeEach(done => {
@@ -33,31 +33,40 @@ describe('Quote Controller', () => {
   // });
 
   it('should add users quote to the database', done => {
-    let options = {
+    let options1 = {
       method: 'POST',
       uri: 'http://127.0.0.1:8080/api/quotes',
       json: {
         user: user,
-        quote: quote1
-      }
-    }
+        quote: quote1,
+      },
+    };
 
-    User.findOrCreate({where: user})
+    let options2 = {
+      method: 'GET',
+      uri: 'http://127.0.0.1:8080/api/quotes',
+      json: {
+        user: user,
+      },
+    };
+
+    User.findOrCreate({ where: user })
     .then(() => {
-      request(options, (err, res, body) => {
+      request(options1, (err, res, body) => {
         expect(res.statusCode).to.equal(201);
-        let options = {
-          method: 'GET',
-          uri: 'http://127.0.0.1:8080/api/quotes',
-          json: {
-            user: user
-          }
-        }
 
-        request(options, (err, res, body) => {
+
+        request(options2, (err, res, body) => {
           expect(res.statusCode).to.equal(200);
           done();
         });
+      });
+    })
+    .catch(err => {
+      // User data already exists
+      request(options2, (err, res, body) => {
+        expect(res.statusCode).to.equal(200);
+        done();
       });
     });
   });
