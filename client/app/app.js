@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
-import Header from './components/Header';
+import Header from './components/header';
 import Footer from './components/footer';
 import LandingPage from './components/landing/landingPage';
 import Dashboard from './components/dashboard/dashboard';
-import Search from './components/Search';
-import Login from './components/Login';
-import Signup from './components/Signup';
-import services from './services/services';
-// import wiki from './services/wiki.js';
-// import gif from './services/giphy.js';
 
 class App extends Component {
   constructor(props) {
