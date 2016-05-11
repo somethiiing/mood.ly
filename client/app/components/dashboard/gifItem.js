@@ -6,19 +6,16 @@ class GifItem extends Component {
   }
 
   render() {
-    if (!this.gif) {
-      throw new Error('Oops! No gif available. Try again after some time.');
-    }
     return (
       <div>
-        <span className="gif">{this.gif}</span>
+        <img className="gif" src={this.props.gif} alt='' />
       </div>
     );
   }
 }
 
-GifItem.propTypes = {
-  gif: PropTypes.element.isRequired,
-};
+// GifItem.propTypes = {
+//   gif: PropTypes.element.isRequired,
+// };
 
 export default GifItem;

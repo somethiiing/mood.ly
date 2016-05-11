@@ -1,6 +1,8 @@
 import React, { PropTypes, Component } from 'react';
 import Search from './search';
 import services from '../../services/services.js';
+import QuoteItem from './quoteItem';
+import GifItem from './gifItem';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -48,14 +50,23 @@ class Dashboard extends Component {
           handleSearchChange={this.handleSearchChange}
           handleSearchButtonClick={this.handleSearchButtonClick}
         />
-        <div className="moodly-content">
-          <span className="quote-title"><h2>{this.state.currQuote}</h2></span>
-        </div>
-        <img src={this.state.currentGif} alt="" />
+        <QuoteItem quote={this.state.currQuote} />
+        <GifItem gif={this.state.currentGif} />
       </div>
     );
   }
 }
+
+// Dashboard.propTypes = {
+//   quote: PropTypes.element.isRequired,
+//   gif: PropTypes.element.isRequired,
+// };
+
+/* <div className="moodly-content">
+  <span className="quote-title"><h2>{this.state.currQuote}</h2></span>
+</div>
+
+<img src={this.state.currentGif} alt="" /> */
 
 // Dashboard.propTypes = {
 //   handleSearchChange: PropTypes.func.isRequired,
