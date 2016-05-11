@@ -9,8 +9,8 @@ class Liked extends Component {
   render() {
     return (
       <div className="container-data">
-        {this.likedList.map((liked, i) => (
-          <LikedItem liked={liked} key={i} onLikedClick={this.props.onLikedClick} />
+        {this.likedList.map((item, i) => (
+          <LikedItem item={item} key={i} />
         ))}
       </div>
     );

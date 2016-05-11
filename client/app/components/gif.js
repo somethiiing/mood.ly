@@ -10,7 +10,7 @@ class Gif extends Component {
     return (
       <div className="container-data">
         {this.gifList.map((gif, i) => (
-          <GifItem gif={gif} key={i} onGifClick={this.props.onGifClick} />
+          <GifItem gif={gif} key={i} />
         ))}
       </div>
     );
@@ -24,3 +24,5 @@ Gif.propTypes = {
 
 // EXPORT
 export default Gif;
+
+//onGifClick={this.props.onGifClick}

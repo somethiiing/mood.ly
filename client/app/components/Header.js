@@ -13,7 +13,7 @@ class Header extends Component {
             <br />
             <a>profile</a>
             <br />
-            <a>log out</a>
+            <a href="/logout">log out</a>
           </ul>
         </div>
       </div>
@@ -27,6 +27,3 @@ Header.propTypes = {
 };
 
 export default Header;
-
-
-//onClick={this.props.onSignUpClick}
