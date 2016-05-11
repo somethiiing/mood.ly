@@ -76,6 +76,7 @@ export default (app, express, passport) => {
   app.post('/api/quotes', quoteController.saveUserQuote);
   app.get('/api/user/quotes', quoteController.getUserQuotes);
   app.get('/api/quotes', quoteController.retrieveAll);
+  app.get('/api/quotes/:id', quoteController.getOne);
 
   // FACEBOOK ROUTES
   // =================================
