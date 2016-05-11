@@ -32,15 +32,15 @@ export default {
     User.findOne({ where: { userName } })
     .then((user) => {
       if (!user) {
-        self.sendError(res, 'Invalid username or password');
+        res.send({ status: 'USERFAIL', body: 'Invalid username or password' });
       } else {
         user.comparePasswords(user, password, (compareResult) => {
           if (compareResult) {
             console.log('SUCCESS!');
-            res.status(200);
+            res.send({ status: 'SUCCESS', body: 'Successfully logged in!' });
           } else {
             console.log('FAIL');
-            res.send({ response: 'Incorrect Password. Try again.' });
+            res.send({ status: 'PWFAIL', body: 'Incorrect Password. Try again.' });
           }
         });
       }
