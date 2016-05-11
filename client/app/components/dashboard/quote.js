@@ -10,7 +10,7 @@ class Quote extends Component {
     return (
       <div className="container-data">
         {this.quoteList.map((quote, i) => (
-          <QuoteItem quote={quote} key={i} onQuoteClick={this.onQuoteClick} />
+          <QuoteItem quote={quote} key={i} />
         ))}
       </div>
     );
@@ -19,7 +19,6 @@ class Quote extends Component {
 
 Quote.propTypes = {
   quote: PropTypes.object,
-  onQuoteClick: PropTypes.func.isRequired,
 };
 
 // EXPORT

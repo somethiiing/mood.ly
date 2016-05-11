@@ -1,18 +1,9 @@
 // this is the main entry point for the app
-// it renders the App component after wrapping it in the Provider from Redux
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './app/app.js';
-
-// Grab the state from a global injected into server-generated HTML
-// const initialState = window.__INITIAL_STATE__;
-
-// Create Redux store with initial state
-// the store manages the state of our app
-// createStore accepts a single reducer or a collection of reducers
-// const store = createStore(rootReducer, initialState);
 
 const render = () => {
   ReactDOM.render(
@@ -22,14 +13,5 @@ const render = () => {
     document.getElementById('app')
   );
 };
-
-// const render = () => {
-//   ReactDOM.render(
-//     <Provider store={store}>
-//       <App />
-//     </Provider>,
-//     document.getElementById('app')
-//   );
-// };
 
 render();
