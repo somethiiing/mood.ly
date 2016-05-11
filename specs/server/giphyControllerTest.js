@@ -1,27 +1,27 @@
 import chai from 'chai';
 import request from 'request';
-import Quote from '../../server/models/quoteModel';
+import Giphy from '../../server/models/giphyModel';
 import User from '../../server/models/userModel';
-import quoteController from '../../server/controllers/quoteController';
+import giphyController from '../../server/controllers/giphyController';
 const expect = chai.expect;
 
-describe('Quote Controller', () => {
+describe('Giphy Controller', () => {
 
   var user = {
-    name: 'Watson',
-    email: 'watson@watson.com',
-    password: '1234',
+    name: 'Wilson',
+    email: 'wilson@wilson.com',
+    password: 'asdf',
   };
-  var quote1 = {
-    text: 'The best way to find yourself is to lose yourself in the service of others.',
+  var giphy1 = {
+    url: 'http://media0.giphy.com/media/xThuWp2hJABbmc20Ew/200.gif',
     mood: 'Happy',
   };
-  var quote2 = {
-    text: 'Do the best you can, and don\'t take life too serious.',
+  var giphy2 = {
+    url: 'http://media1.giphy.com/media/xT5LMNrx71j8dZvJra/200.gif',
     mood: 'Sentimental',
   };
-  var quote3 = {
-    text: 'It\'s a funny thing about life; if you refuse to accept anything but the best, you very often get it.',
+  var giphy3 = {
+    url: 'http://media2.giphy.com/media/l4Ki7hFz3nr9PN1C0/200.gif',
     mood: 'Romantic',
   };
 
@@ -32,19 +32,19 @@ describe('Quote Controller', () => {
   //   });
   // });
 
-  it('should add users quote to the database', done => {
+  it('should add users giphy to the database', done => {
     let options1 = {
       method: 'POST',
-      uri: 'http://127.0.0.1:8080/api/quotes',
+      uri: 'http://127.0.0.1:8080/api/giphys',
       json: {
         user: user,
-        quote: quote1,
+        giphy: giphy1,
       },
     };
 
     let options2 = {
       method: 'GET',
-      uri: 'http://127.0.0.1:8080/api/quotes',
+      uri: 'http://127.0.0.1:8080/api/giphys',
       json: {
         user: user,
       },
@@ -71,23 +71,23 @@ describe('Quote Controller', () => {
     });
   });
 
-  it('users should be able to have many quotes', done => {
+  it('users should be able to have many giphys', done => {
     let options2 = {
       method: 'POST',
-      uri: 'http://127.0.0.1:8080/api/quotes',
+      uri: 'http://127.0.0.1:8080/api/giphys',
       json: {
         user: user,
-        quote: quote2
-      }
-    }
+        giphy: giphy2,
+      },
+    };
     let options3 = {
       method: 'POST',
-      uri: 'http://127.0.0.1:8080/api/quotes',
+      uri: 'http://127.0.0.1:8080/api/giphys',
       json: {
         user: user,
-        quote: quote3
-      }
-    }
+        giphy: giphy3,
+      },
+    };
     request(options2, (err, res, body) => {
       expect(res.statusCode).to.equal(201);
       request(options3, (err, res, body) => {
@@ -97,19 +97,18 @@ describe('Quote Controller', () => {
     });
   });
 
-  it('should get all user quotes', done => {
+  it('should get all user giphys', done => {
     let options = {
       method: 'GET',
-      uri: 'http://127.0.0.1:8080/api/quotes',
+      uri: 'http://127.0.0.1:8080/api/giphys',
       json: {
-        user: user
-      }
-    }
+        user: user,
+      },
+    };
     request(options, (err, res, body) => {
       expect(res.statusCode).to.equal(200);
       expect(body.length).to.equal(3);
       done();
     });
   });
-
 });

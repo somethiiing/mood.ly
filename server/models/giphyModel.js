@@ -1,10 +1,9 @@
 import Sequelize from 'sequelize';
 import db from '../db/db';
 
-export default db.define('Quote',
+export default db.define('Giphy',
   {
-    text: Sequelize.STRING,
-    author: Sequelize.STRING,
+    url: Sequelize.STRING,
     mood: Sequelize.STRING,
   },
   {
