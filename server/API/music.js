@@ -67,7 +67,7 @@ const musicoveryCall = (keyword, callback) => {
     })
     .on('end', () => {
       body = JSON.parse(Buffer.concat(body).toString());
-      console.log('body ', body.root.tracks.track[0].artist[0].name);
+      // console.log('body ', body.root.tracks.track[0].artist[0].name);
       getYouTubeLink(body.root.tracks.track, callback);
     });
   });
