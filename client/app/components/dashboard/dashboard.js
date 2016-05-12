@@ -57,7 +57,7 @@ class Dashboard extends Component {
           handleSearchChange={this.handleSearchChange}
           handleSearchButtonClick={this.handleSearchButtonClick}
         />
-        <QuoteItem quote={this.state.currQuote} />
+        <QuoteItem quote={this.state.currQuote} user={this.props.user} />
         <GifItem gif={this.state.currentGif} />
         <Music videoId={this.state.currVideoID} />
       </div>
@@ -65,10 +65,11 @@ class Dashboard extends Component {
   }
 }
 
-// Dashboard.propTypes = {
-//   quote: PropTypes.element.isRequired,
-//   gif: PropTypes.element.isRequired,
-// };
+Dashboard.propTypes = {
+  user: PropTypes.element,
+  // quote: PropTypes.element.isRequired,
+  // gif: PropTypes.element.isRequired,
+};
 
 /* <div className="moodly-content">
   <span className="quote-title"><h2>{this.state.currQuote}</h2></span>

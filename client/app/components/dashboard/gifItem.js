@@ -15,7 +15,7 @@ class GifItem extends Component {
 }
 
 // GifItem.propTypes = {
-//   gif: PropTypes.element.isRequired,
+//   gif: PropTypes.element,
 // };
 
 export default GifItem;
