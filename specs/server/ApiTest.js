@@ -59,20 +59,17 @@ describe('Music API', () => {
     });
   });
 
-  it('should return a string when the function is called', (done) => {
+  it('should return a concatenated string when the function is called', (done) => {
     const songObj = {
       title: 'California Love',
       artist: 'Tupac Shakur',
     };
-    musicAPI.songConverter(songObj, (resp) => {
-      if (resp) {
-        expect(typeof resp).to.equal('string');
-        done();
-      }
-    });
+    const resp = musicAPI.songConverter(songObj);
+    expect(typeof resp).to.equal('string');
+    done();
   });
 
-  it('should return a YouTube URL when invoked', (done) => {
+  xit('should return a YouTube URL when invoked', (done) => {
     const testData = [
       {
         // ADD SOME SAMPLE DATA
