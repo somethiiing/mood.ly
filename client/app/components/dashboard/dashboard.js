@@ -59,7 +59,7 @@ class Dashboard extends Component {
         />
         <QuoteItem quote={this.state.currQuote} user={this.props.user} />
         <GifItem gif={this.state.currentGif} user={this.props.user} />
-        <Music videoId={this.state.currVideoID} />
+        <Music videoId={this.state.currVideoID} user={this.props.user} />
       </div>
     );
   }
