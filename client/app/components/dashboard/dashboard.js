@@ -3,6 +3,7 @@ import Search from './search';
 import services from '../../services/services.js';
 import QuoteItem from './quoteItem';
 import GifItem from './gifItem';
+import Music from './music';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class Dashboard extends Component {
       currMood: '',
       currentGif: '',
       currentSearch: '',
+      currVideoID: '',
     };
 
     this.handleSearchChange = this.handleSearchChange.bind(this);
@@ -35,6 +37,11 @@ class Dashboard extends Component {
         currentGif: res[randomIndex],
       });
     });
+    services.musicCall(query, (res) => {
+      self.setState({
+        currVideoID: res,
+      });
+    });
   }
 
   handleSearchChange(event) {
@@ -52,6 +59,7 @@ class Dashboard extends Component {
         />
         <QuoteItem quote={this.state.currQuote} />
         <GifItem gif={this.state.currentGif} />
+        <Music videoId={this.state.currVideoID} />
       </div>
     );
   }
