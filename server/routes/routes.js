@@ -6,6 +6,7 @@ import userController from '../controllers/userController';
 import moodController from '../controllers/moodController';
 import quoteController from '../controllers/quoteController';
 import giphyController from '../controllers/giphyController';
+import musicVideoController from '../controllers/musicVideoController';
 import wiki from '../API/wikiquotes';
 import gif from '../API/giphy';
 import music from '../API/music';
@@ -112,6 +113,10 @@ export default (app, express, passport) => {
   // MUSIC ROUTES
   // =================================
   app.get('/musicInfo', music.frontEndCall);
+  app.post('/api/music', musicVideoController.saveUserMusicVideo);
+  app.get('/api/user/music', musicVideoController.getUserMusicVideos);
+  app.get('/api/music', musicVideoController.retrieveAll);
+  app.get('/api/music/:id', musicVideoController.getOne);
 
   // DATABASE ROUTES
   // =================================
