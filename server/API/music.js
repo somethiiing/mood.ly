@@ -28,7 +28,6 @@ const songConverter = (songObj) => {
   for (let i = 1; i < song.length; i++) {
     result += `+ ${song[i]}`;
   }
-
   return result;
 };
 
@@ -86,4 +85,6 @@ const frontEndCall = (req, res) => {
 //   console.log(data);
 // });
 
-export default { frontEndCall };
+export default { parseData, songConverter,
+  searchYouTube, getYouTubeLink,
+  musicoveryCall, frontEndCall };
