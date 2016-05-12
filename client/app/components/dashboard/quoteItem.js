@@ -6,20 +6,17 @@ class QuoteItem extends Component {
   }
 
   render() {
-    if (!this.quote) {
-      throw new Error('Oops! No quote available. Try again after some time.');
-    }
     return (
       <div onChange={() => this.props.onQuoteClick}>
-        <span className="quote"><h3>{this.quote}<br /></h3></span>
+        <span className="quote"><h3>{this.props.quote}<br /></h3></span>
       </div>
     );
   }
 }
 
-QuoteItem.propTypes = {
-  quote: PropTypes.element.isRequired,
-  //onQuoteClick: PropTypes.func.isRequired,
-};
+// QuoteItem.propTypes = {
+//   quote: PropTypes.element.isRequired,
+//   //onQuoteClick: PropTypes.func.isRequired,
+// };
 
 export default QuoteItem;
