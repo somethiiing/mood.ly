@@ -7,7 +7,7 @@ const expect = chai.expect;
 
 describe('Mood Controller', () => {
   var user = {
-    name: 'Toby',
+    username: 'Toby',
     email: 'toby@toby.com',
     password: '1234'
   };

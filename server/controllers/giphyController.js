@@ -21,7 +21,7 @@ export default {
     const user = req.body.user;
     const giphy = req.body.giphy;
 
-    User.findOne({ where: { name: user.name } })
+    User.findOne({ where: { username: user.username } })
     .then(foundUser => {
       Giphy.findOrCreate({ where: giphy })
       .spread(foundOrCreatedGiphy => {
@@ -35,7 +35,7 @@ export default {
   getUserGiphys: (req, res) => {
     const user = req.body.user;
     User.findOne({
-      where: { name: user.name },
+      where: { username: user.username },
     })
     .then(foundUser => foundUser.getGiphys())
     .then(foundGiphys => {

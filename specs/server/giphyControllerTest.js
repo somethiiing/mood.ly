@@ -8,7 +8,7 @@ const expect = chai.expect;
 describe('Giphy Controller', () => {
 
   var user = {
-    name: 'Wilson',
+    username: 'Wilson',
     email: 'wilson@wilson.com',
     password: 'asdf',
   };

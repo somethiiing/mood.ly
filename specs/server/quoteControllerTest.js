@@ -8,7 +8,7 @@ const expect = chai.expect;
 describe('Quote Controller', () => {
 
   var user = {
-    name: 'Watson',
+    username: 'Watson',
     email: 'watson@watson.com',
     password: '1234',
   };
