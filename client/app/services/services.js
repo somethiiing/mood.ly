@@ -1,21 +1,9 @@
 import $ from 'jquery';
 
-const wikiCall = (keyword, callback) => {
-  $.get(`/wikiInfo?keyword=${keyword}`, data => {
+const apiCall = (endPoint, keyword, callback) => {
+  $.get(`/${endPoint}?keyword=${keyword}`, data => {
     callback(data);
   });
 };
 
-const giphyCall = (keyword, callback) => {
-  $.get(`/giphyInfo?keyword=${keyword}`, data => {
-    callback(data);
-  });
-};
-
-const musicCall = (keyword, callback) => {
-  $.get(`/musicInfo?keyword=${keyword}`, data => {
-    callback(data);
-  });
-};
-
-export default { wikiCall, giphyCall, musicCall };
+export default apiCall;
