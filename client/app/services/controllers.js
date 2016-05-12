@@ -20,4 +20,23 @@ const likeQuote = (quote, user, callback) => {
   });
 };
 
-export default { likeQuote };
+const likeGiphy = (giphy, user, callback) => {
+  const giphyData = {
+    user,
+    giphy: { url: giphy },
+  };
+
+  // TODO: refactor to using req.query instead of req.body?
+  $.ajax({
+    url: '/api/giphys',
+    type: 'POST',
+    data: JSON.stringify(giphyData),
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    success: () => {
+      console.log('SUCCESS: ', giphyData);
+    },
+  });
+};
+
+export default { likeQuote, likeGiphy };

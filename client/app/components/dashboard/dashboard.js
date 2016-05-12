@@ -58,7 +58,7 @@ class Dashboard extends Component {
           handleSearchButtonClick={this.handleSearchButtonClick}
         />
         <QuoteItem quote={this.state.currQuote} user={this.props.user} />
-        <GifItem gif={this.state.currentGif} />
+        <GifItem gif={this.state.currentGif} user={this.props.user} />
         <Music videoId={this.state.currVideoID} />
       </div>
     );
