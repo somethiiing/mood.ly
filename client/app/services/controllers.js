@@ -4,12 +4,20 @@ import $ from 'jquery';
 const likeQuote = (quote, user, callback) => {
   const quoteData = {
     user,
-    quote,
+    quote: { text: quote },
   };
-  console.log(quoteData);
-  // $.post('/api/quotes', quoteData, data => {
-  //   callback(data);
-  // });
+
+  // TODO: refactor to using req.query instead of req.body?
+  $.ajax({
+    url: '/api/quotes',
+    type: 'POST',
+    data: JSON.stringify(quoteData),
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    success: () => {
+      console.log('SUCCESS: ', quoteData);
+    },
+  });
 };
 
 export default { likeQuote };

@@ -9,7 +9,6 @@ class QuoteItem extends Component {
   }
 
   handleLikeButton() {
-    // console.log('I like this: ', this.props.quote);
     controller.likeQuote(this.props.quote, this.props.user);
   }
 
