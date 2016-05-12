@@ -4,7 +4,6 @@ import Footer from './components/footer';
 import LandingPage from './components/landing/landingPage';
 import Dashboard from './components/dashboard/dashboard';
 
-
 class App extends Component {
   constructor(props) {
     super(props);
