@@ -18,6 +18,7 @@ class App extends Component {
   }
 
   login(user) {
+    console.log(user);
     this.setState({
       loggedIn: true,
       user,
@@ -35,7 +36,8 @@ class App extends Component {
       pageLayout = <div>
         <Dashboard 
           handleSearchChange={this.handleSearchChange}
-          handleSearchButtonClick={this.handleSearchButtonClick} 
+          handleSearchButtonClick={this.handleSearchButtonClick}
+          user={this.state.user}
         />
       </div>
     }

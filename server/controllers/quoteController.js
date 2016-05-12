@@ -19,7 +19,7 @@ export default {
   saveUserQuote: (req, res) => {
     const user = req.body.user;
     const quote = req.body.quote;
-    User.findOne({ where: { name: user.name } })
+    User.findOne({ where: { username: user.username } })
     .then(foundUser => {
       Quote.findOrCreate({ where: quote })
       .spread(foundOrCreatedQuote => {
@@ -33,7 +33,7 @@ export default {
   getUserQuotes: (req, res) => {
     const user = req.body.user;
     User.findOne({
-      where: { name: user.name },
+      where: { username: user.username },
     })
     .then(foundUser => foundUser.getQuotes())
     .then(foundQuotes => {
