@@ -11,12 +11,12 @@ class Search extends Component {
   render() {
     return (
       <MuiThemeProvider>
-        <div className="form-group">
+        <div className="form-group search-bar">
           <TextField
             onChange={this.props.handleSearchChange}
             className="form-control"
-            hintText="how are you feeling?"
             floatingLabelText="how are you feeling?"
+            floatingLabelFixed={Boolean(true)}
           />
           <br />
           <RaisedButton
