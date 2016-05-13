@@ -13,51 +13,52 @@ import music from '../API/music';
 
 // MODULE EXPORT
 // =================================
-export default (app, express, passport) => {
+// export default (app, express, passport) => {
+export default (app) => {
   // LOCAL ROUTES
   // =================================
   app.get('/', renderIndex);
 
-  app.post('/api/users/signup', passport.authenticate('local-signup', {
-    successRedirect: '/',
-    failureRedirect: '/signup',
-  }));
+  // app.post('/api/users/signup', passport.authenticate('local-signup', {
+  //   successRedirect: '/',
+  //   failureRedirect: '/signup',
+  // }));
 
-  // app.post('/api/users/signup', userController.saveOne);
+  app.post('/signup', userController.saveOne);
 
-  app.post('/api/users/login', passport.authenticate('local-login', {
-    successRedirect: '/',
-    failureRedirect: '/login',
-  }));
+  // app.post('/api/users/login', passport.authenticate('local-login', {
+  //   successRedirect: '/',
+  //   failureRedirect: '/login',
+  // }));
 
-  // app.post('/api/users/login', userController.verifyLogin);
+  app.post('/login', userController.verifyLogin);
 
-  app.get('/logout', (req, res) => {
-    // LOG USER OUT
-    req.session.destroy((err) => {
-      if (err) {
-        throw new Error('Error logging out!', err);
-      } else {
-        // REDIRECT USER TO HOME PAGE
-        // res.redirect('/');
-        console.log('user logged out');
-        res.send({ status: 'LOGGEDOUT', body: 'Successfully logged out.' });
-      }
-    });
-  });
+  // app.get('/logout', (req, res) => {
+  //   // LOG USER OUT
+  //   req.session.destroy((err) => {
+  //     if (err) {
+  //       throw new Error('Error logging out!', err);
+  //     } else {
+  //       // REDIRECT USER TO HOME PAGE
+  //       // res.redirect('/');
+  //       console.log('user logged out');
+  //       res.send({ status: 'LOGGEDOUT', body: 'Successfully logged out.' });
+  //     }
+  //   });
+  // });
 
-  // CHECK IF LOGGED IN
-  const isLoggedIn = (req, res, next) => {
-    if (req.isAuthenticated()) {
-      return next();
-    }
-    // REDIRECT
-    return res.redirect('/');
-  };
+  // // CHECK IF LOGGED IN
+  // const isLoggedIn = (req, res, next) => {
+  //   if (req.isAuthenticated()) {
+  //     return next();
+  //   }
+  //   // REDIRECT
+  //   return res.redirect('/');
+  // };
 
-  app.get('/', isLoggedIn, (req, res) => {
-    res.render('/', { user: req.user });
-  });
+  // app.get('/', isLoggedIn, (req, res) => {
+  //   res.render('/', { user: req.user });
+  // });
 
   // USERS
   // =================================
@@ -76,24 +77,6 @@ export default (app, express, passport) => {
   app.get('/api/user/quotes', quoteController.getUserQuotes);
   app.get('/api/quotes', quoteController.retrieveAll);
   app.get('/api/quotes/:id', quoteController.getOne);
-
-  // FACEBOOK ROUTES
-  // =================================
-  app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
-
-  app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-    successRedirect: '/profile',
-    failureRedirect: '/',
-  }));
-
-  // GOOGLE ROUTES
-  // =================================
-  app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
-
-  app.get('/auth/google/callback', passport.authenticate('google', {
-    successRedirect: '/profile',
-    failureRedirect: '/',
-  }));
 
   // WIKI ROUTES
   // =================================
@@ -114,6 +97,24 @@ export default (app, express, passport) => {
   app.get('/api/user/music', musicVideoController.getUserMusicVideos);
   app.get('/api/music', musicVideoController.retrieveAll);
   app.get('/api/music/:id', musicVideoController.getOne);
+
+  // // FACEBOOK ROUTES
+  // // =================================
+  // app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
+
+  // app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+  //   successRedirect: '/profile',
+  //   failureRedirect: '/',
+  // }));
+
+  // // GOOGLE ROUTES
+  // // =================================
+  // app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+  // app.get('/auth/google/callback', passport.authenticate('google', {
+  //   successRedirect: '/profile',
+  //   failureRedirect: '/',
+  // }));
 
   // DATABASE ROUTES
   // =================================

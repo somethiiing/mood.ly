@@ -7,7 +7,6 @@ import IconButton from 'material-ui/IconButton';
 import Menu from 'material-ui/svg-icons/navigation/menu';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import SocialPersonOutline from 'material-ui/svg-icons/social/person-outline';
-import auth from '../services/auth';
 
 // const muiTheme = getMuiTheme({
 //   palette: {
@@ -27,9 +26,7 @@ class Header extends React.Component {
   }
 
   handleLogoutButtonClick() {
-    auth.logout(() => {
-      this.props.logout();
-    });
+    this.props.logout();
   }
 
   handleChangeSingle(event, value) {
@@ -69,7 +66,8 @@ class Header extends React.Component {
               <MenuItem value="1" primaryText="my profile" leftIcon={<SocialPersonOutline />} />
               <MenuItem
                 value="2"
-                primaryText="logout" onClick={this.handleLogoutButtonClick} leftIcon={<NavigationClose />}
+                primaryText="logout" onClick={this.handleLogoutButtonClick}
+                leftIcon={<NavigationClose />}
               />
             </IconMenu>
           }
