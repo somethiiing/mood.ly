@@ -1,4 +1,7 @@
 import React, { PropTypes, Component } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class Search extends Component {
   constructor(props) {
@@ -7,17 +10,22 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="search-bar form-inline">
+      <MuiThemeProvider>
         <div className="form-group">
-          <input
+          <TextField
             onChange={this.props.handleSearchChange}
-            className="form-control" type="text" placeholder="how are you feeling?"
+            className="form-control"
+            hintText="how are you feeling?"
+            floatingLabelText="how are you feeling?"
           />
-          <button onClick={this.props.handleSearchButtonClick} value="Submit!">
-            <i className="fa fa-search" aria-hidden="true"></i>
-          </button>
+          <br />
+          <RaisedButton
+            onClick={this.props.handleSearchButtonClick}
+            label="submit"
+            primary={Boolean(true)}
+          />
         </div>
-      </div>
+      </MuiThemeProvider>
     );
   }
 }
