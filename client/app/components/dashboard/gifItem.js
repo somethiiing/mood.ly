@@ -18,7 +18,7 @@ class GifItem extends Component {
     return (
       <MuiThemeProvider>
         <div>
-          <img className="gif" src={this.props.gif} alt="" />
+          <img src={this.props.gif} alt="" />
           <RaisedButton
             label="like"
             onClick={this.handleLikeButton}
