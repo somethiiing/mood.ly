@@ -15,7 +15,7 @@ const likeQuote = (quote, user, callback) => {
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     success: () => {
-      console.log('SUCCESS: ', quoteData);
+      callback({ status: 'SUCCESS' });
     },
   });
 };
@@ -34,7 +34,7 @@ const likeGiphy = (giphy, user, callback) => {
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     success: () => {
-      console.log('SUCCESS: ', giphyData);
+      callback({ status: 'SUCCESS' });
     },
   });
 };
@@ -45,7 +45,6 @@ const likeMusic = (videoId, user, callback) => {
     musicVideo: { videoId },
   };
 
-  // TODO: refactor to using req.query instead of req.body?
   $.ajax({
     url: '/api/music',
     type: 'POST',
@@ -53,14 +52,13 @@ const likeMusic = (videoId, user, callback) => {
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     success: () => {
-      console.log('SUCCESS: ', musicData);
+      callback({ status: 'SUCCESS' });
     },
   });
 };
 
-const getAllUserLikes = (endpoint, username, callback) => {
-  $.get(`api/user/${endpoint}?keyword=${username}`, data => {
-    console.log(data);
+const getAllUserLikes = (username, callback) => {
+  $.get(`api/user/giphys?keyword=${username}`, data => {
     callback(data);
   });
 };
