@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 // import Profile from './components/profile/Profile';
@@ -13,8 +14,7 @@ class App extends Component {
     // set default state
     this.state = {
       loggedIn: false,
-      page: 'dashboard',
-      // page: 'profile', // testing profile page
+      page: 'landing',
       user: null,
       failMessageDisplay: false,
     };
@@ -23,11 +23,13 @@ class App extends Component {
     this.loginFail = this.loginFail.bind(this);
     this.signupFail = this.signupFail.bind(this);
     this.loginSuccess = this.loginSuccess.bind(this);
+    this.profile = this.profile.bind(this);
   }
 
   loginFail() {
     if (this.state.failMessageDisplay === false) {
       this.setState({
+        page: 'landing',
         failMessageDisplay: 'LOGINFAIL',
       });
     }
@@ -35,6 +37,7 @@ class App extends Component {
 
   loginSuccess(user) {
     this.setState({
+      page: 'dashboard',
       loggedIn: true,
       user,
     });
@@ -42,14 +45,24 @@ class App extends Component {
 
   signupFail() {
     this.setState({
+      page: 'landing',
       failMessageDisplay: 'SIGNUPFAIL',
     });
   }
 
   logout() {
     this.setState({
+      page: 'landing',
       loggedIn: false,
     });
+  }
+  profile() {
+    console.log('GO TO PROFILE PAGE');
+    this.setState({
+      page: 'profile',
+    });
+    console.log('PAGE: ', this.state.page);
+    // ReactDOM.render(<App />);
   }
 
   render() {
@@ -63,7 +76,7 @@ class App extends Component {
 
     let pageLayout;
 
-    if (this.state.loggedIn === false) {
+    if (this.state.page === 'landing' && this.state.loggedIn === false) {
       pageLayout = (
         <div>
           {FailedLoginMessage}
@@ -95,6 +108,7 @@ class App extends Component {
       <div>
         <Header
           logout={this.logout}
+          profile={this.profile}
         />
         {pageLayout}
         <Footer />

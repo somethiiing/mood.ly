@@ -10,6 +10,7 @@ class Profile extends React.Component {
   render() {
     return (
       <div className="profile-content">
+        <h1>PROFILE</h1>
         <Liked user={this.props.user} />
       </div>
     );

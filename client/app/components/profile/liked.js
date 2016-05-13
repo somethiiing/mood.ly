@@ -27,7 +27,7 @@ class Liked extends React.Component {
   render() {
     return (
       <div className="container-data">
-      {this.getAllUserGiphys()}
+        <h1>My Data</h1>
       </div>
     );
   }
