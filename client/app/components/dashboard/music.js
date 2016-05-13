@@ -35,7 +35,7 @@ class Music extends Component {
             </IconButton>
           </CardHeader>
           <CardMedia>
-            <iframe src={'https://youtube.com/embed/${this.props.videoId}'} height="250px" width="250px" />
+            <iframe src={`https://youtube.com/embed/${this.props.videoId}`} height="250px" width="250px" />
           </CardMedia>
         </Card>
       </MuiThemeProvider>
