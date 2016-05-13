@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import auth from '../../services/auth';
 
 class Login extends React.Component {
@@ -21,8 +21,11 @@ class Login extends React.Component {
       password: this.state.password,
     };
     auth.login(user, (res) => {
-      console.log('success! ', res);
-      this.props.login(user);
+      if (res.status === 'SUCCESS') {
+        console.log('status', res.status);
+        return this.props.loginSuccess(user);
+      }
+      return this.props.loginFail();
     });
   }
 
@@ -78,7 +81,8 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-  login: PropTypes.func.isRequired,
+  loginSuccess: React.PropTypes.func,
+  loginFail: React.PropTypes.func,
 };
 
 export default Login;
