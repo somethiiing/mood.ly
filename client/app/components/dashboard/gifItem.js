@@ -1,4 +1,6 @@
 import React, { PropTypes, Component } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
 import controller from '../../services/controllers';
 
 class GifItem extends Component {
@@ -14,10 +16,16 @@ class GifItem extends Component {
 
   render() {
     return (
-      <div>
-        <img className="gif" src={this.props.gif} alt='' />
-        <button type="button" onClick={this.handleLikeButton}>Like!</button>
-      </div>
+      <MuiThemeProvider>
+        <div>
+          <img className="gif" src={this.props.gif} alt="" />
+          <RaisedButton
+            label="like"
+            onClick={this.handleLikeButton}
+            primary={Boolean(true)}
+          />
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
