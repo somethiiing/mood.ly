@@ -12,7 +12,7 @@ class App extends Component {
     // set default state
     this.state = {
       loggedIn: false,
-      page: 'dashboard',
+      page: 'profile',
       // page: 'profile', // testing profile page
       user: null,
     };

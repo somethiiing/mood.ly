@@ -33,9 +33,9 @@ export default {
     });
   },
   getUserGiphys: (req, res) => {
-    const user = req.body.user;
+    const username = req.query.username;
     User.findOne({
-      where: { username: user.username },
+      where: { username },
     })
     .then(foundUser => foundUser.getGiphys())
     .then(foundGiphys => {
