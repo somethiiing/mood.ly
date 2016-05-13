@@ -48,9 +48,17 @@ class Profile extends React.Component {
   render() {
     return (
       <div className="profile-content">
-        <h1>PROFILE</h1>
+        <h1>Hi, {this.props.user.name}!</h1>
+        {this.state.quoteList.map(quote =>
+          <div id="quote">
+            <h3>{quote.text}</h3>
+          </div>
+          )}
         {this.state.gifList.map(gif =>
           <img src={gif.url} alt="" />
+          )}
+        {this.state.musicList.map(music =>
+          <iframe src={`https://youtube.com/embed/${music.videoId}`} height="480px" width="640px" />
           )}
       </div>
     );

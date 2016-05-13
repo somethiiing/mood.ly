@@ -33,9 +33,9 @@ export default {
     });
   },
   getUserMusicVideos: (req, res) => {
-    const user = req.body.user;
+    const username = req.query.keyword;
     User.findOne({
-      where: { username: user.username },
+      where: { username },
     })
     .then(foundUser => foundUser.getMusicVideos())
     .then(foundMusicVideos => {
