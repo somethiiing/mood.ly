@@ -39,8 +39,9 @@ export default (app, express, passport) => {
         throw new Error('Error logging out!', err);
       } else {
         // REDIRECT USER TO HOME PAGE
-        res.redirect('/');
+        // res.redirect('/');
         console.log('user logged out');
+        res.send({ status: 'LOGGEDOUT', body: 'Successfully logged out.' });
       }
     });
   });

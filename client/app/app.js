@@ -23,6 +23,8 @@ class App extends Component {
     this.loginFail = this.loginFail.bind(this);
     this.signupFail = this.signupFail.bind(this);
     this.loginSuccess = this.loginSuccess.bind(this);
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   loginFail() {
@@ -97,7 +99,7 @@ class App extends Component {
     }
     return (
       <div>
-        <Header />
+        <Header logout={this.logout} />
         {pageLayout}
         <Footer />
       </div>
