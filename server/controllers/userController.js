@@ -5,10 +5,12 @@ export default {
     const user = req.body;
     User.findOrCreate({ where: user })
     .then(() => {
-      res.redirect(201, '/');
-      // res.send({ data: user });
+      // res.redirect(201, '/');
+      res.send({ status: 'SUCCESS', body: 'User successfully created' });
+    })
+    .catch(err => {
+      res.send({ status: 'USEREXISTS', body: 'User already exists', err });
     });
-    console.log(user);
   },
 
   // SEND ERROR (403)
@@ -25,7 +27,6 @@ export default {
 
   // VERIFY LOGIN
   verifyLogin: (req, res) => {
-    console.log('req.body ', req.body);
     const userName = req.body.username;
     const password = req.body.password;
 
@@ -36,10 +37,8 @@ export default {
       } else {
         user.comparePasswords(user, password, (compareResult) => {
           if (compareResult) {
-            console.log('SUCCESS!');
             res.send({ status: 'SUCCESS', body: 'Successfully logged in!' });
           } else {
-            console.log('FAIL');
             res.send({ status: 'PWFAIL', body: 'Incorrect Password. Try again.' });
           }
         });

@@ -41,7 +41,7 @@ describe('Quotes API', () => {
     const keyword = 'asdfafdsklj';
     wikiAPI.wikiQuoteCall(keyword, (data) => {
       if (data) {
-        expect(data).to.equal('Page not found, please try again.');
+        expect(typeof data.body[0]).to.equal("string");
         done();
       }
     });
