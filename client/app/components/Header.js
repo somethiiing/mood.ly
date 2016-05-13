@@ -84,7 +84,7 @@ class Header extends React.Component {
             </IconMenu>
           }
           titleStyle={{
-            'text-align': 'left',
+            textAlign: 'left',
           }}
         />
       </MuiThemeProvider>

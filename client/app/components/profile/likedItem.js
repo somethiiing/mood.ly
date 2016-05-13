@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class LikedItem extends Component {
   constructor(props) {
@@ -10,9 +11,11 @@ class LikedItem extends Component {
       throw new Error('Oops! No liked items available. Try again after some time.');
     }
     return (
-      <div>
-        <span className="liked">{this.likedItem}</span>
-      </div>
+      <MuiThemeProvider>
+        <div>
+          <span className="liked">{this.likedItem}</span>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }

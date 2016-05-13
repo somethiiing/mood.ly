@@ -15,6 +15,9 @@ class Dashboard extends Component {
       currentGif: '',
       currentSearch: '',
       currVideoID: '',
+      showQuoteItem: false,
+      showGifItem: false,
+      showMusicItem: false,
     };
 
     this.handleSearchChange = this.handleSearchChange.bind(this);
@@ -29,18 +32,23 @@ class Dashboard extends Component {
       self.setState({
         currMood: query,
         currQuote: res[randomIndex],
+        showQuoteItem: true,
       });
     });
     services.apiCall('giphyInfo', query, (res) => {
       const randomIndex = Math.floor((Math.random() * res.length) + 1);
       self.setState({
         currentGif: res[randomIndex],
+        showGifItem: true,
       });
     });
     services.apiCall('musicInfo', query, (res) => {
-      self.setState({
-        currVideoID: res,
-      });
+      if (res.status === 'SUCCESS') {
+        self.setState({
+          currVideoID: res.videoID,
+          showMusicItem: true,
+        });
+      }
     });
   }
 
@@ -57,9 +65,12 @@ class Dashboard extends Component {
           handleSearchChange={this.handleSearchChange}
           handleSearchButtonClick={this.handleSearchButtonClick}
         />
-        <QuoteItem quote={this.state.currQuote} user={this.props.user} />
-        <GifItem gif={this.state.currentGif} user={this.props.user} />
-        <Music videoId={this.state.currVideoID} user={this.props.user} />
+        {this.state.showQuoteItem ?
+          <QuoteItem quote={this.state.currQuote} user={this.props.user} /> : null}
+        {this.state.showGifItem ?
+          <GifItem gif={this.state.currentGif} user={this.props.user} /> : null}
+        {this.state.showMusicItem ?
+          <Music videoId={this.state.currVideoID} user={this.props.user} /> : null}
       </div>
     );
   }

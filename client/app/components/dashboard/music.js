@@ -1,11 +1,16 @@
 import React, { PropTypes, Component } from 'react';
 import controller from '../../services/controllers';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { Card, CardHeader, CardMedia } from 'material-ui/Card';
+import IconButton from 'material-ui/IconButton';
+import Favorite from 'material-ui/svg-icons/action/favorite';
+import Headset from 'material-ui/svg-icons/hardware/headset';
 
 class Music extends Component {
   constructor(props) {
     super(props);
 
-    this.handleLikeButton = this.handleLikeButton.bind(this);    
+    this.handleLikeButton = this.handleLikeButton.bind(this);
   }
 
   handleLikeButton() {
@@ -14,10 +19,26 @@ class Music extends Component {
 
   render() {
     return (
-      <div>
-        <iframe className="ytVideo" src={`https://youtube.com/embed/${this.props.videoId}?autoplay=1`} allowFullScreen></iframe>
-        <button type="button" onClick={this.handleLikeButton}>Like!</button>
-      </div>
+      <MuiThemeProvider>
+        <Card
+          style={{
+            height: 300,
+            width: 300,
+          }}
+        >
+          <CardHeader>
+            <IconButton><Headset /></IconButton>
+            <IconButton
+              onClick={this.handleLikeButton}
+            >
+              <Favorite />
+            </IconButton>
+          </CardHeader>
+          <CardMedia>
+            <iframe src={'https://youtube.com/embed/${this.props.videoId}'} height="250px" width="250px" />
+          </CardMedia>
+        </Card>
+      </MuiThemeProvider>
     );
   }
 }
