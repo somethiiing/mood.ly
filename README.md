@@ -115,8 +115,4 @@ Database in mySQL, using sequelize.
 ### API
 
 
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
-
 ## Deployment

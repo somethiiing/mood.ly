@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import Header from './components/Header';
-import Footer from './components/footer';
-// import Profile from './components/profile/Profile';
+import Footer from './components/Footer';
+import Profile from './components/profile/Profile';
 import LandingPage from './components/landing/landingPage';
 import Dashboard from './components/dashboard/dashboard';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import Profile from './components/profile/Profile';
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     // set default state
@@ -58,7 +56,6 @@ class App extends Component {
     });
   }
   profile() {
-    console.log('GO TO PROFILE PAGE');
     this.setState({
       page: 'profile',
     });

@@ -54,8 +54,6 @@ export default {
       userId = req.currentUser.id;
     }
 
-    const isMe = (userId.toString() === req.currentUser.id.toString());
-
     if (!userId) {
       res.status(500).send('userId undefined');
       return;
