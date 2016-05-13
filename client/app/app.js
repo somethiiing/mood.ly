@@ -4,6 +4,7 @@ import Footer from './components/footer';
 import LandingPage from './components/landing/landingPage';
 import Dashboard from './components/dashboard/dashboard';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import Profile from './components/profile/Profile';
 
 class App extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class App extends Component {
     this.state = {
       loggedIn: false,
       page: 'dashboard',
+      // page: 'profile', // testing profile page
       user: null,
     };
 
@@ -44,7 +46,7 @@ class App extends Component {
     }
     if (this.state.page === 'profile' && this.state.loggedIn === true) {
       pageLayout = <div>
-        <Profile />
+        <Profile user={this.state.user} />
       </div>
     }
     return (

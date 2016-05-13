@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
-import Mood from './components/mood';
-import Liked from './components/liked';
+// import Mood from './components/mood';
+import Liked from './liked';
+// import LikedItem from './likedItem';
 
 class Profile extends Component {
   constructor(props) {
@@ -10,13 +11,14 @@ class Profile extends Component {
     return (
       <div className="profile-content">
         <Mood />
-        <Liked />
+        <Liked user={this.props.user} />
       </div>
     );
   }
 }
 
 Profile.propTypes = {
+  user: PropTypes.element,
   // handleSearchChange: PropTypes.func.isRequired,
   // handleSearchButtonClick: PropTypes.func.isRequired,
 };

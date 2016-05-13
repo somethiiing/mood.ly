@@ -39,4 +39,27 @@ const likeGiphy = (giphy, user, callback) => {
   });
 };
 
-export default { likeQuote, likeGiphy };
+const likeMusic = (videoId, user, callback) => {
+  const musicData = {
+    user,
+    musicVideo: { videoId },
+  };
+
+  // TODO: refactor to using req.query instead of req.body?
+  $.ajax({
+    url: '/api/music',
+    type: 'POST',
+    data: JSON.stringify(musicData),
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    success: () => {
+      console.log('SUCCESS: ', musicData);
+    },
+  });
+};
+
+export default {
+  likeQuote,
+  likeGiphy,
+  likeMusic,
+};
