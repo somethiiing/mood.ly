@@ -1,5 +1,5 @@
 import React from 'react';
-import auth from '../../services/auth.js';
+import services from '../../services/services';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -26,11 +26,11 @@ class SignUp extends React.Component {
       username: this.state.username,
       password: this.state.password,
     };
-    auth.signup(user, (res) => {
+    services.auth('/signup', user, (res) => {
       if (res.status === 'SUCCESS') {
         return this.props.loginSuccess(user);
       }
-      return console.log('FAILED');
+      return this.props.signupFail();
     });
   }
 

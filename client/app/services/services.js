@@ -6,4 +6,10 @@ const apiCall = (endPoint, keyword, callback) => {
   });
 };
 
-export default apiCall;
+const auth = (route, user, callback) => {
+  $.post(route, user, resp => {
+    callback(resp);
+  });
+};
+
+export default { apiCall, auth };
