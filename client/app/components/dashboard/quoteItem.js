@@ -1,7 +1,10 @@
 import React, { PropTypes, Component } from 'react';
 import controller from '../../services/controllers';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
+import { Card, CardHeader, CardText } from 'material-ui/Card';
+import IconButton from 'material-ui/IconButton';
+import Favorite from 'material-ui/svg-icons/action/favorite';
+import EditorInsertComment from 'material-ui/svg-icons/editor/insert-comment';
 
 class QuoteItem extends Component {
   constructor(props) {
@@ -17,14 +20,24 @@ class QuoteItem extends Component {
   render() {
     return (
       <MuiThemeProvider>
-        <div onChange={() => this.props.onQuoteClick}>
-          <span className="quote"><h3>{this.props.quote}<br /></h3></span>
-          <RaisedButton
-            label="like"
-            onClick={this.handleLikeButton}
-            primary={Boolean(true)}
-          />
-        </div>
+        <Card
+          style={{
+            height: 300,
+            width: 300,
+          }}
+        >
+          <CardHeader>
+            <IconButton><EditorInsertComment /></IconButton>
+            <IconButton
+              onClick={this.handleLikeButton}
+            >
+              <Favorite />
+            </IconButton>
+          </CardHeader>
+          <CardText>
+            {this.props.quote}
+          </CardText>
+        </Card>
       </MuiThemeProvider>
     );
   }

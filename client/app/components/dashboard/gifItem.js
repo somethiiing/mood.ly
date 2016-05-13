@@ -1,6 +1,5 @@
 import React, { PropTypes, Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
 import { Card, CardHeader, CardMedia } from 'material-ui/Card';
 import controller from '../../services/controllers';
 import ImageCamera from 'material-ui/svg-icons/image/camera-alt';
