@@ -33,7 +33,8 @@ export default {
     });
   },
   getUserGiphys: (req, res) => {
-    const username = req.query.username;
+    // const username = req.query.username;
+    const username = req.query.keyword;
     User.findOne({
       where: { username },
     })
