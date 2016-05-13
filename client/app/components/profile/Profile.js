@@ -9,21 +9,39 @@ class Profile extends React.Component {
     super(props);
 
     this.state = {
+      quoteList: [],
       gifList: [],
+      musicList: [],
     };
   }
 
   componentWillMount() {
-    this.getAllUserGiphys();
+    this.getAllUserLikes();
   }
 
-  getAllUserGiphys() {
+  getAllUserLikes() {
     const self = this;
     const username = this.props.user.username;
 
-    UserController.getAllUserGiphys(username, (res) => {
+    // QUOTES
+    // =============================================
+    UserController.getAllUserLikes('quotes', username, (res) => {
+      console.log(res);
+      self.setState({ quoteList: res });
+    });
+
+    // GIPHY
+    // =============================================
+    UserController.getAllUserLikes('giphys', username, (res) => {
       console.log(res);
       self.setState({ gifList: res });
+    });
+
+    // MUSIC
+    // =============================================
+    UserController.getAllUserLikes('music', username, (res) => {
+      console.log(res);
+      self.setState({ musicList: res });
     });
   }
 
