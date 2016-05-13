@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class MoodItem extends Component {
   constructor(props) {
@@ -10,9 +11,11 @@ class MoodItem extends Component {
       throw new Error('Oops! There is no such mood. Try again.');
     }
     return (
-      <div>
-        <span className="mood">{this.mood.mood}</span>
-      </div>
+      <MuiThemeProvider>
+        <div>
+          <span className="mood">{this.mood.mood}</span>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
