@@ -22,8 +22,13 @@ class Header extends React.Component {
       valueSingle: null,
     };
 
+    this.handleMoodlyClick = this.handleMoodlyClick.bind(this);
     this.handleLogoutButtonClick = this.handleLogoutButtonClick.bind(this);
     this.handleProfileButtonClick = this.handleProfileButtonClick.bind(this);
+  }
+
+  handleMoodlyClick() {
+    this.props.dashboard();
   }
 
   handleLogoutButtonClick() {
@@ -31,7 +36,6 @@ class Header extends React.Component {
   }
 
   handleProfileButtonClick() {
-    console.log('CLICK!');
     this.props.profile();
   }
 
@@ -58,6 +62,7 @@ class Header extends React.Component {
       <MuiThemeProvider>
         <AppBar
           title="mood.ly"
+          onClick={this.handleMoodlyClick}
           showMenuIconButton={false}
           iconElementRight={
             <IconMenu
@@ -95,6 +100,7 @@ class Header extends React.Component {
 Header.propTypes = {
   logout: React.PropTypes.func,
   profile: React.PropTypes.func,
+  dashboard: React.PropTypes.func,
 };
 
 export default Header;

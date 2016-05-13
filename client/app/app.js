@@ -20,10 +20,11 @@ class App extends Component {
     };
 
     this.logout = this.logout.bind(this);
+    this.profile = this.profile.bind(this);
+    this.dashboard = this.dashboard.bind(this);
     this.loginFail = this.loginFail.bind(this);
     this.signupFail = this.signupFail.bind(this);
     this.loginSuccess = this.loginSuccess.bind(this);
-    this.profile = this.profile.bind(this);
   }
 
   loginFail() {
@@ -61,8 +62,12 @@ class App extends Component {
     this.setState({
       page: 'profile',
     });
-    console.log('PAGE: ', this.state.page);
-    // ReactDOM.render(<App />);
+  }
+
+  dashboard() {
+    this.setState({
+      page: 'dashboard',
+    });
   }
 
   render() {
@@ -107,6 +112,7 @@ class App extends Component {
     return (
       <div>
         <Header
+          dashboard={this.dashboard}
           logout={this.logout}
           profile={this.profile}
         />
