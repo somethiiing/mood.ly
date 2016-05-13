@@ -1,5 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import controller from '../../services/controllers';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class QuoteItem extends Component {
   constructor(props) {
@@ -14,10 +16,16 @@ class QuoteItem extends Component {
 
   render() {
     return (
-      <div onChange={() => this.props.onQuoteClick}>
-        <span className="quote"><h3>{this.props.quote}<br /></h3></span>
-        <button type="button" onClick={this.handleLikeButton}>Like!</button>
-      </div>
+      <MuiThemeProvider>
+        <div onChange={() => this.props.onQuoteClick}>
+          <span className="quote"><h3>{this.props.quote}<br /></h3></span>
+          <RaisedButton
+            label="like"
+            onClick={this.handleLikeButton}
+            primary={Boolean(true)}
+          />
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
