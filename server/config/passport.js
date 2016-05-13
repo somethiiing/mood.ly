@@ -40,49 +40,43 @@ export default (app, session, passport) => {
   // FLASH MESSAGES
   // app.use(flash());
 
-// LOCAL STRATEGY
-// ============================================
+  // LOCAL STRATEGY
+  // ============================================
   // SIGNUP
   passport.use('local-signup', new LocalStrategy({
-    username: 'email',
+    username: 'username',
     password: 'password',
     passReqToCallback: true,
   },
-  (req, email, password, done) => {
-      // SEARCH DATABASE FOR USER
-    User.findOne({ where: { 'local.email': email } })
-      .then(user => {
-        if (user) {
-          done(null, user);
-        } else {
-          // CREATE NEW USER
-          User.create({
-            username: email,
-            password, //NEED TO WRITE METHOD FOR GENERATEHASH
-          })
-          .then(newUser => {
-            done(null, newUser);
-          })
-          .catch(err => {
-            throw new Error('error line 67', err);
-          });
-        }
-      })
-      .catch(err => {
-        throw new Error('error line 72', err);
-      });
+  (req, username, password, done) => {
+    const user = req.body;
+    // SEARCH DATABASE FOR USER
+    User.findOrCreate({ where: {
+      name: req.body.name,
+      email: req.body.email,
+      username: req.body.username,
+      password: req.body.password,
+    } })
+    .then(() => {
+      console.log('user ========== \n', user);
+      done(null, user);
+    })
+    .catch(err => {
+      throw new Error('Error finding or creating the user. (error line 61)', err);
+    });
   }));
 
   // LOGIN
   passport.use('local-login', new LocalStrategy({
-    username: 'email',
+    username: 'username',
     password: 'password',
     passReqToCallback: true,
   },
-  (req, email, password, done) => {
-    User.findOne({ where: { 'local.email': email } })
+  (req, username, password, done) => {
+    User.findOne({ where: { username } })
     .then(user => {
       if (user) {
+        console.log('User found', user);
         done(null, user);
       }
     })
