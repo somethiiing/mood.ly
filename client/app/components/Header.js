@@ -23,10 +23,16 @@ class Header extends React.Component {
     };
 
     this.handleLogoutButtonClick = this.handleLogoutButtonClick.bind(this);
+    this.handleProfileButtonClick = this.handleProfileButtonClick.bind(this);
   }
 
   handleLogoutButtonClick() {
     this.props.logout();
+  }
+
+  handleProfileButtonClick() {
+    console.log('CLICK!');
+    this.props.profile();
   }
 
   handleChangeSingle(event, value) {
@@ -63,10 +69,16 @@ class Header extends React.Component {
               targetOrigin={{ horizontal: 'right', vertical: 'top' }}
               anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
             >
-              <MenuItem value="1" primaryText="my profile" leftIcon={<SocialPersonOutline />} />
+              <MenuItem
+                value="1"
+                primaryText="my profile"
+                onClick={this.handleProfileButtonClick}
+                leftIcon={<SocialPersonOutline />}
+              />
               <MenuItem
                 value="2"
-                primaryText="logout" onClick={this.handleLogoutButtonClick}
+                primaryText="logout"
+                onClick={this.handleLogoutButtonClick}
                 leftIcon={<NavigationClose />}
               />
             </IconMenu>
@@ -82,6 +94,7 @@ class Header extends React.Component {
 
 Header.propTypes = {
   logout: React.PropTypes.func,
+  profile: React.PropTypes.func,
 };
 
 export default Header;

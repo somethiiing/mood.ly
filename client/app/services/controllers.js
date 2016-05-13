@@ -60,6 +60,7 @@ const likeMusic = (videoId, user, callback) => {
 
 const getAllUserGiphys = (username, callback) => {
   $.get(`apis/user/giphys?keyword=${username}`, data => {
+    console.log(data);
     callback(data);
   });
 };
