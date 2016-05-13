@@ -17,11 +17,11 @@ class App extends Component {
       user: null,
     };
 
-    this.login = this.login.bind(this);
+    this.loginSuccess = this.loginSuccess.bind(this);
     this.logout = this.logout.bind(this);
   }
 
-  login(user) {
+  loginSuccess(user) {
     console.log(user);
     this.setState({
       loggedIn: true,
@@ -39,14 +39,13 @@ class App extends Component {
     let pageLayout;
     if (this.state.loggedIn === false) {
       pageLayout = <div>
-        <LandingPage login={this.login} />
+        <LandingPage
+        loginSuccess={this.loginSuccess} />
       </div>
     }
     if (this.state.page === 'dashboard' && this.state.loggedIn === true) {
       pageLayout = <div>
         <Dashboard 
-          handleSearchChange={this.handleSearchChange}
-          handleSearchButtonClick={this.handleSearchButtonClick}
           user={this.state.user}
         />
       </div>

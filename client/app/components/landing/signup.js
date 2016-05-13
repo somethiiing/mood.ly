@@ -27,12 +27,10 @@ class SignUp extends React.Component {
       password: this.state.password,
     };
     auth.signup(user, (res) => {
-      // console.log('success!!', res);
-      // this.props.login(user);
       if (res.status === 'SUCCESS') {
         return this.props.loginSuccess(user);
       }
-      return this.props.signupFail();
+      return console.log('FAILED');
     });
   }
 

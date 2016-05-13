@@ -81,7 +81,7 @@ export default (app, session, passport) => {
       }
     })
     .catch(err => {
-      throw new Error('user not found', err);
+      res.send({ status: 'FAIL', status: 'failerrorasdjkhfjlkaskfj'})
     });
   }));
 
