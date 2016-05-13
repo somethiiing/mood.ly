@@ -1,10 +1,10 @@
-import request from 'request';
-import key from '../config/authConfig';
+// import request from 'request';
+// import key from '../config/authConfig';
 
 
 // FOR TESTING WITH NODE, can't use import
-// const request = require('request');
-// const YOUTUBE_API_KEY = require('youtubeconfig');
+const request = require('request');
+const key = require('youtubeconfig');
 
 const parseData = (data) => {
   const result = [];
@@ -32,7 +32,8 @@ const songConverter = (songObj) => {
 };
 
 const searchYouTube = (song, callback) => {
-  const youtubeURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${song}&type=video&videoEmbeddable=true&vq=hd1080&key=${key.YOUTUBE_API_KEY}`;
+  const youtubeURL = `
+  https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${song}&type=video&videoEmbeddable=true&vq=hd1080&key=${key.YOUTUBE_API_KEY}`;
 
   request.get(youtubeURL)
     .on('response', response => {
