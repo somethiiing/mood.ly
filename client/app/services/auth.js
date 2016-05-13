@@ -12,4 +12,11 @@ const login = (user, callback) => {
   });
 };
 
-export default { signup, login };
+const logout = (callback) => {
+  $.get('/logout', resp => {
+    console.log(resp.status);
+    callback(resp);
+  });
+};
+
+export default { signup, login, logout };

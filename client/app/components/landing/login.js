@@ -25,7 +25,7 @@ class Login extends React.Component {
         console.log('status', res.status);
         return this.props.loginSuccess(user);
       }
-      return this.props.loginFail();
+      return console.log('FAILED');
     });
   }
 

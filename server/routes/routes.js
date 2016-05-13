@@ -18,39 +18,32 @@ export default (app, express, passport) => {
   // =================================
   app.get('/', renderIndex);
 
-  // app.get('/api/users/signup', (req, res) => {
-  //   res.render('signup', { message: req.flash('loginMessage') });
-  // });
-
-  app.post('/signup', passport.authenticate('local-signup', {
-    successRedirect: '/profile',
+  app.post('/api/users/signup', passport.authenticate('local-signup', {
+    successRedirect: '/',
     failureRedirect: '/signup',
-    failureFlash: true, // OPTIONAL
   }));
 
-  app.post('/api/users/signup', userController.saveOne);
+  // app.post('/api/users/signup', userController.saveOne);
 
-  // app.get('/profile', isLoggedIn, (req, res) => {
-  //   res.render('profile', { user: req.user });
-  // });
+  app.post('/api/users/login', passport.authenticate('local-login', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+  }));
 
-  // app.get('/api/users/login', (req, res) => {
-  //   res.render('login', { message: req.flash('loginMessage') });
-  // });
-
-  // app.post('/api/users/login', passport.authenticate('local-signup', {
-  //   successRedirect: '/profile',
-  //   failureRedirect: '/login',
-  //   failureFlash: true, // OPTIONAL
-  // }));
-
-  app.post('/api/users/login', userController.verifyLogin);
+  // app.post('/api/users/login', userController.verifyLogin);
 
   app.get('/logout', (req, res) => {
     // LOG USER OUT
-    req.logout();
-    // REDIRECT USER TO HOME PAGE
-    res.redirect('/');
+    req.session.destroy((err) => {
+      if (err) {
+        throw new Error('Error logging out!', err);
+      } else {
+        // REDIRECT USER TO HOME PAGE
+        // res.redirect('/');
+        console.log('user logged out');
+        res.send({ status: 'LOGGEDOUT', body: 'Successfully logged out.' });
+      }
+    });
   });
 
   // CHECK IF LOGGED IN
@@ -61,6 +54,10 @@ export default (app, express, passport) => {
     // REDIRECT
     return res.redirect('/');
   };
+
+  app.get('/', isLoggedIn, (req, res) => {
+    res.render('/', { user: req.user });
+  });
 
   // USERS
   // =================================
