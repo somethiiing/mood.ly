@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import Search from './search';
-import apiCall from '../../services/services.js';
+import services from '../../services/services';
 import QuoteItem from './quoteItem';
 import GifItem from './gifItem';
 import Music from './music';
@@ -24,20 +24,20 @@ class Dashboard extends Component {
   handleSearchButtonClick() {
     const self = this;
     const query = this.state.currentSearch;
-    apiCall('wikiInfo', query, (res) => {
+    services.apiCall('wikiInfo', query, (res) => {
       const randomIndex = Math.floor((Math.random() * res.length) + 1);
       self.setState({
         currMood: query,
         currQuote: res[randomIndex],
       });
     });
-    apiCall('giphyInfo', query, (res) => {
+    services.apiCall('giphyInfo', query, (res) => {
       const randomIndex = Math.floor((Math.random() * res.length) + 1);
       self.setState({
         currentGif: res[randomIndex],
       });
     });
-    apiCall('musicInfo', query, (res) => {
+    services.apiCall('musicInfo', query, (res) => {
       self.setState({
         currVideoID: res,
       });
