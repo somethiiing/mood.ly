@@ -17,7 +17,7 @@ import User from '../models/userModel';
 export default (app, session, passport) => {
   // SERIALIZE USER
   passport.serializeUser((user, done) => {
-    done(null, user.id);
+    done(null, user);
   });
 
   // DESERIALIZE USER
@@ -76,7 +76,7 @@ export default (app, session, passport) => {
     User.findOne({ where: { username } })
     .then(user => {
       if (user) {
-        console.log('User found', user);
+        console.log('User found\n', user.dataValues);
         done(null, user);
       }
     })
