@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
-import Footer from './components/Footer';
+import Footer from './components/footer';
 import LandingPage from './components/landing/landingPage';
 import Dashboard from './components/dashboard/dashboard';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 class App extends Component {
   constructor(props) {
@@ -55,6 +56,8 @@ class App extends Component {
     );
   }
 }
+
+injectTapEventPlugin();
 
 export default App;
 
