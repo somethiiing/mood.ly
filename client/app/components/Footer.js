@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class Footer extends Component {
   constructor(props) {
@@ -6,15 +7,17 @@ class Footer extends Component {
   }
   render() {
     return (
-      <div className="footer">
-        <div>
-          <ul className="socialButtons">
-            <a href="#"><i className="fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="#"><i className="fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="#"><i className="fa fa-soundcloud" aria-hidden="true"></i></a>
-          </ul>
+      <MuiThemeProvider>
+        <div className="footer">
+          <div>
+            <ul className="socialButtons">
+              <a href="#"><i className="fa fa-facebook" aria-hidden="true"></i></a>
+              <a href="#"><i className="fa fa-twitter" aria-hidden="true"></i></a>
+              <a href="#"><i className="fa fa-soundcloud" aria-hidden="true"></i></a>
+            </ul>
+          </div>
         </div>
-      </div>
+      </MuiThemeProvider>
     );
   }
 }
