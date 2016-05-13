@@ -1,33 +1,24 @@
 import React from 'react';
-import UserController from '../../services/services';
+import UserController from '../../services/controllers';
 
 class Liked extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      currQuotes: '',
+      userQuotes: '',
+      userGifs: null,
     };
-
-    this.getAllUserGiphys = this.getAllUserGiphys.bind(this);
-  }
-
-  getAllUserGiphys() {
-    const self = this;
-    const username = this.props.user.username;
-    UserController.getAllUserGiphys(username, (res) => {
-      console.log(res);
-      console.log(res.body);
-      // self.setState({
-      //   currQuotes: res.body,
-      // });
-    });
   }
 
   render() {
+    this.getAllUserGiphys();
     return (
       <div className="container-data">
         <h1>My Data</h1>
+        {this.props.gifList.map(gif => 
+          <img src={gif.url} alt/>
+        )}
       </div>
     );
   }
