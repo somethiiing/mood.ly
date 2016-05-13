@@ -43,10 +43,12 @@ class Dashboard extends Component {
       });
     });
     services.apiCall('musicInfo', query, (res) => {
-      self.setState({
-        currVideoID: res,
-        showMusicItem: true,
-      });
+      if (res.status === 'SUCCESS') {
+        self.setState({
+          currVideoID: res.videoID,
+          showMusicItem: true,
+        });
+      }
     });
   }
 
