@@ -160,7 +160,7 @@ export default { getPageID, redirectCheck, wikiQuoteCall, frontEndCall };
 
 // // TEST
 
-wikiQuoteCall('happy', (data) => {
-  console.log(data);
-});
+// wikiQuoteCall('happy', (data) => {
+//   console.log(data);
+// });
 
