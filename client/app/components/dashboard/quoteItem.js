@@ -26,7 +26,9 @@ class QuoteItem extends Component {
           style={{
             height: 300,
             width: 300,
+            display: 'inline-block',
           }}
+          className="col-1-3"
         >
           <CardHeader>
             <IconButton><EditorInsertComment /></IconButton>

@@ -14,7 +14,6 @@ class Search extends Component {
         <div className="form-group search-bar">
           <TextField
             onChange={this.props.handleSearchChange}
-            className="form-control"
             floatingLabelText="how are you feeling?"
             floatingLabelFixed={Boolean(true)}
           />
