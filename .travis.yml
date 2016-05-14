@@ -1,7 +1,7 @@
 services:
   - mysql
 before_install:
-  - mysql -e "create database IF NOT EXISTS test;" -uroot
+  - mysql -e "create database test;" -uroot
 language: node_js
 node_js:
   - "node"
