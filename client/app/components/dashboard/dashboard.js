@@ -71,21 +71,21 @@ class Dashboard extends Component {
         <Grid>
           <Row className="show-grid">
             {this.state.showQuoteItem ?
-              <Col sm={4}>
+              <Col sm={6} md={4}>
                 <QuoteItem
                   quote={this.state.currQuote}
                   mood={this.state.currMood}
                   user={this.props.user}
                 /></Col> : null}
             {this.state.showGifItem ?
-              <Col sm={4}>
+              <Col sm={6} md={4}>
                 <GifItem
                   gif={this.state.currentGif}
                   mood={this.state.currMood}
                   user={this.props.user}
                 /></Col> : null}
             {this.state.showMusicItem ?
-              <Col sm={4}>
+              <Col sm={6} md={4}>
                 <Music
                   videoId={this.state.currVideoID}
                   mood={this.state.currMood}
