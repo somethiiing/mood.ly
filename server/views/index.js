@@ -16,6 +16,23 @@ const renderFullPage = (html, initialState) => {
         <meta name="description" content="A place to explore your mood" />
       </head>
       <body>
+        <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '1593636807614796',
+              xfbml      : true,
+              version    : 'v2.6'
+            });
+          };
+
+          (function(d, s, id){
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement(s); js.id = id;
+             js.src = "//connect.facebook.net/en_US/sdk.js";
+             fjs.parentNode.insertBefore(js, fjs);
+           }(document, 'script', 'facebook-jssdk'));
+        </script>
         <div id="app"><div>${html}</div></div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}

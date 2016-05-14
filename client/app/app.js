@@ -58,7 +58,6 @@ class App extends Component {
     });
   }
   profile() {
-    console.log('GO TO PROFILE PAGE');
     this.setState({
       page: 'profile',
     });
