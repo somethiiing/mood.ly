@@ -7,6 +7,8 @@ import IconButton from 'material-ui/IconButton';
 import Menu from 'material-ui/svg-icons/navigation/menu';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import SocialPersonOutline from 'material-ui/svg-icons/social/person-outline';
+import Home from 'material-ui/svg-icons/action/home';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 // const muiTheme = getMuiTheme({
 //   palette: {
@@ -59,10 +61,9 @@ class Header extends React.Component {
 
   render() {
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
         <AppBar
           title="mood.ly"
-          onClick={this.handleMoodlyClick}
           showMenuIconButton={false}
           iconElementRight={
             <IconMenu
@@ -76,12 +77,18 @@ class Header extends React.Component {
             >
               <MenuItem
                 value="1"
-                primaryText="my profile"
+                primaryText="dashboard"
+                onClick={this.handleMoodlyClick}
+                leftIcon={<Home />}
+              />
+              <MenuItem
+                value="2"
+                primaryText="profile"
                 onClick={this.handleProfileButtonClick}
                 leftIcon={<SocialPersonOutline />}
               />
               <MenuItem
-                value="2"
+                value="3"
                 primaryText="logout"
                 onClick={this.handleLogoutButtonClick}
                 leftIcon={<NavigationClose />}

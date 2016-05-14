@@ -60,17 +60,28 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div className="dashboard-content">
+      <div>
         <Search
           handleSearchChange={this.handleSearchChange}
           handleSearchButtonClick={this.handleSearchButtonClick}
         />
-        {this.state.showQuoteItem ?
-          <QuoteItem quote={this.state.currQuote} user={this.props.user} /> : null}
-        {this.state.showGifItem ?
-          <GifItem gif={this.state.currentGif} user={this.props.user} /> : null}
-        {this.state.showMusicItem ?
-          <Music videoId={this.state.currVideoID} user={this.props.user} /> : null}
+        <div className="row">
+          {this.state.showQuoteItem ?
+            <QuoteItem
+              quote={this.state.currQuote}
+              user={this.props.user}
+            /> : null}
+          {this.state.showGifItem ?
+            <GifItem
+              gif={this.state.currentGif}
+              user={this.props.user}
+            /> : null}
+          {this.state.showMusicItem ?
+            <Music
+              videoId={this.state.currVideoID}
+              user={this.props.user}
+            /> : null}
+        </div>
       </div>
     );
   }
