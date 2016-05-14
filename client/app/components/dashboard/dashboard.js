@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import Search from './search';
 import services from '../../services/services';
+import controller from '../../services/controllers';
 import QuoteItem from './quoteItem';
 import GifItem from './gifItem';
 import Music from './music';
@@ -50,6 +51,7 @@ class Dashboard extends Component {
         });
       }
     });
+    controller.addUserMood(query, this.props.user);
   }
 
   handleSearchChange(event) {

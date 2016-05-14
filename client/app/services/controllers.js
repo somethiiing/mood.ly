@@ -1,5 +1,25 @@
 import $ from 'jquery';
 
+const addUserMood = (mood, user, callback) => {
+  const moodData = {
+    user,
+    mood: {
+      name: mood,
+      timedate: new Date(),
+    },
+  };
+  $.ajax({
+    url: '/api/moods',
+    type: 'POST',
+    data: JSON.stringify(moodData),
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    success: () => {
+      callback({ status: 'SUCCESS' });
+    },
+  });
+};
+
 // This file will send users' likes to the database
 const likeQuote = (quote, user, callback) => {
   const quoteData = {
@@ -64,6 +84,7 @@ const getAllUserLikes = (endpoint, username, callback) => {
 };
 
 export default {
+  addUserMood,
   likeQuote,
   likeGiphy,
   likeMusic,
