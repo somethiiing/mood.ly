@@ -6,6 +6,8 @@ export default new Sequelize(
   'root',
   'HR41',
   {
+    host: dbConfig.host,
+    dialect: 'mysql',
     define: {
       timestamps: false, // true by default
     },
