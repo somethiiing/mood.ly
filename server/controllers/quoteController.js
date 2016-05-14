@@ -33,10 +33,10 @@ export default {
       .spread(foundOrCreatedQuote => {
         foundUser.addQuote(foundOrCreatedQuote)
         .then(() => {
-          res.status(201).send({ status: 'SUCCESS', body: 'Successfully found/created quote.' });
+          res.status(201).send({ status: 'SUCCESS', body: 'Successfully saved quote.' });
         })
         .catch(() => {
-          res.status(500).send({ status: 'FAIL', body: 'Failed to find or create quote.' });
+          res.status(500).send({ status: 'FAIL', body: 'Did not save quote.' });
         });
       });
     });

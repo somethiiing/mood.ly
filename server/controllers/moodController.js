@@ -5,8 +5,11 @@ export default {
   saveOne: (req, res) => {
     const mood = req.body;
     Mood.findOrCreate({ where: mood })
-    .then(createdMood => {
-      res.status(201).json(createdMood);
+    .then(() => {
+      res.status(201).send({ status: 'SUCCESS', body: 'Successfully created mood.' });
+    })
+    .catch(() => {
+      res.status(500).send({ status: 'FAIL', body: 'Failed to find or create mood.' });
     });
   },
   saveUserMood: (req, res) => {
@@ -19,7 +22,10 @@ export default {
       .spread(foundOrCreatedMood => {
         foundUser.addMood(foundOrCreatedMood)
         .then(() => {
-          res.status(201).json(foundOrCreatedMood);
+          res.status(201).send({ status: 'SUCCESS', body: 'Successfully saved user mood.' });
+        })
+        .catch(() => {
+          res.status(500).send({ status: 'FAIL', body: 'Failed to find or create user mood.' });
         });
       });
     });
@@ -31,8 +37,11 @@ export default {
       where: { username: user.username },
     })
     .then(foundUser => foundUser.getMoods())
-    .then(foundMoods => {
-      res.json(foundMoods);
+    .then(() => {
+      res.status(201).send({ status: 'SUCCESS', body: 'Successfully retrieved all moods.' });
+    })
+    .catch(() => {
+      res.status(500).send({ status: 'FAIL', body: 'Failed to get all moods.' });
     });
   },
 };
