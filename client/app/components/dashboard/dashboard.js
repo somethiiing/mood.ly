@@ -60,12 +60,12 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div className="grid">
+      <div>
         <Search
           handleSearchChange={this.handleSearchChange}
           handleSearchButtonClick={this.handleSearchButtonClick}
         />
-        <div>
+        <div className="row">
           {this.state.showQuoteItem ?
             <QuoteItem
               quote={this.state.currQuote}
