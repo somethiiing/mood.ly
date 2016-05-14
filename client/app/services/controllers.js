@@ -4,7 +4,7 @@ import $ from 'jquery';
 const likeQuote = (quote, user, callback) => {
   const quoteData = {
     user,
-    quote: { text: quote },
+    quote,
   };
 
   // TODO: refactor to using req.query instead of req.body?

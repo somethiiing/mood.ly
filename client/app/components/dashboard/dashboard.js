@@ -69,16 +69,19 @@ class Dashboard extends Component {
           {this.state.showQuoteItem ?
             <QuoteItem
               quote={this.state.currQuote}
+              mood={this.state.currMood}
               user={this.props.user}
             /> : null}
           {this.state.showGifItem ?
             <GifItem
               gif={this.state.currentGif}
+              mood={this.state.currMood}
               user={this.props.user}
             /> : null}
           {this.state.showMusicItem ?
             <Music
               videoId={this.state.currVideoID}
+              mood={this.state.currMood}
               user={this.props.user}
             /> : null}
         </div>

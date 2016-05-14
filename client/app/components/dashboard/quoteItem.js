@@ -14,7 +14,12 @@ class QuoteItem extends Component {
   }
 
   handleLikeButton() {
-    controller.likeQuote(this.props.quote, this.props.user, (data) => {
+    const username = this.props.user;
+    const quote = {
+      text: this.props.quote,
+      mood: this.props.mood,
+    };
+    controller.likeQuote(quote, username, (data) => {
       console.log('QUOTE, ', data);
     });
   }
@@ -49,6 +54,7 @@ class QuoteItem extends Component {
 
 QuoteItem.propTypes = {
   quote: PropTypes.element,
+  mood: PropTypes.element,
   user: PropTypes.element,
   onQuoteClick: PropTypes.func,
 };
