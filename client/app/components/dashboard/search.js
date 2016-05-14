@@ -1,9 +1,9 @@
-import React, { PropTypes, Component } from 'react';
+import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-class Search extends Component {
+class Search extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -30,8 +30,8 @@ class Search extends Component {
 }
 
 Search.propTypes = {
-  handleSearchChange: PropTypes.func.isRequired,
-  handleSearchButtonClick: PropTypes.func.isRequired,
+  handleSearchChange: React.PropTypes.func.isRequired,
+  handleSearchButtonClick: React.PropTypes.func.isRequired,
 };
 
 export default Search;

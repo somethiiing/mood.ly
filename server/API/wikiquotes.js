@@ -103,7 +103,7 @@ const parseData = (body, pageID) => {
       cleanData.push(filteredData[i]);
     }
   }
-  return { status: 'success', body: cleanData };
+  return cleanData;
 };
 
 // RESTful API call, called asynchronously.
@@ -142,8 +142,7 @@ function getData(body, callback) {
     return callback({ status: 'SUCCESS', body: quotesArr[randomIndex] });
   }
   if (redirect === null) {
-    const randomIndex = Math.floor((Math.random() * redirectFailMessages.length) + 1);
-    return callback({ status: 'FAIL', body: redirectFailMessages[randomIndex] });
+    return callback({ status: 'FAIL', body: 'Unable to produce quote.' });
   }
   return wikiQuoteCall(redirect, callback);
 }
@@ -161,7 +160,7 @@ export default { getPageID, redirectCheck, wikiQuoteCall, frontEndCall };
 
 // // TEST
 
-// wikiQuoteCall('happy', (data) => {
-//   console.log(data);
-// });
+wikiQuoteCall('happy', (data) => {
+  console.log(data);
+});
 

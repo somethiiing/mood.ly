@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import React from 'react';
 import controller from '../../services/controllers';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Card, CardHeader, CardMedia } from 'material-ui/Card';
@@ -6,7 +6,7 @@ import IconButton from 'material-ui/IconButton';
 import Favorite from 'material-ui/svg-icons/action/favorite';
 import Headset from 'material-ui/svg-icons/hardware/headset';
 
-class Music extends Component {
+class Music extends React.Component {
   constructor(props) {
     super(props);
 
@@ -63,9 +63,9 @@ class Music extends Component {
 }
 
 Music.propTypes = {
-  videoId: PropTypes.element,
-  mood: PropTypes.element,
-  user: PropTypes.element,
+  videoId: React.PropTypes.element,
+  mood: React.PropTypes.element,
+  user: React.PropTypes.element,
 };
 
 export default Music;
