@@ -7,3 +7,4 @@ server/config/authConfig.js
 client/bundle.js
 id_rsa
 id_rsa.pub
+MOODLY.run
