@@ -67,7 +67,7 @@ export default {
     })
     .then((foundUser) => {
       if (foundUser) {
-        res.status(200).send({ status: 'SUCCESS', body: 'User found!' });
+        res.status(200).send({ status: 'SUCCESS', body: 'User found!' }).json(foundUser);
       }
     })
     .catch(() => {
