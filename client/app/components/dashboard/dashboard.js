@@ -4,6 +4,9 @@ import services from '../../services/services';
 import QuoteItem from './quoteItem';
 import GifItem from './gifItem';
 import Music from './music';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+import Grid from 'react-bootstrap/lib/Grid';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -65,26 +68,31 @@ class Dashboard extends Component {
           handleSearchChange={this.handleSearchChange}
           handleSearchButtonClick={this.handleSearchButtonClick}
         />
-        <div className="row">
-          {this.state.showQuoteItem ?
-            <QuoteItem
-              quote={this.state.currQuote}
-              mood={this.state.currMood}
-              user={this.props.user}
-            /> : null}
-          {this.state.showGifItem ?
-            <GifItem
-              gif={this.state.currentGif}
-              mood={this.state.currMood}
-              user={this.props.user}
-            /> : null}
-          {this.state.showMusicItem ?
-            <Music
-              videoId={this.state.currVideoID}
-              mood={this.state.currMood}
-              user={this.props.user}
-            /> : null}
-        </div>
+        <Grid>
+          <Row className="show-grid">
+            {this.state.showQuoteItem ?
+              <Col sm={6} md={4}>
+                <QuoteItem
+                  quote={this.state.currQuote}
+                  mood={this.state.currMood}
+                  user={this.props.user}
+                /></Col> : null}
+            {this.state.showGifItem ?
+              <Col sm={6} md={4}>
+                <GifItem
+                  gif={this.state.currentGif}
+                  mood={this.state.currMood}
+                  user={this.props.user}
+                /></Col> : null}
+            {this.state.showMusicItem ?
+              <Col sm={6} md={4}>
+                <Music
+                  videoId={this.state.currVideoID}
+                  mood={this.state.currMood}
+                  user={this.props.user}
+                /></Col> : null}
+          </Row>
+        </Grid>
       </div>
     );
   }
