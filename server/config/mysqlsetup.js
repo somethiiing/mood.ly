@@ -1,7 +1,7 @@
 export default {
   dbConfig: {
     driver: 'mysql',
-    user: 'root',
+    username: 'root',
     database: 'moodb',
     password: 'HR41',
     host: '127.0.0.1',
