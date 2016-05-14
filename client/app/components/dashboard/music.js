@@ -14,7 +14,9 @@ class Music extends Component {
   }
 
   handleLikeButton() {
-    controller.likeMusic(this.props.videoId, this.props.user);
+    controller.likeMusic(this.props.videoId, this.props.user, (data) => {
+      console.log('MUSIC, ', data);
+    });
   }
 
   render() {
