@@ -44,12 +44,11 @@ class Profile extends React.Component {
     });
   }
 
-  handleShareButton(id,quote) {
+  handleShareButton(id, item) {
     FB.ui({
       method: 'share',
       hashtag: 'moodly',
-      quote: quote,
-      href: `${moodlyUrl}/api/quotes/${id}`,
+      href: `${moodlyUrl}/api/${item}/${id}`,
     }, response => {
     });
   }
@@ -65,10 +64,16 @@ class Profile extends React.Component {
           </div>
           )}
         {this.state.gifList.map(gif =>
-          <img src={gif.url} alt="" />
+          <div id="giphy">
+            <img src={gif.url} alt="" />
+            <button onClick={this.handleShareButton.bind(this, gif.id, <img src={gif.url} alt="" />)}>Share!</button>
+          </div>
           )}
         {this.state.musicList.map(music =>
-          <iframe src={`https://youtube.com/embed/${music.videoId}`} height="480px" width="640px" />
+          <div id="music">
+            <iframe src={`https://youtube.com/embed/${music.videoId}`} height="480px" width="640px" />
+            <button onClick={this.handleShareButton.bind(this, music.id, `https://youtube.com/embed/${music.videoId}`)}>Share!</button>
+          </div>
           )}
       </div>
     );
