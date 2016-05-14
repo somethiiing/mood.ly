@@ -1,1 +1,10 @@
-module.exports = 'HR41';
+export default {
+  dbConfig: {
+    driver: 'mysql',
+    user: 'root',
+    database: 'moodb',
+    password: 'HR41',
+    host: '127.0.0.1',
+    port: '8080',
+  },
+};
