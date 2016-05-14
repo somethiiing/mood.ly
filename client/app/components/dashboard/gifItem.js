@@ -30,22 +30,31 @@ class GifItem extends Component {
       <MuiThemeProvider>
         <Card
           style={{
-            height: 300,
+            height: 350,
             width: 300,
-            margin: '0 auto',
           }}
-          className="col-md-4"
         >
-          <CardHeader>
-            <IconButton><ImageCamera /></IconButton>
+          <CardHeader
+            style={{
+              height: 75,
+            }}
+          >
             <IconButton
+              style={{
+                float: 'left',
+              }}
+            ><ImageCamera /></IconButton>
+            <IconButton
+              style={{
+                float: 'right',
+              }}
               onClick={this.handleLikeButton}
             >
               <Favorite />
             </IconButton>
           </CardHeader>
           <CardMedia>
-            <img src={this.props.gif} alt="" height="60%" width="70%" />
+            <img src={this.props.gif} alt="" height="200px" />
           </CardMedia>
         </Card>
       </MuiThemeProvider>

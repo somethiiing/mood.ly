@@ -10,12 +10,6 @@ import SocialPersonOutline from 'material-ui/svg-icons/social/person-outline';
 import Home from 'material-ui/svg-icons/action/home';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-// const muiTheme = getMuiTheme({
-//   palette: {
-//     accent1Color: blueA400,
-//   },
-// });
-
 class Header extends React.Component {
   constructor(props) {
     super(props);

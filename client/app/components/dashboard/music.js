@@ -30,22 +30,31 @@ class Music extends Component {
       <MuiThemeProvider>
         <Card
           style={{
-            height: 300,
+            height: 350,
             width: 300,
-            margin: '0 auto',
           }}
-          className="col-md-4"
         >
-          <CardHeader>
-            <IconButton><Headset /></IconButton>
+          <CardHeader
+            style={{
+              height: 75,
+            }}
+          >
             <IconButton
+              style={{
+                float: 'left',
+              }}
+            ><Headset /></IconButton>
+            <IconButton
+              style={{
+                float: 'right',
+              }}
               onClick={this.handleLikeButton}
             >
               <Favorite />
             </IconButton>
           </CardHeader>
           <CardMedia>
-            <iframe src={`https://youtube.com/embed/${this.props.videoId}`} height="250px" width="250px" />
+            <iframe src={`https://youtube.com/embed/${this.props.videoId}`} height="200px" width="250px" />
           </CardMedia>
         </Card>
       </MuiThemeProvider>

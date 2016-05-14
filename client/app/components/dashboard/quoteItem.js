@@ -29,21 +29,34 @@ class QuoteItem extends Component {
       <MuiThemeProvider>
         <Card
           style={{
-            height: 300,
+            height: 350,
             width: 300,
-            margin: '0 auto',
           }}
-          className="col-md-4"
         >
-          <CardHeader>
-            <IconButton><EditorInsertComment /></IconButton>
+          <CardHeader
+            style={{
+              height: 75,
+            }}
+          >
             <IconButton
+              style={{
+                float: 'left',
+              }}
+            ><EditorInsertComment /></IconButton>
+            <IconButton
+              style={{
+                float: 'right',
+              }}
               onClick={this.handleLikeButton}
             >
               <Favorite />
             </IconButton>
           </CardHeader>
-          <CardText>
+          <CardText
+            style={{
+              textAlign: 'center',
+            }}
+          >
             {this.props.quote}
           </CardText>
         </Card>
