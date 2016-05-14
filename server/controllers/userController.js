@@ -39,7 +39,7 @@ export default {
           if (compareResult) {
             res.send({ status: 'SUCCESS', body: 'Successfully logged in!' });
           } else {
-            res.send({ status: 'PWFAIL', body: 'Incorrect Password. Try again.' });
+            res.send({ status: 'PWFAIL', body: 'Invalid username or password' });
           }
         });
       }

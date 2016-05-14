@@ -114,5 +114,50 @@ Database in mySQL, using sequelize.
 
 ### API
 
+####AUTH
+Sign Up: POST: '/signup'
+  Success Response: { status: 'SUCCESS', body: 'User successfully created' }
+  Fail Response: { status: 'USEREXISTS', body: 'User already exists', err }
+Log in: POST: /login'
+  Success Response: { status: 'SUCCESS', body: 'Successfully logged in!' }
+  Fail Response: { status: 'PWFAIL', body: 'Invalid username or password' }
+
+####MOODS
+  app.post('/api/moods', moodController.saveUserMood);
+  app.get('/api/moods', moodController.getAll);
+
+####QUOTES
+  app.post('/api/quotes', quoteController.saveUserQuote);
+  app.get('/api/quotes', quoteController.retrieveAll);
+  app.get('/api/quotes/:id', quoteController.getOne);
+
+####WIKI ROUTES
+Produce a Quote: GET: '/api/wikiInfo'
+  Response: { status: 'SUCCESS', body: <<' A Single Quote'>> }
+
+####GIPHY ROUTES
+Produce a GIF: GET: '/api/giphyInfo'
+  Response: { status: 'SUCCESS', body: <<' A GIF URL '>> }
+  
+  app.post('/api/giphys', giphyController.saveUserGiphy);
+  app.get('/api/giphys', giphyController.retrieveAll);
+  app.get('/api/giphys/:id', giphyController.getOne);
+
+####MUSIC ROUTES
+Produce a Youtube Video ID: GET: '/api/musicInfo'
+  Success Response: { status: 'SUCCESS', trackInfo, videoID }
+  Fail Response: { status: 'NOTFOUND', keyword, body: 'No videos found' }
+
+  app.post('/api/music', musicVideoController.saveUserMusicVideo);
+  app.get('/api/music', musicVideoController.retrieveAll);
+  app.get('/api/music/:id', musicVideoController.getOne);
+
+####USERS
+  app.get('/api/user/quotes', quoteController.getUserQuotes);
+  app.get('/api/user/giphys', giphyController.getUserGiphys);
+  app.get('/api/user/music', musicVideoController.getUserMusicVideos);
+  app.get('/api/users', userController.retrieveAll);
+  app.put('/api/users', userController.updateOne);
+  app.delete('/api/users', userController.deleteOne);
 
 ## Deployment
