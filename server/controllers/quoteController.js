@@ -6,7 +6,7 @@ export default {
     const quote = req.body;
     Quote.findOrCreate({ where: quote })
     .then(() => {
-      res.status(201).send({ status: 'SUCCESS', body: 'Successfully created quote.' });
+      res.status(201).send({ status: 'SUCCESS', body: 'Successfully found or created quote.' });
     })
     .catch(() => {
       res.status(500).send({ status: 'FAIL', body: 'Failed to find or create quote.' });

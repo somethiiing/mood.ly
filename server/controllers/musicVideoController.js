@@ -6,7 +6,7 @@ export default {
     const musicVideo = req.body;
     MusicVideo.findOrCreate({ where: musicVideo })
     .then(() => {
-      res.status(201).send({ status: 'SUCCESS', body: 'Successfully created music video.' });
+      res.status(201).send({ status: 'SUCCESS', body: 'Successfully found or created music video.' });
     })
     .catch(() => {
       res.status(500).send({ status: 'FAIL', body: 'Failed to find or create music video.' });

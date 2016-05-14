@@ -6,7 +6,7 @@ export default {
     const mood = req.body;
     Mood.findOrCreate({ where: mood })
     .then(() => {
-      res.status(201).send({ status: 'SUCCESS', body: 'Successfully created mood.' });
+      res.status(201).send({ status: 'SUCCESS', body: 'Successfully found or created mood.' });
     })
     .catch(() => {
       res.status(500).send({ status: 'FAIL', body: 'Failed to find or create mood.' });
