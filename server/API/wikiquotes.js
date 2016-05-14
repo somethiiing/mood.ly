@@ -137,10 +137,13 @@ function getData(body, callback) {
   const pageID = getPageID(body);
   const redirect = redirectCheck(body, pageID);
   if (redirect === false) {
-    return callback(parseData(body, pageID));
+    const quotesArr = parseData(body, pageID);
+    const randomIndex = Math.floor((Math.random() * quotesArr.length) + 1);
+    return callback({ status: 'SUCCESS', body: quotesArr[randomIndex] });
   }
   if (redirect === null) {
-    return callback({ status: 'not found', body: redirectFailMessages });
+    const randomIndex = Math.floor((Math.random() * redirectFailMessages.length) + 1);
+    return callback({ status: 'FAIL', body: redirectFailMessages[randomIndex] });
   }
   return wikiQuoteCall(redirect, callback);
 }

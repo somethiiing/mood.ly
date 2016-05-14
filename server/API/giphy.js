@@ -25,9 +25,9 @@ const giphyCall = (keyword, callback) => {
   request.get(url, (err, resp) => {
     const body = resp.body;
     if (err) {
-      return callback(err);
+      return callback({ status: 'FAIL', body: err });
     }
-    return callback(parseData(JSON.parse(body)));
+    return callback({ status: 'SUCCESS', body: parseData(JSON.parse(body)) });
   });
 };
 

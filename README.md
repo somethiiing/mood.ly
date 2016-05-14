@@ -135,7 +135,8 @@ Database in mySQL, using sequelize.
 
 ####QUOTES
 * Produce a Quote: GET: '/api/wikiInfo'
-  * Response: { status: 'SUCCESS', body: String }
+  * Success Response: { status: 'SUCCESS', body: String }
+  * Fail Response: { status: 'FAIL', body: Error String }
 
 * Save Particular Quote: POST: '/api/quotes'
   * Success Response: { status: 'SUCCESS', body: 'Successfully saved quote.' }
@@ -152,7 +153,8 @@ Database in mySQL, using sequelize.
 
 ####GIPHY ROUTES
 * Produce a GIF: GET: '/api/giphyInfo'
-  * Response: { status: 'SUCCESS', body: String }
+  * Success Response: { status: 'SUCCESS', body: String }
+  * Fail Response: { status: 'FAIL', body: error }
 
 * Save Particular GIF: POST: '/api/giphys'
   * Success Response: { status: 'SUCCESS', body: 'Successfully saved GIF.' }
@@ -170,7 +172,7 @@ Database in mySQL, using sequelize.
 ####MUSIC ROUTES
 * Produce a Youtube Video ID: GET: '/api/musicInfo'
   * Success Response: { status: 'SUCCESS', trackInfo, videoID }
-  * Fail Response: { status: 'NOTFOUND', keyword, body: 'No videos found' }
+  * Fail Response: { status: 'FAIL', keyword, body: 'No videos found' }
 
 * Save Particular Video ID: POST: '/api/music'
   * Success Response: { status: 'SUCCESS', body: 'Successfully saved Video Id.' }
