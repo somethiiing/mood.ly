@@ -2,9 +2,9 @@ import Sequelize from 'sequelize';
 import dbConfig from '../config/mysqlsetup.js';
 
 export default new Sequelize(
-  dbConfig.database,
-  dbConfig.username,
-  dbConfig.password,
+  'moodb',
+  'root',
+  'HR41',
   {
     define: {
       timestamps: false, // true by default
