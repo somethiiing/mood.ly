@@ -9,7 +9,7 @@ export default {
       res.send({ status: 'SUCCESS', body: 'User successfully created' });
     })
     .catch(err => {
-      res.send({ status: 'USEREXISTS', body: 'User already exists', err });
+      res.send({ status: 'FAIL', body: 'User already exists', err });
     });
   },
 
@@ -33,7 +33,7 @@ export default {
     User.findOne({ where: { userName } })
     .then((user) => {
       if (!user) {
-        res.send({ status: 'USERFAIL', body: 'Invalid username or password' });
+        res.send({ status: 'FAIL', body: 'Invalid username or password' });
       } else {
         user.comparePasswords(user, password, (compareResult) => {
           if (compareResult) {
