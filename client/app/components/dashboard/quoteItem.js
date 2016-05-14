@@ -26,6 +26,7 @@ class QuoteItem extends Component {
           style={{
             height: 300,
             width: 300,
+            margin: '0 auto',
           }}
           className="col-md-4"
         >
