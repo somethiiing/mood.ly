@@ -14,7 +14,13 @@ class GifItem extends Component {
   }
 
   handleLikeButton() {
-    controller.likeGiphy(this.props.gif, this.props.user, (data) => {
+    const username = this.props.user;
+    const giphy = {
+      url: this.props.gif,
+      mood: this.props.mood,
+    };
+
+    controller.likeGiphy(giphy, username, (data) => {
       console.log('GIF, ', data);
     });
   }
@@ -49,6 +55,7 @@ class GifItem extends Component {
 
 GifItem.propTypes = {
   gif: PropTypes.element,
+  mood: PropTypes.element,
   user: PropTypes.element,
 };
 

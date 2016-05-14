@@ -23,7 +23,7 @@ const likeQuote = (quote, user, callback) => {
 const likeGiphy = (giphy, user, callback) => {
   const giphyData = {
     user,
-    giphy: { url: giphy },
+    giphy,
   };
 
   // TODO: refactor to using req.query instead of req.body?
