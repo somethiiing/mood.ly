@@ -5,17 +5,25 @@ export default {
   saveOne: (req, res) => {
     const quote = req.body;
     Quote.findOrCreate({ where: quote })
-    .then(createdQuote => {
-      res.status(201).json(createdQuote);
+    .then(() => {
+      res.status(201).send({ status: 'SUCCESS', body: 'Successfully created quote.' });
+    })
+    .catch(() => {
+      res.status(500).send({ status: 'FAIL', body: 'Failed to find or create quote.' });
     });
   },
+
   getOne: (req, res) => {
     const id = +req.params.id;
     Quote.findById(id)
-    .then(foundQuote => {
-      res.json(foundQuote.text);
+    .then(() => {
+      res.status(200).send({ status: 'SUCCESS', body: 'Found quote.' });
+    })
+    .catch(() => {
+      res.status(500).send({ status: 'FAIL', body: 'Failed to find quote.' });
     });
   },
+
   saveUserQuote: (req, res) => {
     const user = req.body.user;
     const quote = req.body.quote;
@@ -25,11 +33,15 @@ export default {
       .spread(foundOrCreatedQuote => {
         foundUser.addQuote(foundOrCreatedQuote)
         .then(() => {
-          res.status(201).json(foundOrCreatedQuote);
+          res.status(201).send({ status: 'SUCCESS', body: 'Successfully found/created quote.' });
+        })
+        .catch(() => {
+          res.status(500).send({ status: 'FAIL', body: 'Failed to find or create quote.' });
         });
       });
     });
   },
+
   getUserQuotes: (req, res) => {
     // const user = req.body.user;
     const username = req.query.keyword;
@@ -37,14 +49,21 @@ export default {
       where: { username },
     })
     .then(foundUser => foundUser.getQuotes())
-    .then(foundQuotes => {
-      res.json(foundQuotes);
+    .then(() => {
+      res.status(200).send({ status: 'SUCCESS', body: 'Found user quote.' });
+    })
+    .catch(() => {
+      res.status(500).send({ status: 'FAIL', body: 'Failed to find user quote.' });
     });
   },
+
   retrieveAll: (req, res) => {
     Quote.findAll({})
-    .then(foundQuotes => {
-      res.json(foundQuotes);
+    .then(() => {
+      res.status(200).send({ status: 'SUCCESS', body: 'Found all quotes in database.' });
+    })
+    .catch(() => {
+      res.status(500).send({ status: 'FAIL', body: 'Failed to find all quotes.' });
     });
   },
 };
