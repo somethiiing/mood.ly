@@ -23,9 +23,14 @@ class Header extends React.Component {
     this.state = {
       valueSingle: null,
     };
-    
+
+    this.handleMoodlyClick = this.handleMoodlyClick.bind(this);
     this.handleLogoutButtonClick = this.handleLogoutButtonClick.bind(this);
     this.handleProfileButtonClick = this.handleProfileButtonClick.bind(this);
+  }
+
+  handleMoodlyClick() {
+    this.props.dashboard();
   }
 
   handleLogoutButtonClick() {
