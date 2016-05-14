@@ -62,7 +62,8 @@ export default {
       res.status(200).send({ status: 'SUCCESS', body: 'Successfully retrieved all music videos.' });
     })
     .catch(() => {
-      res.status(500).send({ status: 'FAIL', body: 'Failed to retrieve all music videos.' });
+      res.status(500).send({ status: 'FAIL',
+        body: 'Failed to retrieve all music getMusicVideos.' });
     });
   },
 };
