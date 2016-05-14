@@ -57,8 +57,8 @@ const likeMusic = (videoId, user, callback) => {
   });
 };
 
-const getAllUserLikes = (username, callback) => {
-  $.get(`api/user/giphys?keyword=${username}`, data => {
+const getAllUserLikes = (endpoint, username, callback) => {
+  $.get(`api/user/${endpoint}?keyword=${username}`, data => {
     callback(data);
   });
 };

@@ -14,7 +14,9 @@ class GifItem extends Component {
   }
 
   handleLikeButton() {
-    controller.likeGiphy(this.props.gif, this.props.user);
+    controller.likeGiphy(this.props.gif, this.props.user, (data) => {
+      console.log('GIF, ', data);
+    });
   }
 
   render() {
