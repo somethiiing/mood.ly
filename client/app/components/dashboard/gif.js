@@ -1,9 +1,11 @@
-import React, { PropTypes, Component } from 'react';
+import React from 'react';
 import GifItem from './gifItem';
 
-class Gif extends Component {
+class Gif extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {};
   }
 
   render() {
@@ -18,7 +20,7 @@ class Gif extends Component {
 }
 
 Gif.propTypes = {
-  gif: PropTypes.object,
+  gif: React.PropTypes.object,
 };
 
 // EXPORT

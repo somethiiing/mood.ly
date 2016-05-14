@@ -1,7 +1,7 @@
-import React, { PropTypes, Component } from 'react';
+import React from 'react';
 import QuoteItem from './quoteItem';
 
-class Quote extends Component {
+class Quote extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -18,7 +18,7 @@ class Quote extends Component {
 }
 
 Quote.propTypes = {
-  quote: PropTypes.object,
+  quote: React.PropTypes.object,
 };
 
 // EXPORT

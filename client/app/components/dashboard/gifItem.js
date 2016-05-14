@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Card, CardHeader, CardMedia } from 'material-ui/Card';
 import controller from '../../services/controllers';
@@ -6,7 +6,7 @@ import ImageCamera from 'material-ui/svg-icons/image/camera-alt';
 import IconButton from 'material-ui/IconButton';
 import Favorite from 'material-ui/svg-icons/action/favorite';
 
-class GifItem extends Component {
+class GifItem extends React.Component {
   constructor(props) {
     super(props);
 
@@ -63,9 +63,9 @@ class GifItem extends Component {
 }
 
 GifItem.propTypes = {
-  gif: PropTypes.element,
-  mood: PropTypes.element,
-  user: PropTypes.element,
+  gif: React.PropTypes.element,
+  mood: React.PropTypes.element,
+  user: React.PropTypes.element,
 };
 
 export default GifItem;

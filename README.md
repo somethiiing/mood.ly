@@ -2,6 +2,8 @@
 
 A place for you to explore your mood.
 
+Check it out at www.moodly.io!
+
 ## Team
 
   - __Product Owner__: Kim Curran
@@ -28,7 +30,7 @@ A place for you to explore your mood.
 
 ### Tech Stack
 
-- [React](https://facebook.github.io/react/) and [Redux](http://redux.js.org/)
+- [React](https://facebook.github.io/react/)
 - [Node](https://nodejs.org/en/) and [Express](http://expressjs.com/)
 - [Sequelize ORM](http://docs.sequelizejs.com/en/latest/) and [MySQL](https://www.mysql.com/)
 - [Webpack](https://www.npmjs.com/package/webpack)
@@ -49,11 +51,8 @@ Webpack bundles all files set by the webpack.config.js input folder together so 
 - MySQL 2.10.x
 - Sequelize 3.22.x
 - React -
-- Redux -
 - Webpack 1.13.x
-- Facebook API key
-- Google Plus API key
-
+- Youtube API key
 
 ## Development
 
@@ -69,10 +68,12 @@ npm install
 
 After everything installed using "npm install"
 
-Update the API keys in '/server/config/authconfig.js' for Facebook and Google Plus. The authConfig-example.js file is provided for you. Just remove -example and update keys.  
+Update the API key in '/server/config/authconfig.js' for Youtube. The authConfig-example.js file is provided for you. Just remove -example and update keys.  
 
 
 ```sh
+mysql.server --start
+mysql -u -root -p
 webpack --watch
 npm start
 ```
@@ -115,49 +116,93 @@ Database in mySQL, using sequelize.
 ### API
 
 ####AUTH
-Sign Up: POST: '/signup'
-  Success Response: { status: 'SUCCESS', body: 'User successfully created' }
-  Fail Response: { status: 'USEREXISTS', body: 'User already exists', err }
-Log in: POST: /login'
-  Success Response: { status: 'SUCCESS', body: 'Successfully logged in!' }
-  Fail Response: { status: 'PWFAIL', body: 'Invalid username or password' }
+* Sign Up: POST: '/signup'
+  * Success Response: { status: 'SUCCESS', body: 'User successfully created' }
+  * Fail Response: { status: 'USEREXISTS', body: 'User already exists', err }
+
+* Log In: POST: /login'
+  * Success Response: { status: 'SUCCESS', body: 'Successfully logged in!' }
+  * Fail Response: { status: 'PWFAIL', body: 'Invalid username or password' }
 
 ####MOODS
-  app.post('/api/moods', moodController.saveUserMood);
-  app.get('/api/moods', moodController.getAll);
+* Saves Inputted Mood: POST: '/api/moods'
+  * Success Response: { status: 'SUCCESS', body: 'Successfully saved mood.' }
+  * Fail Response: { status: 'FAIL', body: 'Did not save mood.' }
+
+* Retrieves All Moods: GET: 'api/moods'
+  * Success Response: { status: 'SUCCESS', Name: String, Count: Integer }
+  * Fail Response: { status: 'FAIL', body: 'Unable to retrieve all moods.' }
 
 ####QUOTES
-  app.post('/api/quotes', quoteController.saveUserQuote);
-  app.get('/api/quotes', quoteController.retrieveAll);
-  app.get('/api/quotes/:id', quoteController.getOne);
+* Produce a Quote: GET: '/api/wikiInfo'
+  * Success Response: { status: 'SUCCESS', body: String }
+  * Fail Response: { status: 'FAIL', body: Error String }
 
-####WIKI ROUTES
-Produce a Quote: GET: '/api/wikiInfo'
-  Response: { status: 'SUCCESS', body: <<' A Single Quote'>> }
+* Save Particular Quote: POST: '/api/quotes'
+  * Success Response: { status: 'SUCCESS', body: 'Successfully saved quote.' }
+  * Fail Response: { status: 'FAIL', body: 'Did not save quote.' }
+
+* Retrieves All Quotes: GET: '/api/quotes'
+  * Success Response: 
+    { status: 'SUCCESS', body: { [{Text: String, Mood: String}, ... ] } }
+  * Fail Response: { status: 'FAIL', body: 'Unable to retrieve all quotes.' }
+
+* Retrieves Quote by ID: GET: '/api/quotes/:id'
+  * Success Response: { status: 'SUCCESS', body: {Text: String, Mood: String} }
+  * Fail Response: { status: 'FAIL', body: 'Unable to retrieve quote.' }
 
 ####GIPHY ROUTES
-Produce a GIF: GET: '/api/giphyInfo'
-  Response: { status: 'SUCCESS', body: <<' A GIF URL '>> }
-  
-  app.post('/api/giphys', giphyController.saveUserGiphy);
-  app.get('/api/giphys', giphyController.retrieveAll);
-  app.get('/api/giphys/:id', giphyController.getOne);
+* Produce a GIF: GET: '/api/giphyInfo'
+  * Success Response: { status: 'SUCCESS', body: String }
+  * Fail Response: { status: 'FAIL', body: error }
+
+* Save Particular GIF: POST: '/api/giphys'
+  * Success Response: { status: 'SUCCESS', body: 'Successfully saved GIF.' }
+  * Fail Response: { status: 'FAIL', body: 'Did not save GIF.' }
+
+* Retrieves All GIFs: GET: '/api/giphys'
+  * Success Response: 
+    * { status: 'SUCCESS', body: { [{URL: String, Mood: String}, ... ] } }
+  * Fail Response: { status: 'FAIL', body: 'Unable to retrieve all GIFs.' }
+
+* Retrieves GIF by ID: GET: '/api/giphys/:id'
+  * Success Response: { status: 'SUCCESS', body: {URL: String, Mood: String} }
+  * Fail Response: { status: 'FAIL', body: 'Unable to retrieve GIF.' }
 
 ####MUSIC ROUTES
-Produce a Youtube Video ID: GET: '/api/musicInfo'
-  Success Response: { status: 'SUCCESS', trackInfo, videoID }
-  Fail Response: { status: 'NOTFOUND', keyword, body: 'No videos found' }
+* Produce a Youtube Video ID: GET: '/api/musicInfo'
+  * Success Response: { status: 'SUCCESS', trackInfo, videoID }
+  * Fail Response: { status: 'FAIL', keyword, body: 'No videos found' }
 
-  app.post('/api/music', musicVideoController.saveUserMusicVideo);
-  app.get('/api/music', musicVideoController.retrieveAll);
-  app.get('/api/music/:id', musicVideoController.getOne);
+* Save Particular Video ID: POST: '/api/music'
+  * Success Response: { status: 'SUCCESS', body: 'Successfully saved Video Id.' }
+  * Fail Response: { status: 'FAIL', body: 'Did not save Video Id.' }
+
+* Retrieves All Video IDs: GET: '/api/music'
+  * Success Response: 
+    * { status: 'SUCCESS', body: { [{VideoId: String, Mood: String}, ... ] } }
+  * Fail Response: { status: 'FAIL', body: 'Unable to retrieve all Video Ids.' }
+
+* Retrieve Video ID by ID: GET: '/api/music/:id'
+  * Success Response: { status: 'SUCCESS', body: {VideoId: String, Mood: String} }
+  * Fail Response: { status: 'FAIL', body: 'Unable to retrieve Video Id.' }
 
 ####USERS
-  app.get('/api/user/quotes', quoteController.getUserQuotes);
-  app.get('/api/user/giphys', giphyController.getUserGiphys);
-  app.get('/api/user/music', musicVideoController.getUserMusicVideos);
-  app.get('/api/users', userController.retrieveAll);
-  app.put('/api/users', userController.updateOne);
-  app.delete('/api/users', userController.deleteOne);
+* Retrieves Quotes by User ID: GET: '/api/user/quotes'
+  * Success Response: 
+    * { status: 'SUCCESS', body: { [{Text: String, Mood: String}, ... ] } }
+  * Fail Response: { status: 'FAIL', body: 'Unable to retrieve all quotes.' }
+
+* Retrieves GIFs by User ID: GET: '/api/user/giphys'
+  * Success Response: 
+    * { status: 'SUCCESS', body: { [{URL: String, Mood: String}, ... ] } }
+  * Fail Response: { status: 'FAIL', body: 'Unable to retrieve all GIFs.' }
+
+* Retrieves Video ID by User ID: GET: '/api/user/music'
+  * Success Response: 
+    * { status: 'SUCCESS', body: { [{VideoId: String, Mood: String}, ... ] } }
+  * Fail Response: { status: 'FAIL', body: 'Unable to retrieve all Video Ids.' }
 
 ## Deployment
+
+Deployed using Digital Ocean. Installed a MySQL Database. Live at www.moodly.io!

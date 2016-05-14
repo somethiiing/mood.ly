@@ -38,7 +38,7 @@ const searchYouTube = (song, trackInfo, callback) => {
       .on('end', () => {
         body = JSON.parse(Buffer.concat(body).toString());
         if (body.pageInfo.totalResults === 0) {
-          callback({ status: 'NOTFOUND', trackInfo, body: 'No videos found' });
+          callback({ status: 'FAIL', trackInfo, body: 'No videos found' });
         }
         const youtubeArr = body.items;
         const randInd = Math.floor(Math.random() * youtubeArr.length);

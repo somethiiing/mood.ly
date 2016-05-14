@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import React from 'react';
 import Search from './search';
 import services from '../../services/services';
 import QuoteItem from './quoteItem';
@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import Grid from 'react-bootstrap/lib/Grid';
 
-class Dashboard extends Component {
+class Dashboard extends React.Component {
   constructor(props) {
     super(props);
 
@@ -31,26 +31,38 @@ class Dashboard extends Component {
     const self = this;
     const query = this.state.currentSearch;
     services.apiCall('wikiInfo', query, (res) => {
-      const randomIndex = Math.floor((Math.random() * res.length) + 1);
-      self.setState({
-        currMood: query,
-        currQuote: res[randomIndex],
-        showQuoteItem: true,
-      });
+      if (res === 'Unable to produce quote') {
+        throw new Error(res.body);
+      } else {
+        self.setState({
+          currMood: query,
+          currQuote: res,
+          showQuoteItem: true,
+        });
+      }
     });
     services.apiCall('giphyInfo', query, (res) => {
-      const randomIndex = Math.floor((Math.random() * res.length) + 1);
-      self.setState({
-        currentGif: res[randomIndex],
-        showGifItem: true,
-      });
+      if (res.status === 'SUCCESS') {
+        self.setState({
+          currMood: query,
+          currentGif: res.body,
+          showGifItem: true,
+        });
+      }
+      if (res.status === 'FAIL') {
+        throw new Error(res.body);
+      }
     });
     services.apiCall('musicInfo', query, (res) => {
       if (res.status === 'SUCCESS') {
         self.setState({
+          currMood: query,
           currVideoID: res.videoID,
           showMusicItem: true,
         });
+      }
+      if (res.status === 'FAIL') {
+        throw new Error(res.body);
       }
     });
   }
@@ -99,7 +111,7 @@ class Dashboard extends Component {
 }
 
 Dashboard.propTypes = {
-  user: PropTypes.element,
+  user: React.PropTypes.element,
   // quote: PropTypes.element.isRequired,
   // gif: PropTypes.element.isRequired,
 };

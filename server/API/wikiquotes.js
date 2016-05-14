@@ -103,7 +103,7 @@ const parseData = (body, pageID) => {
       cleanData.push(filteredData[i]);
     }
   }
-  return { status: 'success', body: cleanData };
+  return cleanData;
 };
 
 // RESTful API call, called asynchronously.
@@ -137,10 +137,12 @@ function getData(body, callback) {
   const pageID = getPageID(body);
   const redirect = redirectCheck(body, pageID);
   if (redirect === false) {
-    return callback(parseData(body, pageID));
+    const quotesArr = parseData(body, pageID);
+    const randomIndex = Math.floor((Math.random() * quotesArr.length) + 1);
+    return callback({ status: 'SUCCESS', body: quotesArr[randomIndex] });
   }
   if (redirect === null) {
-    return callback({ status: 'not found', body: redirectFailMessages });
+    return callback({ status: 'FAIL', body: 'Unable to produce quote.' });
   }
   return wikiQuoteCall(redirect, callback);
 }
