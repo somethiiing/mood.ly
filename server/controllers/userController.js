@@ -37,9 +37,9 @@ export default {
       } else {
         user.comparePasswords(user, password, (compareResult) => {
           if (compareResult) {
-            res.send({ status: 'SUCCESS', body: 'Successfully logged in!' });
+            res.statusCode(200).send({ status: 'SUCCESS', body: 'Successfully logged in!' });
           } else {
-            res.send({ status: 'PWFAIL', body: 'Invalid username or password' });
+            res.statusCode(500).send({ status: 'FAIL', body: 'Invalid username or password.' });
           }
         });
       }
@@ -55,7 +55,7 @@ export default {
     }
 
     if (!userId) {
-      res.status(500).send('userId undefined');
+      res.statusCode(500).send({ status: 'FAIL', body: 'userId is undefined.' });
       return;
     }
 
@@ -67,11 +67,11 @@ export default {
     })
     .then((foundUser) => {
       if (foundUser) {
-        res.status(200).send('user found!');
+        res.status(200).send({ status: 'SUCCESS', body: 'User found!' });
       }
     })
-    .catch((err) => {
-      throw new Error('Error finding user', err);
+    .catch(() => {
+      res.statusCode(500).send({ status: 'FAIL', body: 'Error finding user.' });
     });
   },
 
@@ -84,12 +84,12 @@ export default {
     })
     .then(results => {
       if (!results || results.length < 1) {
-        return this.sendError(res, 'No users');
+        res.statusCode(500).send({ status: 'FAIL', body: 'No users.' });
       }
       return res.json(results);
     })
-    .catch((err) => {
-      throw new Error('An error occurred retrieving all users.', err);
+    .catch(() => {
+      res.statusCode(500).send({ status: 'FAIL', body: 'An error occurred retrieving all users.' });
     });
   },
 
@@ -103,18 +103,18 @@ export default {
     .then((matchingUser) => {
       res.json(matchingUser);
     })
-    .catch((err) => {
-      throw new Error('An error occurred updating the user.', err);
+    .catch(() => {
+      res.statusCode(500).send({ status: 'FAIL', body: 'An error occurred updating the user.' });
     });
   },
 
   // DELETE USER
-  deleteOne: (req) => {
+  deleteOne: (req, res) => {
     const query = { id: req.params.userid };
 
     User.destroy({ where: query })
-    .catch((err) => {
-      throw new Error('An error occurred deleting the user.', err);
+    .catch(() => {
+      res.statusCode(500).send({ status: 'FAIL', body: 'An error occurred deleting the user.' });
     });
   },
 };
