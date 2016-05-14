@@ -1,8 +1,10 @@
+services:
+  - mysql
+before_install:
+  - mysql -e "create database IF NOT EXISTS test;" -uroot
 language: node_js
 node_js:
   - "node"
-services:
-  - mysql
 before_script:
   - npm install -g webpack
   - npm install -g mocha
