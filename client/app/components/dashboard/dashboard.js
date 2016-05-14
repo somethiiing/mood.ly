@@ -31,14 +31,15 @@ class Dashboard extends React.Component {
     const self = this;
     const query = this.state.currentSearch;
     services.apiCall('wikiInfo', query, (res) => {
-      if (res === 'Unable to produce quote') {
-        throw new Error(res.body);
-      } else {
+      if (res.status === 'SUCCESS') {
         self.setState({
           currMood: query,
-          currQuote: res,
+          currQuote: res.body,
           showQuoteItem: true,
         });
+      }
+      if (res.status === 'FAIL') {
+        throw new Error(res.body);
       }
     });
     services.apiCall('giphyInfo', query, (res) => {
