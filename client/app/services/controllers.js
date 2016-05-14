@@ -4,7 +4,7 @@ import $ from 'jquery';
 const likeQuote = (quote, user, callback) => {
   const quoteData = {
     user,
-    quote: { text: quote },
+    quote,
   };
 
   // TODO: refactor to using req.query instead of req.body?
@@ -23,7 +23,7 @@ const likeQuote = (quote, user, callback) => {
 const likeGiphy = (giphy, user, callback) => {
   const giphyData = {
     user,
-    giphy: { url: giphy },
+    giphy,
   };
 
   // TODO: refactor to using req.query instead of req.body?
@@ -39,10 +39,10 @@ const likeGiphy = (giphy, user, callback) => {
   });
 };
 
-const likeMusic = (videoId, user, callback) => {
+const likeMusic = (musicVideo, user, callback) => {
   const musicData = {
     user,
-    musicVideo: { videoId },
+    musicVideo,
   };
 
   $.ajax({
