@@ -39,10 +39,10 @@ const likeGiphy = (giphy, user, callback) => {
   });
 };
 
-const likeMusic = (videoId, user, callback) => {
+const likeMusic = (musicVideo, user, callback) => {
   const musicData = {
     user,
-    musicVideo: { videoId },
+    musicVideo,
   };
 
   $.ajax({

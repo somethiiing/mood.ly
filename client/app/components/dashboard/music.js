@@ -14,7 +14,13 @@ class Music extends Component {
   }
 
   handleLikeButton() {
-    controller.likeMusic(this.props.videoId, this.props.user, (data) => {
+    const username = this.props.user;
+    const music = {
+      videoId: this.props.videoId,
+      mood: this.props.mood,
+    };
+
+    controller.likeMusic(music, username, (data) => {
       console.log('MUSIC, ', data);
     });
   }
@@ -49,6 +55,7 @@ class Music extends Component {
 
 Music.propTypes = {
   videoId: PropTypes.element,
+  mood: PropTypes.element,
   user: PropTypes.element,
 };
 
