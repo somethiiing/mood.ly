@@ -45,6 +45,7 @@ class Profile extends React.Component {
   }
 
   handleShareButton(id, item) {
+    console.log(`${moodlyUrl}/api/${item}/${id}`);
     FB.ui({
       method: 'share',
       hashtag: 'moodly',
@@ -60,19 +61,19 @@ class Profile extends React.Component {
         {this.state.quoteList.map(quote =>
           <div id="quote">
             <h3>{quote.text}</h3>
-            <button onClick={this.handleShareButton.bind(this, quote.id, quote.text)}>Share!</button>
+            <button onClick={this.handleShareButton.bind(this, quote.id, 'quotes')}>Share!</button>
           </div>
           )}
         {this.state.gifList.map(gif =>
           <div id="giphy">
             <img src={gif.url} alt="" />
-            <button onClick={this.handleShareButton.bind(this, gif.id, <img src={gif.url} alt="" />)}>Share!</button>
+            <button onClick={this.handleShareButton.bind(this, gif.id, 'giphys')}>Share!</button>
           </div>
           )}
         {this.state.musicList.map(music =>
           <div id="music">
             <iframe src={`https://youtube.com/embed/${music.videoId}`} height="480px" width="640px" />
-            <button onClick={this.handleShareButton.bind(this, music.id, `https://youtube.com/embed/${music.videoId}`)}>Share!</button>
+            <button onClick={this.handleShareButton.bind(this, music.id, 'music')}>Share!</button>
           </div>
           )}
       </div>
