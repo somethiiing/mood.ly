@@ -37,9 +37,9 @@ export default {
       } else {
         user.comparePasswords(user, password, (compareResult) => {
           if (compareResult) {
-            res.statusCode(200).send({ status: 'SUCCESS', body: 'Successfully logged in!' });
+            res.status(200).send({ status: 'SUCCESS', body: 'Successfully logged in!' });
           } else {
-            res.statusCode(500).send({ status: 'FAIL', body: 'Invalid username or password.' });
+            res.status(500).send({ status: 'FAIL', body: 'Invalid username or password.' });
           }
         });
       }
@@ -55,7 +55,7 @@ export default {
     }
 
     if (!userId) {
-      res.statusCode(500).send({ status: 'FAIL', body: 'userId is undefined.' });
+      res.status(500).send({ status: 'FAIL', body: 'userId is undefined.' });
       return;
     }
 
@@ -71,7 +71,7 @@ export default {
       }
     })
     .catch(() => {
-      res.statusCode(500).send({ status: 'FAIL', body: 'Error finding user.' });
+      res.status(500).send({ status: 'FAIL', body: 'Error finding user.' });
     });
   },
 
@@ -84,12 +84,12 @@ export default {
     })
     .then(results => {
       if (!results || results.length < 1) {
-        res.statusCode(500).send({ status: 'FAIL', body: 'No users.' });
+        res.status(500).send({ status: 'FAIL', body: 'No users.' });
       }
       return res.json(results);
     })
     .catch(() => {
-      res.statusCode(500).send({ status: 'FAIL', body: 'An error occurred retrieving all users.' });
+      res.status(500).send({ status: 'FAIL', body: 'An error occurred retrieving all users.' });
     });
   },
 
@@ -104,7 +104,7 @@ export default {
       res.json(matchingUser);
     })
     .catch(() => {
-      res.statusCode(500).send({ status: 'FAIL', body: 'An error occurred updating the user.' });
+      res.status(500).send({ status: 'FAIL', body: 'An error occurred updating the user.' });
     });
   },
 
@@ -114,7 +114,7 @@ export default {
 
     User.destroy({ where: query })
     .catch(() => {
-      res.statusCode(500).send({ status: 'FAIL', body: 'An error occurred deleting the user.' });
+      res.status(500).send({ status: 'FAIL', body: 'An error occurred deleting the user.' });
     });
   },
 };
