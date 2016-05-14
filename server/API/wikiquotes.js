@@ -152,7 +152,7 @@ function getData(body, callback) {
 const frontEndCall = (req, res) => {
   const keyword = req.query.keyword;
   wikiQuoteCall(keyword, (response) => {
-    res.json(response.body);
+    res.json(response);
   });
 };
 
