@@ -1,6 +1,7 @@
 import React from 'react';
 import Search from './search';
 import services from '../../services/services';
+import controller from '../../services/controllers';
 import QuoteItem from './quoteItem';
 import GifItem from './gifItem';
 import Music from './music';
@@ -66,6 +67,7 @@ class Dashboard extends React.Component {
         throw new Error(res.body);
       }
     });
+    controller.addUserMood(query, this.props.user);
   }
 
   handleSearchChange(event) {
