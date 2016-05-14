@@ -29,10 +29,6 @@ class Header extends React.Component {
     this.handleProfileButtonClick = this.handleProfileButtonClick.bind(this);
   }
 
-  handleMoodlyClick() {
-    this.props.dashboard();
-  }
-
   handleLogoutButtonClick() {
     this.props.logout();
   }
@@ -64,7 +60,6 @@ class Header extends React.Component {
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <AppBar
           title="mood.ly"
-          onClick={this.handleMoodlyClick}
           showMenuIconButton={false}
           iconElementRight={
             <IconMenu
