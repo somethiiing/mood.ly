@@ -4,6 +4,8 @@ import Liked from './liked';
 // import LikedItem from './likedItem';
 import UserController from '../../services/controllers';
 
+const moodlyUrl = 'moodly.io';
+
 class Profile extends React.Component {
   constructor(props) {
     super(props);
@@ -26,22 +28,29 @@ class Profile extends React.Component {
     // QUOTES
     // =============================================
     UserController.getAllUserLikes('quotes', username, (res) => {
-      console.log(res);
       self.setState({ quoteList: res });
     });
 
     // GIPHY
     // =============================================
     UserController.getAllUserLikes('giphys', username, (res) => {
-      console.log(res);
       self.setState({ gifList: res });
     });
 
     // MUSIC
     // =============================================
     UserController.getAllUserLikes('music', username, (res) => {
-      console.log(res);
       self.setState({ musicList: res });
+    });
+  }
+
+  handleShareButton(id,quote) {
+    FB.ui({
+      method: 'share',
+      hashtag: 'moodly',
+      quote: quote,
+      href: `${moodlyUrl}/api/quotes/${id}`,
+    }, response => {
     });
   }
 
@@ -52,6 +61,7 @@ class Profile extends React.Component {
         {this.state.quoteList.map(quote =>
           <div id="quote">
             <h3>{quote.text}</h3>
+            <button onClick={this.handleShareButton.bind(this, quote.id, quote.text)}>Share!</button>
           </div>
           )}
         {this.state.gifList.map(gif =>
