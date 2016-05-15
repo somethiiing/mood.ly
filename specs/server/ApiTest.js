@@ -50,7 +50,7 @@ describe('Quotes API', () => {
 
 // MUSIC/YOUTUBE API TESTS
 describe('Music API', () => {
-  it('should return a videoId for a YouTube video when given a keyword', (done) => {
+  xit('should return a videoId for a YouTube video when given a keyword', (done) => {
     musicAPI.musicoveryCall('excitement', (resp) => {
       if (resp) {
         expect(resp.length).to.equal(11);
@@ -59,7 +59,7 @@ describe('Music API', () => {
     });
   });
 
-  it('should return a concatenated string when the function is called', (done) => {
+  xit('should return a concatenated string when the function is called', (done) => {
     const songObj = {
       title: 'California Love',
       artist: 'Tupac Shakur',
