@@ -51,18 +51,20 @@ class Login extends React.Component {
           >
             <label htmlFor="username"></label>
             <input
-              className="form-control" id="username"
-              type="text" placeholder="enter your username..."
+              className="form-control"
+              id="username"
+              type="text"
+              placeholder="enter your username..."
               onChange={this.handleInputUsername}
             />
-            <br />
             <label htmlFor="password"></label>
             <input
-              className="form-control" id="password"
-              type="password" placeholder="enter your password..."
+              className="form-control"
+              id="password"
+              type="password"
+              placeholder="enter your password..."
               onChange={this.handleInputPassword}
             />
-            <br />
             <br />
             <button type="button" onClick={this.handleLoginData}>Submit</button>
           </form>

@@ -19,7 +19,7 @@ a:focus {
 
 h1 {
   font-family: 'Bitter', serif;
-  font-size: 40px;
+  font-size: 30px;
   text-align: center;
   color: #2a76cc;
 }
@@ -37,7 +37,6 @@ button {
 
 .form-group {
   text-align: center;
-  padding-bottom: 30px;
 }
 
 .form-control {
@@ -53,10 +52,11 @@ button {
   margin-bottom: 100px;
 }
 
+.landing-content {
+  margin-top: 100px;
+}
+
 .moodly-content {
   margin: 0 auto;
   text-align: center;
 }
-
-
-
