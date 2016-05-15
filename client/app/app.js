@@ -68,7 +68,7 @@ class App extends React.Component {
   }
 
   render() {
-    let FailedLoginMessage = <div> Please Login or Sign Up!</div>;
+    let FailedLoginMessage;
     if (this.state.failMessageDisplay === 'LOGINFAIL') {
       FailedLoginMessage = (<div>Incorrect Username or Password. Please try again.</div>);
     }

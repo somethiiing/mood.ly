@@ -67,14 +67,6 @@ class Login extends React.Component {
             <button type="button" onClick={this.handleLoginData}>Submit</button>
           </form>
         </div>
-        <div className="auth-buttons">
-          <a href="/auth/facebook">
-            <i className="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
-          </a>
-          <a href="/auth/google">
-            <i className="fa fa-google fa-2x" aria-hidden="true"></i>
-          </a>
-        </div>
       </div>
     );
   }
