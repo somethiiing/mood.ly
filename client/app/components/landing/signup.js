@@ -3,6 +3,8 @@ import services from '../../services/services';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Card, CardText } from 'material-ui/Card';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -66,7 +68,7 @@ class SignUp extends React.Component {
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <Card
           style={{
-            height: 400,
+            height: 450,
             width: 325,
             margin: '0 auto',
           }}
@@ -74,40 +76,45 @@ class SignUp extends React.Component {
           <CardText>
             <div className="form-group">
               <h2>signup</h2>
-              <form
-                id="signup"
-              >
-                <input
-                  className="form-control"
-                  id="name"
-                  type="text"
-                  onChange={this.handleInputName}
-                  placeholder="enter your name..."
-                />
-                <input
-                  className="form-control"
-                  id="email"
-                  type="text"
-                  onChange={this.handleInputEmail}
-                  placeholder="enter your email..."
-                />
-                <input
-                  className="form-control"
-                  id="username"
-                  type="text"
-                  onChange={this.handleInputUsername}
-                  placeholder="choose a username..."
-                />
-                <input
-                  className="form-control"
-                  id="password"
-                  type="password"
-                  onChange={this.handleInputPassword}
-                  placeholder="create a password..."
-                />
-                <br />
-                <button type="button" onClick={this.handleSignUpData}>Submit!</button>
-              </form>
+              <TextField
+                className="form-control"
+                id="name"
+                onChange={this.handleInputName}
+                floatingLabelText="enter your name:"
+                floatingLabelFixed={Boolean(true)}
+                fullWidth={Boolean(false)}
+              />
+              <TextField
+                className="form-control"
+                id="email"
+                onChange={this.handleInputEmail}
+                floatingLabelText="enter your email:"
+                floatingLabelFixed={Boolean(true)}
+                fullWidth={Boolean(false)}
+              />
+              <TextField
+                className="form-control"
+                id="username"
+                onChange={this.handleInputUsername}
+                floatingLabelText="choose a username:"
+                floatingLabelFixed={Boolean(true)}
+                fullWidth={Boolean(false)}
+              />
+              <TextField
+                className="form-control"
+                id="password"
+                onChange={this.handleInputPassword}
+                floatingLabelText="choose a password:"
+                floatingLabelFixed={Boolean(true)}
+                fullWidth={Boolean(false)}
+              />
+              <br />
+              <br />
+              <RaisedButton
+                label="submit"
+                onClick={this.handleSignUpData}
+                primary={Boolean(true)}
+              />
             </div>
           </CardText>
         </Card>

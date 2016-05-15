@@ -51,7 +51,7 @@ class Login extends React.Component {
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <Card
           style={{
-            height: 400,
+            height: 450,
             width: 325,
             margin: '0 auto',
           }}
