@@ -1,7 +1,8 @@
 import React from 'react';
 import services from '../../services/services';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Card, CardHeader, CardText } from 'material-ui/Card';
+import { Card, CardText } from 'material-ui/Card';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -62,7 +63,7 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
         <Card
           style={{
             height: 400,
@@ -70,17 +71,11 @@ class SignUp extends React.Component {
             margin: '0 auto',
           }}
         >
-          <CardHeader
-            style={{
-              height: 75,
-            }}
-            title="signup"
-          />
           <CardText>
             <div className="form-group">
+              <h2>signup</h2>
               <form
                 id="signup"
-                className="signup-form"
               >
                 <input
                   className="form-control"

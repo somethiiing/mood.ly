@@ -1,7 +1,8 @@
 import React from 'react';
 import services from '../../services/services';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Card, CardHeader, CardText } from 'material-ui/Card';
+import { Card, CardText } from 'material-ui/Card';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class Login extends React.Component {
   constructor(props) {
@@ -45,42 +46,37 @@ class Login extends React.Component {
 
   render() {
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
         <Card
-          className="form-group"
           style={{
             height: 400,
             width: 300,
             margin: '0 auto',
           }}
         >
-          <CardHeader
-            style={{
-              height: 75,
-            }}
-            title="login"
-          />
           <CardText>
-            <form
-              id="login"
-              className="login-form"
-            >
-              <input
-                className="form-control"
-                id="username"
-                type="text"
-                placeholder="enter your username..."
-                onChange={this.handleInputUsername}
-              />
-              <input
-                className="form-control"
-                id="password"
-                type="password"
-                placeholder="enter your password..."
-                onChange={this.handleInputPassword}
-              />
-              <button type="button" onClick={this.handleLoginData}>Submit</button>
-            </form>
+            <div className="form-group">
+              <h2>login</h2>
+              <form
+                id="login"
+              >
+                <input
+                  className="form-control"
+                  id="username"
+                  type="text"
+                  placeholder="enter your username..."
+                  onChange={this.handleInputUsername}
+                />
+                <input
+                  className="form-control"
+                  id="password"
+                  type="password"
+                  placeholder="enter your password..."
+                  onChange={this.handleInputPassword}
+                />
+                <button type="button" onClick={this.handleLoginData}>Submit</button>
+              </form>
+            </div>
           </CardText>
         </Card>
       </MuiThemeProvider>
