@@ -8,7 +8,8 @@ node_js:
 before_script:
   - webpack
   - npm start
+  - npm test
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-after_deploy:
-- echo "Deploy Finished!"
+after_script:
+- echo "Build Finished!"
