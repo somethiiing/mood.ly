@@ -6,7 +6,7 @@ language: node_js
 node_js:
   - "node"
 before_script:
-  - webpack
+  - npm install -g webpack
   - npm test
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
