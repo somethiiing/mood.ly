@@ -40,6 +40,9 @@ class Dashboard extends React.Component {
         });
       }
       if (res.status === 'FAIL') {
+        self.setState({
+          showQuoteItem: false,
+        });
         throw new Error(res.body);
       }
     });
