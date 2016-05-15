@@ -67,7 +67,7 @@ class SignUp extends React.Component {
         <Card
           style={{
             height: 400,
-            width: 300,
+            width: 325,
             margin: '0 auto',
           }}
         >
@@ -105,6 +105,7 @@ class SignUp extends React.Component {
                   onChange={this.handleInputPassword}
                   placeholder="create a password..."
                 />
+                <br />
                 <button type="button" onClick={this.handleSignUpData}>Submit!</button>
               </form>
             </div>

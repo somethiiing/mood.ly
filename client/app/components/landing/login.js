@@ -2,7 +2,9 @@ import React from 'react';
 import services from '../../services/services';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Card, CardText } from 'material-ui/Card';
+import TextField from 'material-ui/TextField';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class Login extends React.Component {
   constructor(props) {
@@ -50,32 +52,35 @@ class Login extends React.Component {
         <Card
           style={{
             height: 400,
-            width: 300,
+            width: 325,
             margin: '0 auto',
           }}
         >
           <CardText>
             <div className="form-group">
               <h2>login</h2>
-              <form
-                id="login"
-              >
-                <input
-                  className="form-control"
-                  id="username"
-                  type="text"
-                  placeholder="enter your username..."
-                  onChange={this.handleInputUsername}
-                />
-                <input
-                  className="form-control"
-                  id="password"
-                  type="password"
-                  placeholder="enter your password..."
-                  onChange={this.handleInputPassword}
-                />
-                <button type="button" onClick={this.handleLoginData}>Submit</button>
-              </form>
+              <TextField
+                className="form-control"
+                id="username"
+                floatingLabelText="enter your username:"
+                floatingLabelFixed={Boolean(true)}
+                fullWidth={Boolean(false)}
+                onChange={this.handleInputUsername}
+              />
+              <TextField
+                className="form-control"
+                id="password"
+                floatingLabelText="enter your password:"
+                floatingLabelFixed={Boolean(true)}
+                onChange={this.handleInputPassword}
+              />
+              <br />
+              <br />
+              <RaisedButton
+                label="submit"
+                onClick={this.handleLoginData}
+                primary={Boolean(true)}
+              />
             </div>
           </CardText>
         </Card>
