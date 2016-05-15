@@ -3,8 +3,8 @@ import dbConfig from '../config/mysqlsetup.js';
 
 export default new Sequelize(
   'moodb',
-  'root',
-  'HR41', // FOR TRAVISCI TESTING - USUALLY IS 'HR41'
+  'travis',
+  '', // FOR TRAVISCI TESTING - USUALLY IS 'HR41'
   {
     host: dbConfig.host,
     dialect: 'mysql',
