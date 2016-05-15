@@ -1,5 +1,7 @@
 import React from 'react';
 import services from '../../services/services';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { Card, CardHeader, CardText } from 'material-ui/Card';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -60,41 +62,59 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <div className="sign-up-content">
-        <h1>sign up</h1>
-        <div className="form-group">
-          <form
-            id="signup" className="signup-form"
-          >
-            <label htmlFor="name"></label>
-            <input
-              className="form-control" id="name"
-              type="text" onChange={this.handleInputName}
-              placeholder="enter your name..."
-            />
-            <label htmlFor="email"></label>
-            <input
-              className="form-control" id="email"
-              type="text" onChange={this.handleInputEmail}
-              placeholder="enter your email..."
-            />
-            <label htmlFor="username"></label>
-            <input
-              className="form-control" id="username"
-              type="text" onChange={this.handleInputUsername}
-              placeholder="choose a username..."
-            />
-            <label htmlFor="password"></label>
-            <input
-              className="form-control" id="password"
-              type="password" onChange={this.handleInputPassword}
-              placeholder="create a password..."
-            />
-            <br />
-            <button type="button" onClick={this.handleSignUpData}>Submit!</button>
-          </form>
-        </div>
-      </div>
+      <MuiThemeProvider>
+        <Card
+          style={{
+            height: 400,
+            width: 300,
+          }}
+        >
+          <CardHeader
+            style={{
+              height: 75,
+            }}
+            title="signup"
+          />
+          <CardText>
+            <div className="form-group">
+              <form
+                id="signup"
+                className="signup-form"
+              >
+                <input
+                  className="form-control"
+                  id="name"
+                  type="text"
+                  onChange={this.handleInputName}
+                  placeholder="enter your name..."
+                />
+                <input
+                  className="form-control"
+                  id="email"
+                  type="text"
+                  onChange={this.handleInputEmail}
+                  placeholder="enter your email..."
+                />
+                <input
+                  className="form-control"
+                  id="username"
+                  type="text"
+                  onChange={this.handleInputUsername}
+                  placeholder="choose a username..."
+                />
+                <input
+                  className="form-control"
+                  id="password"
+                  type="password"
+                  onChange={this.handleInputPassword}
+                  placeholder="create a password..."
+                />
+                <button type="button" onClick={this.handleSignUpData}>Submit!</button>
+              </form>
+            </div>
+          </CardText>
+        </Card>
+      </MuiThemeProvider>
     );
   }
 }
