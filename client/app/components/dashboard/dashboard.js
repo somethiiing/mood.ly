@@ -84,7 +84,12 @@ class Dashboard extends React.Component {
           handleSearchButtonClick={this.handleSearchButtonClick}
         />
         <Grid>
-          <Row className="show-grid">
+          <Row
+            className="show-grid"
+            style={{
+              paddingBottom: 100,
+            }}
+          >
             {this.state.showQuoteItem ?
               <Col sm={6} md={4}>
                 <QuoteItem

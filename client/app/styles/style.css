@@ -35,6 +35,14 @@ button {
   font-size: 17px;
 }
 
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 .form-group {
   text-align: center;
 }
@@ -53,7 +61,14 @@ button {
   margin-top: 100px;
 }
 
-.moodly-content {
-  margin: 0 auto;
-  text-align: center;
+.social-buttons {
+  float: right;
+  margin-right: 20px;
 }
+
+.social-buttons > a {
+  padding-left: 10px;
+}
+
+
+
