@@ -11,7 +11,7 @@ import wiki from '../API/wikiquotes';
 import gif from '../API/giphy';
 import music from '../API/music';
 
-export default (app, express, passport) => {
+export default (app) => {
   app.get('/', renderIndex);
 // AUTH
 // =================================
