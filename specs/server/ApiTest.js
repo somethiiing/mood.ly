@@ -11,7 +11,7 @@ describe('Quotes API', () => {
     const keyword = 'happiness';
     wikiAPI.wikiQuoteCall(keyword, (data) => {
       if (data) {
-        expect(Array.isArray(data.body)).to.equal(true);
+        expect(typeof data.body[0]).to.equal('string');
         done();
       }
     });
