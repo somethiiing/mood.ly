@@ -4,12 +4,11 @@ export default {
   saveOne: (req, res) => {
     const user = req.body;
     User.findOrCreate({ where: user })
-    .then(() => {
-      // res.redirect(201, '/');
-      res.send({ status: 'SUCCESS', body: 'User successfully created' });
+    .then((foundOrCreatedUser) => {
+      res.send({ status: 'SUCCESS', body: 'Successfully found or created user.' });
     })
-    .catch(err => {
-      res.send({ status: 'FAIL', body: 'User already exists', err });
+    .catch(() => {
+      res.send({ status: 'FAIL', body: 'User already exists' });
     });
   },
 
@@ -67,7 +66,7 @@ export default {
     })
     .then((foundUser) => {
       if (foundUser) {
-        res.status(200).send({ status: 'SUCCESS', body: 'User found!' }).json(foundUser);
+        res.status(200).send({ status: 'SUCCESS', body: foundUser });
       }
     })
     .catch(() => {
