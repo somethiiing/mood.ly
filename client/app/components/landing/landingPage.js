@@ -26,8 +26,10 @@ class LandingPage extends React.Component {
             </Col>
             <Col md={6}>
               <SignUp
-                loginSuccess={this.props.loginSuccess}
                 signupFail={this.props.signupFail}
+                loginSuccess={this.props.loginSuccess}
+                invalidEmailAlert={this.props.invalidEmailAlert}
+                allFieldsRequiredAlert={this.props.allFieldsRequiredAlert}
               />
             </Col>
           </Row>
@@ -39,9 +41,11 @@ class LandingPage extends React.Component {
 }
 
 LandingPage.propTypes = {
-  loginSuccess: React.PropTypes.func,
   loginFail: React.PropTypes.func,
   signupFail: React.PropTypes.func,
+  loginSuccess: React.PropTypes.func,
+  invalidEmailAlert: React.PropTypes.func,
+  allFieldsRequiredAlert: React.PropTypes.func,
 };
 
 export default LandingPage;
