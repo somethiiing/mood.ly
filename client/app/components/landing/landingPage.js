@@ -18,13 +18,13 @@ class LandingPage extends React.Component {
       <div className="landing-content">
         <Grid>
           <Row className="show-grid">
-            <Col md={6}>
+            <Col md={6} className="card-spacing">
               <Login
                 loginSuccess={this.props.loginSuccess}
                 loginFail={this.props.loginFail}
               />
             </Col>
-            <Col md={6}>
+            <Col md={6} className="card-spacing">
               <SignUp
                 signupFail={this.props.signupFail}
                 loginSuccess={this.props.loginSuccess}
