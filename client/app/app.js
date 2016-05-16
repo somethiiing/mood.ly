@@ -52,16 +52,27 @@ class App extends React.Component {
     this.setState({
       page: 'landing',
       loggedIn: false,
+      failMessageDisplay: false,
     });
   }
   profile() {
-    this.setState({
+    if (this.state.loggedIn === false) {
+      return this.setState({
+        failMessageDisplay: 'NOACCESS',
+      });
+    }
+    return this.setState({
       page: 'profile',
     });
   }
 
   dashboard() {
-    this.setState({
+    if (this.state.loggedIn === false) {
+      return this.setState({
+        failMessageDisplay: 'NOACCESS',
+      });
+    }
+    return this.setState({
       page: 'dashboard',
     });
   }
@@ -73,6 +84,9 @@ class App extends React.Component {
     }
     if (this.state.failMessageDisplay === 'SIGNUPFAIL') {
       FailedLoginMessage = (<div>User already exists. Please try another name.</div>);
+    }
+    if (this.state.failMessageDisplay === 'NOACCESS') {
+      FailedLoginMessage = (<div>Please login first!</div>);
     }
 
     let pageLayout;
