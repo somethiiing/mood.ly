@@ -6,7 +6,7 @@ body {
 }
 
 a {
-  color: #1a4a7f;
+  color: #424242;
   -o-transition: all .35s;
   -webkit-transition: all .35s;
   -moz-transition: all .35s;
@@ -15,7 +15,7 @@ a {
 
 a:hover,
 a:focus {
-  color: #0f2c4c;
+  color: #000;
 }
 
 h1 {
