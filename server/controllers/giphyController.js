@@ -6,10 +6,10 @@ export default {
     const giphy = req.body;
     Giphy.findOrCreate({ where: giphy })
     .then(() => {
-      res.status(201).send({ status: 'SUCCESS', body: 'Successfully found or created giphy.' });
+      res.status(201).send({ status: 'SUCCESS', body: 'Successfully saved giphy to database.' });
     })
     .catch(() => {
-      res.status(500).send({ status: 'FAIL', body: 'Failed to find or create giphy.' });
+      res.status(500).send({ status: 'FAIL', body: 'Failed to save giphy to database.' });
     });
   },
   getOne: (req, res) => {
@@ -20,7 +20,7 @@ export default {
       res.status(200).send({ status: 'SUCCESS', body: `<img src="${giphy}" alt>` });
     })
     .catch(() => {
-      res.status(500).send({ status: 'FAIL', body: 'Failed to retrieve giphy.' });
+      res.status(500).send({ status: 'FAIL', body: 'Failed to get giphy.' });
     });
   },
   saveUserGiphy: (req, res) => {
@@ -34,7 +34,7 @@ export default {
         foundUser.addGiphy(foundOrCreatedGiphy)
         .then(() => {
           res.status(200).send({ status: 'SUCCESS',
-            body: 'Successfully found or created user giphy.' });
+            body: 'Successfully saved user giphy.' });
         })
         .catch(() => {
           res.status(500).send({ status: 'FAIL', body: 'Failed to save user giphy.' });
@@ -48,22 +48,22 @@ export default {
       where: { username },
     })
     .then(foundUser => foundUser.getGiphys())
-    .then(() => {
+    .then((userGiphys) => {
       res.status(200).send({ status: 'SUCCESS',
-        body: 'Successfully found user giphys.' });
+        body: userGiphys });
     })
     .catch(() => {
-      res.status(500).send({ status: 'FAIL', body: 'Failed to find or create user giphy.' });
+      res.status(500).send({ status: 'FAIL', body: 'Failed to get user giphys.' });
     });
   },
   retrieveAll: (req, res) => {
     Giphy.findAll({})
-    .then(() => {
+    .then((retrievedGiphys) => {
       res.status(200).send({ status: 'SUCCESS',
-        body: 'Successfully retrieved user giphys.' });
+        body: retrievedGiphys });
     })
     .catch(() => {
-      res.status(500).send({ status: 'FAIL', body: 'Failed to find user giphy.' });
+      res.status(500).send({ status: 'FAIL', body: 'Failed to retrieve all giphys.' });
     });
   },
 };

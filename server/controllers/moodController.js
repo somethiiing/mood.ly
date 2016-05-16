@@ -6,10 +6,10 @@ export default {
     const mood = req.body;
     Mood.findOrCreate({ where: mood })
     .then(() => {
-      res.status(201).send({ status: 'SUCCESS', body: 'Successfully found or created mood.' });
+      res.status(201).send({ status: 'SUCCESS', body: 'Successfully saved mood to database.' });
     })
     .catch(() => {
-      res.status(500).send({ status: 'FAIL', body: 'Failed to find or create mood.' });
+      res.status(500).send({ status: 'FAIL', body: 'Failed to save mood to database.' });
     });
   },
   saveUserMood: (req, res) => {
@@ -22,10 +22,11 @@ export default {
       .spread(foundOrCreatedMood => {
         foundUser.addMood(foundOrCreatedMood)
         .then(() => {
-          res.status(201).send({ status: 'SUCCESS', body: 'Successfully saved user mood.' });
+          res.status(201).send({ status: 'SUCCESS',
+            body: 'Successfully saved user mood to database.' });
         })
         .catch(() => {
-          res.status(500).send({ status: 'FAIL', body: 'Failed to find or create user mood.' });
+          res.status(500).send({ status: 'FAIL', body: 'Failed to save user mood to database.' });
         });
       });
     });
@@ -37,8 +38,8 @@ export default {
       where: { username: user.username },
     })
     .then(foundUser => foundUser.getMoods())
-    .then(() => {
-      res.status(201).send({ status: 'SUCCESS', body: 'Successfully retrieved all moods.' });
+    .then((allMoods) => {
+      res.status(201).send({ status: 'SUCCESS', body: allMoods });
     })
     .catch(() => {
       res.status(500).send({ status: 'FAIL', body: 'Failed to get all moods.' });
