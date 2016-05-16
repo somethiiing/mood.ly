@@ -31,6 +31,7 @@ class QuoteItem extends Component {
           style={{
             height: 350,
             width: 300,
+            margin: '0 auto',
           }}
         >
           <CardHeader

@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import Profile from './components/profile/Profile';
 import LandingPage from './components/landing/landingPage';
 import Dashboard from './components/dashboard/dashboard';
@@ -68,7 +67,7 @@ class App extends React.Component {
   }
 
   render() {
-    let FailedLoginMessage = <div> Please Login or Sign Up!</div>;
+    let FailedLoginMessage;
     if (this.state.failMessageDisplay === 'LOGINFAIL') {
       FailedLoginMessage = (<div>Incorrect Username or Password. Please try again.</div>);
     }
@@ -114,7 +113,6 @@ class App extends React.Component {
           profile={this.profile}
         />
         {pageLayout}
-        <Footer />
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class Footer extends Component {
   constructor(props) {
@@ -7,24 +8,19 @@ class Footer extends Component {
   }
   render() {
     return (
-      <MuiThemeProvider>
-        <div className="footer">
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <footer>
           <div>
-            <ul className="socialButtons">
-              <a href="#"><i className="fa fa-facebook" aria-hidden="true"></i></a>
-              <a href="#"><i className="fa fa-twitter" aria-hidden="true"></i></a>
-              <a href="#"><i className="fa fa-soundcloud" aria-hidden="true"></i></a>
+            <ul className="social-buttons">
+              <a href="#"><i className="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
+              <a href="#"><i className="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+              <a href="#"><i className="fa fa-soundcloud fa-2x" aria-hidden="true"></i></a>
             </ul>
           </div>
-        </div>
+        </footer>
       </MuiThemeProvider>
     );
   }
 }
-
-Footer.propTypes = {
-  // onLoginClick: PropTypes.func.isRequired,
-  // onSignUpClick: PropTypes.func.isRequired,
-};
 
 export default Footer;

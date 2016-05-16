@@ -32,6 +32,7 @@ class Music extends React.Component {
           style={{
             height: 350,
             width: 300,
+            margin: '0 auto',
           }}
         >
           <CardHeader

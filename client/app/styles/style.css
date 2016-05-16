@@ -2,10 +2,11 @@ html,
 body {
   width: 100%;
   height: 100%;
+  background-color: #f1f1f1;
 }
 
 a {
-  color: #1a4a7f;
+  color: #424242;
   -o-transition: all .35s;
   -webkit-transition: all .35s;
   -moz-transition: all .35s;
@@ -14,18 +15,17 @@ a {
 
 a:hover,
 a:focus {
-  color: #0f2c4c;
+  color: #000;
 }
 
 h1 {
-  font-family: 'Bitter', serif;
-  font-size: 40px;
+  font-family: 'Sniglet', cursive;
+  font-size: 30px;
   text-align: center;
-  color: #2a76cc;
 }
 
 h2 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Sniglet', cursive;
   font-size: 18px;
   text-align: center;
 }
@@ -35,27 +35,53 @@ button {
   font-size: 17px;
 }
 
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 .form-group {
   text-align: center;
-  padding-bottom: 30px;
+  width: 95%;
 }
 
 .form-control {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
-  width: 175px;
-  height: 20px;
-  margin: 0 auto;
+  border: none;
+  box-shadow: none;
+}
+
+.form-group h2 {
+  margin-bottom: 20px;
 }
 
 .search-bar {
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin: 100px auto;
 }
 
-.moodly-content {
-  margin: 0 auto;
-  text-align: center;
+.landing-content {
+  margin-top: 100px;
+}
+
+.social-buttons {
+  float: right;
+  margin-right: 20px;
+}
+
+.social-buttons > a {
+  padding-left: 10px;
+}
+
+.profile-content {
+  margin-top: 60px;
+}
+
+.card-spacing {
+  padding-bottom: 50px;
 }
 
 

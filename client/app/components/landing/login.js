@@ -1,5 +1,10 @@
 import React from 'react';
 import services from '../../services/services';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { Card, CardText } from 'material-ui/Card';
+import TextField from 'material-ui/TextField';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class Login extends React.Component {
   constructor(props) {
@@ -43,39 +48,43 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="login-content">
-        <h1>login</h1>
-        <div className="form-group">
-          <form
-            id="login" className="login-form"
-          >
-            <label htmlFor="username"></label>
-            <input
-              className="form-control" id="username"
-              type="text" placeholder="enter your username..."
-              onChange={this.handleInputUsername}
-            />
-            <br />
-            <label htmlFor="password"></label>
-            <input
-              className="form-control" id="password"
-              type="password" placeholder="enter your password..."
-              onChange={this.handleInputPassword}
-            />
-            <br />
-            <br />
-            <button type="button" onClick={this.handleLoginData}>Submit</button>
-          </form>
-        </div>
-        <div className="auth-buttons">
-          <a href="/auth/facebook">
-            <i className="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
-          </a>
-          <a href="/auth/google">
-            <i className="fa fa-google fa-2x" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <Card
+          style={{
+            height: 450,
+            width: 325,
+            margin: '0 auto',
+          }}
+        >
+          <CardText>
+            <div className="form-group">
+              <h2>login</h2>
+              <TextField
+                className="form-control"
+                id="username"
+                floatingLabelText="enter your username:"
+                floatingLabelFixed={Boolean(true)}
+                fullWidth={Boolean(false)}
+                onChange={this.handleInputUsername}
+              />
+              <TextField
+                className="form-control"
+                id="password"
+                floatingLabelText="enter your password:"
+                floatingLabelFixed={Boolean(true)}
+                onChange={this.handleInputPassword}
+              />
+              <br />
+              <br />
+              <RaisedButton
+                label="submit"
+                onClick={this.handleLoginData}
+                primary={Boolean(true)}
+              />
+            </div>
+          </CardText>
+        </Card>
+      </MuiThemeProvider>
     );
   }
 }

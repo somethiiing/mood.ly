@@ -58,6 +58,10 @@ class Header extends React.Component {
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <AppBar
           title="mood.ly"
+          style={{
+            backgroundColor: '#424242',
+            height: 65,
+          }}
           showMenuIconButton={false}
           iconElementRight={
             <IconMenu

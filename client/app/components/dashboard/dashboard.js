@@ -84,23 +84,28 @@ class Dashboard extends React.Component {
           handleSearchButtonClick={this.handleSearchButtonClick}
         />
         <Grid>
-          <Row className="show-grid">
+          <Row
+            className="show-grid"
+            style={{
+              paddingBottom: 100,
+            }}
+          >
             {this.state.showQuoteItem ?
-              <Col sm={6} md={4}>
+              <Col sm={6} md={4} className="card-spacing">
                 <QuoteItem
                   quote={this.state.currQuote}
                   mood={this.state.currMood}
                   user={this.props.user}
                 /></Col> : null}
             {this.state.showGifItem ?
-              <Col sm={6} md={4}>
+              <Col sm={6} md={4} className="card-spacing">
                 <GifItem
                   gif={this.state.currentGif}
                   mood={this.state.currMood}
                   user={this.props.user}
                 /></Col> : null}
             {this.state.showMusicItem ?
-              <Col sm={6} md={4}>
+              <Col sm={6} md={4} className="card-spacing">
                 <Music
                   videoId={this.state.currVideoID}
                   mood={this.state.currMood}

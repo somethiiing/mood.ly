@@ -8,7 +8,7 @@ const renderFullPage = (html, initialState) => {
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
         <link rel="stylesheet" href="../../client/app/styles/style.css" />
 
-        <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Sniglet' rel='stylesheet' type='text/css'>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
