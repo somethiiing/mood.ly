@@ -91,6 +91,7 @@ class Profile extends React.Component {
                 >
                   <CardText>
                     <h2>{this.props.user.name}'s likes</h2>
+                    <br />
                     {this.state.quoteList.map(quote =>
                       <Card
                         style={{
