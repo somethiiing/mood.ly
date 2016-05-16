@@ -5,22 +5,22 @@ export default {
   saveOne: (req, res) => {
     const quote = req.body;
     Quote.findOrCreate({ where: quote })
-    .then(() => {
-      res.status(201).send({ status: 'SUCCESS', body: 'Successfully found or created quote.' });
+    .then((savedQuote) => {
+      res.status(201).send({ status: 'SUCCESS', body: savedQuote });
     })
-    .catch(() => {
-      res.status(500).send({ status: 'FAIL', body: 'Failed to find or create quote.' });
+    .catch((err) => {
+      res.status(500).send({ status: 'FAIL', body: err });
     });
   },
 
   getOne: (req, res) => {
     const id = +req.params.id;
     Quote.findById(id)
-    .then(() => {
-      res.status(200).send({ status: 'SUCCESS', body: 'Found quote.' });
+    .then((quote) => {
+      res.status(200).send({ status: 'SUCCESS', body: quote });
     })
-    .catch(() => {
-      res.status(500).send({ status: 'FAIL', body: 'Failed to find quote.' });
+    .catch((err) => {
+      res.status(500).send({ status: 'FAIL', body: err });
     });
   },
 
@@ -32,11 +32,11 @@ export default {
       Quote.findOrCreate({ where: quote })
       .spread(foundOrCreatedQuote => {
         foundUser.addQuote(foundOrCreatedQuote)
-        .then(() => {
-          res.status(201).send({ status: 'SUCCESS', body: 'Successfully saved quote.' });
+        .then((userQuote) => {
+          res.status(201).send({ status: 'SUCCESS', body: userQuote });
         })
-        .catch(() => {
-          res.status(500).send({ status: 'FAIL', body: 'Did not save quote.' });
+        .catch((err) => {
+          res.status(500).send({ status: 'FAIL', body: err });
         });
       });
     });
@@ -49,21 +49,21 @@ export default {
       where: { username },
     })
     .then(foundUser => foundUser.getQuotes())
-    .then(() => {
-      res.status(200).send({ status: 'SUCCESS', body: 'Found user quote.' });
+    .then((userQuotes) => {
+      res.status(200).send({ status: 'SUCCESS', body: userQuotes });
     })
-    .catch(() => {
-      res.status(500).send({ status: 'FAIL', body: 'Failed to find user quote.' });
+    .catch((err) => {
+      res.status(500).send({ status: 'FAIL', body: err });
     });
   },
 
   retrieveAll: (req, res) => {
     Quote.findAll({})
-    .then(() => {
-      res.status(200).send({ status: 'SUCCESS', body: 'Found all quotes in database.' });
+    .then((allQuotes) => {
+      res.status(200).send({ status: 'SUCCESS', body: allQuotes });
     })
-    .catch(() => {
-      res.status(500).send({ status: 'FAIL', body: 'Failed to find all quotes.' });
+    .catch((err) => {
+      res.status(500).send({ status: 'FAIL', body: err });
     });
   },
 };
