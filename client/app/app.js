@@ -114,7 +114,6 @@ class App extends React.Component {
           profile={this.profile}
         />
         {pageLayout}
-        <Footer />
       </div>
     );
   }

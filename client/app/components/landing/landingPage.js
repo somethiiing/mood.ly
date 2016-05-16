@@ -31,6 +31,7 @@ class LandingPage extends React.Component {
             </Col>
           </Row>
         </Grid>
+        <Footer />
       </div>
     );
   }
