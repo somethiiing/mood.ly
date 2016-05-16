@@ -87,7 +87,7 @@ footer .container {
 
 .landing-header {
   width: 100%;
-  min-height: 600px;
+  min-height: 450px;
   text-align: center;
   color: #424242;
   background-image: url(https://blogs.thegospelcoalition.org/justintaylor/files/2012/09/boxhead.jpg);
@@ -96,6 +96,7 @@ footer .container {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+  background-attachment: fixed;
   opacity: 0.8;
 }
 
