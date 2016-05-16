@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 function createChart(dom, props){
-    var width = props.width;
+  var width = props.width;
   var height = props.height;
-    width = width + 200;
+  width = width + 200;
   var data = props.data;
   var sum = data.reduce(function(memo, num){ return memo + num.count; }, 0);
   var chart = d3.select(dom).append('svg').attr('class', 'd3').attr('width', width).attr('height', height)

@@ -47,14 +47,16 @@ export default {
   },
   getMoodData: (req, res) => {
     let moodData = [];
-    Mood.findAll({})
+    // Mood.findAll({})
+    Mood.aggregate('name', 'DISTINCT', { plain: false })
     .then(foundMoods => {
+      console.log(foundMoods);
       let itemsProcessed = 0;
       foundMoods.forEach((mood, index, array) => {
-        Mood.count({ where: { name: mood.name } })
+        Mood.count({ where: { name: mood.DISTINCT } })
         .then(count => {
           itemsProcessed++;
-          moodData.push({ name: mood.name, count });
+          moodData.push({ name: mood.DISTINCT, count });
           if (itemsProcessed === array.length) {
             res.json(moodData);
           }
