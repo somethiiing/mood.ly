@@ -10,7 +10,7 @@ class Title extends Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <div className="container landing-header">
+        <div className="landing-header container">
           <h1>mood.ly</h1>
           <h2>a place to explore your mood</h2>
           <br />

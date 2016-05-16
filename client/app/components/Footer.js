@@ -10,7 +10,7 @@ class Footer extends Component {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <footer>
-          <div>
+          <div className="container">
             <ul className="social-buttons">
               <a href="#"><i className="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
               <a href="#"><i className="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
