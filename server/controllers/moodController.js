@@ -71,6 +71,11 @@ export default {
       //     return { name: mood.name, count };
       //   });
       // });
+    })
+    .catch(err => {
+      // No moods are found in database
+      console.log(err);
+      res.json([]);
     });
     // .then(result => {
     //   res.json(result);
