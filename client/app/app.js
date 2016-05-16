@@ -4,6 +4,9 @@ import Profile from './components/profile/Profile';
 import LandingPage from './components/landing/landingPage';
 import Dashboard from './components/dashboard/dashboard';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import D3PieChart from './components/d3/D3PieChart';
+import PieChart from './components/d3/PieChart';
+import controller from './services/controllers';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,6 +17,7 @@ class App extends React.Component {
       page: 'landing',
       user: null,
       failMessageDisplay: false,
+      moodData: [],
     };
 
     this.logout = this.logout.bind(this);
@@ -91,6 +95,12 @@ class App extends React.Component {
     });
   }
 
+  handleMoodData() {
+    controller.getMoodData(data => {
+      this.setState({ moodData: data });
+    });
+  }
+
   render() {
     let FailedLoginMessage;
     if (this.state.failMessageDisplay === 'LOGINFAIL') {
@@ -128,6 +138,7 @@ class App extends React.Component {
     if (this.state.page === 'dashboard' && this.state.loggedIn === true) {
       pageLayout = (
         <div>
+          <PieChart data={this.state.moodData} title="Moodly History" />
           <Dashboard
             user={this.state.user}
           />

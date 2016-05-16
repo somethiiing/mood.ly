@@ -45,11 +45,6 @@ class Dashboard extends React.Component {
     });
   }
 
-  // componentWillMount() {
-  //   this.handleMoodData();
-  //   console.log(this.state.moodData);
-  // }
-
   handleSearchButtonClick() {
     const self = this;
     const query = this.state.currentSearch;
@@ -105,7 +100,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div>
-        <PieChart data={this.state.moodData} title="Sample Fruits"/>
+        
         <Search
           handleSearchChange={this.handleSearchChange}
           handleSearchButtonClick={this.handleSearchButtonClick}
