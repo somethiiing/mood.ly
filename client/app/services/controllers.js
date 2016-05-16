@@ -83,10 +83,17 @@ const getAllUserLikes = (endpoint, username, callback) => {
   });
 };
 
+const getMoodData = (callback) => {
+  $.get('/api/moods', data => {
+    callback(data);
+  });
+};
+
 export default {
   addUserMood,
   likeQuote,
   likeGiphy,
   likeMusic,
   getAllUserLikes,
+  getMoodData,
 };

@@ -45,4 +45,33 @@ export default {
       res.status(500).send({ status: 'FAIL', body: 'Failed to get all moods.' });
     });
   },
+  getMoodData: (req, res) => {
+    let moodData = [];
+    Mood.findAll({})
+    .then(foundMoods => {
+      let itemsProcessed = 0;
+      foundMoods.forEach((mood, index, array) => {
+        Mood.count({ where: { name: mood.name } })
+        .then(count => {
+          itemsProcessed++;
+          moodData.push({ name: mood.name, count });
+          if (itemsProcessed === array.length) {
+            res.json(moodData);
+          }
+        });
+      });
+      // console.log(data);
+      // return data;
+      // return foundMoods.map((mood) => {
+      //   return Mood.count({ where: { name: mood.name } })
+      //   .then(count => {
+      //     console.log({ name: mood.name, count });
+      //     return { name: mood.name, count };
+      //   });
+      // });
+    });
+    // .then(result => {
+    //   res.json(result);
+    // });
+  },
 };

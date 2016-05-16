@@ -15,6 +15,7 @@ const renderFullPage = (html, initialState) => {
 
         <title>Welcome to Mood.ly</title>
         <meta name="description" content="A place to explore your mood" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
       </head>
       <body>
         <script>
