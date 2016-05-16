@@ -5,11 +5,11 @@ export default {
   saveOne: (req, res) => {
     const giphy = req.body;
     Giphy.findOrCreate({ where: giphy })
-    .then((createdGiphy) => {
-      res.status(201).send({ status: 'SUCCESS', body: createdGiphy });
+    .then(() => {
+      res.status(201).send({ status: 'SUCCESS', body: 'Successfully saved giphy to database.' });
     })
-    .catch((err) => {
-      res.status(500).send({ status: 'FAIL', body: err });
+    .catch(() => {
+      res.status(500).send({ status: 'FAIL', body: 'Failed to save giphy to database.' });
     });
   },
   getOne: (req, res) => {
@@ -19,8 +19,8 @@ export default {
       const giphy = foundGiphy.url;
       res.status(200).send({ status: 'SUCCESS', body: `<img src="${giphy}" alt>` });
     })
-    .catch((err) => {
-      res.status(500).send({ status: 'FAIL', body: err });
+    .catch(() => {
+      res.status(500).send({ status: 'FAIL', body: 'Failed to get giphy.' });
     });
   },
   saveUserGiphy: (req, res) => {
@@ -32,12 +32,12 @@ export default {
       Giphy.findOrCreate({ where: giphy })
       .spread(foundOrCreatedGiphy => {
         foundUser.addGiphy(foundOrCreatedGiphy)
-        .then((savedGiphy) => {
+        .then(() => {
           res.status(200).send({ status: 'SUCCESS',
-            body: savedGiphy });
+            body: 'Successfully saved user giphy.' });
         })
-        .catch((err) => {
-          res.status(500).send({ status: 'FAIL', body: err });
+        .catch(() => {
+          res.status(500).send({ status: 'FAIL', body: 'Failed to save user giphy.' });
         });
       });
     });
@@ -48,12 +48,12 @@ export default {
       where: { username },
     })
     .then(foundUser => foundUser.getGiphys())
-    .then((userGiphy) => {
+    .then((userGiphys) => {
       res.status(200).send({ status: 'SUCCESS',
-        body: userGiphy });
+        body: userGiphys });
     })
-    .catch((err) => {
-      res.status(500).send({ status: 'FAIL', body: err });
+    .catch(() => {
+      res.status(500).send({ status: 'FAIL', body: 'Failed to get user giphys.' });
     });
   },
   retrieveAll: (req, res) => {
@@ -62,8 +62,8 @@ export default {
       res.status(200).send({ status: 'SUCCESS',
         body: retrievedGiphys });
     })
-    .catch((err) => {
-      res.status(500).send({ status: 'FAIL', body: err });
+    .catch(() => {
+      res.status(500).send({ status: 'FAIL', body: 'Failed to retrieve all giphys.' });
     });
   },
 };
