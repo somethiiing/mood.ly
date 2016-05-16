@@ -9,15 +9,7 @@ import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import Grid from 'react-bootstrap/lib/Grid';
 import D3PieChart from '../d3/D3PieChart';
-import PieChart from '../d3/PieChart';
-
-const dummydata = [
-    {name: "Apples", count: 10},
-    {name: "Oranges", count: 20},
-    {name: "Bananas", count: 5},
-    {name: "Blueberries", count: 42},
-    {name: "mangoes ", count: 29}  
-];
+// import PieChart from '../d3/PieChart';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -37,6 +29,10 @@ class Dashboard extends React.Component {
 
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
+  }
+
+  componentWillMount() {
+    this.handleMoodData();
   }
 
   handleMoodData() {
@@ -100,7 +96,6 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div>
-        
         <Search
           handleSearchChange={this.handleSearchChange}
           handleSearchButtonClick={this.handleSearchButtonClick}
@@ -135,6 +130,7 @@ class Dashboard extends React.Component {
                 /></Col> : null}
           </Row>
         </Grid>
+        <D3PieChart data={this.state.moodData} title="Moodly History" />
       </div>
     );
   }
