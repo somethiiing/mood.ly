@@ -5,11 +5,11 @@ export default {
   saveOne: (req, res) => {
     const quote = req.body;
     Quote.findOrCreate({ where: quote })
-    .then((savedQuote) => {
-      res.status(201).send({ status: 'SUCCESS', body: savedQuote });
+    .then(() => {
+      res.status(201).send({ status: 'SUCCESS', body: 'Succesfully saved user to database.' });
     })
-    .catch((err) => {
-      res.status(500).send({ status: 'FAIL', body: err });
+    .catch(() => {
+      res.status(500).send({ status: 'FAIL', body: 'Failed to save user to database.' });
     });
   },
 
@@ -19,8 +19,8 @@ export default {
     .then((quote) => {
       res.status(200).send({ status: 'SUCCESS', body: quote });
     })
-    .catch((err) => {
-      res.status(500).send({ status: 'FAIL', body: err });
+    .catch(() => {
+      res.status(500).send({ status: 'FAIL', body: 'Failed to get quote.' });
     });
   },
 
@@ -32,11 +32,11 @@ export default {
       Quote.findOrCreate({ where: quote })
       .spread(foundOrCreatedQuote => {
         foundUser.addQuote(foundOrCreatedQuote)
-        .then((userQuote) => {
-          res.status(201).send({ status: 'SUCCESS', body: userQuote });
+        .then(() => {
+          res.status(201).send({ status: 'SUCCESS', body: 'Successfully saved user quote.' });
         })
-        .catch((err) => {
-          res.status(500).send({ status: 'FAIL', body: err });
+        .catch(() => {
+          res.status(500).send({ status: 'FAIL', body: 'Failed to save user quote.' });
         });
       });
     });
@@ -52,8 +52,8 @@ export default {
     .then((userQuotes) => {
       res.status(200).send({ status: 'SUCCESS', body: userQuotes });
     })
-    .catch((err) => {
-      res.status(500).send({ status: 'FAIL', body: err });
+    .catch(() => {
+      res.status(500).send({ status: 'FAIL', body: 'Failed to get user quotes.' });
     });
   },
 
@@ -62,8 +62,8 @@ export default {
     .then((allQuotes) => {
       res.status(200).send({ status: 'SUCCESS', body: allQuotes });
     })
-    .catch((err) => {
-      res.status(500).send({ status: 'FAIL', body: err });
+    .catch(() => {
+      res.status(500).send({ status: 'FAIL', body: 'Failed to retrieve all user quotes.' });
     });
   },
 };
