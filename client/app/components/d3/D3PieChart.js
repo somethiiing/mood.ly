@@ -141,7 +141,8 @@ var D3PieChart = React.createClass({
   },
 
   render: function() {
-    var colors = ['#FD9827', '#DA3B21', '#3669C9', '#1D9524', '#971497'];
+    // var colors = ['#FD9827', '#DA3B21', '#3669C9', '#1D9524', '#971497'];
+    var colors = d3.scale.category20().range();
     return (
       <div>
         <h4> {this.props.title} </h4>
