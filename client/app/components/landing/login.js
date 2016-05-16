@@ -58,7 +58,7 @@ class Login extends React.Component {
         >
           <CardText>
             <div className="form-group">
-              <h2>login</h2>
+              <h3>login</h3>
               <TextField
                 className="form-control"
                 id="username"

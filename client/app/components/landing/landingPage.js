@@ -16,10 +16,11 @@ class LandingPage extends React.Component {
 
   render() {
     return (
-      <div className="landing-content">
+      <div>
         <Title />
         <Grid>
-          <Row className="show-grid">
+          <Row className="show-grid landing-content">
+            <h2>get started</h2>
             <Col md={1} />
             <Col md={5} className="card-spacing">
               <Login

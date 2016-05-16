@@ -24,7 +24,8 @@ h1 {
   text-align: center;
 }
 
-h2 {
+h2,
+h3 {
   font-family: 'Sniglet', cursive;
   font-size: 18px;
   text-align: center;
@@ -101,5 +102,14 @@ footer {
 
 .landing-header h2 {
   font-size: 25px;
+}
+
+.landing-content {
+  padding-top: 50px;
+}
+
+.landing-content h2 {
+  font-size: 25px;
+  padding-bottom: 30px;
 }
 
