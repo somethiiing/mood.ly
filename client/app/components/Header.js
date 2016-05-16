@@ -59,7 +59,7 @@ class Header extends React.Component {
         <AppBar
           title="mood.ly"
           style={{
-            backgroundColor: 'black',
+            backgroundColor: '#424242',
             height: 65,
           }}
           showMenuIconButton={false}
