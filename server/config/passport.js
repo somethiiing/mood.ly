@@ -58,11 +58,11 @@ export default (app, session, passport) => {
       password: req.body.password,
     } })
     .then(() => {
-      console.log('user ========== \n', user);
+      console.log('user created \n', user);
       done(null, user);
     })
     .catch(err => {
-      throw new Error('Error finding or creating the user. (error line 61)', err);
+      console.log('There was an error finding or creating the user (error line 65).', err);
     });
   }));
 
@@ -81,7 +81,7 @@ export default (app, session, passport) => {
       }
     })
     .catch(err => {
-      res.send({ status: 'FAIL', status: 'failerrorasdjkhfjlkaskfj'})
+      console.log('There was an error finding the user (error line 84).', err);
     });
   }));
 

@@ -1,9 +1,13 @@
 import Sequelize from 'sequelize';
-import password from '../config/mysqlsetup.js';
+import dbConfig from '../config/mysqlsetup.js';
 
-export default new Sequelize('moodb', 'root', password, {
-  define: {
-    timestamps: false, // true by default
-  },
-  logging: false,
-});
+export default new Sequelize(
+  'moodb',
+  'root',
+  '',
+  {
+    define: {
+      timestamps: false, // true by default
+    },
+    logging: false,
+  });

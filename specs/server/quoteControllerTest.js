@@ -53,11 +53,12 @@ describe('Quote Controller', () => {
     User.findOrCreate({ where: user })
     .then(() => {
       request(options1, (err, res, body) => {
-        expect(res.statusCode).to.equal(201);
+        console.log('err ', err);
+        expect(res.status).to.equal('SUCCESS');
 
 
         request(options2, (err, res, body) => {
-          expect(res.statusCode).to.equal(200);
+          expect(res.status).to.equal('SUCCESS');
           done();
         });
       });
@@ -65,7 +66,7 @@ describe('Quote Controller', () => {
     .catch(err => {
       // User data already exists
       request(options2, (err, res, body) => {
-        expect(res.statusCode).to.equal(200);
+        expect(res.status).to.equal('SUCCESS');
         done();
       });
     });
