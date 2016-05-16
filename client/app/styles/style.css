@@ -63,10 +63,6 @@ footer {
   margin: 100px auto;
 }
 
-.landing-content {
-  margin-top: 100px;
-}
-
 .social-buttons {
   float: right;
   margin-right: 20px;
@@ -84,5 +80,26 @@ footer {
   padding-bottom: 50px;
 }
 
+.landing-header {
+  width: 100%;
+  min-height: 600px;
+  text-align: center;
+  color: #424242;
+  background-image: url(https://blogs.thegospelcoalition.org/justintaylor/files/2012/09/boxhead.jpg);
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  opacity: 0.8;
+}
 
+.landing-header h1 {
+  padding-top: 150px;
+  font-size: 90px;
+}
+
+.landing-header h2 {
+  font-size: 25px;
+}
 
