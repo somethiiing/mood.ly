@@ -165,7 +165,7 @@ Database in mySQL, using sequelize.
 ####GIPHY
 * Produce a GIF: GET: '/api/giphyInfo'
   * Success Response: { status: 'SUCCESS', body: String }
-  * Fail Response: { status: 'FAIL', body: error }
+  * Fail Response: { status: 'FAIL', body: err }
 
 * Save Particular GIF: POST: '/api/giphys'
   * Success Response: { status: 'SUCCESS', body: 'Successfully saved GIF.' }
