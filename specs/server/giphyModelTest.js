@@ -2,6 +2,7 @@ import chai from 'chai';
 import { describe, it } from 'mocha';
 import Giphy from '../../server/models/giphyModel';
 import '../../server/index';
+import request from 'request';
 
 const expect = chai.expect;
 
@@ -43,9 +44,24 @@ describe('Giphy model', () => {
   });
 
   it('should have a property of url', done => {
-    const newGiphy = Giphy.create();
-    console.log('newGiphy========> ', newGiphy);
-    expect(newGiphy).to.have.property('url');
+    const giphyTest = {
+      method: 'GET',
+      uri: 'http://127.0.0.1:8080/api/giphys',
+    };
+    request(giphyTest, (err, res, body) => {
+      expect(JSON.parse(body)[0]).to.have.property('url');
+    });
+    done();
+  });
+
+  it('should retrieve all giphys from database', done => {
+    const fetchGiphys = {
+      method: 'GET',
+      uri: 'http://127.0.0.1:8080/api/giphys',
+    };
+    request(fetchGiphys, (err, res, body) => {
+      expect(JSON.parse(body).length).to.equal(3);
+    });
     done();
   });
 });
