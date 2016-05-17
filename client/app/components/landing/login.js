@@ -27,8 +27,7 @@ class Login extends React.Component {
     };
     services.auth('/login', user, (res) => {
       if (res.status === 'SUCCESS') {
-        console.log('status', res.status);
-        return this.props.loginSuccess(user);
+        return this.props.loginSuccess(res.body);
       }
       return this.props.loginFail();
     });

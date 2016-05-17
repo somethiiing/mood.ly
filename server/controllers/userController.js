@@ -4,11 +4,11 @@ export default {
   saveOne: (req, res) => {
     const user = req.body;
     User.findOrCreate({ where: user })
-    .then((foundOrCreatedUser) => {
-      res.send({ status: 'SUCCESS', body: 'Successfully found or created user.' });
+    .then(() => {
+      res.send({ status: 'SUCCESS', body: user });
     })
-    .catch(() => {
-      res.send({ status: 'FAIL', body: 'User already exists' });
+    .catch(err => {
+      res.send({ status: 'FAIL', body: err });
     });
   },
 
@@ -36,7 +36,7 @@ export default {
       } else {
         user.comparePasswords(user, password, (compareResult) => {
           if (compareResult) {
-            res.status(200).send({ status: 'SUCCESS', body: 'Successfully logged in!' });
+            res.status(200).send({ status: 'SUCCESS', body: user });
           } else {
             res.status(500).send({ status: 'FAIL', body: 'Invalid username or password.' });
           }
