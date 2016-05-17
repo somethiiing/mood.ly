@@ -70,7 +70,7 @@ class Profile extends React.Component {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div className="profile-content">
-          <D3PieChart data={this.props.moodData} title="Moodly History" />
+          
           <Grid>
             <Row className="show-grid">
               <Col md={4}>
@@ -82,6 +82,7 @@ class Profile extends React.Component {
                 >
                   <CardText>
                     <h2>{this.props.user.name}'s mood history</h2>
+                    <D3PieChart data={this.props.moodData} title="" />
                   </CardText>
                 </Card>
               </Col>

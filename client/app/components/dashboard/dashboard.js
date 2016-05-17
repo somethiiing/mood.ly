@@ -45,14 +45,14 @@ class Dashboard extends React.Component {
     const self = this;
     const query = this.state.currentSearch;
     services.apiCall('wikiInfo', query, (res) => {
-      if (res.status === 'SUCCESS') {
+      if (res.success === true) {
         self.setState({
           currMood: query,
           currQuote: res.body,
           showQuoteItem: true,
         });
       }
-      if (res.status === 'FAIL') {
+      if (res.success === false) {
         self.setState({
           showQuoteItem: false,
         });
@@ -60,26 +60,26 @@ class Dashboard extends React.Component {
       }
     });
     services.apiCall('giphyInfo', query, (res) => {
-      if (res.status === 'SUCCESS') {
+      if (res.success === true) {
         self.setState({
           currMood: query,
           currentGif: res.body,
           showGifItem: true,
         });
       }
-      if (res.status === 'FAIL') {
+      if (res.success === false) {
         throw new Error(res.body);
       }
     });
     services.apiCall('musicInfo', query, (res) => {
-      if (res.status === 'SUCCESS') {
+      if (res.success === true) {
         self.setState({
           currMood: query,
           currVideoID: res.videoID,
           showMusicItem: true,
         });
       }
-      if (res.status === 'FAIL') {
+      if (res.success === false) {
         throw new Error(res.body);
       }
     });

@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import React from 'react';
 import controller from '../../services/controllers';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
@@ -6,7 +6,7 @@ import IconButton from 'material-ui/IconButton';
 import Favorite from 'material-ui/svg-icons/action/favorite';
 import EditorInsertComment from 'material-ui/svg-icons/editor/insert-comment';
 
-class QuoteItem extends Component {
+class QuoteItem extends React.Component {
   constructor(props) {
     super(props);
 
@@ -67,10 +67,10 @@ class QuoteItem extends Component {
 }
 
 QuoteItem.propTypes = {
-  quote: PropTypes.string,
-  mood: PropTypes.string,
-  user: PropTypes.object,
-  onQuoteClick: PropTypes.func,
+  quote: React.PropTypes.string,
+  mood: React.PropTypes.string,
+  user: React.PropTypes.object,
+  onQuoteClick: React.PropTypes.func,
 };
 
 export default QuoteItem;

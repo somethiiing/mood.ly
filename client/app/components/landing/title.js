@@ -1,18 +1,25 @@
-import React, { PropTypes, Component } from 'react';
+import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import NavigationArrowDownward from 'material-ui/svg-icons/navigation/arrow-downward';
 import Button from 'react-bootstrap/lib/Button';
 
-class Title extends Component {
+class Title extends React.Component {
   constructor(props) {
     super(props);
+
+    this.handleOnMoodlyClick = this.handleOnMoodlyClick.bind(this);
   }
+
+  handleOnMoodlyClick() {
+    this.props.dashboard();
+  }
+
   render() {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div className="landing-header container">
-          <h3 className="landing-title">mood.ly</h3>
+          <h3 className="landing-title" onClick={this.handleOnMoodlyClick}>mood.ly</h3>
           <div className="landing-buttons">
             <Button bsSize="large" className="landing-button">about</Button>
             <Button bsSize="large" className="landing-button">sign in</Button>
@@ -29,5 +36,9 @@ class Title extends Component {
     );
   }
 }
+
+Title.propTypes = {
+  dashboard: React.PropTypes.func,
+};
 
 export default Title;
