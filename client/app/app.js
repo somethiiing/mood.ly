@@ -146,6 +146,12 @@ class App extends React.Component {
     if (this.state.page === 'dashboard' && this.state.loggedIn === true) {
       pageLayout = (
         <div>
+          <Header
+            dashboard={this.dashboard}
+            logout={this.logout}
+            profile={this.profile}
+            handleMoodData={this.handleMoodData}
+          />
           <Dashboard
             user={this.state.user}
           />
@@ -155,6 +161,12 @@ class App extends React.Component {
     if (this.state.page === 'profile' && this.state.loggedIn === true) {
       pageLayout = (
         <div>
+          <Header
+            dashboard={this.dashboard}
+            logout={this.logout}
+            profile={this.profile}
+            handleMoodData={this.handleMoodData}
+          />
           <Profile
             user={this.state.user}
             moodData={this.state.moodData}
@@ -164,12 +176,6 @@ class App extends React.Component {
     }
     return (
       <div>
-        <Header
-          dashboard={this.dashboard}
-          logout={this.logout}
-          profile={this.profile}
-          handleMoodData={this.handleMoodData}
-        />
         {pageLayout}
       </div>
     );
