@@ -11,17 +11,17 @@ class SignUp extends React.Component {
     super(props);
 
     this.state = {
-      name: null,
-      email: null,
-      username: null,
-      password: null,
+      name: '',
+      email: '',
+      username: '',
+      password: '',
     };
 
     this.handleInputName = this.handleInputName.bind(this);
     this.handleInputEmail = this.handleInputEmail.bind(this);
+    this.handleSignUpData = this.handleSignUpData.bind(this);
     this.handleInputUsername = this.handleInputUsername.bind(this);
     this.handleInputPassword = this.handleInputPassword.bind(this);
-    this.handleSignUpData = this.handleSignUpData.bind(this);
   }
 
   handleSignUpData() {
@@ -31,7 +31,20 @@ class SignUp extends React.Component {
       username: this.state.username,
       password: this.state.password,
     };
-    services.auth('/signup', user, (res) => {
+
+    const emailCheck = email => {
+      const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return regex.test(email);
+    };
+
+    if (this.state.name.length === 0 || 
+      this.state.username.length === 0 || this.state.password.length === 0) {
+      return this.props.allFieldsRequiredAlert();
+    }
+    if (emailCheck(this.state.email) === false) {
+      return this.props.invalidEmailAlert();
+    }
+    return services.auth('/signup', user, res => {
       if (res.status === 'SUCCESS') {
         return this.props.loginSuccess(user);
       }
@@ -107,6 +120,7 @@ class SignUp extends React.Component {
                 floatingLabelText="choose a password:"
                 floatingLabelFixed={Boolean(true)}
                 fullWidth={Boolean(false)}
+                type="password"
               />
               <br />
               <br />
@@ -124,8 +138,10 @@ class SignUp extends React.Component {
 }
 
 SignUp.propTypes = {
-  loginSuccess: React.PropTypes.func,
   signupFail: React.PropTypes.func,
+  loginSuccess: React.PropTypes.func,
+  invalidEmailAlert: React.PropTypes.func,
+  allFieldsRequiredAlert: React.PropTypes.func,
 };
 
 

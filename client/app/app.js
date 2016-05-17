@@ -22,6 +22,8 @@ class App extends React.Component {
     this.loginFail = this.loginFail.bind(this);
     this.signupFail = this.signupFail.bind(this);
     this.loginSuccess = this.loginSuccess.bind(this);
+    this.invalidEmailAlert = this.invalidEmailAlert.bind(this);
+    this.allFieldsRequiredAlert = this.allFieldsRequiredAlert.bind(this);
   }
 
   loginFail() {
@@ -45,6 +47,18 @@ class App extends React.Component {
     this.setState({
       page: 'landing',
       failMessageDisplay: 'SIGNUPFAIL',
+    });
+  }
+
+  allFieldsRequiredAlert() {
+    this.setState({
+      failMessageDisplay: 'FIELDSREQUIRED',
+    });
+  }
+
+  invalidEmailAlert() {
+    this.setState({
+      failMessageDisplay: 'INVALIDEMAIL',
     });
   }
 
@@ -88,6 +102,12 @@ class App extends React.Component {
     if (this.state.failMessageDisplay === 'NOACCESS') {
       FailedLoginMessage = (<div>Please login first!</div>);
     }
+    if (this.state.failMessageDisplay === 'FIELDSREQUIRED') {
+      FailedLoginMessage = (<div>All Fields Required!</div>);
+    }
+    if (this.state.failMessageDisplay === 'INVALIDEMAIL') {
+      FailedLoginMessage = (<div>Invalid E-mail, please use a different one!</div>);
+    }
 
     let pageLayout;
 
@@ -96,9 +116,11 @@ class App extends React.Component {
         <div>
           {FailedLoginMessage}
           <LandingPage
-            loginSuccess={this.loginSuccess}
             loginFail={this.loginFail}
             signupFail={this.signupFail}
+            loginSuccess={this.loginSuccess}
+            invalidEmailAlert={this.invalidEmailAlert}
+            allFieldsRequiredAlert={this.allFieldsRequiredAlert}
           />
         </div>
       );
