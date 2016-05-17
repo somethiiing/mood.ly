@@ -35,7 +35,7 @@ describe('Giphy model', () => {
     });
     done();
   });
-  
+
   it('should create a new Giphy', done => {
     const newGiphy = Giphy.create();
     expect(newGiphy).to.be.instanceOf(Object);
