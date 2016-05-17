@@ -64,9 +64,9 @@ class Music extends React.Component {
 }
 
 Music.propTypes = {
-  videoId: React.PropTypes.element,
-  mood: React.PropTypes.element,
-  user: React.PropTypes.element,
+  videoId: React.PropTypes.string,
+  mood: React.PropTypes.string,
+  user: React.PropTypes.object,
 };
 
 export default Music;

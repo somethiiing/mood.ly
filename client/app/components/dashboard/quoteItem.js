@@ -67,9 +67,9 @@ class QuoteItem extends Component {
 }
 
 QuoteItem.propTypes = {
-  quote: PropTypes.element,
-  mood: PropTypes.element,
-  user: PropTypes.element,
+  quote: PropTypes.string,
+  mood: PropTypes.string,
+  user: PropTypes.object,
   onQuoteClick: PropTypes.func,
 };
 

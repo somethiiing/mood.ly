@@ -64,9 +64,9 @@ class GifItem extends React.Component {
 }
 
 GifItem.propTypes = {
-  gif: React.PropTypes.element,
-  mood: React.PropTypes.element,
-  user: React.PropTypes.element,
+  gif: React.PropTypes.string,
+  mood: React.PropTypes.string,
+  user: React.PropTypes.object,
 };
 
 export default GifItem;

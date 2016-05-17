@@ -34,8 +34,8 @@ const likeQuote = (quote, user, callback) => {
     data: JSON.stringify(quoteData),
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
-    success: () => {
-      callback({ status: 'SUCCESS' });
+    success: (data) => {
+      callback({ status: 'SUCCESS', body: data });
     },
   });
 };

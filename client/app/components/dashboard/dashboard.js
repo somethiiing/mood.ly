@@ -83,7 +83,7 @@ class Dashboard extends React.Component {
         throw new Error(res.body);
       }
     });
-    controller.addUserMood(query, this.props.user);
+    controller.addUserMood(query, this.props.user, (res) => { console.log(res); });
     this.handleMoodData();
   }
 
@@ -137,7 +137,7 @@ class Dashboard extends React.Component {
 }
 
 Dashboard.propTypes = {
-  user: React.PropTypes.element,
+  user: React.PropTypes.object,
   // quote: PropTypes.element.isRequired,
   // gif: PropTypes.element.isRequired,
 };

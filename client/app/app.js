@@ -15,7 +15,7 @@ class App extends React.Component {
     this.state = {
       loggedIn: false,
       page: 'landing',
-      user: null,
+      user: { name: ' ', email: ' ', username: ' ', password: ' ' },
       failMessageDisplay: false,
       moodData: [],
     };
@@ -41,10 +41,11 @@ class App extends React.Component {
   }
 
   loginSuccess(user) {
+    console.log(user);
     this.setState({
-      page: 'dashboard',
-      loggedIn: true,
       user,
+      loggedIn: true,
+      page: 'dashboard',
     });
   }
 
@@ -69,6 +70,7 @@ class App extends React.Component {
 
   logout() {
     this.setState({
+      user: { name: ' ', email: ' ', username: ' ', password: ' ' },
       page: 'landing',
       loggedIn: false,
       failMessageDisplay: false,

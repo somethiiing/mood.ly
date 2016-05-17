@@ -208,7 +208,7 @@ class Profile extends React.Component {
 }
 
 Profile.propTypes = {
-  user: React.PropTypes.element,
+  user: React.PropTypes.object,
   moodData: React.PropTypes.array,
 };
 
