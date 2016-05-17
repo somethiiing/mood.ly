@@ -19,18 +19,36 @@ class About extends React.Component {
           <h2>about</h2>
           <Grid>
             <Row className="show-grid">
-              <Col md={4} className="about-col">
-                <InsertEmoticon />
+              <Col md={4} sm={6} className="about-col">
+                <InsertEmoticon
+                  color="white"
+                  style={{
+                    width: 44,
+                    height: 44,
+                  }}
+                />
                 <h3>generate</h3>
                 <p>tell us how you're feeling and we'll generate content tailored to your mood.</p>
               </Col>
-              <Col md={4} className="about-col">
-                <FavoriteBorder />
+              <Col md={4} sm={6} className="about-col">
+                <FavoriteBorder
+                  color="white"
+                  style={{
+                    width: 44,
+                    height: 44,
+                  }}
+                />
                 <h3>save</h3>
                 <p>save quotes, music, and gifs that you like to your personal profile, complete with a history of your moods.</p>
               </Col>
-              <Col md={4} className="about-col">
-                <PeopleOutline />
+              <Col md={4} sm={6} className="about-col">
+                <PeopleOutline
+                  color="white"
+                  style={{
+                    width: 44,
+                    height: 44,
+                  }}
+                />
                 <h3>share</h3>
                 <p>connect with a facebook account and share your favorites with all your friends!</p>
               </Col>
