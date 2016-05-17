@@ -1,4 +1,5 @@
 import chai from 'chai';
+import { describe, it } from 'mocha';
 import request from 'request';
 import Giphy from '../../server/models/giphyModel';
 import User from '../../server/models/userModel';
@@ -6,21 +7,20 @@ import giphyController from '../../server/controllers/giphyController';
 const expect = chai.expect;
 
 describe('Giphy Controller', () => {
-
-  var user = {
+  const user = {
     username: 'Wilson',
     email: 'wilson@wilson.com',
     password: 'asdf',
   };
-  var giphy1 = {
+  const giphy1 = {
     url: 'http://media0.giphy.com/media/xThuWp2hJABbmc20Ew/200.gif',
     mood: 'Happy',
   };
-  var giphy2 = {
+  const giphy2 = {
     url: 'http://media1.giphy.com/media/xT5LMNrx71j8dZvJra/200.gif',
     mood: 'Sentimental',
   };
-  var giphy3 = {
+  const giphy3 = {
     url: 'http://media2.giphy.com/media/l4Ki7hFz3nr9PN1C0/200.gif',
     mood: 'Romantic',
   };
@@ -33,20 +33,20 @@ describe('Giphy Controller', () => {
   // });
 
   it('should add users giphy to the database', done => {
-    let options1 = {
+    const options1 = {
       method: 'POST',
       uri: 'http://127.0.0.1:8080/api/giphys',
       json: {
-        user: user,
+        user,
         giphy: giphy1,
       },
     };
 
-    let options2 = {
+    const options2 = {
       method: 'GET',
       uri: 'http://127.0.0.1:8080/api/giphys',
       json: {
-        user: user,
+        user,
       },
     };
 
@@ -72,19 +72,19 @@ describe('Giphy Controller', () => {
   });
 
   it('users should be able to have many giphys', done => {
-    let options2 = {
+    const options2 = {
       method: 'POST',
       uri: 'http://127.0.0.1:8080/api/giphys',
       json: {
-        user: user,
+        user,
         giphy: giphy2,
       },
     };
-    let options3 = {
+    const options3 = {
       method: 'POST',
       uri: 'http://127.0.0.1:8080/api/giphys',
       json: {
-        user: user,
+        user,
         giphy: giphy3,
       },
     };
@@ -98,11 +98,11 @@ describe('Giphy Controller', () => {
   });
 
   it('should get all user giphys', done => {
-    let options = {
+    const options = {
       method: 'GET',
       uri: 'http://127.0.0.1:8080/api/giphys',
       json: {
-        user: user,
+        user,
       },
     };
     request(options, (err, res, body) => {
