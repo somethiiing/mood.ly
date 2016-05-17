@@ -98,7 +98,7 @@ class App extends React.Component {
 
   // Test addiding Pie Chart above Dashboard Component
   handleMoodData() {
-    controller.getMoodData(data => {
+    controller.getAllUserData('moods', this.state.user.name, data => {
       this.setState({ moodData: data });
     });
   }

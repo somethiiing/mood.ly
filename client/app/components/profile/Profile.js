@@ -39,19 +39,19 @@ class Profile extends React.Component {
 
     // QUOTES
     // =============================================
-    UserController.getAllUserLikes('quotes', username, (res) => {
+    UserController.getAllUserData('quotes', username, (res) => {
       self.setState({ quoteList: res.body });
     });
 
     // GIPHY
     // =============================================
-    UserController.getAllUserLikes('giphys', username, (res) => {
+    UserController.getAllUserData('giphys', username, (res) => {
       self.setState({ gifList: res.body });
     });
 
     // MUSIC
     // =============================================
-    UserController.getAllUserLikes('music', username, (res) => {
+    UserController.getAllUserData('music', username, (res) => {
       self.setState({ musicList: res.body });
     });
   }
