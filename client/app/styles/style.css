@@ -24,7 +24,8 @@ h1 {
   text-align: center;
 }
 
-h2 {
+h2,
+h3 {
   font-family: 'Sniglet', cursive;
   font-size: 18px;
   text-align: center;
@@ -36,11 +37,15 @@ button {
 }
 
 footer {
-  position: fixed;
+  background-color: #424242;
   width: 100%;
   bottom: 0;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+footer .container {
+  width: 100%;
 }
 
 .form-group {
@@ -63,17 +68,13 @@ footer {
   margin: 100px auto;
 }
 
-.landing-content {
-  margin-top: 100px;
-}
-
 .social-buttons {
   float: right;
-  margin-right: 20px;
 }
 
 .social-buttons > a {
-  padding-left: 10px;
+  color: #fff;
+  padding-left: 15px;
 }
 
 .profile-content {
@@ -84,5 +85,37 @@ footer {
   padding-bottom: 50px;
 }
 
+.landing-header {
+  width: 100%;
+  min-height: 600px;
+  text-align: center;
+  color: #424242;
+  background-image: url(https://blogs.thegospelcoalition.org/justintaylor/files/2012/09/boxhead.jpg);
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  background-attachment: fixed;
+}
 
+.landing-header h1 {
+  padding-top: 150px;
+  font-size: 90px;
+  color: #424242;
+}
+
+.landing-header h2 {
+  font-size: 25px;
+  color: #424242;
+}
+
+.landing-content {
+  padding-top: 50px;
+}
+
+.landing-content h2 {
+  font-size: 25px;
+  padding-bottom: 30px;
+}
 

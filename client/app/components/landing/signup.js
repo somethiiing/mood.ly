@@ -88,7 +88,7 @@ class SignUp extends React.Component {
         >
           <CardText>
             <div className="form-group">
-              <h2>signup</h2>
+              <h3>signup</h3>
               <TextField
                 className="form-control"
                 id="name"

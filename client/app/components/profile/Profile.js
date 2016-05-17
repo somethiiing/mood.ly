@@ -85,7 +85,12 @@ class Profile extends React.Component {
                   </CardText>
                 </Card>
               </Col>
-              <Col md={8}>
+              <Col
+                md={8}
+                style={{
+                  overflow: 'scroll',
+                }}
+              >
                 <Card
                   style={{
                     margin: '0 auto',

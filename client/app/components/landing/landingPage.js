@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from './login';
 import SignUp from './signup';
+import Title from './title';
 import Footer from '../Footer';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
@@ -15,16 +16,19 @@ class LandingPage extends React.Component {
 
   render() {
     return (
-      <div className="landing-content">
+      <div>
+        <Title />
         <Grid>
-          <Row className="show-grid">
-            <Col md={6}>
+          <Row className="show-grid landing-content">
+            <h2>get started</h2>
+            <Col md={1} />
+            <Col md={5} className="card-spacing">
               <Login
                 loginSuccess={this.props.loginSuccess}
                 loginFail={this.props.loginFail}
               />
             </Col>
-            <Col md={6}>
+            <Col md={5} className="card-spacing">
               <SignUp
                 signupFail={this.props.signupFail}
                 loginSuccess={this.props.loginSuccess}
@@ -32,6 +36,7 @@ class LandingPage extends React.Component {
                 allFieldsRequiredAlert={this.props.allFieldsRequiredAlert}
               />
             </Col>
+            <Col md={1} />
           </Row>
         </Grid>
         <Footer />
