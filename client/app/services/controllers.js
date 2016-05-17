@@ -15,7 +15,7 @@ const addUserMood = (mood, user, callback) => {
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     success: () => {
-      callback({ status: 'SUCCESS' });
+      callback({ success: true });
     },
   });
 };
@@ -35,7 +35,7 @@ const likeQuote = (quote, user, callback) => {
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     success: (data) => {
-      callback({ status: 'SUCCESS', body: data });
+      callback({ success: true, body: data });
     },
   });
 };
@@ -54,7 +54,7 @@ const likeGiphy = (giphy, user, callback) => {
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     success: () => {
-      callback({ status: 'SUCCESS' });
+      callback({ success: true });
     },
   });
 };
@@ -72,7 +72,7 @@ const likeMusic = (musicVideo, user, callback) => {
     contentType: 'application/json; charset=utf-8',
     dataType: 'json',
     success: () => {
-      callback({ status: 'SUCCESS' });
+      callback({ success: true });
     },
   });
 };

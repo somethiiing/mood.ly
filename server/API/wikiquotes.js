@@ -139,10 +139,10 @@ function getData(body, callback) {
   if (redirect === false) {
     const quotesArr = parseData(body, pageID);
     const randomIndex = Math.floor((Math.random() * quotesArr.length) + 1);
-    return callback({ status: 'SUCCESS', body: quotesArr[randomIndex] });
+    return callback({ success: true, body: quotesArr[randomIndex] });
   }
   if (redirect === null) {
-    return callback({ status: 'FAIL', body: 'Unable to produce quote.' });
+    return callback({ sucess: false, body: 'Unable to produce quote.' });
   }
   return wikiQuoteCall(redirect, callback);
 }

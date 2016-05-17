@@ -38,11 +38,11 @@ const searchYouTube = (song, trackInfo, callback) => {
       .on('end', () => {
         body = JSON.parse(Buffer.concat(body).toString());
         if (body.pageInfo.totalResults === 0) {
-          callback({ status: 'FAIL', trackInfo, body: 'No videos found' });
+          callback({ success: false, trackInfo, body: 'No videos found' });
         }
         const youtubeArr = body.items;
         const randInd = Math.floor(Math.random() * youtubeArr.length);
-        callback({ status: 'SUCCESS', trackInfo, videoID: youtubeArr[randInd].id.videoId });
+        callback({ success: true, trackInfo, videoID: youtubeArr[randInd].id.videoId });
       });
     });
 };
