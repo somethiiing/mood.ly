@@ -80,7 +80,7 @@ const musicoveryCall = (keyword, callback) => {
 
 const frontEndCall = (req, res) => {
   const keyword = req.query.keyword;
-  musicoveryCall(keyword, (resp) => {
+  musicoveryCall(keyword, resp => {
     res.json(resp);
   });
 };
