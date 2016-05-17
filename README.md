@@ -24,12 +24,12 @@ Check it out at www.moodly.io!
 	1. [High Level Architecture](#high-level-architecture)
 	1. [Database Schema](#database-schema)
 	1. [API](#api)
-    1. [Auth](#AUTH)
-    1. [Moods](#MOODS)
-    1. [Quotes](#QUOTES)
-    1. [Giphy](#GIPHY)
-    1. [Music](#MUSIC)
-    1. [Users](#USERS)
+    *[Auth](#AUTH)
+    *[Moods](#MOODS)
+    *[Quotes](#QUOTES)
+    *[Giphy](#GIPHY)
+    *[Music](#MUSIC)
+    *[Users](#USERS)
 1. [Deployment](#deployment)
 
 ## Overview
