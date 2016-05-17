@@ -41,7 +41,6 @@ class App extends React.Component {
   }
 
   loginSuccess(user) {
-    console.log(user);
     this.setState({
       user,
       loggedIn: true,

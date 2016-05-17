@@ -107,17 +107,17 @@ class Dashboard extends React.Component {
               paddingBottom: 100,
             }}
           >
-            {this.state.showQuoteItem ?
-              <Col sm={6} md={4} className="card-spacing">
-                <QuoteItem
-                  quote={this.state.currQuote}
-                  mood={this.state.currMood}
-                  user={this.props.user}
-                /></Col> : null}
             {this.state.showGifItem ?
               <Col sm={6} md={4} className="card-spacing">
                 <GifItem
                   gif={this.state.currentGif}
+                  mood={this.state.currMood}
+                  user={this.props.user}
+                /></Col> : null}
+            {this.state.showQuoteItem ?
+              <Col sm={6} md={4} className="card-spacing">
+                <QuoteItem
+                  quote={this.state.currQuote}
                   mood={this.state.currMood}
                   user={this.props.user}
                 /></Col> : null}

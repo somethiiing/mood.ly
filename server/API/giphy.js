@@ -25,11 +25,11 @@ const giphyCall = (keyword, callback) => {
   request.get(url, (err, resp) => {
     const body = resp.body;
     if (err) {
-      return callback({ status: 'FAIL', body: err });
+      return callback({ success: false, body: err });
     }
     const gifArr = parseData(JSON.parse(body));
     const randomIndex = Math.floor((Math.random() * gifArr.length) + 1);
-    return callback({ status: 'SUCCESS', body: gifArr[randomIndex] });
+    return callback({ success: true, body: gifArr[randomIndex] });
   });
 };
 

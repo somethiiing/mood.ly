@@ -31,9 +31,6 @@ class SignUp extends React.Component {
       username: this.state.username,
       password: this.state.password,
     };
-
-    console.log('?????')
-
     const emailCheck = email => {
       const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return regex.test(email);
@@ -48,10 +45,8 @@ class SignUp extends React.Component {
     }
     return services.auth('/signup', user, res => {
       if (res.success === true) {
-        console.log('res', res);
         return this.props.loginSuccess(user);
       }
-      console.log('res', res);
       return this.props.signupFail();
     });
   }
