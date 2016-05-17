@@ -5,10 +5,10 @@ export default {
   saveOne: (req, res) => {
     const quote = req.body;
     Quote.findOrCreate({ where: quote })
-    .then((savedQuote) => {
+    .then(savedQuote => {
       res.status(201).send({ success: true, body: savedQuote });
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(500).send({ success: false, body: err });
     });
   },
@@ -16,10 +16,10 @@ export default {
   getOne: (req, res) => {
     const id = +req.params.id;
     Quote.findById(id)
-    .then((quote) => {
+    .then(quote => {
       res.status(200).send({ success: true, body: quote });
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(500).send({ success: false, body: err });
     });
   },
@@ -32,10 +32,10 @@ export default {
       Quote.findOrCreate({ where: quote })
       .spread(foundOrCreatedQuote => {
         foundUser.addQuote(foundOrCreatedQuote)
-        .then((savedUserQuote) => {
+        .then(savedUserQuote => {
           res.status(201).send({ success: true, body: savedUserQuote });
         })
-        .catch((err) => {
+        .catch(err => {
           res.status(500).send({ success: false, body: err });
         });
       });
@@ -49,20 +49,20 @@ export default {
       where: { username },
     })
     .then(foundUser => foundUser.getQuotes())
-    .then((userQuotes) => {
+    .then(userQuotes => {
       res.status(200).send({ success: true, body: userQuotes });
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(500).send({ success: false, body: err });
     });
   },
 
   retrieveAll: (req, res) => {
     Quote.findAll({})
-    .then((allQuotes) => {
+    .then(allQuotes => {
       res.status(200).send({ success: true, body: allQuotes });
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(500).send({ success: false, body: err });
     });
   },

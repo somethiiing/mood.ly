@@ -1,9 +1,11 @@
-import React, { PropTypes, Component } from 'react';
+import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-class LikedItem extends Component {
+class LikedItem extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {};
   }
 
   render() {
@@ -21,7 +23,7 @@ class LikedItem extends Component {
 }
 
 LikedItem.propTypes = {
-  likedItem: PropTypes.element.isRequired,
+  likedItem: React.PropTypes.element.isRequired,
 };
 
 export default LikedItem;

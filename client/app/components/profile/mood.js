@@ -1,9 +1,11 @@
-import React, { PropTypes, Component } from 'react';
+import React from 'react';
 import MoodItem from './moodItem';
 
-class Mood extends Component {
+class Mood extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {};
   }
 
   render() {
@@ -18,8 +20,8 @@ class Mood extends Component {
 }
 
 Mood.propTypes = {
-  mood: PropTypes.object,
-  onMoodClick: PropTypes.func.isRequired,
+  mood: React.PropTypes.object,
+  onMoodClick: React.PropTypes.func.isRequired,
 };
 
 // EXPORT

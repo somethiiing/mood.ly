@@ -5,10 +5,10 @@ export default {
   saveOne: (req, res) => {
     const giphy = req.body;
     Giphy.findOrCreate({ where: giphy })
-    .then((savedGiphy) => {
+    .then(savedGiphy => {
       res.status(201).send({ success: true, body: savedGiphy });
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(500).send({ success: false, body: err });
     });
   },
@@ -19,7 +19,7 @@ export default {
       const giphy = foundGiphy.url;
       res.status(200).send({ success: true, body: `<img src="${giphy}" alt>` });
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(500).send({ success: false, body: err });
     });
   },
@@ -32,11 +32,11 @@ export default {
       Giphy.findOrCreate({ where: giphy })
       .spread(foundOrCreatedGiphy => {
         foundUser.addGiphy(foundOrCreatedGiphy)
-        .then((userGiphy) => {
+        .then(userGiphy => {
           res.status(200).send({ success: true,
             body: userGiphy });
         })
-        .catch((err) => {
+        .catch(err => {
           res.status(500).send({ success: false, body: err });
         });
       });
@@ -48,21 +48,21 @@ export default {
       where: { username },
     })
     .then(foundUser => foundUser.getGiphys())
-    .then((userGiphys) => {
+    .then(userGiphys => {
       res.status(200).send({ success: true,
         body: userGiphys });
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(500).send({ success: false, body: err });
     });
   },
   retrieveAll: (req, res) => {
     Giphy.findAll({})
-    .then((retrievedGiphys) => {
+    .then(retrievedGiphys => {
       res.status(200).send({ success: true,
         body: retrievedGiphys });
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(500).send({ success: false, body: err });
     });
   },
