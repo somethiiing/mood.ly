@@ -53,6 +53,9 @@ class Login extends React.Component {
             height: 450,
             width: 325,
             margin: '0 auto',
+            border: '4px solid #424242',
+            borderRadius: '25px',
+            boxShadow: 'none',
           }}
         >
           <CardText>
