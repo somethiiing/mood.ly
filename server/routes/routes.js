@@ -21,7 +21,9 @@ export default (app, express, passport) => {
 // MOODS
 // =================================
   app.post('/api/moods', moodController.saveUserMood);
-  app.get('/api/moods', moodController.getAll);
+  // app.get('/api/user/moods', moodController.getAll);
+  app.get('/api/user/moods', moodController.getUserMoodData);
+  app.get('/api/moods', moodController.getMoodData);
 
 // QUOTES
 // =================================

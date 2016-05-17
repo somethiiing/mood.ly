@@ -8,6 +8,8 @@ import Music from './music';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import Grid from 'react-bootstrap/lib/Grid';
+import D3PieChart from '../d3/D3PieChart';
+// import PieChart from '../d3/PieChart';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -22,10 +24,21 @@ class Dashboard extends React.Component {
       showQuoteItem: false,
       showGifItem: false,
       showMusicItem: false,
+      moodData: [],
     };
 
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
+  }
+
+  componentWillMount() {
+    this.handleMoodData();
+  }
+
+  handleMoodData() {
+    controller.getMoodData(data => {
+      this.setState({ moodData: data });
+    });
   }
 
   handleSearchButtonClick() {
@@ -40,6 +53,9 @@ class Dashboard extends React.Component {
         });
       }
       if (res.status === 'FAIL') {
+        self.setState({
+          showQuoteItem: false,
+        });
         throw new Error(res.body);
       }
     });
@@ -68,6 +84,7 @@ class Dashboard extends React.Component {
       }
     });
     controller.addUserMood(query, this.props.user);
+    this.handleMoodData();
   }
 
   handleSearchChange(event) {
@@ -113,6 +130,7 @@ class Dashboard extends React.Component {
                 /></Col> : null}
           </Row>
         </Grid>
+        <D3PieChart data={this.state.moodData} title="Moodly History" />
       </div>
     );
   }

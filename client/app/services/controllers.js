@@ -77,16 +77,30 @@ const likeMusic = (musicVideo, user, callback) => {
   });
 };
 
-const getAllUserLikes = (endpoint, username, callback) => {
+const getAllUserData = (endpoint, username, callback) => {
   $.get(`api/user/${endpoint}?keyword=${username}`, data => {
     callback(data);
   });
 };
+
+const getMoodData = (callback) => {
+  $.get('/api/moods', data => {
+    callback(data);
+  });
+};
+
+// const getUserMoodData = (username, callback) => {
+//   $.get(`api/user/moods?keyword=${username}`, data => {
+//     callback(data);
+//   });
+// };
 
 export default {
   addUserMood,
   likeQuote,
   likeGiphy,
   likeMusic,
-  getAllUserLikes,
+  getAllUserData,
+  getMoodData,
+  // getUserMoodData,
 };

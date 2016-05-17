@@ -4,6 +4,9 @@ import Profile from './components/profile/Profile';
 import LandingPage from './components/landing/landingPage';
 import Dashboard from './components/dashboard/dashboard';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+// import D3PieChart from './components/d3/D3PieChart';
+// import PieChart from './components/d3/PieChart';
+import controller from './services/controllers';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,6 +17,7 @@ class App extends React.Component {
       page: 'landing',
       user: null,
       failMessageDisplay: false,
+      moodData: [],
     };
 
     this.logout = this.logout.bind(this);
@@ -22,6 +26,7 @@ class App extends React.Component {
     this.loginFail = this.loginFail.bind(this);
     this.signupFail = this.signupFail.bind(this);
     this.loginSuccess = this.loginSuccess.bind(this);
+    this.handleMoodData = this.handleMoodData.bind(this);
     this.invalidEmailAlert = this.invalidEmailAlert.bind(this);
     this.allFieldsRequiredAlert = this.allFieldsRequiredAlert.bind(this);
   }
@@ -91,6 +96,17 @@ class App extends React.Component {
     });
   }
 
+  // Test addiding Pie Chart above Dashboard Component
+  handleMoodData() {
+    controller.getAllUserData('moods', this.state.user.name, data => {
+      this.setState({ moodData: data });
+    });
+  }
+
+  // componentWillMount() {
+  //   this.handleMoodData();
+  // }
+
   render() {
     let FailedLoginMessage;
     if (this.state.failMessageDisplay === 'LOGINFAIL') {
@@ -137,7 +153,10 @@ class App extends React.Component {
     if (this.state.page === 'profile' && this.state.loggedIn === true) {
       pageLayout = (
         <div>
-          <Profile user={this.state.user} />
+          <Profile
+            user={this.state.user}
+            moodData={this.state.moodData}
+          />
         </div>
       );
     }
@@ -147,6 +166,7 @@ class App extends React.Component {
           dashboard={this.dashboard}
           logout={this.logout}
           profile={this.profile}
+          handleMoodData={this.handleMoodData}
         />
         {pageLayout}
       </div>

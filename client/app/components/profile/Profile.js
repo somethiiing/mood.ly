@@ -13,6 +13,8 @@ import IconButton from 'material-ui/IconButton';
 import Headset from 'material-ui/svg-icons/hardware/headset';
 import ImageCamera from 'material-ui/svg-icons/image/camera-alt';
 import EditorInsertComment from 'material-ui/svg-icons/editor/insert-comment';
+import PieChart from '../d3/PieChart';
+import D3PieChart from '../d3/D3PieChart';
 
 const moodlyUrl = 'moodly.io';
 
@@ -37,19 +39,19 @@ class Profile extends React.Component {
 
     // QUOTES
     // =============================================
-    UserController.getAllUserLikes('quotes', username, (res) => {
+    UserController.getAllUserData('quotes', username, (res) => {
       self.setState({ quoteList: res.body });
     });
 
     // GIPHY
     // =============================================
-    UserController.getAllUserLikes('giphys', username, (res) => {
+    UserController.getAllUserData('giphys', username, (res) => {
       self.setState({ gifList: res.body });
     });
 
     // MUSIC
     // =============================================
-    UserController.getAllUserLikes('music', username, (res) => {
+    UserController.getAllUserData('music', username, (res) => {
       self.setState({ musicList: res.body });
     });
   }
@@ -68,6 +70,7 @@ class Profile extends React.Component {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div className="profile-content">
+          <D3PieChart data={this.props.moodData} title="Moodly History" />
           <Grid>
             <Row className="show-grid">
               <Col md={4}>
@@ -201,6 +204,7 @@ class Profile extends React.Component {
 
 Profile.propTypes = {
   user: React.PropTypes.element,
+  moodData: React.PropTypes.array,
 };
 
 export default Profile;

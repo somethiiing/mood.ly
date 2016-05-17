@@ -33,6 +33,7 @@ class Header extends React.Component {
 
   handleProfileButtonClick() {
     this.props.profile();
+    this.props.handleMoodData();
   }
 
   handleChangeSingle(event, value) {
@@ -106,6 +107,7 @@ Header.propTypes = {
   logout: React.PropTypes.func,
   profile: React.PropTypes.func,
   dashboard: React.PropTypes.func,
+  handleMoodData: React.PropTypes.func,
 };
 
 export default Header;
