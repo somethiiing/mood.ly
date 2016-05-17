@@ -5,10 +5,10 @@ export default {
     const user = req.body;
     User.findOrCreate({ where: user })
     .then(() => {
-      res.send({ status: 'SUCCESS', body: user });
+      res.send({ success: true, body: user });
     })
     .catch(err => {
-      res.send({ status: 'FAIL', body: err });
+      res.send({ success: false, body: err });
     });
   },
 
@@ -32,13 +32,13 @@ export default {
     User.findOne({ where: { userName } })
     .then(user => {
       if (!user) {
-        res.send({ status: 'FAIL', body: 'Invalid username or password' });
+        res.send({ success: false, body: 'Invalid username or password' });
       } else {
         user.comparePasswords(user, password, (compareResult) => {
           if (compareResult) {
-            res.status(200).send({ status: 'SUCCESS', body: user });
+            res.status(200).send({ success: true, body: user });
           } else {
-            res.status(500).send({ status: 'FAIL', body: 'Invalid username or password.' });
+            res.status(500).send({ success: false, body: 'Invalid username or password.' });
           }
         });
       }
@@ -54,7 +54,7 @@ export default {
     }
 
     if (!userId) {
-      res.status(500).send({ status: 'FAIL', body: 'userId is undefined.' });
+      res.status(500).send({ success: false, body: 'userId is undefined.' });
       return;
     }
 
@@ -66,11 +66,11 @@ export default {
     })
     .then(foundUser => {
       if (foundUser) {
-        res.status(200).send({ status: 'SUCCESS', body: foundUser });
+        res.status(200).send({ success: true, body: foundUser });
       }
     })
     .catch(err => {
-      res.status(500).send({ status: 'FAIL', body: err });
+      res.status(500).send({ success: false, body: err });
     });
   },
 
@@ -83,12 +83,12 @@ export default {
     })
     .then(results => {
       if (!results || results.length < 1) {
-        res.status(500).send({ status: 'FAIL', body: 'No users.' });
+        res.status(500).send({ success: false, body: 'No users.' });
       }
       return res.json(results);
     })
     .catch(err => {
-      res.status(500).send({ status: 'FAIL', body: err });
+      res.status(500).send({ success: false, body: err });
     });
   },
 
@@ -103,7 +103,7 @@ export default {
       res.json(matchingUser);
     })
     .catch(err => {
-      res.status(500).send({ status: 'FAIL', body: err });
+      res.status(500).send({ success: false, body: err });
     });
   },
 
@@ -113,7 +113,7 @@ export default {
 
     User.destroy({ where: query })
     .catch(err => {
-      res.status(500).send({ status: 'FAIL', body: err });
+      res.status(500).send({ success: false, body: err });
     });
   },
 };

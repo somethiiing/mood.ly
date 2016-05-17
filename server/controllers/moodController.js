@@ -6,10 +6,10 @@ export default {
     const mood = req.body;
     Mood.findOrCreate({ where: mood })
     .then(savedMood => {
-      res.status(201).send({ status: 'SUCCESS', body: savedMood });
+      res.status(201).send({ success: true, body: savedMood });
     })
     .catch(err => {
-      res.status(500).send({ status: 'FAIL', body: err });
+      res.status(500).send({ success: false, body: err });
     });
   },
   saveUserMood: (req, res) => {
@@ -22,11 +22,11 @@ export default {
       .spread(foundOrCreatedMood => {
         foundUser.addMood(foundOrCreatedMood)
         .then(savedMood => {
-          res.status(201).send({ status: 'SUCCESS',
+          res.status(201).send({ success: true,
             body: savedMood });
         })
         .catch(err => {
-          res.status(500).send({ status: 'FAIL', body: err });
+          res.status(500).send({ success: false, body: err });
         });
       });
     });
@@ -39,10 +39,10 @@ export default {
     })
     .then(foundUser => foundUser.getMoods())
     .then(allMoods => {
-      res.status(201).send({ status: 'SUCCESS', body: allMoods });
+      res.status(201).send({ success: true, body: allMoods });
     })
     .catch(err => {
-      res.status(500).send({ status: 'FAIL', body: err });
+      res.status(500).send({ success: false, body: err });
     });
   },
   getUserMoodData: (req, res) => {
@@ -70,7 +70,7 @@ export default {
       res.json(moodArr);
     })
     .catch(err => {
-      res.status(500).send({ status: 'FAIL', body: err });
+      res.status(500).send({ success: false, body: err });
     });
   },
   getMoodData: (req, res) => {
@@ -89,22 +89,10 @@ export default {
           }
         });
       });
-      // console.log(data);
-      // return data;
-      // return foundMoods.map((mood) => {
-      //   return Mood.count({ where: { name: mood.name } })
-      //   .then(count => {
-      //     console.log({ name: mood.name, count });
-      //     return { name: mood.name, count };
-      //   });
-      // });
     })
     .catch(err => {
       // No moods are found in database
-      res.json({ status: 'FAIL', body: err });
+      res.json({ success: false, body: err });
     });
-    // .then(result => {
-    //   res.json(result);
-    // });
   },
 };
