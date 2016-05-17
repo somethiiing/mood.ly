@@ -18,17 +18,27 @@ a:focus {
   color: #000;
 }
 
-h1 {
-  font-family: 'Sniglet', cursive;
-  font-size: 30px;
-  text-align: center;
-}
-
+h1,
 h2,
 h3 {
   font-family: 'Sniglet', cursive;
-  font-size: 18px;
   text-align: center;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+p {
+  font-size: 16px;
 }
 
 button {
@@ -151,5 +161,14 @@ footer .container {
 
 .about-col {
   text-align: center;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+.about-content {
+  background-color: #424242;
+  color: #fff;
+  padding-top: 50px;
+  padding-bottom: 100px;
 }
 

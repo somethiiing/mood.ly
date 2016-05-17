@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from './login';
 import SignUp from './signup';
+import About from './about';
 import Title from './title';
 import Footer from '../Footer';
 import Row from 'react-bootstrap/lib/Row';
