@@ -5,12 +5,12 @@ export default {
   saveOne: (req, res) => {
     const musicVideo = req.body;
     MusicVideo.findOrCreate({ where: musicVideo })
-    .then(() => {
-      res.status(201).send({ status: 'SUCCESS',
-        body: 'Successfully saved music video to database.' });
+    .then((savedMusicVideo) => {
+      res.status(201).send({ success: true,
+        body: savedMusicVideo });
     })
-    .catch(() => {
-      res.status(500).send({ status: 'FAIL', body: 'Failed to save music video to database.' });
+    .catch((err) => {
+      res.status(500).send({ success: false, body: err });
     });
   },
 
@@ -19,10 +19,10 @@ export default {
     MusicVideo.findById(id)
     .then(foundMusicVideo => {
       const musicVideo = foundMusicVideo.url;
-      res.status(200).send({ status: 'SUCCESS', body: `<img src="${musicVideo}" alt>` });
+      res.status(200).send({ success: true, body: `<img src="${musicVideo}" alt>` });
     })
-    .catch(() => {
-      res.status(500).send({ status: 'FAIL', body: 'Failed to get music video.' });
+    .catch((err) => {
+      res.status(500).send({ success: false, body: err });
     });
   },
   saveUserMusicVideo: (req, res) => {
@@ -34,13 +34,12 @@ export default {
       MusicVideo.findOrCreate({ where: musicVideo })
       .spread(foundOrCreatedMusicVideo => {
         foundUser.addMusicVideo(foundOrCreatedMusicVideo)
-        .then(() => {
-          res.status(201).send({ status:
-            'SUCCESS', body: 'Successfully saved user music video to database.' });
+        .then((savedUserMusicVideo) => {
+          res.status(201).send({ success: true, body: savedUserMusicVideo });
         })
-        .catch(() => {
-          res.status(500).send({ status: 'FAIL',
-            body: 'Failed to save user music video to database.' });
+        .catch((err) => {
+          res.status(500).send({ success: false,
+            body: err });
         });
       });
     });
@@ -52,20 +51,20 @@ export default {
     })
     .then(foundUser => foundUser.getMusicVideos())
     .then((userMusicVideos) => {
-      res.status(200).send({ status: 'SUCCESS', body: userMusicVideos });
+      res.status(200).send({ success: true, body: userMusicVideos });
     })
-    .catch(() => {
-      res.status(500).send({ status: 'FAIL', body: 'Failed to get user music videos.' });
+    .catch((err) => {
+      res.status(500).send({ success: false, body: err });
     });
   },
   retrieveAll: (req, res) => {
     MusicVideo.findAll({})
     .then((allMusicVideos) => {
-      res.status(200).send({ status: 'SUCCESS', body: allMusicVideos });
+      res.status(200).send({ success: true, body: allMusicVideos });
     })
-    .catch(() => {
-      res.status(500).send({ status: 'FAIL',
-        body: 'Failed to retrieve all music videos.' });
+    .catch((err) => {
+      res.status(500).send({ success: false,
+        body: err });
     });
   },
 };
