@@ -1,12 +1,12 @@
 import Sequelize from 'sequelize';
-import dbConfig from '../config/mysqlsetup-example.js';
+import Config from '../config/mysqlsetup-example.js';
 
 export default new Sequelize(
-  dbConfig.database,
-  dbConfig.username,
-  dbConfig.password, // FOR TRAVISCI TESTING - USUALLY IS 'HR41'
+  Config.dbConfig.database,
+  Config.dbConfig.username,
+  Config.dbConfig.password, // FOR TRAVISCI TESTING - USUALLY IS 'HR41'
   {
-    host: dbConfig.host,
+    host: Config.dbConfig.host,
     dialect: 'mysql',
     define: {
       timestamps: false, // true by default
