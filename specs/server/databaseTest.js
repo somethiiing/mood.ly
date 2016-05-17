@@ -75,20 +75,6 @@ describe('Database', () => {
 
   // CREATE USERS BEFORE EACH TEST
   beforeEach(done => {
-    users.forEach(user => {
-      User.findOrCreate({ where: user })
-      .then(() => {
-        // console.log('user==========> ', user);
-      })
-      .catch(err => {
-        console.log('Error! ', err);
-      });
-    });
-    done();
-  });
-
-  // CREATE QUOTES BEFORE EACH TEST
-  beforeEach(done => {
     quotes.forEach(quote => {
       Quote.findOrCreate({ where: quote })
       .then(() => {
@@ -98,11 +84,17 @@ describe('Database', () => {
         console.log('Error! ', err);
       });
     });
-    done();
-  });
 
-  // CREATE MOODS BEFORE EACH TEST
-  beforeEach(done => {
+    users.forEach(user => {
+      User.findOrCreate({ where: user })
+      .then(() => {
+        // console.log('user==========> ', user);
+      })
+      .catch(err => {
+        console.log('Error! ', err);
+      });
+    });
+
     moods.forEach(mood => {
       Mood.findOrCreate({ where: mood })
       .then(() => {
@@ -115,7 +107,7 @@ describe('Database', () => {
     done();
   });
 
-  it('should retrieve all users from the database', (done) => {
+  it('should retrieve all users from the database', done => {
     const userDB = {
       method: 'GET',
       uri: 'http://127.0.0.1:8080/api/users',
@@ -126,7 +118,7 @@ describe('Database', () => {
     });
   });
 
-  it('should retrieve all quotes from the database', (done) => {
+  it('should retrieve all quotes from the database', done => {
     const quoteDB = {
       method: 'GET',
       uri: 'http://127.0.0.1:8080/api/quotes',
@@ -137,14 +129,13 @@ describe('Database', () => {
     });
   });
 
-  xit('should get all moods in the database', (done) => {
+  it('should get all moods in the database', done => {
     const moodDB = {
       method: 'GET',
       uri: 'http://127.0.0.1:8080/api/moods',
     };
 
     request(moodDB, (err, res, body) => {
-      console.log('body (MOODS)=============> ', body);
       expect((JSON.parse(body)).length).to.equal(4);
       done();
     });
