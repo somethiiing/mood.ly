@@ -11,7 +11,7 @@ describe('Quotes API', () => {
     const keyword = 'happiness';
     wikiAPI.wikiQuoteCall(keyword, (data) => {
       if (data) {
-        expect(Array.isArray(data.body)).to.equal(true);
+        expect(typeof data.body[0]).to.equal('string');
         done();
       }
     });
@@ -41,7 +41,7 @@ describe('Quotes API', () => {
     const keyword = 'asdfafdsklj';
     wikiAPI.wikiQuoteCall(keyword, (data) => {
       if (data) {
-        expect(typeof data.body[0]).to.equal("string");
+        expect(typeof data.body[0]).to.equal('string');
         done();
       }
     });
@@ -53,7 +53,7 @@ describe('Music API', () => {
   it('should return a videoId for a YouTube video when given a keyword', (done) => {
     musicAPI.musicoveryCall('excitement', (resp) => {
       if (resp) {
-        expect(resp.length).to.equal(11);
+        expect(resp.videoID.length).to.equal(11);
         done();
       }
     });
@@ -64,31 +64,33 @@ describe('Music API', () => {
       title: 'California Love',
       artist: 'Tupac Shakur',
     };
-    const resp = musicAPI.songConverter(songObj);
+    const resp = musicAPI.titleConverter(songObj);
     expect(typeof resp).to.equal('string');
     done();
   });
 
-  xit('should return a YouTube URL when invoked', (done) => {
+  it('should return a YouTube URL when invoked', (done) => {
     const testData = [
       {
-        // ADD SOME SAMPLE DATA
-      },
-      {
-        // ADD SOME SAMPLE DATA
-      },
-      {
-        // ADD SOME SAMPLE DATA
-      },
-      {
-        // ADD SOME SAMPLE DATA
-      },
-      {
-        // ADD SOME SAMPLE DATA
+        id: '84910',
+        title: 'Geezer\'s Need Excitement',
+        subtitle: [],
+        work: [],
+        artist: [
+          {
+            mbid: '6f607087-9c46-4bb2-a884-e4efc764554c',
+            name: 'The Streets',
+          },
+        ],
+        releasedate: '2002-01-01',
+        genre: 'hip hop',
+        album: 'Original Pirate Material',
+        version: [],
+        match: '59',
       },
     ];
-    musicAPI.getYouTubeLink(testData, (resp) => {
-      expect(resp.length).to.equal(11);
+    musicAPI.getYouTubeLink('hip hop', testData, (resp) => {
+      expect(resp.trackInfo).to.have.property('title');
       done();
     });
   });

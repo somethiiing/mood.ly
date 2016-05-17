@@ -85,6 +85,7 @@ export default {
       if (!results || results.length < 1) {
         res.status(500).send({ status: 'FAIL', body: 'No users.' });
       }
+      console.log('results========> ', res.json(results));
       return res.json(results);
     })
     .catch(() => {
