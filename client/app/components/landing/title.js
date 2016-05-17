@@ -19,12 +19,15 @@ class Title extends Component {
             <h3 className="pull-left landing-title">mood.ly</h3>
             <div className="landing-buttons">
               <Button bsSize="large" className="landing-button">about</Button>
-              <Button bsSize="large" className="landing-button">get started</Button>
+              <Button bsSize="large" className="landing-button">sign in</Button>
             </div>
             </Row>
           </Grid>
           <h1>mood.ly</h1>
           <h2>a place to explore your mood</h2>
+          <br />
+          <br />
+          <br />
           <br />
           <NavigationArrowDownward />
         </div>
