@@ -17,7 +17,9 @@ class LandingPage extends React.Component {
   render() {
     return (
       <div>
-        <Title />
+        <Title
+          dashboard={this.props.dashboard}
+        />
         <Grid>
           <Row className="show-grid landing-content">
             <h2>get started</h2>
@@ -46,6 +48,7 @@ class LandingPage extends React.Component {
 }
 
 LandingPage.propTypes = {
+  dashboard: React.PropTypes.func,
   loginFail: React.PropTypes.func,
   signupFail: React.PropTypes.func,
   loginSuccess: React.PropTypes.func,

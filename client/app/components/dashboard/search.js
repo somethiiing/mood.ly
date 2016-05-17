@@ -6,6 +6,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 class Search extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {};
   }
 
   render() {

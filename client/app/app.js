@@ -50,6 +50,7 @@ class App extends React.Component {
   }
 
   signupFail() {
+    console.log('fail');
     this.setState({
       page: 'landing',
       failMessageDisplay: 'SIGNUPFAIL',
@@ -90,7 +91,7 @@ class App extends React.Component {
   dashboard() {
     if (this.state.loggedIn === false) {
       return this.setState({
-        failMessageDisplay: 'NOACCESS',
+        page: 'landing',
       });
     }
     return this.setState({
@@ -134,6 +135,7 @@ class App extends React.Component {
         <div>
           {FailedLoginMessage}
           <LandingPage
+            dashboard={this.dashboard}
             loginFail={this.loginFail}
             signupFail={this.signupFail}
             loginSuccess={this.loginSuccess}
