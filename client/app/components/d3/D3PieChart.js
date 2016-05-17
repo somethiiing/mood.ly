@@ -1,4 +1,5 @@
 import React from 'react';
+import D3Chart from './D3Chart';
 
 var D3Legend = React.createClass({
 
@@ -23,8 +24,6 @@ var D3Legend = React.createClass({
     );
   }
 });
-
-
 
 var LegendElement = React.createClass({
   render: function() {
@@ -70,9 +69,6 @@ var Sector = React.createClass({
   onMouseOut: function() {
     this.setState({text: '', opacity:'arc'});
   },
-  onClick: function() {
-    alert("You clicked "+this.props.name);
-  }
 });
 
 var DataSeries = React.createClass({
@@ -109,19 +105,7 @@ var DataSeries = React.createClass({
   }
 });
 
-var D3Chart = React.createClass({
-  propTypes: {
-    width: React.PropTypes.number.isRequired,
-    height: React.PropTypes.number.isRequired,
-    children: React.PropTypes.node,
-  },
-  render: function() {
-    return (
-      <svg width={this.props.width} height={this.props.height}>        
-      {this.props.children}</svg>
-    );
-  }
-});
+
 
 var D3PieChart = React.createClass({
   propTypes: {
@@ -142,7 +126,7 @@ var D3PieChart = React.createClass({
 
   render: function() {
     // var colors = ['#FD9827', '#DA3B21', '#3669C9', '#1D9524', '#971497'];
-    var colors = d3.scale.category20().range();
+    var colors = d3.scale.category20c().range();
     return (
       <div>
         <h4> {this.props.title} </h4>
