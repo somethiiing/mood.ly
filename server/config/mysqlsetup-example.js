@@ -1,9 +1,9 @@
 export default {
   dbConfig: {
     driver: 'mysql',
-    username: 'travis', // TravisCI
+    username: 'root', // TravisCI
     database: 'moodb',
-    password: '', // TravisCI
+    password: 'HR41', // TravisCI
     host: '127.0.0.1',
     port: '8080',
   },
