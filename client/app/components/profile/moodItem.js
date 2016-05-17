@@ -1,9 +1,11 @@
-import React, { PropTypes, Component } from 'react';
+import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-class MoodItem extends Component {
+class MoodItem extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {};
   }
 
   render() {
@@ -21,7 +23,7 @@ class MoodItem extends Component {
 }
 
 MoodItem.propTypes = {
-  mood: PropTypes.element.isRequired,
+  mood: React.PropTypes.string,
 };
 
 export default MoodItem;

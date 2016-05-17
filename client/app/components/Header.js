@@ -19,7 +19,6 @@ class Header extends React.Component {
     };
 
     this.handleMoodlyClick = this.handleMoodlyClick.bind(this);
-    this.handleChangeSingle = this.handleChangeSingle.bind(this);
     this.handleLogoutButtonClick = this.handleLogoutButtonClick.bind(this);
     this.handleProfileButtonClick = this.handleProfileButtonClick.bind(this);
   }
@@ -35,12 +34,6 @@ class Header extends React.Component {
   handleProfileButtonClick() {
     this.props.profile();
     this.props.handleMoodData();
-  }
-
-  handleChangeSingle(event, value) {
-    this.setState({
-      valueSingle: value,
-    });
   }
 
   handleOpenMenu() {

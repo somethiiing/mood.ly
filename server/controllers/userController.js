@@ -30,7 +30,7 @@ export default {
     const password = req.body.password;
 
     User.findOne({ where: { userName } })
-    .then((user) => {
+    .then(user => {
       if (!user) {
         res.send({ status: 'FAIL', body: 'Invalid username or password' });
       } else {
@@ -64,13 +64,13 @@ export default {
       },
       where: { id: userId },
     })
-    .then((foundUser) => {
+    .then(foundUser => {
       if (foundUser) {
         res.status(200).send({ status: 'SUCCESS', body: foundUser });
       }
     })
-    .catch(() => {
-      res.status(500).send({ status: 'FAIL', body: 'Error finding user.' });
+    .catch(err => {
+      res.status(500).send({ status: 'FAIL', body: err });
     });
   },
 
@@ -85,11 +85,10 @@ export default {
       if (!results || results.length < 1) {
         res.status(500).send({ status: 'FAIL', body: 'No users.' });
       }
-      console.log('results========> ', res.json(results));
       return res.json(results);
     })
-    .catch(() => {
-      res.status(500).send({ status: 'FAIL', body: 'An error occurred retrieving all users.' });
+    .catch(err => {
+      res.status(500).send({ status: 'FAIL', body: err });
     });
   },
 
@@ -100,11 +99,11 @@ export default {
     const updatedProps = req.body;
 
     User.update(updatedProps, { where: query })
-    .then((matchingUser) => {
+    .then(matchingUser => {
       res.json(matchingUser);
     })
-    .catch(() => {
-      res.status(500).send({ status: 'FAIL', body: 'An error occurred updating the user.' });
+    .catch(err => {
+      res.status(500).send({ status: 'FAIL', body: err });
     });
   },
 
@@ -113,8 +112,8 @@ export default {
     const query = { id: req.params.userid };
 
     User.destroy({ where: query })
-    .catch(() => {
-      res.status(500).send({ status: 'FAIL', body: 'An error occurred deleting the user.' });
+    .catch(err => {
+      res.status(500).send({ status: 'FAIL', body: err });
     });
   },
 };
