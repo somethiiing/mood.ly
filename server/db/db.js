@@ -1,10 +1,10 @@
 import Sequelize from 'sequelize';
-import dbConfig from '../config/mysqlsetup.js';
+import dbConfig from '../config/mysqlsetup-example.js';
 
 export default new Sequelize(
-  'moodb',
-  'travis',
-  '', // FOR TRAVISCI TESTING - USUALLY IS 'HR41'
+  dbConfig.database,
+  dbConfig.username,
+  dbConfig.password, // FOR TRAVISCI TESTING - USUALLY IS 'HR41'
   {
     host: dbConfig.host,
     dialect: 'mysql',
