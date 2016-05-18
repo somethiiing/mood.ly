@@ -8,10 +8,10 @@ const renderFullPage = (html, initialState) => {
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
         <link rel="stylesheet" href="../../client/app/styles/style.css" />
 
+        <link rel="stylesheet" href="css/animate.css">
+
         <link href='https://fonts.googleapis.com/css?family=Sniglet' rel='stylesheet' type='text/css'>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
@@ -36,6 +36,10 @@ const renderFullPage = (html, initialState) => {
              js.src = "//connect.facebook.net/en_US/sdk.js";
              fjs.parentNode.insertBefore(js, fjs);
            }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <script src="js/wow.min.js"></script>
+        <script>
+          new WOW().init();
         </script>
         <div id="app"><div>${html}</div></div>
         <script>
