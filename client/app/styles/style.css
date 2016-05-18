@@ -126,13 +126,24 @@ footer .container {
   color: #424242;
 }
 
-.landing-title {
+.nav-header {
+  width: 100%;
+  text-align: center;
+  color: #424242;
+}
+
+.nav-title {
   float: left;
   font-size: 25px;
 }
 
-.landing-buttons {
+.nav-buttons {
   float: right;
+}
+
+.nav-button {
+  margin-top: 20px;
+  margin-left: 10px;
 }
 
 .landing-button {
