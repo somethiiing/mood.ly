@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize';
-import Config from '../config/mysqlsetup.js';
+import Config from '../config/mysqlsetup-example.js';
 
 export default new Sequelize(
   Config.dbConfig.database,
