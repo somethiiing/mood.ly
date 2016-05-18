@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from './login';
 import SignUp from './signup';
+import About from './about';
 import Title from './title';
 import Footer from '../Footer';
 import Row from 'react-bootstrap/lib/Row';
@@ -20,8 +21,9 @@ class LandingPage extends React.Component {
         <Title
           dashboard={this.props.dashboard}
         />
+        <About />
         <Grid>
-          <Row className="show-grid landing-content">
+          <Row className="show-grid landing-content" id="signin">
             <h2>get started</h2>
             <Col md={1} />
             <Col md={5} className="card-spacing">

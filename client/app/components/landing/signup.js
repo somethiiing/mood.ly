@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Card, CardText } from 'material-ui/Card';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'react-bootstrap/lib/Button';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -83,6 +83,9 @@ class SignUp extends React.Component {
             height: 450,
             width: 325,
             margin: '0 auto',
+            border: '4px solid #424242',
+            borderRadius: '25px',
+            boxShadow: 'none',
           }}
         >
           <CardText>
@@ -95,6 +98,12 @@ class SignUp extends React.Component {
                 floatingLabelText="enter your name:"
                 floatingLabelFixed={Boolean(true)}
                 fullWidth={Boolean(false)}
+                floatingLabelStyle={{
+                  color: '#424242',
+                }}
+                underlineFocusStyle={{
+                  borderColor: '#bfefff',
+                }}
               />
               <TextField
                 className="form-control"
@@ -103,6 +112,12 @@ class SignUp extends React.Component {
                 floatingLabelText="enter your email:"
                 floatingLabelFixed={Boolean(true)}
                 fullWidth={Boolean(false)}
+                floatingLabelStyle={{
+                  color: '#424242',
+                }}
+                underlineFocusStyle={{
+                  borderColor: '#bfefff',
+                }}
               />
               <TextField
                 className="form-control"
@@ -111,6 +126,12 @@ class SignUp extends React.Component {
                 floatingLabelText="choose a username:"
                 floatingLabelFixed={Boolean(true)}
                 fullWidth={Boolean(false)}
+                floatingLabelStyle={{
+                  color: '#424242',
+                }}
+                underlineFocusStyle={{
+                  borderColor: '#bfefff',
+                }}
               />
               <TextField
                 className="form-control"
@@ -120,14 +141,22 @@ class SignUp extends React.Component {
                 floatingLabelFixed={Boolean(true)}
                 fullWidth={Boolean(false)}
                 type="password"
+                floatingLabelStyle={{
+                  color: '#424242',
+                }}
+                underlineFocusStyle={{
+                  borderColor: '#bfefff',
+                }}
               />
               <br />
               <br />
-              <RaisedButton
-                label="submit"
+              <Button
+                bsSize="large"
+                className="primary-button"
                 onClick={this.handleSignUpData}
-                primary={Boolean(true)}
-              />
+              >
+              submit
+              </Button>
             </div>
           </CardText>
         </Card>

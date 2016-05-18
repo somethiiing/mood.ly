@@ -7,6 +7,10 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 // import D3PieChart from './components/d3/D3PieChart';
 // import PieChart from './components/d3/PieChart';
 import controller from './services/controllers';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import Dialog from 'material-ui/Dialog';
+import Button from 'react-bootstrap/lib/Button';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,6 +22,7 @@ class App extends React.Component {
       user: { name: ' ', email: ' ', username: ' ', password: ' ' },
       failMessageDisplay: false,
       moodData: [],
+      open: false,
     };
 
     this.logout = this.logout.bind(this);
@@ -76,6 +81,7 @@ class App extends React.Component {
       failMessageDisplay: false,
     });
   }
+
   profile() {
     if (this.state.loggedIn === false) {
       return this.setState({
@@ -109,22 +115,98 @@ class App extends React.Component {
   //   this.handleMoodData();
   // }
 
+  handleOpen() {
+    return this.setState({
+      open: true,
+    });
+  }
+
+  handleClose() {
+    return this.setState({
+      open: false,
+    });
+  }
+
   render() {
+    const actions = [
+      <Button
+        bsSize="large"
+        className="primary-button"
+        onClick={this.handleClose}
+      >
+      OK
+      </Button>,
+    ];
     let FailedLoginMessage;
     if (this.state.failMessageDisplay === 'LOGINFAIL') {
-      FailedLoginMessage = (<div>Incorrect Username or Password. Please try again.</div>);
+      FailedLoginMessage = (
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <Dialog
+            actions={actions}
+            modal={false}
+            open={this.state.open}
+            onRequestClose={this.handleClose}
+          >
+          Incorrect Username or Password. Please try again.
+          </Dialog>
+        </MuiThemeProvider>
+      );
     }
     if (this.state.failMessageDisplay === 'SIGNUPFAIL') {
-      FailedLoginMessage = (<div>User already exists. Please try another name.</div>);
+      FailedLoginMessage = (
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <Dialog
+            actions={actions}
+            modal={false}
+            open={this.state.open}
+            onRequestClose={this.handleClose}
+          >
+          User already exists. Please try another name.
+          </Dialog>
+        </MuiThemeProvider>
+      );
     }
     if (this.state.failMessageDisplay === 'NOACCESS') {
-      FailedLoginMessage = (<div>Please login first!</div>);
+      FailedLoginMessage = (
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <Dialog
+            actions={actions}
+            modal={false}
+            open={this.state.open}
+            onRequestClose={this.handleClose}
+          >
+          Please login first!
+          </Dialog>
+        </MuiThemeProvider>
+      );
     }
     if (this.state.failMessageDisplay === 'FIELDSREQUIRED') {
-      FailedLoginMessage = (<div>All Fields Required!</div>);
+      FailedLoginMessage = (
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <Dialog
+            actions={actions}
+            modal={false}
+            open={this.state.open}
+            onRequestClose={this.handleClose}
+          >
+          All Fields Required!
+          </Dialog>
+        </MuiThemeProvider>
+      );
     }
     if (this.state.failMessageDisplay === 'INVALIDEMAIL') {
-      FailedLoginMessage = (<div>Invalid E-mail, please use a different one!</div>);
+      FailedLoginMessage = (
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <Dialog
+            actions={actions}
+            modal={false}
+            open={this.state.open}
+            onRequestClose={this.handleClose}
+          >
+          Invalid E-mail, please use a different one!
+          </Dialog>
+        </MuiThemeProvider>
+      );
     }
 
     let pageLayout;
@@ -184,22 +266,5 @@ class App extends React.Component {
 }
 
 injectTapEventPlugin();
-
-// const wow = new WOW(
-//   {
-//     boxClass: 'wow',      // animated element css class (default is wow)
-//     animateClass: 'animated', // animation css class (default is animated)
-//     offset: 0,          // distance to the element when triggering the animation (default is 0)
-//     mobile: true,       // trigger animations on mobile devices (default is true)
-//     live: true,       // act on asynchronously loaded content (default is true)
-//     callback = (box) => {
-//       // the callback is fired every time an animation is started
-//       // the argument that is passed in is the DOM node being animated
-//     },
-//     scrollContainer: null // optional scroll container selector, otherwise use window
-//   }
-// );
-
-// wow.init();
 
 export default App;
