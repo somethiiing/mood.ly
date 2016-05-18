@@ -10,18 +10,7 @@ class GridView extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      currQuote: '',
-      currMood: '',
-      currentGif: '',
-      currentSearch: '',
-      currVideoID: '',
-      showQuoteItem: false,
-      showGifItem: false,
-      showMusicItem: false,
-      moodData: [],
-      isInfiniteLoading: false,
-    };
+    this.state = {};
   }
   render() {
     return (
@@ -32,25 +21,25 @@ class GridView extends React.Component {
             paddingBottom: 100,
           }}
         >
-          {this.state.showGifItem ?
+          {this.props.showGifItem ?
             <Col sm={6} md={4} className="card-spacing">
               <GifItem
-                gif={this.props.gif}
-                mood={this.props.mood}
+                gif={this.props.currentGif}
+                mood={this.props.currMood}
                 user={this.props.user}
               /></Col> : null}
-          {this.state.showQuoteItem ?
+          {this.props.showQuoteItem ?
             <Col sm={6} md={4} className="card-spacing">
               <QuoteItem
-                quote={this.props.quote}
-                mood={this.props.mood}
+                quote={this.props.currQuote}
+                mood={this.props.currMood}
                 user={this.props.user}
               /></Col> : null}
-          {this.state.showMusicItem ?
+          {this.props.showMusicItem ?
             <Col sm={6} md={4} className="card-spacing">
               <Music
-                videoId={this.props.videoId}
-                mood={this.props.mood}
+                videoId={this.props.currVideoID}
+                mood={this.props.currMood}
                 user={this.props.user}
               /></Col> : null}
         </Row>
@@ -59,12 +48,14 @@ class GridView extends React.Component {
   }
 }
 GridView.propTypes = {
-  quote: React.PropTypes.element,
-  gif: React.PropTypes.element,
-  videoId: React.PropTypes.element,
-  mood: React.PropTypes.element,
-  user: React.PropTypes.element,
+  showGifItem: React.PropTypes.bool,
+  showQuoteItem: React.PropTypes.bool,
+  showMusicItem: React.PropTypes.bool,
+  currQuote: React.PropTypes.string,
+  currentGif: React.PropTypes.string,
+  currVideoID: React.PropTypes.string,
+  currMood: React.PropTypes.string,
+  user: React.PropTypes.object,
 };
-
 
 export default GridView;
