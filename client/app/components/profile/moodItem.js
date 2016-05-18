@@ -4,10 +4,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 class MoodItem extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {};
   }
-
   render() {
     if (!this.props.mood.mood) {
       throw new Error('Oops! There is no such mood. Try again.');

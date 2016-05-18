@@ -1,5 +1,7 @@
 import Giphy from '../models/giphyModel';
 import User from '../models/userModel';
+import template from '../views/default';
+import giphyShareHandler from '../routes/giphyShareHandler';
 
 export default {
   saveOne: (req, res) => {
@@ -16,8 +18,8 @@ export default {
     const id = +req.params.id;
     Giphy.findById(id)
     .then(foundGiphy => {
-      const giphy = foundGiphy.url;
-      res.status(200).send({ success: true, body: `<img src="${giphy}" alt>` });
+      // res.status(200).send({ success: true, body: foundGiphy });
+      res.status(200).send(template(giphyShareHandler(foundGiphy.url)));
     })
     .catch(err => {
       res.status(500).send({ success: false, body: err });

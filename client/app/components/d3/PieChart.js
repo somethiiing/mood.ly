@@ -22,7 +22,7 @@ function createChart(dom, props) {
     .outerRadius(outerRadius)
     .innerRadius(innerRadius);
 
-  const colors = ['#FD9827', '#DA3B21', '#3669C9', '#1D9524', '#971497'];
+  const colors = ['#FD9827', '#DA3B21', '#3669C9', '#1D9524', '#971497', '#FFC7DF', '#FFC6BA', '#E8ABA9', '#E8ABA9', '#EFBAFF', '#D7FFD7', '#CAFFE8', '#B8E8C6', '#C8E8B8', '#EFFFCA'];
   
   const pie = d3.layout.pie()
     .value(d => d.count);
