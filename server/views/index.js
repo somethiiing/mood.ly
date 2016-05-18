@@ -35,10 +35,6 @@ const renderFullPage = (html, initialState) => {
              fjs.parentNode.insertBefore(js, fjs);
            }(document, 'script', 'facebook-jssdk'));
         </script>
-        <script src="js/wow.min.js"></script>
-        <script>
-          new WOW().init();
-        </script>
         <div id="app"><div>${html}</div></div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
