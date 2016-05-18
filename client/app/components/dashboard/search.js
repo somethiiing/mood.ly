@@ -17,6 +17,14 @@ class Search extends React.Component {
           <h1>how are you feeling today?</h1>
           <TextField
             onChange={this.props.handleSearchChange}
+            underlineStyle={{
+              borderColor: '#424242',
+              borderWidth: 2,
+            }}
+            underlineFocusStyle={{
+              borderColor: '#bfefff',
+              borderWidth: 2,
+            }}
           />
           <br />
           <br />
