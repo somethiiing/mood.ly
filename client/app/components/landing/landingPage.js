@@ -21,6 +21,7 @@ class LandingPage extends React.Component {
         <Title
           dashboard={this.props.dashboard}
         />
+        <About />
         <Grid>
           <Row className="show-grid landing-content" id="signin">
             <h2>get started</h2>
