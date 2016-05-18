@@ -1,7 +1,7 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'react-bootstrap/lib/Button';
 
 class Search extends React.Component {
   constructor(props) {
@@ -20,11 +20,13 @@ class Search extends React.Component {
           />
           <br />
           <br />
-          <RaisedButton
+          <Button
+            bsSize="large"
+            className="primary-button"
             onClick={this.props.handleSearchButtonClick}
-            label="submit"
-            primary={Boolean(true)}
-          />
+          >
+          submit
+          </Button>
         </div>
       </MuiThemeProvider>
     );
