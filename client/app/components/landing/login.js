@@ -71,8 +71,13 @@ class Login extends React.Component {
                 floatingLabelStyle={{
                   color: '#424242',
                 }}
+                underlineStyle={{
+                  borderColor: '#424242',
+                  borderWidth: 2,
+                }}
                 underlineFocusStyle={{
                   borderColor: '#bfefff',
+                  borderWidth: 2,
                 }}
               />
               <TextField
@@ -84,8 +89,13 @@ class Login extends React.Component {
                 floatingLabelStyle={{
                   color: '#424242',
                 }}
+                underlineStyle={{
+                  borderColor: '#424242',
+                  borderWidth: 2,
+                }}
                 underlineFocusStyle={{
                   borderColor: '#bfefff',
+                  borderWidth: 2,
                 }}
               />
               <br />

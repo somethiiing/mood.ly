@@ -19,8 +19,8 @@ class Title extends React.Component {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div className="landing-header container">
-          <h3 className="landing-title" onClick={this.handleOnMoodlyClick}>mood.ly</h3>
-          <div className="landing-buttons">
+          <h3 className="nav-title" onClick={this.handleOnMoodlyClick}>mood.ly</h3>
+          <div className="nav-buttons">
             <Button bsSize="large" className="landing-button" href="#about">about</Button>
             <Button bsSize="large" className="landing-button" href="#signin">sign in</Button>
           </div>

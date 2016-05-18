@@ -1,7 +1,8 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'react-bootstrap/lib/Button';
+import { Card, CardText } from 'material-ui/Card';
 
 class Search extends React.Component {
   constructor(props) {
@@ -13,19 +14,41 @@ class Search extends React.Component {
   render() {
     return (
       <MuiThemeProvider>
-        <div className="form-group search-bar">
-          <h1>how are you feeling today?</h1>
-          <TextField
-            onChange={this.props.handleSearchChange}
-          />
-          <br />
-          <br />
-          <RaisedButton
-            onClick={this.props.handleSearchButtonClick}
-            label="submit"
-            primary={Boolean(true)}
-          />
-        </div>
+        <Card
+          style={{
+            margin: '50 auto',
+            border: '4px solid #424242',
+            borderRadius: '25px',
+            boxShadow: 'none',
+          }}
+          className="search-bar"
+        >
+          <CardText>
+            <div className="form-group search-bar-content">
+              <h1>how are you feeling today?</h1>
+              <TextField
+                onChange={this.props.handleSearchChange}
+                underlineStyle={{
+                  borderColor: '#424242',
+                  borderWidth: 2,
+                }}
+                underlineFocusStyle={{
+                  borderColor: '#bfefff',
+                  borderWidth: 2,
+                }}
+              />
+              <br />
+              <br />
+              <Button
+                bsSize="large"
+                className="primary-button"
+                onClick={this.props.handleSearchButtonClick}
+              >
+              submit
+              </Button>
+            </div>
+          </CardText>
+        </Card>
       </MuiThemeProvider>
     );
   }

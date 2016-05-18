@@ -8,8 +8,6 @@ import Music from './music';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import Grid from 'react-bootstrap/lib/Grid';
-import D3PieChart from '../d3/D3PieChart';
-// import PieChart from '../d3/PieChart';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -130,7 +128,6 @@ class Dashboard extends React.Component {
                 /></Col> : null}
           </Row>
         </Grid>
-        <D3PieChart data={this.state.moodData} title="Moodly History" />
       </div>
     );
   }
