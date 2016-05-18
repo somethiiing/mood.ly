@@ -7,6 +7,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 // import D3PieChart from './components/d3/D3PieChart';
 // import PieChart from './components/d3/PieChart';
 import controller from './services/controllers';
+// import WOW from 'wowjs/dist/wow.min.js';
 
 class App extends React.Component {
   constructor(props) {

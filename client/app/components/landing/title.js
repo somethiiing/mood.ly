@@ -21,8 +21,8 @@ class Title extends React.Component {
         <div className="landing-header container">
           <h3 className="landing-title" onClick={this.handleOnMoodlyClick}>mood.ly</h3>
           <div className="landing-buttons">
-            <Button bsSize="large" className="landing-button">about</Button>
-            <Button bsSize="large" className="landing-button">sign in</Button>
+            <Button bsSize="large" className="landing-button" href="#about">about</Button>
+            <Button bsSize="large" className="landing-button" href="#signin">sign in</Button>
           </div>
           <h1>mood.ly</h1>
           <h2>a place to explore your mood</h2>

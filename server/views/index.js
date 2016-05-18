@@ -8,8 +8,6 @@ const renderFullPage = (html, initialState) => {
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
         <link rel="stylesheet" href="../../client/app/styles/style.css" />
 
-        <link rel="stylesheet" href="css/animate.css">
-
         <link href='https://fonts.googleapis.com/css?family=Sniglet' rel='stylesheet' type='text/css'>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 

@@ -22,7 +22,7 @@ class LandingPage extends React.Component {
           dashboard={this.props.dashboard}
         />
         <Grid>
-          <Row className="show-grid landing-content">
+          <Row className="show-grid landing-content" id="signin">
             <h2>get started</h2>
             <Col md={1} />
             <Col md={5} className="card-spacing">

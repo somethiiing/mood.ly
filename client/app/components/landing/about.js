@@ -15,7 +15,7 @@ class About extends React.Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <div className="about-content wow bounceInUp">
+        <div className="about-content wow bounceInUp" id="about">
           <h2>about</h2>
           <Grid>
             <Row className="show-grid">
