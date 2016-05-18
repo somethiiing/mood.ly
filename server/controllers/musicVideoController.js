@@ -1,5 +1,7 @@
 import MusicVideo from '../models/musicVideoModel';
 import User from '../models/userModel';
+import template from '../views/default';
+import musicVideoShareHandler from '../routes/musicVideoShareHandler';
 
 export default {
   saveOne: (req, res) => {
@@ -18,8 +20,10 @@ export default {
     const id = +req.params.id;
     MusicVideo.findById(id)
     .then(foundMusicVideo => {
-      const musicVideo = foundMusicVideo.url;
-      res.status(200).send({ success: true, body: `<img src="${musicVideo}" alt>` });
+      console.log('MUSIC: ', foundMusicVideo);
+      // const musicVideo = foundMusicVideo.url;
+      // res.status(200).send({ success: true, body: `<img src="${musicVideo}" alt>` });
+      res.status(200).send(template(musicVideoShareHandler(foundMusicVideo.videoId)));
     })
     .catch(err => {
       res.status(500).send({ success: false, body: err });

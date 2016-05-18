@@ -1,5 +1,9 @@
 import Quote from '../models/quoteModel';
 import User from '../models/userModel';
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import template from '../views/default';
+import quoteShareHandler from '../routes/quoteShareHandler';
 
 export default {
   saveOne: (req, res) => {
@@ -17,7 +21,8 @@ export default {
     const id = +req.params.id;
     Quote.findById(id)
     .then(quote => {
-      res.status(200).send({ success: true, body: quote });
+      // res.status(200).send({ success: true, body: quote });
+      res.status(200).send(template(quoteShareHandler(quote.text)));
     })
     .catch(err => {
       res.status(500).send({ success: false, body: err });

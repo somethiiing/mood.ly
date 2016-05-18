@@ -79,6 +79,7 @@ const likeMusic = (musicVideo, user, callback) => {
 
 const getAllUserData = (endpoint, username, callback) => {
   $.get(`api/user/${endpoint}?keyword=${username}`, data => {
+    console.log('CONTROLLER: ', data);
     callback(data);
   });
 };
