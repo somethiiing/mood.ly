@@ -33,6 +33,9 @@ class GifItem extends React.Component {
             height: 350,
             width: 300,
             margin: '0 auto',
+            border: '4px solid #424242',
+            borderRadius: '25px',
+            boxShadow: 'none',
           }}
         >
           <CardHeader

@@ -202,6 +202,7 @@ class Profile extends React.Component {
               </Col>
             </Row>
           </Grid>
+          <D3PieChart data={this.state.moodData} title="Moodly History" />
         </div>
       </MuiThemeProvider>
     );
