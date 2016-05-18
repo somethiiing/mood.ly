@@ -223,7 +223,10 @@ footer .container {
 .landing-button:active:focus,
 .primary-button:focus,
 .primary-button:active,
-.primary-button:active:focus {
+.primary-button:active:focus
+.nav-button:focus,
+.nav-button:active,
+.nav-button:active:focus {
   outline: none;
   box-shadow: none;
 }
