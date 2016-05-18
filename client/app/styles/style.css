@@ -151,7 +151,8 @@ footer .container {
   border-radius: 25px;
 }
 
-.landing-button:active, .landing-button:hover {
+.landing-button:active, 
+.landing-button:hover {
   background-color: transparent;
   color: #939393;
   border: 4px solid #939393;
@@ -171,7 +172,8 @@ footer .container {
   border: 4px solid #424242;
 }
 
-.primary-button:active, .primary-button:hover {
+.primary-button:active, 
+.primary-button:hover {
   background-color: #4f94cd;
   color: #424242;
   -o-transition: all .35s;
@@ -179,6 +181,16 @@ footer .container {
   -moz-transition: all .35s;
   transition: all .35s;
   border: 4px solid #424242;
+}
+
+.landing-button:focus,
+.landing-button:active,
+.landing-button:active:focus,
+.primary-button:focus,
+.primary-button:active,
+.primary-button:active:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 .landing-content {
