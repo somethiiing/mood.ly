@@ -25,51 +25,61 @@ class App extends React.Component {
       open: false,
     };
 
+
     this.logout = this.logout.bind(this);
     this.profile = this.profile.bind(this);
     this.dashboard = this.dashboard.bind(this);
     this.loginFail = this.loginFail.bind(this);
     this.signupFail = this.signupFail.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
     this.loginSuccess = this.loginSuccess.bind(this);
     this.handleMoodData = this.handleMoodData.bind(this);
     this.invalidEmailAlert = this.invalidEmailAlert.bind(this);
     this.allFieldsRequiredAlert = this.allFieldsRequiredAlert.bind(this);
   }
 
-  loginFail() {
-    if (this.state.failMessageDisplay === false) {
-      this.setState({
-        page: 'landing',
-        failMessageDisplay: 'LOGINFAIL',
-      });
-    }
-  }
+// ERROR MESSAGE FUNCTIONS
+// //////////////////////////////////
 
-  loginSuccess(user) {
+  loginFail() {
     this.setState({
-      user,
-      loggedIn: true,
-      page: 'dashboard',
+      page: 'landing',
+      failMessageDisplay: 'LOGINFAIL',
     });
+    this.handleOpen();
   }
 
   signupFail() {
-    console.log('fail');
     this.setState({
       page: 'landing',
       failMessageDisplay: 'SIGNUPFAIL',
     });
+    this.handleOpen();
   }
 
   allFieldsRequiredAlert() {
     this.setState({
       failMessageDisplay: 'FIELDSREQUIRED',
     });
+    this.handleOpen();
   }
 
   invalidEmailAlert() {
     this.setState({
       failMessageDisplay: 'INVALIDEMAIL',
+    });
+    this.handleOpen();
+  }
+
+// NAVIGATION HANDLING FUNCTIONS
+// //////////////////////////////////
+
+  loginSuccess(user) {
+    this.setState({
+      user,
+      loggedIn: true,
+      page: 'dashboard',
     });
   }
 
@@ -84,9 +94,10 @@ class App extends React.Component {
 
   profile() {
     if (this.state.loggedIn === false) {
-      return this.setState({
+      this.setState({
         failMessageDisplay: 'NOACCESS',
       });
+      return this.handleOpen();
     }
     return this.setState({
       page: 'profile',
@@ -115,6 +126,10 @@ class App extends React.Component {
   //   this.handleMoodData();
   // }
 
+
+// DIALOG BOX OPEN/CLOSE FUNCTIONS
+// //////////////////////////////////
+
   handleOpen() {
     return this.setState({
       open: true,
@@ -137,84 +152,38 @@ class App extends React.Component {
       OK
       </Button>,
     ];
-    let FailedLoginMessage;
-    if (this.state.failMessageDisplay === 'LOGINFAIL') {
-      FailedLoginMessage = (
-        <MuiThemeProvider muiTheme={getMuiTheme()}>
-          <Dialog
-            actions={actions}
-            modal={false}
-            open={this.state.open}
-            onRequestClose={this.handleClose}
-          >
-          Incorrect Username or Password. Please try again.
-          </Dialog>
-        </MuiThemeProvider>
-      );
-    }
-    if (this.state.failMessageDisplay === 'SIGNUPFAIL') {
-      FailedLoginMessage = (
-        <MuiThemeProvider muiTheme={getMuiTheme()}>
-          <Dialog
-            actions={actions}
-            modal={false}
-            open={this.state.open}
-            onRequestClose={this.handleClose}
-          >
-          User already exists. Please try another name.
-          </Dialog>
-        </MuiThemeProvider>
-      );
-    }
-    if (this.state.failMessageDisplay === 'NOACCESS') {
-      FailedLoginMessage = (
-        <MuiThemeProvider muiTheme={getMuiTheme()}>
-          <Dialog
-            actions={actions}
-            modal={false}
-            open={this.state.open}
-            onRequestClose={this.handleClose}
-          >
-          Please login first!
-          </Dialog>
-        </MuiThemeProvider>
-      );
-    }
-    if (this.state.failMessageDisplay === 'FIELDSREQUIRED') {
-      FailedLoginMessage = (
-        <MuiThemeProvider muiTheme={getMuiTheme()}>
-          <Dialog
-            actions={actions}
-            modal={false}
-            open={this.state.open}
-            onRequestClose={this.handleClose}
-          >
-          All Fields Required!
-          </Dialog>
-        </MuiThemeProvider>
-      );
-    }
-    if (this.state.failMessageDisplay === 'INVALIDEMAIL') {
-      FailedLoginMessage = (
-        <MuiThemeProvider muiTheme={getMuiTheme()}>
-          <Dialog
-            actions={actions}
-            modal={false}
-            open={this.state.open}
-            onRequestClose={this.handleClose}
-          >
-          Invalid E-mail, please use a different one!
-          </Dialog>
-        </MuiThemeProvider>
-      );
-    }
 
     let pageLayout;
+    let FailedLoginMessage;
+
+    if (this.state.failMessageDisplay === 'LOGINFAIL') {
+      FailedLoginMessage = 'Incorrect Username or Password. Please try again.';
+    }
+    if (this.state.failMessageDisplay === 'SIGNUPFAIL') {
+      FailedLoginMessage = 'User already exists. Please try another name.';
+    }
+    if (this.state.failMessageDisplay === 'NOACCESS') {
+      FailedLoginMessage = 'Please login first!';
+    }
+    if (this.state.failMessageDisplay === 'FIELDSREQUIRED') {
+      FailedLoginMessage = 'All Fields Required!';
+    }
+    if (this.state.failMessageDisplay === 'INVALIDEMAIL') {
+      FailedLoginMessage = 'Invalid E-mail, please use a different one!';
+    }
 
     if (this.state.page === 'landing' && this.state.loggedIn === false) {
       pageLayout = (
         <div>
-          {FailedLoginMessage}
+          <MuiThemeProvider muiTheme={getMuiTheme()}>
+            <Dialog
+              actions={actions}
+              open={this.state.open}
+              onRequestClose={this.handleClose}
+            >
+            {FailedLoginMessage}
+            </Dialog>
+          </MuiThemeProvider>
           <LandingPage
             dashboard={this.dashboard}
             loginFail={this.loginFail}
