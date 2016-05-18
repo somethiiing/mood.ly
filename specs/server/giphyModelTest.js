@@ -23,7 +23,7 @@ describe('Giphy model', () => {
     },
   ];
 
-  // CREATE USERS BEFORE EACH TEST
+  // CREATE GIPHYS BEFORE EACH TEST
   beforeEach(done => {
     giphys.forEach(giphy => {
       Giphy.findOrCreate({ where: giphy })
