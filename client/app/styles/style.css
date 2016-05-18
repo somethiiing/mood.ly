@@ -77,7 +77,12 @@ footer .container {
 }
 
 .search-bar {
-  margin: 100px auto;
+  margin: 50px auto;
+  width: 85%;
+}
+
+.search-bar-content {
+  margin: 40px auto;
 }
 
 .social-buttons {
