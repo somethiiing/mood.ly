@@ -43,13 +43,7 @@ p {
 }
 
 footer {
-  background-image: url(moodlyLanding.jpg);
-  background-position: center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-  background-attachment: fixed;
+  background-color: #424242;
   width: 100%;
   bottom: 0;
   padding-top: 20px;
@@ -90,7 +84,7 @@ footer .container {
 }
 
 .social-buttons > a {
-  color: #424242;
+  color: #fff;
   padding-left: 15px;
 }
 
