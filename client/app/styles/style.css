@@ -129,7 +129,9 @@ footer .container {
 .nav-header {
   width: 100%;
   text-align: center;
-  color: #424242;
+  background-color: #424242;
+  color: #fff;
+  height: 75px;
 }
 
 .nav-title {
@@ -137,13 +139,36 @@ footer .container {
   font-size: 25px;
 }
 
+.nav-title-main {
+  color: #fff;
+}
+
 .nav-buttons {
   float: right;
 }
 
 .nav-button {
-  margin-top: 20px;
+  background-color: transparent;
+  color: #fff;
+  border: 4px solid #fff;
+  padding: 5px 5px;
   margin-left: 10px;
+  margin-top: 20px;
+  width: 150px;
+  border-radius: 25px;
+  font-family: 'Sniglet', cursive;
+  font-size: 17px;
+}
+
+.nav-button:active, 
+.nav-button:hover {
+  background-color: transparent;
+  color: #939393;
+  border: 4px solid #939393;
+  -o-transition: all .35s;
+  -webkit-transition: all .35s;
+  -moz-transition: all .35s;
+  transition: all .35s;
 }
 
 .landing-button {
@@ -234,7 +259,8 @@ footer .container {
 }
 
 @media (max-width: 568px) {
-  .landing-button {
+  .landing-button,
+  .nav-button {
     width: 80px;
   }  
 }

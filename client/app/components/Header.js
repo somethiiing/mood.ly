@@ -30,18 +30,18 @@ class Header extends React.Component {
   render() {
     return (
       <div className="nav-header container">
-        <h3 className="nav-title" onClick={this.handleOnMoodlyClick}>mood.ly</h3>
+        <h3 className="nav-title nav-title-main" onClick={this.handleOnMoodlyClick}>mood.ly</h3>
         <div className="nav-buttons">
           <Button
             bsSize="large"
-            className="primary-button nav-button"
+            className="nav-button"
             onClick={this.handleProfileButtonClick}
           >
           profile
           </Button>
           <Button
             bsSize="large"
-            className="primary-button nav-button"
+            className="nav-button"
             onClick={this.handleLogoutButtonClick}
           >
           logout
