@@ -83,6 +83,7 @@ class Login extends React.Component {
               <TextField
                 className="form-control"
                 id="password"
+                type="password"
                 floatingLabelText="enter your password:"
                 floatingLabelFixed={Boolean(true)}
                 onChange={this.handleInputPassword}

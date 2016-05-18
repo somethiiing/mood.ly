@@ -12,9 +12,9 @@ class Footer extends React.Component {
         <footer>
           <div className="container">
             <ul className="social-buttons">
-              <a href="#"><i className="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
-              <a href="#"><i className="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
-              <a href="#"><i className="fa fa-soundcloud fa-2x" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/OfficialMoodly/" target="_blank"><i className="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
+              <a href="hthttps://twitter.com/officialmoodly" target="_blank"><i className="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+              <a href="https://soundcloud.com/officialmoodly" target="_blank"><i className="fa fa-soundcloud fa-2x" aria-hidden="true"></i></a>
             </ul>
           </div>
         </footer>
