@@ -109,9 +109,9 @@ export default {
 
   // DELETE USER
   deleteOne: (req, res) => {
-    const query = { id: req.params.userid };
+    const query = { id: req.body };
 
-    User.destroy({ where: query })
+    User.destroy({ where: { user: query } })
     .catch(err => {
       res.status(500).send({ success: false, body: err });
     });
