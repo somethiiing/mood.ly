@@ -13,21 +13,22 @@ import request from 'request';
   // data retrived is within a number of nested objects/arrays and is retrived in one long string
 // getData is the logic/order used to call the above functions
 
-// redirect messages, would like to change these to different error messages based off of your mood
-const redirectFailMessages = [
-  'Page not found, please try again.1',
-  'Page not found, please try again.2',
-  'Page not found, please try again.3',
-  'Page not found, please try again.4',
-  'Page not found, please try again.5',
-  'Page not found, please try again.6',
-];
-
 // wikiAPI returns an object, theres a key that is the pageID
 // inside that key, there is a property called the pageID
 // -1 means the page doesnt exist and redirect can't happen.
 // another number means that the page exists, and has a possibility of redirect
 // getPageID is ONLY responsible for returning the pageID
+
+const emptyCheck = str => {
+  let response = true;
+  for (let i = 0; i < str.length - 1; i++) {
+    if (str[i] !== ' ') {
+      response = false;
+    }
+  }
+  return response;
+};
+
 const getPageID = body => {
   let index;
   for (const key of Object.keys(body.query.pages)) {
@@ -151,9 +152,12 @@ function getData(body, callback) {
 // modularized to be able to test better
 const frontEndCall = (req, res) => {
   const keyword = req.query.keyword;
-  wikiQuoteCall(keyword, (response) => {
-    res.json(response);
-  });
+  if (emptyCheck(keyword) === false) {
+    return wikiQuoteCall(keyword, (response) => {
+      res.json(response);
+    });
+  }
+  throw new Error('keyword is empty string');
 };
 
 export default { getPageID, redirectCheck, wikiQuoteCall, frontEndCall };

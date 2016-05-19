@@ -62,20 +62,14 @@ class Profile extends React.Component {
   }
 
   showUserChart() {
-    UserController.getMoodData(data => {
-      this.setState({
-        moodData: data,
-        pieChartDisplay: 'user',
-      });
+    this.setState({
+      pieChartDisplay: 'user',
     });
   }
 
   showMoodlyChart() {
-    UserController.getAllUserData('moods', this.props.user.name, data => {
-      this.setState({
-        moodData: data,
-        pieChartDisplay: 'moodly',
-      });
+    this.setState({
+      pieChartDisplay: 'moodly',
     });
   }
 
@@ -99,7 +93,7 @@ class Profile extends React.Component {
       chartButton = 'show Moodly\'s Mood History';
       chartTitle = `${this.props.user.name}'s mood history`;
       displayedChart = (
-        <D3PieChart data={this.props.moodData} title="" />
+        <D3PieChart data={this.props.moodDataUser} title="" />
       );
     }
     if (this.state.pieChartDisplay === 'moodly') {
@@ -107,7 +101,7 @@ class Profile extends React.Component {
       chartButton = `show ${this.props.user.name}'s mood history`;
       chartTitle = 'Moodly\'s Mood History';
       displayedChart = (
-        <D3PieChart data={this.props.moodData} title="" />
+        <D3PieChart data={this.props.moodDataMoodly} title="" />
       );
     }
 
@@ -128,15 +122,15 @@ class Profile extends React.Component {
                     <h2 onClick={changeChart}>{chartTitle}</h2>
                     {displayedChart}
                   </CardText>
-                  <Button
-                    bsSize="large"
-                    onClick={changeChart}
-                    className="nav-button"
-                  >
-                  {chartButton}
-                  </Button>
                 </Card>
               </Col>
+              <Button
+                bsSize="large"
+                onClick={changeChart}
+                className="nav-button"
+              >
+              {chartButton}
+              </Button>
               <Col
                 md={8}
                 style={{
@@ -261,7 +255,8 @@ class Profile extends React.Component {
 
 Profile.propTypes = {
   user: React.PropTypes.object,
-  moodData: React.PropTypes.array,
+  moodDataUser: React.PropTypes.array,
+  moodDataMoodly: React.PropTypes.array,
 };
 
 export default Profile;
