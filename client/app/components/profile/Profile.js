@@ -16,12 +16,6 @@ import ImageCamera from 'material-ui/svg-icons/image/camera-alt';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Card, CardHeader, CardText, CardMedia } from 'material-ui/Card';
 import EditorInsertComment from 'material-ui/svg-icons/editor/insert-comment';
-<<<<<<< 14b14a8756b930146a4bf310644e4a8952c777e0
-// import PieChart from '../d3/PieChart';
-import D3PieChart from '../d3/D3PieChart';
-=======
-
->>>>>>> updates
 
 const moodlyUrl = 'moodly.io';
 
