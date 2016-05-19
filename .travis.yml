@@ -5,8 +5,8 @@ node_js:
   - '5.8'
 services:
   - mysql
-before_install:
-  - mysql -e "CREATE DATABASE IF NOT EXISTS moodb;" -uroot -P '' #install database for user 'travis'
+# before_install:
+#   - mysql -e "CREATE DATABASE IF NOT EXISTS moodb;" -uroot -P '' #install database for user 'travis'
 before_script:
   - npm install -g webpack
   - npm install -g mocha
