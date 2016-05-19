@@ -9,7 +9,7 @@ export default new Sequelize(
   // Config.dbConfig.password, // FOR TRAVISCI TESTING - USUALLY IS 'HR41'
   '',
   {
-    host: 'http://127.0.0.1', // Config.dbConfig.host,
+    // host: 'http://127.0.0.1', // Config.dbConfig.host,
     dialect: 'mysql',
     define: {
       timestamps: false, // true by default
