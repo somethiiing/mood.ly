@@ -12,6 +12,8 @@ import Button from 'react-bootstrap/lib/Button';
 import controller from '../../services/controllers';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import GridView from './gridView';
+import Infinite from 'react-infinite';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -21,14 +23,20 @@ class Dashboard extends React.Component {
       currQuote: '',
       currMood: '',
       currentGif: '',
-      currentSearch: '',
+      currSearch: '',
       currVideoID: '',
       showQuoteItem: false,
       showGifItem: false,
       showMusicItem: false,
       open: false,
+      isInfiniteLoading: false,
+      elements: [],
+      searchCount: 0,
     };
 
+    this.apiCalls = this.apiCalls.bind(this);
+    this.buildElements = this.buildElements.bind(this);
+    this.handleInfiniteLoad = this.handleInfiniteLoad.bind(this);
     this.emptyCheck = this.emptyCheck.bind(this);
     this.dialogOpen = this.dialogOpen.bind(this);
     this.dialogClose = this.dialogClose.bind(this);
@@ -58,59 +66,117 @@ class Dashboard extends React.Component {
     return response;
   }
 
-  handleSearchButtonClick() {
+  apiCalls() {
     const self = this;
-    const query = this.state.currentSearch;
+    const query = this.state.currSearch;
+    services.apiCall('wikiInfo', query, (res) => {
+      if (res.success === true) {
+        self.setState({
+          currMood: query,
+          currQuote: res.body,
+          showQuoteItem: true,
+        });
+      }
+      if (res.success === false) {
+        self.setState({
+          showQuoteItem: false,
+        });
+        throw new Error(res.body);
+      }
+    });
+    services.apiCall('giphyInfo', query, (res) => {
+      if (res.success === true) {
+        self.setState({
+          currMood: query,
+          currentGif: res.body,
+          showGifItem: true,
+        });
+      }
+      if (res.success === false) {
+        throw new Error(res.body);
+      }
+    });
+    services.apiCall('musicInfo', query, (res) => {
+      if (res.success === true) {
+        self.setState({
+          currMood: query,
+          currVideoID: res.videoID,
+          showMusicItem: true,
+        });
+      }
+      if (res.success === false) {
+        throw new Error(res.body);
+      }
+    });
+  }
+
+  handleSearchButtonClick() {
+    const query = this.state.currSearch;
+    this.setState({
+      elements: [],
+    });
     if (this.emptyCheck(query) === false) {
-      services.apiCall('wikiInfo', query, (res) => {
-        if (res.success === true) {
-          self.setState({
-            currMood: query,
-            currQuote: res.body,
-            showQuoteItem: true,
-          });
-        }
-        if (res.success === false) {
-          self.setState({
-            showQuoteItem: false,
-          });
-          throw new Error(res.body);
-        }
-      });
-      services.apiCall('giphyInfo', query, (res) => {
-        if (res.success === true) {
-          self.setState({
-            currMood: query,
-            currentGif: res.body,
-            showGifItem: true,
-          });
-        }
-        if (res.success === false) {
-          throw new Error(res.body);
-        }
-      });
-      services.apiCall('musicInfo', query, (res) => {
-        if (res.success === true) {
-          self.setState({
-            currMood: query,
-            currVideoID: res.videoID,
-            showMusicItem: true,
-          });
-        }
-        if (res.success === false) {
-          throw new Error(res.body);
-        }
-      });
+      this.apiCalls();
       controller.addUserMood(query, this.props.user, (res) => { console.log(res); });
-    } else {
-      this.dialogOpen(); 
+    } else
+    if (this.emptyCheck(query) === true) {
+      this.dialogOpen();
+      this.setState({
+        isInfiniteLoading: false,
+        currMood: ' ',
+        currSearch: ' ',
+      });
     }
   }
 
   handleSearchChange(event) {
     this.setState({
-      currentSearch: event.target.value,
+      currSearch: event.target.value,
     });
+  }
+
+  buildElements() {
+    // this.handleSearchButtonClick();
+    const elements = [];
+    elements.push(
+      <GridView
+        showGifItem={this.state.showGifItem}
+        showQuoteItem={this.state.showQuoteItem}
+        showMusicItem={this.state.showMusicItem}
+        currentGif={this.state.currentGif}
+        currMood={this.state.currMood}
+        user={this.props.user}
+        currQuote={this.state.currQuote}
+        currVideoID={this.state.currVideoID}
+      />
+    );
+    return elements;
+  }
+
+  handleInfiniteLoad() {
+    if (this.emptyCheck(this.state.currSearch) === false) {
+      this.apiCalls();
+    }
+    console.log('handle on infinite load');
+    this.setState({
+      isInfiniteLoading: true,
+    });
+    setTimeout(() => {
+      const newElements = this.buildElements();
+      this.setState({
+        isInfiniteLoading: false,
+        elements: this.state.elements.concat(newElements),
+      });
+      console.log(JSON.stringify(this.state.elements));
+    }, 2500);
+  }
+  elementInfiniteLoad() {
+    console.log('element infinite load');
+    return (
+      <div className="infinite-list-item">
+        Loading...
+      </div>
+    );
   }
 
   render() {
@@ -140,36 +206,17 @@ class Dashboard extends React.Component {
           Oops. Please enter how you're feeling then hit submit!
           </Dialog>
         </MuiThemeProvider>
-        <Grid>
-          <Row
-            className="show-grid"
-            style={{
-              paddingBottom: 100,
-            }}
-          >
-            {this.state.showGifItem ?
-              <Col sm={6} md={4} className="card-spacing">
-                <GifItem
-                  gif={this.state.currentGif}
-                  mood={this.state.currMood}
-                  user={this.props.user}
-                /></Col> : null}
-            {this.state.showQuoteItem ?
-              <Col sm={6} md={4} className="card-spacing">
-                <QuoteItem
-                  quote={this.state.currQuote}
-                  mood={this.state.currMood}
-                  user={this.props.user}
-                /></Col> : null}
-            {this.state.showMusicItem ?
-              <Col sm={6} md={4} className="card-spacing">
-                <Music
-                  videoId={this.state.currVideoID}
-                  mood={this.state.currMood}
-                  user={this.props.user}
-                /></Col> : null}
-          </Row>
-        </Grid>
+        <Infinite
+          elementHeight={450}
+          infiniteLoadBeginEdgeOffset={900}
+          useWindowAsScrollContainer={true}
+          onInfiniteLoad={this.handleInfiniteLoad}
+          loadingSpinnerDelegate={this.elementInfiniteLoad()}
+          isInfiniteLoading={this.state.isInfiniteLoading}
+          timeScrollStateLastsForAfterUserScrolls={2500}
+        >
+          {this.state.elements}
+        </Infinite>
       </div>
     );
   }
