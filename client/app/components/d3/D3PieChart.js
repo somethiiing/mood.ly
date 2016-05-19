@@ -54,7 +54,7 @@ var Sector = React.createClass({
     return (
       <g onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut} onClick={this.onClick}>
         <path className={this.state.opacity} fill={color[this.props.ikey]} d={arc(this.props.data)}></path>
-        <text fill="white" transform={center} textAnchor="middle" fontSize="15px">{data.value}</text>
+        <text fill="white" transform={center} textAnchor="middle" fontSize="15px">{this.props.name}</text>
         <text fill={color[this.props.ikey]} stroke={color} fontSize="15px" transform={percentCenter} textAnchor="middle">{this.state.text}</text>
       </g>
     );
@@ -134,10 +134,15 @@ var D3PieChart = React.createClass({
               <DataSeries data={this.props.data} colors={colors} width=
                 {this.props.width} height={this.props.height}/>
         </D3Chart>
-        <D3Legend data={this.props.data} colors={colors} width={this.props.width - 100} height={this.props.height} />
       </div>
     );
-  }
+  },
 });
+
+/*
+{data.value}
+
+<D3Legend data={this.props.data} colors={colors} width={this.props.width - 100} height={this.props.height} />
+*/
 
 export default D3PieChart;
