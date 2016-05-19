@@ -89,7 +89,12 @@ class Profile extends React.Component {
       chartButton = 'all user history';
       chartTitle = 'my mood history';
       displayedChart = (
-        <D3PieChart data={this.props.moodDataUser} title="" />
+        <D3PieChart
+          data={this.props.moodDataUser}
+          title=""
+          width={230}
+          height={230}
+        />
       );
     }
     if (this.state.pieChartDisplay === 'moodly') {
@@ -106,37 +111,37 @@ class Profile extends React.Component {
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div className="profile-content">
           <h1>{this.props.user.name}'s profile</h1>
+          <br />
           <Grid>
             <Row className="show-grid">
-              <Col md={4} className="card-spacing">
+              <Col
+                md={4}
+                className="card-spacing"
+              >
                 <Card
                   style={{
                     margin: '0 auto',
                   }}
                 >
                   <CardText>
-                    <div>
-                      <h2 onClick={changeChart}>{chartTitle}</h2>
-                      {displayedChart}
-                      <br />
-                      <br />
-                      <br />
-                      <Button
-                        bsSize="large"
-                        onClick={changeChart}
-                        className="primary-button"
-                      >
-                      {chartButton}
-                      </Button>
+                    <div className="profile-cards">
+                      <div>
+                        <h2 onClick={changeChart}>{chartTitle}</h2>
+                        {displayedChart}
+                        <Button
+                          bsSize="large"
+                          onClick={changeChart}
+                          className="card-button"
+                        >
+                        {chartButton}
+                        </Button>
+                      </div>
                     </div>
                   </CardText>
                 </Card>
               </Col>
               <Col
                 md={8}
-                style={{
-                  // overflow: 'scroll',
-                }}
                 classname="card-spacing"
               >
                 <Card
