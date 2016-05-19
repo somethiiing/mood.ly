@@ -1,17 +1,15 @@
 import React from 'react';
+import Dialog from 'material-ui/Dialog';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Profile from './components/profile/Profile';
-import LandingPage from './components/landing/landingPage';
-import Dashboard from './components/dashboard/dashboard';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-// import D3PieChart from './components/d3/D3PieChart';
-// import PieChart from './components/d3/PieChart';
-import controller from './services/controllers';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import Dialog from 'material-ui/Dialog';
 import Button from 'react-bootstrap/lib/Button';
+import controller from './services/controllers';
+import Profile from './components/profile/Profile';
+import Dashboard from './components/dashboard/dashboard';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import LandingPage from './components/landing/landingPage';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class App extends React.Component {
   constructor(props) {
@@ -117,7 +115,7 @@ class App extends React.Component {
     });
   }
 
-  // Test addiding Pie Chart above Dashboard Component
+  // Passing PieChart Data into Profile
   handleMoodData() {
     controller.getAllUserData('moods', this.state.user.name, data => {
       this.setState({

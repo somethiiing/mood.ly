@@ -1,8 +1,4 @@
-// import Mood from './components/mood';
-// import LikedItem from './likedItem';
 import React from 'react';
-import Liked from './liked';
-import PieChart from '../d3/PieChart';
 import D3PieChart from '../d3/D3PieChart';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
