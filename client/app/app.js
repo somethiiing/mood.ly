@@ -1,17 +1,15 @@
 import React from 'react';
+import Dialog from 'material-ui/Dialog';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Profile from './components/profile/Profile';
-import LandingPage from './components/landing/landingPage';
-import Dashboard from './components/dashboard/dashboard';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-// import D3PieChart from './components/d3/D3PieChart';
-// import PieChart from './components/d3/PieChart';
-import controller from './services/controllers';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import Dialog from 'material-ui/Dialog';
 import Button from 'react-bootstrap/lib/Button';
+import controller from './services/controllers';
+import Profile from './components/profile/Profile';
+import Dashboard from './components/dashboard/dashboard';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import LandingPage from './components/landing/landingPage';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,7 +20,8 @@ class App extends React.Component {
       page: 'landing',
       user: { name: ' ', email: ' ', username: ' ', password: ' ' },
       failMessageDisplay: false,
-      moodData: [],
+      moodDataUser: [],
+      moodDataMoodly: [],
       open: false,
     };
 
@@ -32,8 +31,8 @@ class App extends React.Component {
     this.dashboard = this.dashboard.bind(this);
     this.loginFail = this.loginFail.bind(this);
     this.signupFail = this.signupFail.bind(this);
-    this.handleOpen = this.handleOpen.bind(this);
-    this.handleClose = this.handleClose.bind(this);
+    this.dialogOpen = this.dialogOpen.bind(this);
+    this.dialogClose = this.dialogClose.bind(this);
     this.loginSuccess = this.loginSuccess.bind(this);
     this.handleMoodData = this.handleMoodData.bind(this);
     this.invalidEmailAlert = this.invalidEmailAlert.bind(this);
@@ -48,7 +47,7 @@ class App extends React.Component {
       page: 'landing',
       failMessageDisplay: 'LOGINFAIL',
     });
-    this.handleOpen();
+    this.dialogOpen();
   }
 
   signupFail() {
@@ -56,21 +55,21 @@ class App extends React.Component {
       page: 'landing',
       failMessageDisplay: 'SIGNUPFAIL',
     });
-    this.handleOpen();
+    this.dialogOpen();
   }
 
   allFieldsRequiredAlert() {
     this.setState({
       failMessageDisplay: 'FIELDSREQUIRED',
     });
-    this.handleOpen();
+    this.dialogOpen();
   }
 
   invalidEmailAlert() {
     this.setState({
       failMessageDisplay: 'INVALIDEMAIL',
     });
-    this.handleOpen();
+    this.dialogOpen();
   }
 
 // NAVIGATION HANDLING FUNCTIONS
@@ -98,7 +97,7 @@ class App extends React.Component {
       this.setState({
         failMessageDisplay: 'NOACCESS',
       });
-      return this.handleOpen();
+      return this.dialogOpen();
     }
     return this.setState({
       page: 'profile',
@@ -116,28 +115,30 @@ class App extends React.Component {
     });
   }
 
-  // Test addiding Pie Chart above Dashboard Component
+  // Passing PieChart Data into Profile
   handleMoodData() {
     controller.getAllUserData('moods', this.state.user.name, data => {
-      this.setState({ moodData: data });
+      this.setState({
+        moodDataUser: data,
+      });
+    });
+    controller.getMoodData(data => {
+      this.setState({
+        moodDataMoodly: data,
+      });
     });
   }
-
-  // componentWillMount() {
-  //   this.handleMoodData();
-  // }
-
 
 // DIALOG BOX OPEN/CLOSE FUNCTIONS
 // //////////////////////////////////
 
-  handleOpen() {
+  dialogOpen() {
     return this.setState({
       open: true,
     });
   }
 
-  handleClose() {
+  dialogClose() {
     return this.setState({
       open: false,
     });
@@ -148,7 +149,7 @@ class App extends React.Component {
       <Button
         bsSize="large"
         className="primary-button"
-        onClick={this.handleClose}
+        onClick={this.dialogClose}
       >
       OK
       </Button>,
@@ -180,7 +181,7 @@ class App extends React.Component {
             <Dialog
               actions={actions}
               open={this.state.open}
-              onRequestClose={this.handleClose}
+              onRequestClose={this.dialogClose}
             >
             {FailedLoginMessage}
             </Dialog>
@@ -204,6 +205,7 @@ class App extends React.Component {
             logout={this.logout}
             profile={this.profile}
             handleMoodData={this.handleMoodData}
+            page={this.state.page}
           />
           <Dashboard
             user={this.state.user}
@@ -220,10 +222,12 @@ class App extends React.Component {
             logout={this.logout}
             profile={this.profile}
             handleMoodData={this.handleMoodData}
+            page={this.state.page}
           />
           <Profile
             user={this.state.user}
-            moodData={this.state.moodData}
+            moodDataUser={this.state.moodDataUser}
+            moodDataMoodly={this.state.moodDataMoodly}
           />
           <Footer />
         </div>

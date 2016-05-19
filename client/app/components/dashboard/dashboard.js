@@ -1,13 +1,17 @@
 import React from 'react';
-import Search from './search';
-import services from '../../services/services';
-import controller from '../../services/controllers';
-import QuoteItem from './quoteItem';
-import GifItem from './gifItem';
 import Music from './music';
+import Search from './search';
+import GifItem from './gifItem';
+import QuoteItem from './quoteItem';
+import Dialog from 'material-ui/Dialog';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import Grid from 'react-bootstrap/lib/Grid';
+import services from '../../services/services';
+import Button from 'react-bootstrap/lib/Button';
+import controller from '../../services/controllers';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -22,67 +26,85 @@ class Dashboard extends React.Component {
       showQuoteItem: false,
       showGifItem: false,
       showMusicItem: false,
-      moodData: [],
+      open: false,
     };
 
+    this.emptyCheck = this.emptyCheck.bind(this);
+    this.dialogOpen = this.dialogOpen.bind(this);
+    this.dialogClose = this.dialogClose.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
   }
 
-  componentWillMount() {
-    this.handleMoodData();
+  dialogOpen() {
+    return this.setState({
+      open: true,
+    });
   }
 
-  handleMoodData() {
-    controller.getMoodData(data => {
-      this.setState({ moodData: data });
+  dialogClose() {
+    return this.setState({
+      open: false,
     });
+  }
+
+  emptyCheck(str) {
+    let response = true;
+    for (let i = 0; i < str.length - 1; i++) {
+      if (str[i] !== ' ') {
+        response = false;
+      }
+    }
+    return response;
   }
 
   handleSearchButtonClick() {
     const self = this;
     const query = this.state.currentSearch;
-    services.apiCall('wikiInfo', query, (res) => {
-      if (res.success === true) {
-        self.setState({
-          currMood: query,
-          currQuote: res.body,
-          showQuoteItem: true,
-        });
-      }
-      if (res.success === false) {
-        self.setState({
-          showQuoteItem: false,
-        });
-        throw new Error(res.body);
-      }
-    });
-    services.apiCall('giphyInfo', query, (res) => {
-      if (res.success === true) {
-        self.setState({
-          currMood: query,
-          currentGif: res.body,
-          showGifItem: true,
-        });
-      }
-      if (res.success === false) {
-        throw new Error(res.body);
-      }
-    });
-    services.apiCall('musicInfo', query, (res) => {
-      if (res.success === true) {
-        self.setState({
-          currMood: query,
-          currVideoID: res.videoID,
-          showMusicItem: true,
-        });
-      }
-      if (res.success === false) {
-        throw new Error(res.body);
-      }
-    });
-    controller.addUserMood(query, this.props.user, (res) => { console.log(res); });
-    this.handleMoodData();
+    if (this.emptyCheck(query) === false) {
+      services.apiCall('wikiInfo', query, (res) => {
+        if (res.success === true) {
+          self.setState({
+            currMood: query,
+            currQuote: res.body,
+            showQuoteItem: true,
+          });
+        }
+        if (res.success === false) {
+          self.setState({
+            showQuoteItem: false,
+          });
+          throw new Error(res.body);
+        }
+      });
+      services.apiCall('giphyInfo', query, (res) => {
+        if (res.success === true) {
+          self.setState({
+            currMood: query,
+            currentGif: res.body,
+            showGifItem: true,
+          });
+        }
+        if (res.success === false) {
+          throw new Error(res.body);
+        }
+      });
+      services.apiCall('musicInfo', query, (res) => {
+        if (res.success === true) {
+          self.setState({
+            currMood: query,
+            currVideoID: res.videoID,
+            showMusicItem: true,
+          });
+        }
+        if (res.success === false) {
+          throw new Error(res.body);
+        }
+      });
+      controller.addUserMood(query, this.props.user, (res) => { console.log(res); });
+    } else {
+      this.dialogOpen(); 
+    }
   }
 
   handleSearchChange(event) {
@@ -92,12 +114,32 @@ class Dashboard extends React.Component {
   }
 
   render() {
+
+    const actions = [
+      <Button
+        bsSize="large"
+        className="primary-button"
+        onClick={this.dialogClose}
+      >
+      OK
+      </Button>,
+    ];
+
     return (
       <div>
         <Search
           handleSearchChange={this.handleSearchChange}
           handleSearchButtonClick={this.handleSearchButtonClick}
         />
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <Dialog
+            actions={actions}
+            open={this.state.open}
+            onRequestClose={this.dialogClose}
+          >
+          Oops. Please enter how you're feeling then hit submit!
+          </Dialog>
+        </MuiThemeProvider>
         <Grid>
           <Row
             className="show-grid"
@@ -135,19 +177,6 @@ class Dashboard extends React.Component {
 
 Dashboard.propTypes = {
   user: React.PropTypes.object,
-  // quote: PropTypes.element.isRequired,
-  // gif: PropTypes.element.isRequired,
 };
-
-/* <div className="moodly-content">
-  <span className="quote-title"><h2>{this.state.currQuote}</h2></span>
-</div>
-
-<img src={this.state.currentGif} alt="" /> */
-
-// Dashboard.propTypes = {
-//   handleSearchChange: PropTypes.func.isRequired,
-//   handleSearchButtonClick: PropTypes.func.isRequired,
-// };
 
 export default Dashboard;
