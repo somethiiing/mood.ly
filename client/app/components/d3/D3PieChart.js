@@ -154,10 +154,4 @@ var D3PieChart = React.createClass({
   },
 });
 
-/*
-{data.value}
-
-<D3Legend data={this.props.data} colors={colors} width={this.props.width - 100} height={this.props.height} />
-*/
-
 export default D3PieChart;
