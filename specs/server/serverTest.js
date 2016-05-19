@@ -1,4 +1,5 @@
 import chai from 'chai';
+import { describe, it } from 'mocha';
 import request from 'request';
 import User from '../../server/models/userModel';
 
@@ -6,8 +7,8 @@ const expect = chai.expect;
 
 describe('Server', () => {
   // beforeEach(() => {
-    //LOGOUT
-    //===================================
+    // LOGOUT
+    // ===================================
     // request('http://127.0.0.1:8080/logout', (err, res, body) => {});
   // });
 
@@ -20,8 +21,8 @@ describe('Server', () => {
     });
   });
 
-    //PRIVILEGED ACCESS
-    //===================================
+    // PRIVILEGED ACCESS
+    // ===================================
     describe('Privileged Access', () => {
       xit('redirects to login page if user is not signed in', (done) => {
         request('http://127.0.0.1:8080', (err, res, body) => {
@@ -31,25 +32,25 @@ describe('Server', () => {
       });
     });
 
-    //ACCOUNT CREATION
-    //===================================
+    // ACCOUNT CREATION
+    // ===================================
     describe('Account Creation', () => {
       it('should respond with a 201 when a user has been created and added to the database', (done) => {
         let options = {
-          'method': 'POST',
-          'uri': 'http://127.0.0.1:8080/signup',
+          method: 'POST',
+          uri: 'http://127.0.0.1:8080/signup',
           json: {
             name: 'Chris',
             email: 'chris@chris.com',
-            password: '1234'
-          }
+            password: '1234',
+          },
         };
 
         request(options, (err, res, body) => {
-          //CHECK STATUS CODE
+          // CHECK STATUS CODE
           expect(res.statusCode).to.equal(201);
-          //CHECK USER DETAILS
-          User.findOne({where: {name: 'Chris'}})
+          // CHECK USER DETAILS
+          User.findOne({ where: { name: 'Chris' } })
           .then(foundUser => {
             foundUser = foundUser.dataValues.name;
             expect(foundUser).to.equal('Chris');
@@ -60,13 +61,13 @@ describe('Server', () => {
 
       it('signup logs in a new user', (done) => {
         let options = {
-          'method': 'POST',
-          'uri': 'http://127.0.0.1:8080/signup',
+          method: 'POST',
+          uri: 'http://127.0.0.1:8080/signup',
           json: {
             name: 'Arun',
             email: 'arun@arun.com',
-            password: '4321'
-          }
+            password: '4321',
+          },
         };
 
         request(options, (err, res, body) => {
@@ -76,37 +77,37 @@ describe('Server', () => {
       });
     });
 
-    //ACCOUNT LOGIN
-    //===================================
+    // ACCOUNT LOGIN
+    // ===================================
     describe('Account Login', () => {
       beforeEach((done) => {
         let options = {
-          'method': 'POST',
-          'followAllRedirects': true,
-          'uri': 'http://127.0.0.1:8080/signup',
+          method: 'POST',
+          followAllRedirects: true,
+          uri: 'http://127.0.0.1:8080/signup',
           json: {
             name: 'Kim',
             email: 'kim@kim.com',
-            password: '7890'
-          }
+            password: '7890',
+          },
         };
 
         request(options, (err, res, body) => {
-          //SIGN UP A NEW USER
+          // SIGN UP A NEW USER
           done();
         });
       });
 
       xit('logs in existing user', (done) => {
         let options = {
-          'method': 'POST',
-          'followAllRedirects': true,
-          'uri': 'http://127.0.0.1:8080/signup',
+          method: 'POST',
+          followAllRedirects: true,
+          uri: 'http://127.0.0.1:8080/signup',
           json: {
             name: 'Kim',
             email: 'kim@kim.com',
-            password: '7890'
-          }
+            password: '7890',
+          },
         };
 
         requestWithSession(options, (err, res, body) => {
@@ -117,14 +118,14 @@ describe('Server', () => {
 
       xit('should keep users that do not exist on login page', () => {
         let options = {
-          'method': 'POST',
-          'followAllRedirects': true,
-          'uri': 'http://127.0.0.1:8080/signup',
+          method: 'POST',
+          followAllRedirects: true,
+          uri: 'http://127.0.0.1:8080/signup',
           json: {
             name: 'Wilson',
             email: 'wilson@wilson.com',
-            password: '0987'
-          }
+            password: '0987',
+          },
         };
 
         requestWithSession(options, (err, res, body) => {
@@ -134,8 +135,8 @@ describe('Server', () => {
       });
     });
 
-    //FACEBOOK AUTH
-    //===================================
+    // FACEBOOK AUTH
+    // ===================================
     xit('should redirect user from Facebook authentication to Mood.ly', () => {
       request('http://127.0.0.1:8080/auth/facebook', (err, res, body) => {
         expect(res.statusCode).to.equal(200);
@@ -148,8 +149,8 @@ describe('Server', () => {
     //   });
     // });
 
-    //GOOGLE AUTH
-    //===================================
+    // GOOGLE AUTH
+    // ===================================
     xit('should redirect user from Google authentication to Mood.ly', () => {
       request('http://127.0.0.1:8080/auth/google', (err, res, body) => {
         expect(res.statusCode).to.equal(200);
