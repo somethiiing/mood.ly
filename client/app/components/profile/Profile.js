@@ -86,16 +86,16 @@ class Profile extends React.Component {
     let displayedChart;
     if (this.state.pieChartDisplay === 'user') {
       changeChart = this.showMoodlyChart;
-      chartButton = 'show Moodly\'s Mood History';
-      chartTitle = `${this.props.user.name}'s mood history`;
+      chartButton = 'all user history';
+      chartTitle = 'my mood history';
       displayedChart = (
         <D3PieChart data={this.props.moodDataUser} title="" />
       );
     }
     if (this.state.pieChartDisplay === 'moodly') {
       changeChart = this.showUserChart;
-      chartButton = `show ${this.props.user.name}'s mood history`;
-      chartTitle = 'Moodly\'s Mood History';
+      chartButton = 'my mood history';
+      chartTitle = 'all user history';
       displayedChart = (
         <D3PieChart data={this.props.moodDataMoodly} title="" />
       );
@@ -105,43 +105,47 @@ class Profile extends React.Component {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div className="profile-content">
-          
+          <h1>{this.props.user.name}'s profile</h1>
           <Grid>
             <Row className="show-grid">
-              <Col md={4}>
+              <Col md={4} className="card-spacing">
                 <Card
                   style={{
                     margin: '0 auto',
-                    height: 500,
                   }}
                 >
                   <CardText>
-                    <h2 onClick={changeChart}>{chartTitle}</h2>
-                    {displayedChart}
+                    <div>
+                      <h2 onClick={changeChart}>{chartTitle}</h2>
+                      {displayedChart}
+                      <br />
+                      <br />
+                      <br />
+                      <Button
+                        bsSize="large"
+                        onClick={changeChart}
+                        className="primary-button"
+                      >
+                      {chartButton}
+                      </Button>
+                    </div>
                   </CardText>
                 </Card>
               </Col>
-              <Button
-                bsSize="large"
-                onClick={changeChart}
-                className="nav-button"
-              >
-              {chartButton}
-              </Button>
               <Col
                 md={8}
                 style={{
-                  overflow: 'scroll',
+                  // overflow: 'scroll',
                 }}
+                classname="card-spacing"
               >
                 <Card
                   style={{
                     margin: '0 auto',
-                    height: 500,
                   }}
                 >
                   <CardText>
-                    <h2>{this.props.user.name}'s likes</h2>
+                    <h2>favorites</h2>
                     <br />
                     {this.state.quoteList.map(quote =>
                       <Card
