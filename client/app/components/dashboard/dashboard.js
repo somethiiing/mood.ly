@@ -153,7 +153,7 @@ class Dashboard extends React.Component {
         elements: this.state.elements.concat(newElements),
       });
       console.log(JSON.stringify(this.state.elements));
-    }, 2500);
+    }, 6000);
   }
   elementInfiniteLoad() {
     console.log('element infinite load');
