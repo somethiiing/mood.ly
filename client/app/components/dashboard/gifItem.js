@@ -44,6 +44,7 @@ class GifItem extends React.Component {
             }}
           >
             <IconButton
+              disableTouchRipple={Boolean(true)}
               style={{
                 float: 'left',
               }}

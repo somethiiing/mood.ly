@@ -30,6 +30,7 @@ class Search extends React.Component {
                 onChange={this.props.handleSearchChange}
                 inputStyle={{
                   textAlign: 'center',
+                  fontFamily: 'Sniglet, cursive',
                 }}
                 underlineStyle={{
                   borderColor: '#424242',

@@ -61,6 +61,7 @@ class QuoteItem extends React.Component {
             }}
           >
             <IconButton
+              disableTouchRipple={Boolean(true)}
               style={{
                 float: 'left',
               }}
