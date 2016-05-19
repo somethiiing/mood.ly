@@ -48,10 +48,24 @@ footer {
   bottom: 0;
   padding-top: 20px;
   padding-bottom: 20px;
+  position: fixed;
 }
 
 footer .container {
   width: 100%;
+}
+
+.landing-footer {
+  background-image: url(moodlyLanding.jpg);
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  background-attachment: fixed;
+  position: static;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .form-group {
@@ -88,6 +102,10 @@ footer .container {
   padding-left: 15px;
 }
 
+.landing-footer .social-buttons > a {
+  color: #424242;
+}
+
 .social-buttons > a:hover {
   color: #939393;
 }
@@ -122,6 +140,10 @@ footer .container {
 
 .landing-header h2 {
   font-size: 25px;
+  color: #424242;
+}
+
+.landing-social {
   color: #424242;
 }
 

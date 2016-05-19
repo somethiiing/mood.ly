@@ -13,7 +13,7 @@ import IconButton from 'material-ui/IconButton';
 import Headset from 'material-ui/svg-icons/hardware/headset';
 import ImageCamera from 'material-ui/svg-icons/image/camera-alt';
 import EditorInsertComment from 'material-ui/svg-icons/editor/insert-comment';
-import PieChart from '../d3/PieChart';
+// import PieChart from '../d3/PieChart';
 import D3PieChart from '../d3/D3PieChart';
 
 const moodlyUrl = 'moodly.io';
@@ -70,7 +70,6 @@ class Profile extends React.Component {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div className="profile-content">
-          
           <Grid>
             <Row className="show-grid">
               <Col md={4}>
