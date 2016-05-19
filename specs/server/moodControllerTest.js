@@ -8,20 +8,20 @@ const expect = chai.expect;
 
 describe('Mood Controller', () => {
   const user = {
-    username: 'Toby',
-    email: 'toby@toby.com',
-    password: '1234',
+    username: 'Superman',
+    email: 'superman@superman.com',
+    password: '0697',
   };
   const mood1 = {
-    name: 'happy',
+    name: 'meh',
     timedate: new Date(),
   };
   const mood2 = {
-    name: 'sad',
+    name: 'derp',
     timedate: new Date(),
   };
   const mood3 = {
-    name: 'ecstatic',
+    name: 'yipee',
     timedate: new Date(),
   };
 
@@ -62,7 +62,6 @@ describe('Mood Controller', () => {
         done();
       });
     });
-
   });
 
   it('users should be able to have many moods', done => {
