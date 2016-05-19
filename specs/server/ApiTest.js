@@ -21,7 +21,7 @@ describe('Quotes API', () => {
     const keyword = 'happiness';
     wikiAPI.wikiQuoteCall(keyword, (data) => {
       if (data) {
-        expect(typeof data.body[0]).to.equal('string');
+        expect(typeof data.body).to.equal('string');
         done();
       }
     });
@@ -31,7 +31,7 @@ describe('Quotes API', () => {
     const keyword = 'happy';
     wikiAPI.wikiQuoteCall(keyword, (data) => {
       if (data) {
-        expect(typeof data.body[0]).to.equal('string');
+        expect(typeof data.body).to.equal('string');
         done();
       }
     });
@@ -41,7 +41,7 @@ describe('Quotes API', () => {
     const keyword = 'asdfafdsklj';
     wikiAPI.wikiQuoteCall(keyword, (data) => {
       if (data) {
-        expect(typeof data.body[0]).to.equal('string');
+        expect(typeof data.body).to.equal('string');
         done();
       }
     });
