@@ -27,6 +27,7 @@ class QuoteItem extends React.Component {
   render() {
     let fontStyle = {
       textAlign: 'center',
+      fontFamily: 'Sniglet, cursive',
     };
     if (this.props.quote.length <= 100) {
       fontStyle['font-size'] = '200%';
