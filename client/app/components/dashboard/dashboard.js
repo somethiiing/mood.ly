@@ -174,7 +174,7 @@ class Dashboard extends React.Component {
     console.log('element infinite load');
     return (
       <div className="infinite-list-item">
-        Loading...
+        <img src="/client/app/styles/boxhead.jpg" height="60" width="72" />
       </div>
     );
   }

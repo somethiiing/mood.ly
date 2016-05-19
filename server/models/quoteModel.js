@@ -3,7 +3,7 @@ import db from '../db/db';
 
 export default db.define('Quote',
   {
-    text: Sequelize.STRING,
+    text: Sequelize.TEXT,
     mood: Sequelize.STRING,
   },
   {
