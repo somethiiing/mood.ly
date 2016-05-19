@@ -109,6 +109,9 @@ class SignUp extends React.Component {
                   borderColor: '#bfefff',
                   borderWidth: 2,
                 }}
+                inputStyle={{
+                  fontFamily: 'Sniglet, cursive',
+                }}
               />
               <TextField
                 className="form-control"
@@ -127,6 +130,9 @@ class SignUp extends React.Component {
                 underlineFocusStyle={{
                   borderColor: '#bfefff',
                   borderWidth: 2,
+                }}
+                inputStyle={{
+                  fontFamily: 'Sniglet, cursive',
                 }}
               />
               <TextField
@@ -147,6 +153,9 @@ class SignUp extends React.Component {
                   borderColor: '#bfefff',
                   borderWidth: 2,
                 }}
+                inputStyle={{
+                  fontFamily: 'Sniglet, cursive',
+                }}
               />
               <TextField
                 className="form-control"
@@ -166,6 +175,9 @@ class SignUp extends React.Component {
                 underlineFocusStyle={{
                   borderColor: '#bfefff',
                   borderWidth: 2,
+                }}
+                inputStyle={{
+                  fontFamily: 'Sniglet, cursive',
                 }}
               />
               <br />
