@@ -43,6 +43,19 @@ p {
 }
 
 footer {
+  background-color: #424242;
+  width: 100%;
+  bottom: 0;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  position: fixed;
+}
+
+footer .container {
+  width: 100%;
+}
+
+.landing-footer {
   background-image: url(moodlyLanding.jpg);
   background-position: center;
   -webkit-background-size: cover;
@@ -50,14 +63,9 @@ footer {
   background-size: cover;
   -o-background-size: cover;
   background-attachment: fixed;
-  width: 100%;
-  bottom: 0;
+  position: static;
   padding-top: 20px;
   padding-bottom: 20px;
-}
-
-footer .container {
-  width: 100%;
 }
 
 .form-group {
@@ -90,8 +98,13 @@ footer .container {
 }
 
 .social-buttons > a {
-  color: #424242;
+  color: #fff;
   padding-left: 15px;
+}
+
+.landing-footer .social-buttons > a {
+  padding-top: 30px;
+  color: #424242;
 }
 
 .social-buttons > a:hover {
@@ -128,6 +141,10 @@ footer .container {
 
 .landing-header h2 {
   font-size: 25px;
+  color: #424242;
+}
+
+.landing-social {
   color: #424242;
 }
 

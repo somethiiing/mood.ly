@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Profile from './components/profile/Profile';
 import LandingPage from './components/landing/landingPage';
 import Dashboard from './components/dashboard/dashboard';
@@ -207,6 +208,7 @@ class App extends React.Component {
           <Dashboard
             user={this.state.user}
           />
+          <Footer />
         </div>
       );
     }
@@ -223,11 +225,12 @@ class App extends React.Component {
             user={this.state.user}
             moodData={this.state.moodData}
           />
+          <Footer />
         </div>
       );
     }
     return (
-      <div>
+      <div className="app">
         {pageLayout}
       </div>
     );

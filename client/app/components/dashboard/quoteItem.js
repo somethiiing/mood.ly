@@ -27,6 +27,7 @@ class QuoteItem extends React.Component {
   render() {
     let fontStyle = {
       textAlign: 'center',
+      fontFamily: 'Sniglet, cursive',
     };
     if (this.props.quote.length <= 100) {
       fontStyle['font-size'] = '200%';
@@ -60,8 +61,10 @@ class QuoteItem extends React.Component {
             }}
           >
             <IconButton
+              disableTouchRipple={Boolean(true)}
               style={{
                 float: 'left',
+                color: '#bfefff',
               }}
             ><EditorInsertComment /></IconButton>
             <IconButton
@@ -70,7 +73,10 @@ class QuoteItem extends React.Component {
               }}
               onClick={this.handleLikeButton}
             >
-              <Favorite />
+              <Favorite
+                color={'#4f94cd'}
+                hoverColor={'#bfefff'}
+              />
             </IconButton>
           </CardHeader>
           <CardText

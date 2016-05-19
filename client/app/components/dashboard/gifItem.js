@@ -44,8 +44,10 @@ class GifItem extends React.Component {
             }}
           >
             <IconButton
+              disableTouchRipple={Boolean(true)}
               style={{
                 float: 'left',
+                color: '#bfefff',
               }}
             ><ImageCamera /></IconButton>
             <IconButton
@@ -54,7 +56,10 @@ class GifItem extends React.Component {
               }}
               onClick={this.handleLikeButton}
             >
-              <Favorite />
+              <Favorite
+                color={'#4f94cd'}
+                hoverColor={'#bfefff'}
+              />
             </IconButton>
           </CardHeader>
           <CardMedia>

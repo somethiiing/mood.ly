@@ -44,6 +44,7 @@ class Music extends React.Component {
             }}
           >
             <IconButton
+              disableTouchRipple={Boolean(true)}
               style={{
                 float: 'left',
               }}
@@ -54,7 +55,10 @@ class Music extends React.Component {
               }}
               onClick={this.handleLikeButton}
             >
-              <Favorite />
+              <Favorite
+                color={'#4f94cd'}
+                hoverColor={'#bfefff'}
+              />
             </IconButton>
           </CardHeader>
           <CardMedia>
