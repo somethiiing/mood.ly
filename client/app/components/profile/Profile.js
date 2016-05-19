@@ -105,6 +105,7 @@ class Profile extends React.Component {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div className="profile-content">
+          
           <Grid>
             <Row className="show-grid">
               <Col md={4}>
