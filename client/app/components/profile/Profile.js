@@ -102,10 +102,14 @@ class Profile extends React.Component {
       chartButton = 'my mood history';
       chartTitle = 'all user history';
       displayedChart = (
-        <D3PieChart data={this.props.moodDataMoodly} title="" />
+        <D3PieChart
+          data={this.props.moodDataMoodly}
+          title=""
+          width={230}
+          height={230}
+        />
       );
     }
-
 
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
