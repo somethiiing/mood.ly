@@ -207,7 +207,6 @@ class Dashboard extends React.Component {
     );
   }
 }
-
 /*          <GridView
             showGifItem={this.state.showGifItem}
             showQuoteItem={this.state.showQuoteItem}
