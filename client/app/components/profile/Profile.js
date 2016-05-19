@@ -121,6 +121,9 @@ class Profile extends React.Component {
                 <Card
                   style={{
                     margin: '0 auto',
+                    border: '4px solid #424242',
+                    borderRadius: '25px',
+                    boxShadow: 'none',
                   }}
                 >
                   <CardText>
@@ -147,6 +150,9 @@ class Profile extends React.Component {
                 <Card
                   style={{
                     margin: '0 auto',
+                    border: '4px solid #424242',
+                    borderRadius: '25px',
+                    boxShadow: 'none',
                   }}
                 >
                   <CardText>
@@ -158,6 +164,9 @@ class Profile extends React.Component {
                           height: 350,
                           width: 300,
                           margin: '0 auto',
+                          border: '4px solid #424242',
+                          borderRadius: '25px',
+                          boxShadow: 'none',
                         }}
                       >
                         <CardHeader
@@ -192,6 +201,9 @@ class Profile extends React.Component {
                           height: 350,
                           width: 300,
                           margin: '0 auto',
+                          border: '4px solid #424242',
+                          borderRadius: '25px',
+                          boxShadow: 'none',
                         }}
                       >
                         <CardHeader
@@ -223,6 +235,9 @@ class Profile extends React.Component {
                           height: 350,
                           width: 300,
                           margin: '0 auto',
+                          border: '4px solid #424242',
+                          borderRadius: '25px',
+                          boxShadow: 'none',
                         }}
                       >
                         <CardHeader
