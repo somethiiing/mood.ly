@@ -49,7 +49,7 @@ describe('Giphy model', () => {
       uri: 'http://127.0.0.1:8080/api/giphys',
     };
     request(giphyTest, (err, res, body) => {
-      expect(JSON.parse(body)[0]).to.have.property('url');
+      expect(JSON.parse(body).body[0]).to.have.property('url');
     });
     done();
   });
@@ -60,7 +60,7 @@ describe('Giphy model', () => {
       uri: 'http://127.0.0.1:8080/api/giphys',
     };
     request(fetchGiphys, (err, res, body) => {
-      expect(JSON.parse(body).length).to.equal(3);
+      expect(JSON.parse(body).body.length).to.equal(3);
     });
     done();
   });
