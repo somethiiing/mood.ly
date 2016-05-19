@@ -189,6 +189,7 @@ class Profile extends React.Component {
                         <CardText
                           style={{
                             textAlign: 'center',
+                            fontFamily: 'Sniglet, cursive',
                           }}
                         >
                           {quote.text}
