@@ -23,7 +23,7 @@ class Dashboard extends React.Component {
       currQuote: '',
       currMood: '',
       currentGif: '',
-      currentSearch: '',
+      currSearch: '',
       currVideoID: '',
       showQuoteItem: false,
       showGifItem: false,
@@ -34,6 +34,7 @@ class Dashboard extends React.Component {
       searchCount: 0,
     };
 
+    this.apiCalls = this.apiCalls.bind(this);
     this.buildElements = this.buildElements.bind(this);
     this.handleInfiniteLoad = this.handleInfiniteLoad.bind(this);
     this.emptyCheck = this.emptyCheck.bind(this);
@@ -65,58 +66,72 @@ class Dashboard extends React.Component {
     return response;
   }
 
-  handleSearchButtonClick() {
+  apiCalls() {
     const self = this;
-    const query = this.state.currentSearch;
+    const query = this.state.currSearch;
+    services.apiCall('wikiInfo', query, (res) => {
+      if (res.success === true) {
+        self.setState({
+          currMood: query,
+          currQuote: res.body,
+          showQuoteItem: true,
+        });
+      }
+      if (res.success === false) {
+        self.setState({
+          showQuoteItem: false,
+        });
+        throw new Error(res.body);
+      }
+    });
+    services.apiCall('giphyInfo', query, (res) => {
+      if (res.success === true) {
+        self.setState({
+          currMood: query,
+          currentGif: res.body,
+          showGifItem: true,
+        });
+      }
+      if (res.success === false) {
+        throw new Error(res.body);
+      }
+    });
+    services.apiCall('musicInfo', query, (res) => {
+      if (res.success === true) {
+        self.setState({
+          currMood: query,
+          currVideoID: res.videoID,
+          showMusicItem: true,
+        });
+      }
+      if (res.success === false) {
+        throw new Error(res.body);
+      }
+    });
+  }
+
+  handleSearchButtonClick() {
+    const query = this.state.currSearch;
+    this.setState({
+      elements: [],
+    });
     if (this.emptyCheck(query) === false) {
-      services.apiCall('wikiInfo', query, (res) => {
-        if (res.success === true) {
-          self.setState({
-            currMood: query,
-            currQuote: res.body,
-            showQuoteItem: true,
-          });
-        }
-        if (res.success === false) {
-          self.setState({
-            showQuoteItem: false,
-          });
-          throw new Error(res.body);
-        }
-      });
-      services.apiCall('giphyInfo', query, (res) => {
-        if (res.success === true) {
-          self.setState({
-            currMood: query,
-            currentGif: res.body,
-            showGifItem: true,
-          });
-        }
-        if (res.success === false) {
-          throw new Error(res.body);
-        }
-      });
-      services.apiCall('musicInfo', query, (res) => {
-        if (res.success === true) {
-          self.setState({
-            currMood: query,
-            currVideoID: res.videoID,
-            showMusicItem: true,
-          });
-        }
-        if (res.success === false) {
-          throw new Error(res.body);
-        }
-      });
+      this.apiCalls();
       controller.addUserMood(query, this.props.user, (res) => { console.log(res); });
-    } else {
-      this.dialogOpen(); 
+    } else
+    if (this.emptyCheck(query) === true) {
+      this.dialogOpen();
+      this.setState({
+        isInfiniteLoading: false,
+        currMood: ' ',
+        currSearch: ' ',
+      });
     }
   }
 
   handleSearchChange(event) {
     this.setState({
-      currentSearch: event.target.value,
+      currSearch: event.target.value,
     });
   }
 
@@ -139,8 +154,8 @@ class Dashboard extends React.Component {
   }
 
   handleInfiniteLoad() {
-    if (this.state.currentSearch) {
-      this.handleSearchButtonClick();
+    if (this.emptyCheck(this.state.currSearch) === false) {
+      this.apiCalls();
     }
     console.log('handle on infinite load');
     this.setState({
@@ -153,7 +168,7 @@ class Dashboard extends React.Component {
         elements: this.state.elements.concat(newElements),
       });
       console.log(JSON.stringify(this.state.elements));
-    }, 6000);
+    }, 2500);
   }
   elementInfiniteLoad() {
     console.log('element infinite load');
@@ -192,14 +207,13 @@ class Dashboard extends React.Component {
           </Dialog>
         </MuiThemeProvider>
         <Infinite
-          elementHeight={400}
-          containerHeight={400}
-          infiniteLoadBeginEdgeOffset={200}
+          elementHeight={450}
+          infiniteLoadBeginEdgeOffset={900}
           useWindowAsScrollContainer={true}
           onInfiniteLoad={this.handleInfiniteLoad}
           loadingSpinnerDelegate={this.elementInfiniteLoad()}
           isInfiniteLoading={this.state.isInfiniteLoading}
-          timeScrollStateLastsForAfterUserScrolls={1000}
+          timeScrollStateLastsForAfterUserScrolls={2500}
         >
           {this.state.elements}
         </Infinite>
@@ -207,16 +221,6 @@ class Dashboard extends React.Component {
     );
   }
 }
-/*          <GridView
-            showGifItem={this.state.showGifItem}
-            showQuoteItem={this.state.showQuoteItem}
-            showMusicItem={this.state.showMusicItem}
-            currentGif={this.state.currentGif}
-            currMood={this.state.currMood}
-            user={this.props.user}
-            currQuote={this.state.currQuote}
-            currVideoID={this.state.currVideoID}
-          />*/
 
 Dashboard.propTypes = {
   user: React.PropTypes.object,
