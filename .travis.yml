@@ -6,7 +6,7 @@ node_js:
 services:
   - mysql
 before_install:
-  - mysql -e "CREATE DATABASE IF NOT EXISTS moodlyTest;" -U travis -P '' #install database for user 'travis'
+  - mysql -e "CREATE DATABASE IF NOT EXISTS moodb;" -U travis -P '' #install database for user 'travis'
 before_script:
   - npm install -g webpack
   - npm install -g mocha
