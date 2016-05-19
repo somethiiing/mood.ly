@@ -9,40 +9,60 @@ class Header extends React.Component {
       valueSingle: null,
     };
 
-    this.handleMoodlyClick = this.handleMoodlyClick.bind(this);
-    this.handleLogoutButtonClick = this.handleLogoutButtonClick.bind(this);
-    this.handleProfileButtonClick = this.handleProfileButtonClick.bind(this);
+    this.navToDash = this.navToDash.bind(this);
+    this.navToProfile = this.navToProfile.bind(this);
+    this.navToLogout = this.navToLogout.bind(this);
   }
 
-  handleMoodlyClick() {
+  navToDash() {
     this.props.dashboard();
   }
 
-  handleLogoutButtonClick() {
+  navToLogout() {
     this.props.logout();
   }
-
-  handleProfileButtonClick() {
+  navToProfile() {
     this.props.profile();
     this.props.handleMoodData();
   }
 
   render() {
+    let moodlyButton;
+    let buttonDirect = '';
+    if (this.props.page === 'dashboard') {
+      buttonDirect = (
+        <Button
+          bsSize="large"
+          onClick={this.navToProfile}
+          className="nav-button"
+        >
+        profile
+        </Button>
+      );
+      moodlyButton = this.navToProfile;
+    }
+    if (this.props.page === 'profile') {
+      buttonDirect = (
+        <Button
+          bsSize="large"
+          className="nav-button"
+          onClick={this.navToDash}
+        >
+        dashboard
+        </Button>
+      );
+      moodlyButton = this.navToDash;
+    }
+
     return (
       <div className="nav-header container">
-        <h3 className="nav-title nav-title-main" onClick={this.handleOnMoodlyClick}>mood.ly</h3>
+        <h3 className="nav-title nav-title-main" onClick={moodlyButton}>mood.ly</h3>
         <div className="nav-buttons">
+          {buttonDirect}
           <Button
             bsSize="large"
             className="nav-button"
-            onClick={this.handleProfileButtonClick}
-          >
-          profile
-          </Button>
-          <Button
-            bsSize="large"
-            className="nav-button"
-            onClick={this.handleLogoutButtonClick}
+            onClick={this.navToLogout}
           >
           logout
           </Button>
@@ -53,6 +73,7 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
+  page: React.PropTypes.string,
   logout: React.PropTypes.func,
   profile: React.PropTypes.func,
   dashboard: React.PropTypes.func,

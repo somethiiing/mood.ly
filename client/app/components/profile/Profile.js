@@ -1,20 +1,27 @@
-import React from 'react';
 // import Mood from './components/mood';
-import Liked from './liked';
 // import LikedItem from './likedItem';
-import UserController from '../../services/controllers';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Card, CardHeader, CardText, CardMedia } from 'material-ui/Card';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import React from 'react';
+import Liked from './liked';
+import PieChart from '../d3/PieChart';
+import D3PieChart from '../d3/D3PieChart';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import Grid from 'react-bootstrap/lib/Grid';
 import IconButton from 'material-ui/IconButton';
+import Button from 'react-bootstrap/lib/Button';
+import UserController from '../../services/controllers';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Headset from 'material-ui/svg-icons/hardware/headset';
 import ImageCamera from 'material-ui/svg-icons/image/camera-alt';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { Card, CardHeader, CardText, CardMedia } from 'material-ui/Card';
 import EditorInsertComment from 'material-ui/svg-icons/editor/insert-comment';
+<<<<<<< 14b14a8756b930146a4bf310644e4a8952c777e0
 // import PieChart from '../d3/PieChart';
 import D3PieChart from '../d3/D3PieChart';
+=======
+
+>>>>>>> updates
 
 const moodlyUrl = 'moodly.io';
 
@@ -26,7 +33,11 @@ class Profile extends React.Component {
       quoteList: [],
       gifList: [],
       musicList: [],
+      pieChartDisplay: 'user',
     };
+
+    this.showUserChart = this.showUserChart.bind(this);
+    this.showMoodlyChart = this.showMoodlyChart.bind(this);
   }
 
   componentWillMount() {
@@ -56,6 +67,24 @@ class Profile extends React.Component {
     });
   }
 
+  showUserChart() {
+    UserController.getMoodData(data => {
+      this.setState({
+        moodData: data,
+        pieChartDisplay: 'user',
+      });
+    });
+  }
+
+  showMoodlyChart() {
+    UserController.getAllUserData('moods', this.props.user.name, data => {
+      this.setState({
+        moodData: data,
+        pieChartDisplay: 'moodly',
+      });
+    });
+  }
+
   handleShareButton(id, item) {
     console.log(`${moodlyUrl}/api/${item}/${id}`);
     FB.ui({
@@ -67,6 +96,28 @@ class Profile extends React.Component {
   }
 
   render() {
+    let chartTitle;
+    let chartButton;
+    let changeChart;
+    let displayedChart;
+    if (this.state.pieChartDisplay === 'user') {
+      changeChart = this.showMoodlyChart;
+      chartButton = 'show Moodly\'s Mood History';
+      chartTitle = `${this.props.user.name}'s mood history`;
+      displayedChart = (
+        <D3PieChart data={this.props.moodData} title="" />
+      );
+    }
+    if (this.state.pieChartDisplay === 'moodly') {
+      changeChart = this.showUserChart;
+      chartButton = `show ${this.props.user.name}'s mood history`;
+      chartTitle = 'Moodly\'s Mood History';
+      displayedChart = (
+        <D3PieChart data={this.props.moodData} title="" />
+      );
+    }
+
+
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div className="profile-content">
@@ -80,9 +131,16 @@ class Profile extends React.Component {
                   }}
                 >
                   <CardText>
-                    <h2>{this.props.user.name}'s mood history</h2>
-                    <D3PieChart data={this.props.moodData} title="" />
+                    <h2 onClick={changeChart}>{chartTitle}</h2>
+                    {displayedChart}
                   </CardText>
+                  <Button
+                    bsSize="large"
+                    onClick={changeChart}
+                    className="nav-button"
+                  >
+                  {chartButton}
+                  </Button>
                 </Card>
               </Col>
               <Col
@@ -201,7 +259,6 @@ class Profile extends React.Component {
               </Col>
             </Row>
           </Grid>
-          <D3PieChart data={this.props.moodData} title="Moodly History" />
         </div>
       </MuiThemeProvider>
     );

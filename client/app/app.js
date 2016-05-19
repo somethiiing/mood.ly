@@ -204,6 +204,7 @@ class App extends React.Component {
             logout={this.logout}
             profile={this.profile}
             handleMoodData={this.handleMoodData}
+            page={this.state.page}
           />
           <Dashboard
             user={this.state.user}
@@ -220,6 +221,7 @@ class App extends React.Component {
             logout={this.logout}
             profile={this.profile}
             handleMoodData={this.handleMoodData}
+            page={this.state.page}
           />
           <Profile
             user={this.state.user}
