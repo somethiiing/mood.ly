@@ -128,91 +128,91 @@ Database in mySQL, using sequelize.
 
 ####AUTH
 * Sign Up: POST: '/signup'
-  * Success Response: { status: 'SUCCESS', body: user }
-  * Fail Response: { status: 'USEREXISTS', body: err }
+  * Success Response: { success: true, body: user }
+  * Fail Response: { success: false, body: err }
 
 * Log In: POST: /login'
-  * Success Response: { status: 'SUCCESS', body: user }
-  * Fail Response: { status: 'PWFAIL', body: 'Invalid username or password' }
+  * Success Response: { success: true, body: user }
+  * Fail Response: { success: false, body: 'Invalid username or password' }
 
 ####MOODS
 * Saves Inputted Mood: POST: '/api/moods'
-  * Success Response: { status: 'SUCCESS', body: mood }
-  * Fail Response: { status: 'FAIL', body: err }
+  * Success Response: { success: true, body: mood }
+  * Fail Response: { success: false, body: err }
 
 * Retrieves All Moods: GET: 'api/moods'
-  * Success Response: { status: 'SUCCESS', body: allMoods }
-  * Fail Response: { status: 'FAIL', body: err }
+  * Success Response: { success: true, body: allMoods }
+  * Fail Response: { success: false, body: err }
 
 ####QUOTES
 * Produce a Quote: GET: '/api/wikiInfo'
-  * Success Response: { status: 'SUCCESS', body: quote }
-  * Fail Response: { status: 'FAIL', body: err }
+  * Success Response: { success: true, body: quote }
+  * Fail Response: { success: false, body: err }
 
 * Save Particular Quote: POST: '/api/quotes'
-  * Success Response: { status: 'SUCCESS', body: 'Successfully saved quote.' }
-  * Fail Response: { status: 'FAIL', body: 'Did not save quote.' }
+  * Success Response: { success: true, body: 'Successfully saved quote.' }
+  * Fail Response: { success: false, body: 'Did not save quote.' }
 
 * Retrieves All Quotes: GET: '/api/quotes'
   * Success Response: 
-    { status: 'SUCCESS', body: { [{Text: String, Mood: String}, ... ] } }
-  * Fail Response: { status: 'FAIL', body: err }
+    { success: true, body: { [{Text: String, Mood: String}, ... ] } }
+  * Fail Response: { success: false, body: err }
 
 * Retrieves Quote by ID: GET: '/api/quotes/:id'
-  * Success Response: { status: 'SUCCESS', body: {Text: String, Mood: String} }
-  * Fail Response: { status: 'FAIL', body: err }
+  * Success Response: { success: true, body: {Text: String, Mood: String} }
+  * Fail Response: { success: false, body: err }
 
 ####GIPHY
 * Produce a GIF: GET: '/api/giphyInfo'
-  * Success Response: { status: 'SUCCESS', body: String }
-  * Fail Response: { status: 'FAIL', body: err }
+  * Success Response: { success: true, body: String }
+  * Fail Response: { success: false, body: err }
 
 * Save Particular GIF: POST: '/api/giphys'
-  * Success Response: { status: 'SUCCESS', body: 'Successfully saved GIF.' }
-  * Fail Response: { status: 'FAIL', body: err }
+  * Success Response: { success: true, body: 'Successfully saved GIF.' }
+  * Fail Response: { success: false, body: err }
 
 * Retrieves All GIFs: GET: '/api/giphys'
   * Success Response: 
-    * { status: 'SUCCESS', body: { [{URL: String, Mood: String}, ... ] } }
-  * Fail Response: { status: 'FAIL', body: err }
+    * { success: true, body: { [{URL: String, Mood: String}, ... ] } }
+  * Fail Response: { success: false, body: err }
 
 * Retrieves GIF by ID: GET: '/api/giphys/:id'
-  * Success Response: { status: 'SUCCESS', body: {URL: String, Mood: String} }
-  * Fail Response: { status: 'FAIL', body: err }
+  * Success Response: { success: true, body: {URL: String, Mood: String} }
+  * Fail Response: { success: false, body: err }
 
 ####MUSIC
 * Produce a Youtube Video ID: GET: '/api/musicInfo'
-  * Success Response: { status: 'SUCCESS', trackInfo, videoID }
-  * Fail Response: { status: 'FAIL', keyword, body: err }
+  * Success Response: { success: true, trackInfo, videoID }
+  * Fail Response: { success: false, keyword, body: err }
 
 * Save Particular Video ID: POST: '/api/music'
-  * Success Response: { status: 'SUCCESS', body: 'Successfully saved Video Id.' }
-  * Fail Response: { status: 'FAIL', body: err }
+  * Success Response: { success: true, body: 'Successfully saved Video Id.' }
+  * Fail Response: { success: false, body: err }
 
 * Retrieves All Video IDs: GET: '/api/music'
   * Success Response: 
-    * { status: 'SUCCESS', body: { [{VideoId: String, Mood: String}, ... ] } }
-  * Fail Response: { status: 'FAIL', body: err }
+    * { success: true, body: { [{VideoId: String, Mood: String}, ... ] } }
+  * Fail Response: { success: false, body: err }
 
 * Retrieve Video ID by ID: GET: '/api/music/:id'
-  * Success Response: { status: 'SUCCESS', body: {VideoId: String, Mood: String} }
-  * Fail Response: { status: 'FAIL', body: err }
+  * Success Response: { success: true, body: {VideoId: String, Mood: String} }
+  * Fail Response: { success: false, body: err }
 
 ####USERS
 * Retrieves Quotes by User ID: GET: '/api/user/quotes'
   * Success Response: 
-    * { status: 'SUCCESS', body: { [{Text: String, Mood: String}, ... ] } }
-  * Fail Response: { status: 'FAIL', body: err }
+    * { success: true, body: { [{Text: String, Mood: String}, ... ] } }
+  * Fail Response: { success: false, body: err }
 
 * Retrieves GIFs by User ID: GET: '/api/user/giphys'
   * Success Response: 
-    * { status: 'SUCCESS', body: { [{URL: String, Mood: String}, ... ] } }
-  * Fail Response: { status: 'FAIL', body: err }
+    * { success: true, body: { [{URL: String, Mood: String}, ... ] } }
+  * Fail Response: { success: false, body: err }
 
 * Retrieves Video ID by User ID: GET: '/api/user/music'
   * Success Response: 
-    * { status: 'SUCCESS', body: { [{VideoId: String, Mood: String}, ... ] } }
-  * Fail Response: { status: 'FAIL', body: err }
+    * { success: true, body: { [{VideoId: String, Mood: String}, ... ] } }
+  * Fail Response: { success: false, body: err }
 
 ## Deployment
 

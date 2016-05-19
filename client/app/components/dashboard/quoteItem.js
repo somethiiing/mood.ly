@@ -25,6 +25,23 @@ class QuoteItem extends React.Component {
   }
 
   render() {
+    let fontStyle = {
+      textAlign: 'center',
+    };
+    if (this.props.quote.length <= 100) {
+      fontStyle['font-size'] = '200%';
+    }
+    if (this.props.quote.length > 100 && this.props.quote.length <= 200) {
+      fontStyle['font-size'] = '150%';
+    }
+    if (this.props.quote.length > 200 && this.props.quote.length <= 400) {
+      fontStyle['font-size'] = '100%';
+    }
+    if (this.props.quote.length > 400) {
+      fontStyle['font-size'] = '85%';
+    }
+
+
     return (
       <MuiThemeProvider>
         <Card
@@ -57,9 +74,7 @@ class QuoteItem extends React.Component {
             </IconButton>
           </CardHeader>
           <CardText
-            style={{
-              textAlign: 'center',
-            }}
+            style={fontStyle}
           >
             {this.props.quote}
           </CardText>
@@ -70,9 +85,9 @@ class QuoteItem extends React.Component {
 }
 
 QuoteItem.propTypes = {
-  quote: React.PropTypes.string,
-  mood: React.PropTypes.string,
   user: React.PropTypes.object,
+  mood: React.PropTypes.string,
+  quote: React.PropTypes.string,
   onQuoteClick: React.PropTypes.func,
 };
 
