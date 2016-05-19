@@ -49,6 +49,21 @@ var Sector = React.createClass({
         .innerRadius(innerRadius);
     var data = this.props.data;
     var center = "translate(" + arc.centroid(data) + ")";
+    arc.append("svg:text")
+       .attr("transform", function(d) {
+        var c = arc.centroid(d),
+        x = c[0],
+        y = c[1],
+        h = Math.sqrt(x*x + y*y);
+        return "translate(" + (x/h * labelr) + ',' + (y/h * labelr) + ")";
+       })
+       .attr("dy", "0.35em")
+       .attr("text-anchor", function(d) {
+        return (d.endAngle + d.startAngle)/2 > Math.PI ? "end" : "start";
+       })
+       .text(function() {
+        return this.props.name;
+       });
     var percentCenter = "translate(0,3)";
     var color = this.props.colors;
     return (
