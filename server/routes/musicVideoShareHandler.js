@@ -7,6 +7,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Card, CardHeader, CardMedia } from 'material-ui/Card';
 import IconButton from 'material-ui/IconButton';
 import Favorite from 'material-ui/svg-icons/action/favorite';
+import Headset from 'material-ui/svg-icons/hardware/headset';
 import EditorInsertComment from 'material-ui/svg-icons/editor/insert-comment';
 import Footer from '../../client/app/components/Footer';
 
@@ -15,7 +16,7 @@ const html = (body) => {
     <div>
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div className="landing-header container">
-          <h3 className="landing-title">{body}</h3>
+          <h3 className="landing-title">mood.ly</h3>
           <div className="landing-buttons">
           </div>
           <br />
@@ -28,8 +29,17 @@ const html = (body) => {
                 height: 350,
                 width: 300,
                 margin: '0 auto',
+                border: '4px solid #424242',
+                borderRadius: '25px',
+                boxShadow: 'none',
               }}
             >
+              <IconButton
+                disableTouchRipple={Boolean(true)}
+                style={{
+                  float: 'left',
+                }}
+              ><Headset /></IconButton>
               <CardHeader
                 style={{
                   height: 75,
