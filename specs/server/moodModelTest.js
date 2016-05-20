@@ -13,9 +13,9 @@ describe('Mood model', () => {
   };
 
   it('should have a name property', done => {
-    done();
     request(moodFetch, (err, res, body) => {
       expect(JSON.parse(body)[0]).to.have.property('name');
+      done();
     });
   });
 

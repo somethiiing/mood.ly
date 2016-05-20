@@ -118,7 +118,7 @@ describe('Database', () => {
     users.forEach(user => {
       User.findOrCreate({ where: user })
       .then(() => {
-        console.log('user==========> ', user);
+        // console.log('user==========> ', user);
       })
       .catch(err => {
         console.log('Error! ', err);
