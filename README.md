@@ -1,10 +1,10 @@
 # Mood.ly
 
-[![Build Status](https://travis-ci.org/CodeRISHI/mood.ly.svg?branch=master)](https://travis-ci.org/CodeRISHI/mood.ly)
+### A place for you to explore your mood.
 
-A place for you to explore your mood.
+### Check it out at [__moodly.io__](http://moodly.io)!
 
-Check it out at [*moodly.io*](http://moodly.io)!
+#### Current Build Health [![Build Status](https://travis-ci.org/CodeRISHI/mood.ly.svg?branch=master)](https://travis-ci.org/CodeRISHI/mood.ly)
 
 ## Team
 
@@ -99,11 +99,6 @@ Can run tests with
 npm test
 ```
 
-
-
-### Current Build Health [![Build Status](https://travis-ci.org/MysteriousBagel/mood.ly/.svg?branch=master)](https://travis-ci.org/MysteriousBagel/mood.ly/)
-View the build [history](https://travis-ci.org/MysteriousBagel/mood.ly/builds)
-
 ### Roadmap
 
 View the project roadmap [here](https://waffle.io/MysteriousBagel/mood.ly)
@@ -119,7 +114,7 @@ View the project roadmap [here](https://waffle.io/MysteriousBagel/mood.ly)
 
 ### High Level Architecture
 
-![Architecture Diagram](/client/assets/ArchitectureDiagram.png)
+![Architecture Diagram](/client/app/assets/ArchitectureDiagram.png)
 
 ### Database Schema
 Database in mySQL, using sequelize.
@@ -218,4 +213,4 @@ Database in mySQL, using sequelize.
 
 ## Deployment
 
-Deployed using Digital Ocean. Installed a MySQL Database. Live at www.moodly.io!
+Deployed using Digital Ocean. Installed a MySQL Database. Live at [__moodly.io__](http://moodly.io)!
