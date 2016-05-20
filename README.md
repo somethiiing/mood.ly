@@ -1,16 +1,19 @@
 # Mood.ly
 
-[![Build Status](https://travis-ci.org/CodeRISHI/mood.ly.svg?branch=master)](https://travis-ci.org/CodeRISHI/mood.ly)
+##### A place for you to explore your mood.
 
-A place for you to explore your mood.
+#### Check it out at [__moodly.io__](http://moodly.io)!
 
-Check it out at [*moodly.io*](http://moodly.io)!
+#### [![Build Status](https://travis-ci.org/CodeRISHI/mood.ly.svg?branch=master)](https://travis-ci.org/CodeRISHI/mood.ly)
 
-## Team
+## Meet the Engineers
 
-  - __Product Owner__: Kim Curran
-  - __Scrum Master__: Arun Vasudevan
-  - __Development Team Members__: Chris Lardizabal, Wilson Yu, Kim Curran, Arun Vasudevan
+  - __Product Owner__
+	- [Kim Curran](https://github.com/kimcurran)
+  - __Scrum Master__
+	- [Arun Vasudevan](https://github.com/coderishi)
+  - __Development Team Members__
+	- [Chris Lardizabal](https://github.com/clardizabal), [Wilson Yu](https://github.com/somethiiing)
 
 ## Table of Contents
 
@@ -38,34 +41,64 @@ Check it out at [*moodly.io*](http://moodly.io)!
 
 ### Tech Stack
 
-- [React](https://facebook.github.io/react/)
-- [Node](https://nodejs.org/en/) and [Express](http://expressjs.com/)
-- [Sequelize ORM](http://docs.sequelizejs.com/en/latest/) and [MySQL](https://www.mysql.com/)
-- [Webpack](https://www.npmjs.com/package/webpack)
+- [__React__](https://facebook.github.io/react/)
+- [__Node__](https://nodejs.org/en/) and [__Express__](http://expressjs.com/)
+- [__Sequelize ORM__](http://docs.sequelizejs.com/en/latest/) and [__MySQL__](https://www.mysql.com/)
+- [__Webpack__](https://www.npmjs.com/package/webpack)
 
 ### Styling
 
-- [Material UI](http://www.material-ui.com/#/)
-- [React Bootstrap](https://react-bootstrap.github.io/)
+- [__Material UI__](http://www.material-ui.com/#/)
+- [__React Bootstrap__](https://react-bootstrap.github.io/)
 
 ### Webpack
 
-Webpack bundles all files set by the webpack.config.js input folder together so it will load in one script tag. The purpose is to create big chunks that can be loaded asynchronously to reduce initial loading time.
+`Webpack` bundles all files set by the `webpack.config.js` input folder together so it will load in one script tag. The purpose is to create big chunks that can be loaded asynchronously to reduce initial loading time.
 
 
 ## Usage
 
-> Input your mood and receive a quote!
+> Input your mood and receive a giphy, quote, and music video!
 
 ## Requirements
 
-- Node 0.10.x
-- Express -
-- MySQL 2.10.x
-- Sequelize 3.22.x
-- React -
-- Webpack 1.13.x
-- Youtube API key
+Dependencies in `package.json`
+
+```sh
+    "babel-cli": "^6.7.7",
+    "babel-core": "^6.7.7",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-1": "^6.5.0",
+    "babel-register": "^6.7.2",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.0",
+    "bootstrap": "^3.3.6",
+    "chai": "^3.5.0",
+    "chai-things": "^0.2.0",
+    "connect-flash": "^0.1.1",
+    "eslint": "^2.9.0",
+    "eslint-plugin-import": "^1.6.1",
+    "eslint-plugin-jsx-a11y": "^1.0.4",
+    "express": "^4.13.4",
+    "express-react-views": "^0.10.1",
+    "express-session": "^1.13.0",
+    "flash": "^1.1.0",
+    "jquery": "^2.2.3",
+    "material-ui": "^0.15.0",
+    "mocha": "^2.4.5",
+    "mysql": "^2.10.2",
+    "nodemon": "^1.9.1",
+    "react": "^15.0.2",
+    "react-bootstrap": "^0.29.4",
+    "react-dom": "^15.0.2",
+    "react-infinite": "^0.9.2",
+    "react-tap-event-plugin": "^1.0.0",
+    "request": "^2.72.0",
+    "sequelize": "^3.22.0",
+    "webpack": "^1.13.0"
+```
 
 ## Development
 
@@ -79,9 +112,7 @@ npm install
 
 ### Getting Started
 
-After everything installed using "npm install"
-
-Update the API key in '/server/config/authconfig.js' for Youtube. The authConfig-example.js file is provided for you. Just remove -example and update keys.  
+After everything installed using `npm install`, update the API key in `/server/config/authconfig.js` for YouTube. The `authConfig-example.js` file is provided for you. Just remove -example and update keys.  
 
 
 ```sh
@@ -91,18 +122,15 @@ webpack --watch
 npm start
 ```
 
-Navigate to localhost:8080 to view the app.
+Navigate to `localhost:8080` to view the app.
 
-Can run tests with
+### Testing
+
+To run tests using `Mocha` and `Chai`, run
 
 ```sh
 npm test
 ```
-
-
-
-### Current Build Health [![Build Status](https://travis-ci.org/MysteriousBagel/mood.ly/.svg?branch=master)](https://travis-ci.org/MysteriousBagel/mood.ly/)
-View the build [history](https://travis-ci.org/MysteriousBagel/mood.ly/builds)
 
 ### Roadmap
 
@@ -119,103 +147,103 @@ View the project roadmap [here](https://waffle.io/MysteriousBagel/mood.ly)
 
 ### High Level Architecture
 
-![Architecture Diagram](/readmefiles/archdiagram.png)
+![Architecture Diagram](/client/app/assets/ArchitectureDiagram.png)
 
 ### Database Schema
-Database in mySQL, using sequelize.
+Database in `MySQL`, using `Sequelize`.
 
 ![Database Schema](/readmefiles/databaseSchema.png)
 
 ### API
 
 ####AUTH
-* Sign Up: POST: '/signup'
+* Sign Up: POST: `/signup`
   * Success Response: { success: true, body: user }
   * Fail Response: { success: false, body: err }
 
-* Log In: POST: /login'
+* Log In: POST: /login`
   * Success Response: { success: true, body: user }
   * Fail Response: { success: false, body: 'Invalid username or password' }
 
 ####MOODS
-* Saves Inputted Mood: POST: '/api/moods'
+* Saves Inputted Mood: POST: `/api/moods`
   * Success Response: { success: true, body: mood }
   * Fail Response: { success: false, body: err }
 
-* Retrieves All Moods: GET: 'api/moods'
+* Retrieves All Moods: GET: `api/moods`
   * Success Response: { success: true, body: allMoods }
   * Fail Response: { success: false, body: err }
 
 ####QUOTES
-* Produce a Quote: GET: '/api/wikiInfo'
+* Produce a Quote: GET: `/api/wikiInfo`
   * Success Response: { success: true, body: quote }
   * Fail Response: { success: false, body: err }
 
-* Save Particular Quote: POST: '/api/quotes'
+* Save Particular Quote: POST: `/api/quotes`
   * Success Response: { success: true, body: 'Successfully saved quote.' }
   * Fail Response: { success: false, body: 'Did not save quote.' }
 
-* Retrieves All Quotes: GET: '/api/quotes'
+* Retrieves All Quotes: GET: `/api/quotes`
   * Success Response: 
     { success: true, body: { [{Text: String, Mood: String}, ... ] } }
   * Fail Response: { success: false, body: err }
 
-* Retrieves Quote by ID: GET: '/api/quotes/:id'
+* Retrieves Quote by ID: GET: `/api/quotes/:id`
   * Success Response: { success: true, body: {Text: String, Mood: String} }
   * Fail Response: { success: false, body: err }
 
 ####GIPHY
-* Produce a GIF: GET: '/api/giphyInfo'
+* Produce a GIF: GET: `/api/giphyInfo`
   * Success Response: { success: true, body: String }
   * Fail Response: { success: false, body: err }
 
-* Save Particular GIF: POST: '/api/giphys'
+* Save Particular GIF: POST: `/api/giphys`
   * Success Response: { success: true, body: 'Successfully saved GIF.' }
   * Fail Response: { success: false, body: err }
 
-* Retrieves All GIFs: GET: '/api/giphys'
+* Retrieves All GIFs: GET: `/api/giphys`
   * Success Response: 
     * { success: true, body: { [{URL: String, Mood: String}, ... ] } }
   * Fail Response: { success: false, body: err }
 
-* Retrieves GIF by ID: GET: '/api/giphys/:id'
+* Retrieves GIF by ID: GET: `/api/giphys/:id`
   * Success Response: { success: true, body: {URL: String, Mood: String} }
   * Fail Response: { success: false, body: err }
 
 ####MUSIC
-* Produce a Youtube Video ID: GET: '/api/musicInfo'
+* Produce a Youtube Video ID: GET: `/api/musicInfo`
   * Success Response: { success: true, trackInfo, videoID }
   * Fail Response: { success: false, keyword, body: err }
 
-* Save Particular Video ID: POST: '/api/music'
+* Save Particular Video ID: POST: `/api/music`
   * Success Response: { success: true, body: 'Successfully saved Video Id.' }
   * Fail Response: { success: false, body: err }
 
-* Retrieves All Video IDs: GET: '/api/music'
+* Retrieves All Video IDs: GET: `/api/music`
   * Success Response: 
     * { success: true, body: { [{VideoId: String, Mood: String}, ... ] } }
   * Fail Response: { success: false, body: err }
 
-* Retrieve Video ID by ID: GET: '/api/music/:id'
+* Retrieve Video ID by ID: GET: `/api/music/:id`
   * Success Response: { success: true, body: {VideoId: String, Mood: String} }
   * Fail Response: { success: false, body: err }
 
 ####USERS
-* Retrieves Quotes by User ID: GET: '/api/user/quotes'
+* Retrieves Quotes by User ID: GET: `/api/user/quotes`
   * Success Response: 
     * { success: true, body: { [{Text: String, Mood: String}, ... ] } }
   * Fail Response: { success: false, body: err }
 
-* Retrieves GIFs by User ID: GET: '/api/user/giphys'
+* Retrieves GIFs by User ID: GET: `/api/user/giphys`
   * Success Response: 
     * { success: true, body: { [{URL: String, Mood: String}, ... ] } }
   * Fail Response: { success: false, body: err }
 
-* Retrieves Video ID by User ID: GET: '/api/user/music'
+* Retrieves Video ID by User ID: GET: `/api/user/music`
   * Success Response: 
     * { success: true, body: { [{VideoId: String, Mood: String}, ... ] } }
   * Fail Response: { success: false, body: err }
 
 ## Deployment
 
-Deployed using Digital Ocean. Installed a MySQL Database. Live at www.moodly.io!
+Deployed using `__Digital Ocean__`. Installed a MySQL Database. Live at [__moodly.io__](http://moodly.io)!
