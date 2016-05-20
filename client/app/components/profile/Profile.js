@@ -129,13 +129,18 @@ class Profile extends React.Component {
                     border: '4px solid #424242',
                     borderRadius: '25px',
                     boxShadow: 'none',
+                    height: 500,
                   }}
                 >
                   <CardText>
                     <div className="profile-cards">
                       <div>
                         <h2 onClick={changeChart}>{chartTitle}</h2>
+                        <br />
                         {displayedChart}
+                        <br />
+                        <br />
+                        <br />
                         <Button
                           bsSize="large"
                           onClick={changeChart}
@@ -157,6 +162,8 @@ class Profile extends React.Component {
                     border: '4px solid #424242',
                     borderRadius: '25px',
                     boxShadow: 'none',
+                    height: 500,
+                    'overflow-y': 'scroll',
                   }}
                 >
                   <CardText>
