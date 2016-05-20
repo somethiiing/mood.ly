@@ -118,7 +118,7 @@ describe('Database', () => {
     users.forEach(user => {
       User.findOrCreate({ where: user })
       .then(() => {
-        // console.log('user==========> ', user);
+        console.log('user==========> ', user);
       })
       .catch(err => {
         console.log('Error! ', err);
@@ -153,7 +153,7 @@ describe('Database', () => {
       uri: 'http://127.0.0.1:8080/api/users',
     };
     request(userDB, (err, res, body) => {
-      console.log('body (USERS)=========> ', body);
+      // console.log('body (USERS)=========> ', body);
       expect((JSON.parse(body)).length).to.equal(5);
       done();
     });
