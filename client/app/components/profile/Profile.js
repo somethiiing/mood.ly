@@ -119,7 +119,7 @@ class Profile extends React.Component {
           <Grid>
             <Row className="show-grid">
               <Col
-                md={4}
+                md={12}
                 className="card-spacing"
               >
                 <Card
@@ -147,8 +147,10 @@ class Profile extends React.Component {
                   </CardText>
                 </Card>
               </Col>
+            </Row>
+            <Row className="show-grid">
               <Col
-                md={8}
+                md={12}
                 classname="card-spacing"
               >
                 <Card
