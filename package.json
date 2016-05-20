@@ -10,7 +10,7 @@
   ],
   "main": "server.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register ./specs/server/ApiTest.js ./specs/server/databaseTest.js ./specs/server/giphyModelTest.js ./specs/server/moodModelTest.js ./specs/server/quoteModelTest.js ./specs/server/userControllerTest.js ./specs/server/userModelTest.js",
+    "test": "mocha --compilers js:babel-core/register ./specs/server/ApiTest.js ./specs/server/giphyModelTest.js",
     "start": "nodemon ./server/server.js --exec babel-node --presets es2015 react",
     "build": "webpack --watch"
   },
