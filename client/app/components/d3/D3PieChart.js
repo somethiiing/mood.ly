@@ -125,8 +125,14 @@ var D3PieChart = React.createClass({
   },
 
   render: function() {
-    // var colors = ['#FD9827', '#DA3B21', '#3669C9', '#1D9524', '#971497'];
-    var colors = d3.scale.category20c().range();
+    var colors = [
+      '#BFEFFF', '#B2C3FF', '#A2C4E8', '#A2E8E7', '#B2FFE8',
+      '#C2A5FF', '#9A96E8', '#96BEE8', '#A5E8FF', '#A29FF5',
+      '#A5B9FF', '#9FF5F4', '#9FC9F5', '#A5E9FF', '#A5FFE4',
+      '#9FF5C3', '#96E8E7', '#96E8B9', '#A5FFB1', '#98B0FF',
+      '#8BB9E8', '#8BE8E6', '#98FFE0',
+    ];
+    // var colors = d3.scale.category20c().range();
     return (
       <div>
         <h4> {this.props.title} </h4>
