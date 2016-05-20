@@ -331,10 +331,6 @@ footer .container {
   color: #bfefff;
 }
 
-.like-content {
-  overflow: scroll;
-}
-
 @media (max-width: 568px) {
   .landing-button,
   .nav-button {

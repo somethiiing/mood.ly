@@ -163,7 +163,7 @@ class Profile extends React.Component {
                     borderRadius: '25px',
                     boxShadow: 'none',
                     height: 500,
-                    'overflow-y': 'scroll',
+                    overflowY: 'scroll',
                   }}
                 >
                   <CardText>
@@ -244,7 +244,7 @@ class Profile extends React.Component {
                               marginTop: 7,
                               marginRight: 5,
                             }}
-                            onClick={this.handleShareButton.bind(this, quote.id, 'quotes')}
+                            onClick={this.handleShareButton.bind(this, gif.id, 'giphys')}
                           />
                         </CardHeader>
                         <CardMedia>
@@ -283,7 +283,7 @@ class Profile extends React.Component {
                               marginTop: 7,
                               marginRight: 5,
                             }}
-                            onClick={this.handleShareButton.bind(this, quote.id, 'quotes')}
+                            onClick={this.handleShareButton.bind(this, music.id, 'music')}
                           />
                         </CardHeader>
                         <CardMedia>
