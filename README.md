@@ -1,16 +1,25 @@
 # Mood.ly
 
-### A place for you to explore your mood.
+##### A place for you to explore your mood.
 
-### Check it out at [__moodly.io__](http://moodly.io)!
+#### Check it out at [__moodly.io__](http://moodly.io)!
 
-#### Current Build Health [![Build Status](https://travis-ci.org/CodeRISHI/mood.ly.svg?branch=master)](https://travis-ci.org/CodeRISHI/mood.ly)
+#### [![Build Status](https://travis-ci.org/CodeRISHI/mood.ly.svg?branch=master)](https://travis-ci.org/CodeRISHI/mood.ly)
 
 ## Team
 
   - __Product Owner__: Kim Curran
   - __Scrum Master__: Arun Vasudevan
   - __Development Team Members__: Chris Lardizabal, Wilson Yu, Kim Curran, Arun Vasudevan
+
+## Meet the Engineers
+
+  - __Product Owner__
+	- [Kim Curran](https://github.com/kimcurran)
+  - __Scrum Master__
+	- [Arun Vasudevan](https://github.com/coderishi)
+  - __Development Team Members__
+	- [Chris Lardizabal](https://github.com/clardizabal), [Wilson Yu](https://github.com/somethiiing)
 
 ## Table of Contents
 
@@ -38,24 +47,24 @@
 
 ### Tech Stack
 
-- [React](https://facebook.github.io/react/)
-- [Node](https://nodejs.org/en/) and [Express](http://expressjs.com/)
-- [Sequelize ORM](http://docs.sequelizejs.com/en/latest/) and [MySQL](https://www.mysql.com/)
-- [Webpack](https://www.npmjs.com/package/webpack)
+- [__React__](https://facebook.github.io/react/)
+- [__Node__](https://nodejs.org/en/) and [Express](http://expressjs.com/)
+- [__Sequelize ORM__](http://docs.sequelizejs.com/en/latest/) and [__MySQL__](https://www.mysql.com/)
+- [__Webpack__](https://www.npmjs.com/package/webpack)
 
 ### Styling
 
-- [Material UI](http://www.material-ui.com/#/)
-- [React Bootstrap](https://react-bootstrap.github.io/)
+- [__Material UI__](http://www.material-ui.com/#/)
+- [__React Bootstrap__](https://react-bootstrap.github.io/)
 
 ### Webpack
 
-Webpack bundles all files set by the webpack.config.js input folder together so it will load in one script tag. The purpose is to create big chunks that can be loaded asynchronously to reduce initial loading time.
+Webpack bundles all files set by the `webpack.config.js` input folder together so it will load in one script tag. The purpose is to create big chunks that can be loaded asynchronously to reduce initial loading time.
 
 
 ## Usage
 
-> Input your mood and receive a quote!
+> Input your mood and receive a giphy, quote, and music video!
 
 ## Requirements
 
@@ -79,9 +88,9 @@ npm install
 
 ### Getting Started
 
-After everything installed using "npm install"
+After everything installed using `npm install`
 
-Update the API key in '/server/config/authconfig.js' for Youtube. The authConfig-example.js file is provided for you. Just remove -example and update keys.  
+Update the API key in '/server/config/authconfig.js' for Youtube. The `authConfig-example.js` file is provided for you. Just remove -example and update keys.  
 
 
 ```sh
@@ -91,7 +100,7 @@ webpack --watch
 npm start
 ```
 
-Navigate to localhost:8080 to view the app.
+Navigate to `localhost:8080` to view the app.
 
 Can run tests with
 
@@ -117,7 +126,7 @@ View the project roadmap [here](https://waffle.io/MysteriousBagel/mood.ly)
 ![Architecture Diagram](/client/app/assets/ArchitectureDiagram.png)
 
 ### Database Schema
-Database in mySQL, using sequelize.
+Database in `MySQL`, using `Sequelize`.
 
 ![Database Schema](/readmefiles/databaseSchema.png)
 
@@ -213,4 +222,4 @@ Database in mySQL, using sequelize.
 
 ## Deployment
 
-Deployed using Digital Ocean. Installed a MySQL Database. Live at [__moodly.io__](http://moodly.io)!
+Deployed using `__Digital Ocean__`. Installed a MySQL Database. Live at [__moodly.io__](http://moodly.io)!
