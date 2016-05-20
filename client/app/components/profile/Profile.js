@@ -12,7 +12,6 @@ import ImageCamera from 'material-ui/svg-icons/image/camera-alt';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Card, CardHeader, CardText, CardMedia } from 'material-ui/Card';
 import EditorInsertComment from 'material-ui/svg-icons/editor/insert-comment';
-import Share from 'material-ui/svg-icons/action/exit-to-app';
 
 const moodlyUrl = 'moodly.io';
 
@@ -118,7 +117,12 @@ class Profile extends React.Component {
           <h1>{this.props.user.name}'s profile</h1>
           <br />
           <Grid>
-            <Row className="show-grid">
+            <Row
+              className="show-grid"
+              style={{
+                paddingBottom: 100,
+              }}
+            >
               <Col md={1} />
               <Col
                 md={4}
@@ -164,7 +168,7 @@ class Profile extends React.Component {
                     borderRadius: '25px',
                     boxShadow: 'none',
                     height: 500,
-                    'overflow-y': 'scroll',
+                    overflowY: 'scroll',
                   }}
                 >
                   <CardText>
@@ -192,15 +196,17 @@ class Profile extends React.Component {
                               float: 'left',
                             }}
                           ><EditorInsertComment /></IconButton>
-                          <IconButton
+                          <i
+                            className="fa fa-facebook-official fa-2x"
+                            aria-hidden="true"
                             style={{
                               float: 'right',
+                              color: '#4f94cd',
+                              marginTop: 8,
+                              marginRight: 5,
                             }}
                             onClick={this.handleShareButton.bind(this, quote.id, 'quotes')}
-                          ><Share
-                            color={'#4f94cd'}
-                            hoverColor={'#bfefff'}
-                          /></IconButton>
+                          />
                         </CardHeader>
                         <CardText
                           style={{
@@ -234,16 +240,17 @@ class Profile extends React.Component {
                               float: 'left',
                             }}
                           ><ImageCamera /></IconButton>
-                          <IconButton
+                          <i
+                            className="fa fa-facebook-official fa-2x"
+                            aria-hidden="true"
                             style={{
                               float: 'right',
+                              color: '#4f94cd',
+                              marginTop: 8,
+                              marginRight: 5,
                             }}
                             onClick={this.handleShareButton.bind(this, gif.id, 'giphys')}
-                          ><Share 
-                            color={'#4f94cd'}
-                            hoverColor={'#bfefff'}
                           />
-                          </IconButton>
                         </CardHeader>
                         <CardMedia>
                           <img src={gif.url} alt="" height="200px" />
@@ -272,16 +279,17 @@ class Profile extends React.Component {
                               float: 'left',
                             }}
                           ><Headset /></IconButton>
-                          <IconButton
+                          <i
+                            className="fa fa-facebook-official fa-2x"
+                            aria-hidden="true"
                             style={{
                               float: 'right',
+                              color: '#4f94cd',
+                              marginTop: 8,
+                              marginRight: 5,
                             }}
                             onClick={this.handleShareButton.bind(this, music.id, 'music')}
-                          ><Share 
-                            color={'#4f94cd'}
-                            hoverColor={'#bfefff'}
                           />
-                          </IconButton>
                         </CardHeader>
                         <CardMedia>
                           <iframe src={`https://youtube.com/embed/${music.videoId}`} height="200px" width="250px" />

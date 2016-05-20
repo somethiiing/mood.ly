@@ -149,6 +149,11 @@ class Dashboard extends React.Component {
             actions={actions}
             open={this.state.open}
             onRequestClose={this.dialogClose}
+            style={{
+              border: '4px solid #424242',
+              borderRadius: '25px',
+              boxShadow: 'none',
+            }}
           >
           Oops. Please enter how you're feeling then hit submit!
           </Dialog>
