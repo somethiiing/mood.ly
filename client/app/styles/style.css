@@ -111,6 +111,10 @@ footer .container {
   color: #939393;
 }
 
+.share-icon {
+  color: #000;
+}
+
 .profile-content {
   margin-top: 60px;
 }
@@ -305,10 +309,14 @@ footer .container {
   color: #bfefff;
 }
 
+.like-content {
+  overflow: scroll;
+}
+
 @media (max-width: 568px) {
   .landing-button,
   .nav-button {
-    width: 80px;
+    width: 100px;
   }  
 }
 
