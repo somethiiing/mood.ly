@@ -308,7 +308,7 @@ footer .container {
 @media (max-width: 568px) {
   .landing-button,
   .nav-button {
-    width: 80px;
+    width: 100px;
   }  
 }
 
