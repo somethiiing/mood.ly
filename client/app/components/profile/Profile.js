@@ -202,7 +202,7 @@ class Profile extends React.Component {
                             style={{
                               float: 'right',
                               color: '#4f94cd',
-                              marginTop: 7,
+                              marginTop: 8,
                               marginRight: 5,
                             }}
                             onClick={this.handleShareButton.bind(this, quote.id, 'quotes')}
@@ -246,7 +246,7 @@ class Profile extends React.Component {
                             style={{
                               float: 'right',
                               color: '#4f94cd',
-                              marginTop: 7,
+                              marginTop: 8,
                               marginRight: 5,
                             }}
                             onClick={this.handleShareButton.bind(this, gif.id, 'giphys')}
@@ -285,7 +285,7 @@ class Profile extends React.Component {
                             style={{
                               float: 'right',
                               color: '#4f94cd',
-                              marginTop: 7,
+                              marginTop: 8,
                               marginRight: 5,
                             }}
                             onClick={this.handleShareButton.bind(this, music.id, 'music')}
