@@ -119,7 +119,7 @@ View the project roadmap [here](https://waffle.io/MysteriousBagel/mood.ly)
 
 ### High Level Architecture
 
-![Architecture Diagram](/readmefiles/archdiagram.png)
+![Architecture Diagram](/client/assets/ArchitectureDiagram.png)
 
 ### Database Schema
 Database in mySQL, using sequelize.
