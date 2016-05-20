@@ -118,8 +118,9 @@ class Profile extends React.Component {
           <br />
           <Grid>
             <Row className="show-grid">
+              <Col md={1} />
               <Col
-                md={12}
+                md={4}
                 className="card-spacing"
               >
                 <Card
@@ -147,15 +148,12 @@ class Profile extends React.Component {
                   </CardText>
                 </Card>
               </Col>
-            </Row>
-            <Row className="show-grid">
               <Col
-                md={12}
+                md={6}
                 classname="card-spacing"
               >
                 <Card
                   style={{
-                    margin: '0 auto',
                     border: '4px solid #424242',
                     borderRadius: '25px',
                     boxShadow: 'none',
@@ -169,10 +167,11 @@ class Profile extends React.Component {
                         style={{
                           height: 350,
                           width: 300,
-                          margin: '0 auto',
                           border: '4px solid #424242',
                           borderRadius: '25px',
                           boxShadow: 'none',
+                          margin: '0 auto',
+                          marginBottom: '15px',
                         }}
                       >
                         <CardHeader
@@ -211,6 +210,7 @@ class Profile extends React.Component {
                           border: '4px solid #424242',
                           borderRadius: '25px',
                           boxShadow: 'none',
+                          marginBottom: '15px',
                         }}
                       >
                         <CardHeader
@@ -245,6 +245,7 @@ class Profile extends React.Component {
                           border: '4px solid #424242',
                           borderRadius: '25px',
                           boxShadow: 'none',
+                          marginBottom: '15px',
                         }}
                       >
                         <CardHeader
@@ -273,6 +274,7 @@ class Profile extends React.Component {
                   </CardText>
                 </Card>
               </Col>
+              <Col md={1} />
             </Row>
           </Grid>
         </div>
