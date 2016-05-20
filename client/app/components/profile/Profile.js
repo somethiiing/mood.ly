@@ -117,7 +117,12 @@ class Profile extends React.Component {
           <h1>{this.props.user.name}'s profile</h1>
           <br />
           <Grid>
-            <Row className="show-grid">
+            <Row
+              className="show-grid"
+              style={{
+                paddingBottom: 100,
+              }}
+            >
               <Col md={1} />
               <Col
                 md={4}
