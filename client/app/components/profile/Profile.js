@@ -12,6 +12,7 @@ import ImageCamera from 'material-ui/svg-icons/image/camera-alt';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Card, CardHeader, CardText, CardMedia } from 'material-ui/Card';
 import EditorInsertComment from 'material-ui/svg-icons/editor/insert-comment';
+import Share from 'material-ui/svg-icons/action/exit-to-app';
 
 const moodlyUrl = 'moodly.io';
 
@@ -196,7 +197,10 @@ class Profile extends React.Component {
                               float: 'right',
                             }}
                             onClick={this.handleShareButton.bind(this, quote.id, 'quotes')}
-                          ><i className="fa fa-facebook fa-2x" aria-hidden="true"></i></IconButton>
+                          ><Share
+                            color={'#4f94cd'}
+                            hoverColor={'#bfefff'}
+                          /></IconButton>
                         </CardHeader>
                         <CardText
                           style={{
@@ -235,7 +239,10 @@ class Profile extends React.Component {
                               float: 'right',
                             }}
                             onClick={this.handleShareButton.bind(this, gif.id, 'giphys')}
-                          ><i className="fa fa-facebook fa-2x" aria-hidden="true"></i>
+                          ><Share 
+                            color={'#4f94cd'}
+                            hoverColor={'#bfefff'}
+                          />
                           </IconButton>
                         </CardHeader>
                         <CardMedia>
@@ -270,7 +277,10 @@ class Profile extends React.Component {
                               float: 'right',
                             }}
                             onClick={this.handleShareButton.bind(this, music.id, 'music')}
-                          ><i className="fa fa-facebook fa-2x" aria-hidden="true"></i>
+                          ><Share 
+                            color={'#4f94cd'}
+                            hoverColor={'#bfefff'}
+                          />
                           </IconButton>
                         </CardHeader>
                         <CardMedia>
