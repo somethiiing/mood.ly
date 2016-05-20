@@ -1,10 +1,10 @@
 # Mood.ly
 
-(https://travis-ci.org/CodeRISHI/mood.ly.svg?branch=master)
+[![Build Status](https://travis-ci.org/CodeRISHI/mood.ly.svg?branch=master)](https://travis-ci.org/CodeRISHI/mood.ly)
 
 A place for you to explore your mood.
 
-Check it out at [moodly.io](http://moodly.io)!
+Check it out at [*moodly.io*](http://moodly.io)!
 
 ## Team
 
