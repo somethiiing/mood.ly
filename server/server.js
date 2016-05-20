@@ -1,6 +1,6 @@
 import express from 'express';
 import session from 'express-session';
-import passport from 'passport';
+// import passport from 'passport';
 // import flash from 'connect-flash';
 // import bodyParser from 'body-parser';
 
@@ -21,14 +21,14 @@ middleware(app, express);
 // PASSPORT & ROUTES
 // ==============================================
 // Passport Configuration
-import config from './config/passport';
-config(app, session, passport);
+// import config from './config/passport';
+// config(app, session, passport);
 
 // initialize mySQL associations
 import './index';
 
 import routes from './routes/routes';
-routes(app, express, passport);
+routes(app, express);
 
 // LISTEN
 // ==============================================

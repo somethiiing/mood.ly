@@ -50,8 +50,8 @@ describe('Giphy model', () => {
     };
     request(giphyTest, (err, res, body) => {
       expect(JSON.parse(body).body[0]).to.have.property('url');
+      done();
     });
-    done();
   });
 
   it('should retrieve all giphys from database', done => {
@@ -61,7 +61,7 @@ describe('Giphy model', () => {
     };
     request(fetchGiphys, (err, res, body) => {
       expect(JSON.parse(body).body.length).to.equal(3);
+      done();
     });
-    done();
   });
 });

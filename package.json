@@ -10,7 +10,7 @@
   ],
   "main": "server.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register ./specs/server/ApiTest.js ./specs/server/databaseTest.js ./specs/server/giphyModelTest.js ./specs/server/moodModelTest.js ./specs/server/quoteModelTest.js ./specs/server/userControllerTest.js ./specs/server/userModelTest.js",
+    "test": "babel-node ./server/server.js & sleep 6 && mocha --compilers js:babel-core/register ./specs/server/ApiTest.js ./specs/server/databaseTest.js ./specs/server/giphyModelTest.js ./specs/server/moodModelTest.js ./specs/server/quoteModelTest.js ./specs/server/userControllerTest.js ./specs/server/userModelTest.js && pkill -9 node",
     "start": "nodemon ./server/server.js --exec babel-node --presets es2015 react",
     "build": "webpack --watch"
   },

@@ -1,12 +1,26 @@
 import Sequelize from 'sequelize';
-import dbConfig from '../config/mysqlsetup.js';
+import Config from '../config/mysqlsetup.js';
 
+const travisCI = {
+  username: process.env.USERNAME,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
+};
+
+if (!process.env.TRAVIS) {
+  travisCI.username = Config.dbConfig.username;
+  travisCI.password = Config.dbConfig.password;
+  travisCI.database = Config.dbConfig.database;
+}
 export default new Sequelize(
-  'moodb',
-  'root',
-  'HR41', // FOR TRAVISCI TESTING - USUALLY IS 'HR41'
+  travisCI.database,
+  // 'moodb',
+  travisCI.username,
+  // 'root',
+  travisCI.password, // FOR TRAVISCI TESTING - USUALLY IS 'HR41'
+  // '',
   {
-    host: dbConfig.host,
+    // host: 'http://127.0.0.1', // Config.dbConfig.host,
     dialect: 'mysql',
     define: {
       timestamps: false, // true by default
