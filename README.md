@@ -1,8 +1,10 @@
 # Mood.ly
 
+(https://travis-ci.org/CodeRISHI/mood.ly.svg?branch=master)
+
 A place for you to explore your mood.
 
-Check it out at www.moodly.io!
+Check it out at [moodly.io](http://moodly.io)!
 
 ## Team
 
