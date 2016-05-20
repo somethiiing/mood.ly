@@ -1,12 +1,6 @@
 import React from 'react';
-import Music from './music';
 import Search from './search';
-import GifItem from './gifItem';
-import QuoteItem from './quoteItem';
 import Dialog from 'material-ui/Dialog';
-import Row from 'react-bootstrap/lib/Row';
-import Col from 'react-bootstrap/lib/Col';
-import Grid from 'react-bootstrap/lib/Grid';
 import services from '../../services/services';
 import Button from 'react-bootstrap/lib/Button';
 import controller from '../../services/controllers';
@@ -167,14 +161,21 @@ class Dashboard extends React.Component {
         isInfiniteLoading: false,
         elements: this.state.elements.concat(newElements),
       });
-      console.log(JSON.stringify(this.state.elements));
-    }, 2500);
+    }, 2000);
   }
   elementInfiniteLoad() {
+    // PLACE TO  PUT A LOADING ELEMENT
     console.log('element infinite load');
     return (
       <div className="infinite-list-item">
-        <img src="/client/app/styles/boxhead.jpg" height="60" width="72" />
+        <img
+          src="/client/app/styles/spinner-blue.gif"
+          style={{
+            width: 40,
+            height: 40,
+            'margin-left': '49vw',
+          }}
+        />
       </div>
     );
   }
@@ -207,8 +208,8 @@ class Dashboard extends React.Component {
           </Dialog>
         </MuiThemeProvider>
         <Infinite
-          elementHeight={450}
-          infiniteLoadBeginEdgeOffset={900}
+          elementHeight={500}
+          infiniteLoadBeginEdgeOffset={1000}
           useWindowAsScrollContainer={true}
           onInfiniteLoad={this.handleInfiniteLoad}
           loadingSpinnerDelegate={this.elementInfiniteLoad()}
