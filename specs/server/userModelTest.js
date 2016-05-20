@@ -14,7 +14,7 @@ describe('User model', () => {
   it('should match the username property of the specified user', done => {
     done();
     request(userFetch, (err, res, body) => {
-      expect(JSON.parse(body)[1].username).to.equal('Stephanie');
+      expect(JSON.parse(body)[1].username).to.equal('Toby');
     });
   });
 
