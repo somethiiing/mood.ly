@@ -5,6 +5,7 @@ import Title from '../../client/app/components/landing/title';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Card, CardHeader, CardMedia } from 'material-ui/Card';
+import ImageCamera from 'material-ui/svg-icons/image/camera-alt';
 import IconButton from 'material-ui/IconButton';
 import Favorite from 'material-ui/svg-icons/action/favorite';
 import EditorInsertComment from 'material-ui/svg-icons/editor/insert-comment';
@@ -28,6 +29,9 @@ const html = (body) => {
                 height: 350,
                 width: 300,
                 margin: '0 auto',
+                border: '4px solid #424242',
+                borderRadius: '25px',
+                boxShadow: 'none',
               }}
             >
               <CardHeader
@@ -35,6 +39,13 @@ const html = (body) => {
                   height: 75,
                 }}
               >
+                <IconButton
+                  disableTouchRipple={Boolean(true)}
+                  style={{
+                    float: 'left',
+                    color: '#bfefff',
+                  }}
+                ><ImageCamera /></IconButton>
               </CardHeader>
               <CardMedia>
                 <img src={body} alt="" height="200px" />
