@@ -19,3 +19,9 @@ before_script:
   - sleep 3 #delay start of xvfb
 after_script:
 - echo "Build Finished!"
+
+#./specs/server/databaseTest.js
+#./specs/server/moodModelTest.js
+#./specs/server/quoteModelTest.js
+#./specs/server/userControllerTest.js
+#./specs/server/userModelTest.js
