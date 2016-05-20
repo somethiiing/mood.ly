@@ -11,15 +11,6 @@ import EditorInsertComment from 'material-ui/svg-icons/editor/insert-comment';
 import Footer from '../../client/app/components/Footer';
 
 const html = (body) => {
-  let data = '';
-  if (body.type === 'GIF') {
-    console.log('GIF', body);
-    data = `<img src="${body.url}" alt>`;
-  }
-  if (body.type === 'MUSIC') {
-    console.log('MUSIC', body);
-    data = `<iframe src={'https://youtube.com/embed/${body.videoId}'} height="200px" width="250px" />`;
-  }
 
   return ReactDOMServer.renderToString(
     <div>
@@ -38,6 +29,9 @@ const html = (body) => {
                 height: 350,
                 width: 300,
                 margin: '0 auto',
+                border: '4px solid #424242',
+                borderRadius: '25px',
+                boxShadow: 'none',
               }}
             >
               <CardHeader
@@ -45,6 +39,13 @@ const html = (body) => {
                   height: 75,
                 }}
               >
+                <IconButton
+                  disableTouchRipple={Boolean(true)}
+                  style={{
+                    float: 'left',
+                    color: '#bfefff',
+                  }}
+                ><EditorInsertComment /></IconButton>
               </CardHeader>
               <CardText
                 style={{
